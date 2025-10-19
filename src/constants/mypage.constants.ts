@@ -18,6 +18,7 @@ export const MYPAGE_TEXTS = {
   },
   LABELS: {
     PROFILE_PHOTO: '프로필 사진',
+    KAKAO_LOGIN: '카카오 로그인',
   },
   MODAL: {
     SIGNUP_COMPLETE: '회원가입이 완료되었습니다.',

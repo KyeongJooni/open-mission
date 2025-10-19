@@ -38,24 +38,18 @@ export const useAuthStore = create<AuthState>((set, get) => ({
     set({ isLoading: true });
 
     try {
-      // TODO: API 연결 후 토큰 확인 로직 구현
-      // const token = sessionStorage.getItem('accessToken');
-      // if (token) {
-      //   set({ isLoggedIn: true, hasChecked: true, isLoading: false });
-      // } else {
-      //   set({
-      //     isLoggedIn: false,
-      //     isLoading: false,
-      //     hasChecked: true,
-      //   });
-      // }
+      const token = localStorage.getItem('accessToken');
+      const user = get().user;
 
-      // 임시: 기본값으로 설정
-      set({
-        isLoggedIn: false,
-        isLoading: false,
-        hasChecked: true,
-      });
+      if (token && user) {
+        set({ isLoggedIn: true, hasChecked: true, isLoading: false });
+      } else {
+        set({
+          isLoggedIn: false,
+          isLoading: false,
+          hasChecked: true,
+        });
+      }
     } catch {
       set({
         isLoggedIn: false,

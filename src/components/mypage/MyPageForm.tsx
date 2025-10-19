@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { cn } from '@/utils/cn';
 import LoginLogo from '@/components/auth/LoginLogo';
 import LoginForm from '@/components/auth/LoginForm';
-import { MYPAGE_TEXTS, MYPAGE_ROUTES } from '@/constants';
+import { MYPAGE_TEXTS, MYPAGE_ROUTES, KAKAO_AUTH_URL } from '@/constants';
 import { MyPageFormProps } from '@/types/mypage';
 
 const STYLES = {
@@ -19,7 +19,9 @@ const MyPageForm: FC<MyPageFormProps> = ({ className, children }) => {
     navigate(MYPAGE_ROUTES.SIGNUP);
   };
 
-  const handleKakaoSignup = () => {};
+  const handleKakaoSignup = () => {
+    window.location.href = KAKAO_AUTH_URL;
+  };
 
   return (
     <div className={STYLES.formWrapper}>

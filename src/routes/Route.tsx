@@ -4,6 +4,7 @@ import MainPage from '@/pages/main/MainPage';
 import BlogDetailPage from '@/pages/blog/BlogDetailPage';
 import BlogWritePage from '@/pages/blog/BlogWritePage';
 import MyPage from '@/pages/mypage/MyPage';
+import KakaoLogin from '@/components/auth/KakaoLogin';
 import { MyPageForm, MyProfileForm, EditProfileForm, SignupForm } from '@/components';
 import Playground from '@/playground/Playground';
 import { PublicRoute } from '@/routes/PublicRoute';
@@ -71,6 +72,10 @@ const router = createBrowserRouter([
       {
         path: 'playground',
         element: <Playground />,
+      },
+      {
+        path: 'oauth/kakao/success',
+        element: <KakaoLogin />,
       },
     ],
   },

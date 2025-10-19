@@ -55,4 +55,14 @@ export interface KakaoRedirectRequest {
   state?: string;
 }
 
-export type KakaoRedirectCallbackResponse = ApiResponse<LoginData>;
+export interface KakaoCallbackData {
+  id: number;
+  email: string;
+  nickname: string;
+  profilePicture: string;
+  name: string;
+  birthDate: string;
+  introduction: string;
+}
+
+export type KakaoRedirectCallbackResponse = ApiResponse<KakaoCallbackData>;

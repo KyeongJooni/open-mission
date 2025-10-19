@@ -1,4 +1,63 @@
 import axios, { AxiosInstance } from 'axios';
+
+// Axios 인스턴스 설정
+export const axiosInstance: AxiosInstance = axios.create({
+  baseURL: import.meta.env.VITE_API_BASE_URL,
+  headers: { 'Content-Type': 'application/json' },
+  timeout: 10000,
+  responseType: 'json',
+  withCredentials: true, // 쿠키 전달 활성화
+});
+
+// 토큰 관리 함수
+const getAccessToken = (): string | null => {
+  if (typeof window === 'undefined') {
+    return null;
+  }
+  return localStorage.getItem('accessToken');
+};
+
+const setAccessToken = (token: string | null): void => {
+  if (typeof window === 'undefined') {
+    return;
+  }
+  if (!token) {
+    localStorage.removeItem('accessToken');
+  } else {
+    localStorage.setItem('accessToken', token);
+  }
+};
+
+// const _getRefreshToken = (): string | null => {
+//   if (typeof window === 'undefined') {
+//     return null;
+//   }
+//   return sessionStorage.getItem('refreshToken');
+// };
+
+const setRefreshToken = (token: string | null): void => {
+  if (typeof window === 'undefined') {
+    return;
+  }
+  if (!token) {
+    localStorage.removeItem('refreshToken');
+  } else {
+    localStorage.setItem('refreshToken', token);
+  }
+};
+
+// 요청 인터셉터
+axiosInstance.interceptors.request.use(config => {
+  const accessToken = getAccessToken();
+
+  if (accessToken) {
+    config.headers.Authorization = `Bearer ${accessToken}`;
+  }
+
+  return config;
+});
+
+// 응답 인터셉터 (401 에러 시 토큰 갱신 로직 - 필요 시 주석 해제)
 // import { InternalAxiosRequestConfig } from 'axios';
 // import { ENV } from './env';
 
@@ -27,69 +86,12 @@ import axios, { AxiosInstance } from 'axios';
 //   return AUTH_EXCLUDED_PATHS.some(path => url.startsWith(path));
 // };
 
-// 액세스 토큰 관리 (세션 스토리지)
-const getAccessToken = (): string | null => {
-  if (typeof window === 'undefined') {
-    return null;
-  }
-  return sessionStorage.getItem('accessToken');
-};
-
-const setAccessToken = (token: string | null): void => {
-  if (typeof window === 'undefined') {
-    return;
-  }
-  if (!token) {
-    sessionStorage.removeItem('accessToken');
-  } else {
-    sessionStorage.setItem('accessToken', token);
-  }
-};
-
-// 리프레시 토큰 관리 (세션 스토리지)
-// const _getRefreshToken = (): string | null => {
-//   if (typeof window === 'undefined') {
-//     return null;
-//   }
-//   return sessionStorage.getItem('refreshToken');
-// };
-
-const setRefreshToken = (token: string | null): void => {
-  if (typeof window === 'undefined') {
-    return;
-  }
-  if (!token) {
-    sessionStorage.removeItem('refreshToken');
-  } else {
-    sessionStorage.setItem('refreshToken', token);
-  }
-};
-
-// 메인 axios 인스턴스
-export const axiosInstance: AxiosInstance = axios.create({
-  baseURL: import.meta.env.VITE_API_BASE_URL || 'http://localhost:3000',
-  headers: { 'Content-Type': 'application/json' },
-  timeout: 10000,
-  responseType: 'json',
-});
-
 // 리프레시 전용 axios 인스턴스
 // const _refreshAxios: AxiosInstance = axios.create({
 //   baseURL: ENV.API_BASE_URL,
 //   headers: { 'Content-Type': 'application/json' },
 //   timeout: 10000,
 // });
-
-// 요청 인터셉터 - 액세스 토큰 추가
-axiosInstance.interceptors.request.use(config => {
-  const accessToken = getAccessToken();
-
-  if (accessToken) {
-    config.headers.Authorization = `Bearer ${accessToken}`;
-  }
-
-  return config;
-});
 
 // 토큰 갱신 중인지 확인하는 플래그
 // let _isRefreshing = false;
@@ -117,7 +119,7 @@ axiosInstance.interceptors.request.use(config => {
 //   pendingQueue = [];
 // };
 
-// 응답 인터셉터 - 401 에러 시 토큰 갱신 (현재 주석 처리)
+// 응답 인터셉터 - 401 에러 시 토큰 갱신
 /*
 axiosInstance.interceptors.response.use(
   response => response,
@@ -205,7 +207,7 @@ axiosInstance.interceptors.response.use(
 );
 */
 
-// 로그아웃 함수
+// 유틸리티 함수
 export const logout = () => {
   setAccessToken(null);
   setRefreshToken(null);
@@ -214,7 +216,6 @@ export const logout = () => {
   }
 };
 
-// 토큰 존재 여부 확인
 export const isAuthenticated = (): boolean => {
   return Boolean(getAccessToken());
 };

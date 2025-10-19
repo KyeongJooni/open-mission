@@ -1,4 +1,4 @@
-import { useState, useRef, ChangeEvent } from 'react';
+import { useState, useRef, ChangeEvent, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { signupSchema, SignupFormData } from '@/utils/schemas';
@@ -15,18 +15,25 @@ interface UseSignupReturn {
   setIsCompleteModalOpen: (open: boolean) => void;
   isLoginModalOpen: boolean;
   setIsLoginModalOpen: (open: boolean) => void;
+  isKakaoSignup: boolean;
 }
 
 export const useSignup = (defaultImage: string): UseSignupReturn => {
   const [previewImage, setPreviewImage] = useState<string>(defaultImage);
   const [isCompleteModalOpen, setIsCompleteModalOpen] = useState(false);
   const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
+  const [isKakaoSignup, setIsKakaoSignup] = useState(false);
   const fileInputRef = useRef<HTMLInputElement>(null);
 
   const form = useForm<SignupFormData>({
     resolver: zodResolver(signupSchema),
     mode: 'onChange',
   });
+
+  useEffect(() => {
+    const kakaoFlag = sessionStorage.getItem('isKakaoSignup') === 'true';
+    setIsKakaoSignup(kakaoFlag);
+  }, []);
 
   const handleImageUpload = (event: ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
@@ -44,6 +51,7 @@ export const useSignup = (defaultImage: string): UseSignupReturn => {
   };
 
   const onSubmit = (_data: SignupFormData) => {
+    sessionStorage.removeItem('isKakaoSignup');
     setIsCompleteModalOpen(true);
   };
 
@@ -66,5 +74,6 @@ export const useSignup = (defaultImage: string): UseSignupReturn => {
     setIsCompleteModalOpen,
     isLoginModalOpen,
     setIsLoginModalOpen,
+    isKakaoSignup,
   };
 };
