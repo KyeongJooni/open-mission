@@ -7,6 +7,7 @@ export { useSidebar } from './common/useSidebar';
 // Form hooks
 export { useLoginForm } from './form/useLoginForm';
 export { useSignup } from './form/useSignup';
+export { useKakaoCallback } from './form/useKakaoCallback';
 
 // Page hooks
 export { useBlogWrite } from './page/useBlogWrite';
