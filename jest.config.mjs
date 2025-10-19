@@ -2,14 +2,11 @@
 const config = {
   preset: 'ts-jest',
 
-  // blogContentParser가 DOMParser를 사용하므로 jsdom 필요
+  //jsdom 사용
   testEnvironment: 'jsdom',
 
   // 테스트 파일 위치 지정
-  testMatch: [
-    '**/__tests__/**/*.{ts,tsx}',
-    '**/*.{test,spec}.{ts,tsx}',
-  ],
+  testMatch: ['**/__tests__/**/*.{ts,tsx}', '**/*.{test,spec}.{ts,tsx}'],
 
   // 경로 별칭 매핑
   moduleNameMapper: {
