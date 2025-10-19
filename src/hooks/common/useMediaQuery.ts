@@ -1,10 +1,5 @@
 import { useState, useEffect } from 'react';
 
-/**
- * 미디어 쿼리 상태를 추적하는 커스텀 훅
- * @param query - CSS 미디어 쿼리 문자열 (예: '(min-width: 768px)')
- * @returns 미디어 쿼리 매치 여부
- */
 export const useMediaQuery = (query: string): boolean => {
   const [matches, setMatches] = useState(false);
 
@@ -31,20 +26,10 @@ export const useMediaQuery = (query: string): boolean => {
   return matches;
 };
 
-/**
- * 모바일 여부를 반환하는 헬퍼 훅
- * @param breakpoint - 브레이크포인트 픽셀 값 (기본값: 768)
- * @returns 모바일 여부
- */
 export const useIsMobile = (breakpoint = 768): boolean => {
   return useMediaQuery(`(max-width: ${breakpoint - 1}px)`);
 };
 
-/**
- * 데스크톱 여부를 반환하는 헬퍼 훅
- * @param breakpoint - 브레이크포인트 픽셀 값 (기본값: 768)
- * @returns 데스크톱 여부
- */
 export const useIsDesktop = (breakpoint = 768): boolean => {
   return useMediaQuery(`(min-width: ${breakpoint}px)`);
 };
