@@ -4,7 +4,7 @@ export const buttonVariants = tv({
   base: 'inline-flex h-10 px-3 py-2 justify-center items-center gap-1 flex-shrink-0 rounded-[25px] border transition-all duration-200 cursor-pointer',
   variants: {
     intent: {
-      primary: 'text-primary border-primary hover:text-white hover:bg-primary hover:border-primary',
+      primary: 'text-primary border-primary bg-white hover:text-white hover:bg-primary hover:border-primary',
       secondary: 'text-gray border-gray hover:text-gray hover:bg-gray-96',
       gray: 'text-gray border-gray',
       danger: 'text-white bg-error border-error hover:bg-error/90',
@@ -30,12 +30,12 @@ export const buttonVariants = tv({
     {
       intent: 'gray',
       variant: 'outline',
-      class: 'text-gray border-gray bg-transparent hover:bg-gray hover:text-white',
+      class: 'text-gray border-gray bg-white hover:bg-gray hover:text-white',
     },
     {
       intent: 'primary',
       variant: 'outline',
-      class: 'text-primary border-primary bg-transparent hover:bg-primary/10',
+      class: 'text-primary border-primary bg-white hover:bg-primary/10',
     },
     { intent: 'danger', variant: 'outline', class: 'text-error border-error bg-transparent hover:bg-error/10' },
   ],
