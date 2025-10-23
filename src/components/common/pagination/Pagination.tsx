@@ -1,5 +1,4 @@
 import clsx from 'clsx';
-import { FC } from 'react';
 
 import PaginationButton from './PaginationButton';
 
@@ -7,7 +6,7 @@ interface PaginationProps {
   className?: string;
 }
 
-const Pagination: FC<PaginationProps> = ({ className = '' }) => {
+const Pagination = ({ className = '' }: PaginationProps) => {
   return (
     <div className={clsx('inline-flex items-start gap-2', className)}>
       <PaginationButton variant="navigation" direction="prev" />

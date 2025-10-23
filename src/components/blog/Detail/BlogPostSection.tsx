@@ -1,4 +1,3 @@
-import { FC } from 'react';
 import { tv } from 'tailwind-variants';
 import { Spacer, PostHeader, PostDetails, PostBody } from '@/components';
 import { ContentItem } from '@/types/blog';
@@ -17,7 +16,7 @@ const blogPostSection = tv({
   },
 });
 
-const BlogPostSection: FC<BlogPostSectionProps> = ({ title, contents }) => {
+const BlogPostSection = ({ title, contents }: BlogPostSectionProps) => {
   const styles = blogPostSection();
 
   const contentRenderers = {

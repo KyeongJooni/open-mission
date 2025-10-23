@@ -1,4 +1,3 @@
-import { FC } from 'react';
 import { tv } from 'tailwind-variants';
 import { Spacer, MyPageHeader } from '@/components';
 import { MYPAGE_TEXTS } from '@/constants';
@@ -14,7 +13,7 @@ const blogAuthorSection = tv({
   },
 });
 
-const BlogAuthorSection: FC<BlogAuthorSectionProps> = ({ nickName, introduction }) => {
+const BlogAuthorSection = ({ nickName, introduction }: BlogAuthorSectionProps) => {
   const styles = blogAuthorSection();
 
   return (

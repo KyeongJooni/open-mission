@@ -1,7 +1,7 @@
 import { DoneIcon, ErrorOutlineIcon } from '@/assets/icons';
 import { cn } from '@/utils/cn';
 import { type VariantProps } from 'class-variance-authority';
-import { FC, ReactNode } from 'react';
+import { ReactNode } from 'react';
 import { toastIconVariants, toastTextVariants, toastVariants } from './ToastVariants';
 
 interface ToastProps extends VariantProps<typeof toastVariants> {
@@ -9,7 +9,7 @@ interface ToastProps extends VariantProps<typeof toastVariants> {
   className?: string;
 }
 
-const Toast: FC<ToastProps> = ({ children, type, className = '' }) => {
+const Toast = ({ children, type, className = '' }: ToastProps) => {
   const getIcon = (toastType: typeof type) => {
     switch (toastType) {
       case 'positive':

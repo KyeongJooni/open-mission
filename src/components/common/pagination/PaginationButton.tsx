@@ -1,7 +1,7 @@
 import { NavigateBeforeIcon } from '@/assets/icons';
 import { type VariantProps } from 'class-variance-authority';
 import clsx from 'clsx';
-import { FC, ReactNode } from 'react';
+import { ReactNode } from 'react';
 import { paginationButtonVariants } from '@/components/common/Pagination/PaginationButtonVariants';
 
 interface PaginationButtonProps
@@ -11,7 +11,7 @@ interface PaginationButtonProps
   className?: string;
 }
 
-const PaginationButton: FC<PaginationButtonProps> = ({
+const PaginationButton = ({
   variant,
   state,
   direction,
@@ -19,7 +19,7 @@ const PaginationButton: FC<PaginationButtonProps> = ({
   className,
   disabled,
   ...props
-}) => {
+}: PaginationButtonProps) => {
   const renderContent = () => {
     if (variant === 'navigation' && (direction === 'prev' || direction === 'next')) {
       const iconColorClass = state === 'disabled' ? 'text-character-disabled-25' : 'text-character-title-85';

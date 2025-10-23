@@ -1,4 +1,3 @@
-import { FC } from 'react';
 import { PostHeader, TextBox, TextField } from '@/components';
 import { MYPAGE_TEXTS } from '@/constants';
 import { SettingsIcon, EditProfileIcon } from '@/assets/icons';
@@ -17,14 +16,14 @@ const STYLES = {
   profileActions: 'flex w-full max-w-content py-3 px-4 items-start gap-2.5',
 } as const;
 
-const MyPageHeader: FC<MyPageHeaderProps> = ({
+const MyPageHeader = ({
   isEditMode,
   nickname,
   bio,
   onEditClick,
   showSettingsButton = true,
   isEditProfilePage = false,
-}) => {
+}: MyPageHeaderProps) => {
   const {
     register,
     errors,

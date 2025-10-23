@@ -1,4 +1,3 @@
-import { FC } from 'react';
 import MDEditor from '@uiw/react-md-editor';
 
 interface PostBodyProps {
@@ -8,7 +7,7 @@ interface PostBodyProps {
   isMarkdown?: boolean;
 }
 
-const PostBody: FC<PostBodyProps> = ({ content, placeholder = '', className = '', isMarkdown = false }) => {
+const PostBody = ({ content, placeholder = '', className = '', isMarkdown = false }: PostBodyProps) => {
   const isEmpty = !content || content.trim().length === 0;
 
   // 마크다운 렌더링

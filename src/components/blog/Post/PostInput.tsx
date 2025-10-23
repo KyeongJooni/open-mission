@@ -1,5 +1,3 @@
-import { FC } from 'react';
-
 interface PostInputProps {
   value: string;
   onChange: (value: string) => void;
@@ -7,7 +5,7 @@ interface PostInputProps {
   className?: string;
 }
 
-const PostInput: FC<PostInputProps> = ({ value, onChange, placeholder = '댓글을 입력하세요.', className = '' }) => {
+const PostInput = ({ value, onChange, placeholder = '댓글을 입력하세요.', className = '' }: PostInputProps) => {
   return (
     <div className={`flex h-28 max-w-content items-start gap-2.5 self-stretch px-4 py-3 ${className}`}>
       <textarea

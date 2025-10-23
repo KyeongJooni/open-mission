@@ -3,8 +3,8 @@
 declare const ENABLE_PLAYGROUND: string;
 
 declare module '*.svg?react' {
-  import { FC, SVGProps } from 'react';
-  const ReactComponent: FC<SVGProps<SVGSVGElement>>;
+  import { SVGProps } from 'react';
+  const ReactComponent: (props: SVGProps<SVGSVGElement>) => JSX.Element;
   export default ReactComponent;
 }
 

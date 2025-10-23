@@ -1,4 +1,3 @@
-import { FC } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { PostCard, PostDetails } from '@/components';
 import MainPreviewImage from './MainPreviewImage';
@@ -11,7 +10,7 @@ interface BlogPreviewCardProps {
   imageSrc?: string;
 }
 
-const BlogPreviewCard: FC<BlogPreviewCardProps> = ({ className = '', id, title = '', content, imageSrc }) => {
+const BlogPreviewCard = ({ className = '', id, title = '', content, imageSrc }: BlogPreviewCardProps) => {
   const navigate = useNavigate();
 
   const handleClick = () => {

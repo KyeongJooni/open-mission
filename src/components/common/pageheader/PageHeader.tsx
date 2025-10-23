@@ -1,8 +1,7 @@
-import { FC } from 'react';
 import { PageHeaderLeft, PageHeaderRight } from '@/components';
 import { PageHeaderProps } from '@/types/pageheader';
 
-const PageHeader: FC<PageHeaderProps> = ({
+const PageHeader = ({
   className = '',
   type,
   onHamburgerClick,
@@ -10,7 +9,7 @@ const PageHeader: FC<PageHeaderProps> = ({
   onCancel,
   onSave,
   isOwner,
-}) => {
+}: PageHeaderProps) => {
   return (
     <header className={`page-header-container ${className}`}>
       <PageHeaderLeft onHamburgerClick={onHamburgerClick} />

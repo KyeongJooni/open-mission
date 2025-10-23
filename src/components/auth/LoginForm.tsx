@@ -1,4 +1,3 @@
-import { FC } from 'react';
 import { cn } from '@/utils/cn';
 import { useLoginForm } from '@/hooks';
 import { Spacer } from '@/components';
@@ -26,7 +25,7 @@ interface LoginFormProps {
   onKakaoClick?: () => void;
 }
 
-const LoginForm: FC<LoginFormProps> = ({
+const LoginForm = ({
   className,
   onClose,
   showInputSection = true,
@@ -37,7 +36,7 @@ const LoginForm: FC<LoginFormProps> = ({
   dividerLineColor,
   onEmailClick,
   onKakaoClick,
-}) => {
+}: LoginFormProps) => {
   const {
     email,
     password,

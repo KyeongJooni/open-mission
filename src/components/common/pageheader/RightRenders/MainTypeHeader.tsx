@@ -1,4 +1,4 @@
-import { FC, useState } from 'react';
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { CreateIcon } from '@/assets/icons';
 import Icon from '@/components/common/Icon/Icon';
@@ -7,7 +7,7 @@ import Modal from '@/components/common/Modal/Modal';
 import { LoginModal } from '@/components/auth';
 import { PAGEHEADER_TEXTS } from '@/constants';
 
-export const MainTypeHeader: FC = () => {
+export const MainTypeHeader = () => {
   const isLoggedIn = useAuthStore(state => state.isLoggedIn);
   const [isMessageModalOpen, setIsMessageModalOpen] = useState(false);
   const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);

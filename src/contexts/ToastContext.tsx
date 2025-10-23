@@ -1,4 +1,4 @@
-import { createContext, useContext, useState, ReactNode, FC, useCallback } from 'react';
+import { createContext, useContext, useState, ReactNode, useCallback } from 'react';
 import { Toast, Portal } from '@/components';
 import { tv } from 'tailwind-variants';
 
@@ -35,7 +35,7 @@ const toastContainerVariants = tv({
   },
 });
 
-export const ToastProvider: FC<ToastProviderProps> = ({ children }) => {
+export const ToastProvider = ({ children }: ToastProviderProps) => {
   const [isVisible, setIsVisible] = useState(false);
   const [isAnimating, setIsAnimating] = useState(false);
   const [message, setMessage] = useState('');

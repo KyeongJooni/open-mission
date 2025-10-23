@@ -2,7 +2,7 @@ import { CreateIcon } from '@/assets/icons';
 import { Icon } from '@/components';
 import { textBoxTextVariants, textBoxVariants } from '@/components/common/Textbox/TextBoxVariants';
 import clsx from 'clsx';
-import { FC, ReactNode } from 'react';
+import { ReactNode } from 'react';
 
 interface TextBoxProps {
   children: ReactNode;
@@ -15,7 +15,7 @@ interface TextBoxProps {
   asButton?: boolean;
 }
 
-const TextBox: FC<TextBoxProps> = ({
+const TextBox = ({
   children,
   className = '',
   showIcon = false,
@@ -24,7 +24,7 @@ const TextBox: FC<TextBoxProps> = ({
   borderColor,
   onClick,
   asButton = false,
-}) => {
+}: TextBoxProps) => {
   const content = (
     <>
       {showIcon && <Icon size="sm">{icon || <CreateIcon />}</Icon>}

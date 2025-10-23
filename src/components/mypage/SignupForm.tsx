@@ -1,4 +1,3 @@
-import { FC } from 'react';
 import { Spacer, Button, Modal } from '@/components';
 import LoginModal from '@/components/auth/LoginModal';
 import SignupProfileSection from './SignupProfileSection';
@@ -9,7 +8,7 @@ import { MYPAGE_TEXTS, SIGNUP_FORM_FIELDS } from '@/constants';
 import profileImage from '@/assets/profile.png';
 import { SignupFormProps } from '@/types/mypage';
 
-const SignupForm: FC<SignupFormProps> = ({ className }) => {
+const SignupForm = ({ className }: SignupFormProps) => {
   const {
     previewImage,
     fileInputRef,

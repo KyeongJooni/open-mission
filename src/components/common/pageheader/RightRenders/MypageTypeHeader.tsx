@@ -1,3 +1,1 @@
-import { FC } from 'react';
-
-export const MypageTypeHeader: FC = () => null;
+export const MypageTypeHeader = () => null;

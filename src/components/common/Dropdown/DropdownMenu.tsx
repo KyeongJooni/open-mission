@@ -1,16 +1,16 @@
 import clsx from 'clsx';
-import { FC, useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import DropdownMenuList from './DropdownMenuList';
 import { DropdownMenuItem, DropdownMenuProps } from './DropdownMenuTypes';
 
-const DropdownMenu: FC<DropdownMenuProps> = ({
+const DropdownMenu = ({
   trigger,
   items,
   className = '',
   menuClassName = '',
   position = 'right',
   ariaLabel = '메뉴',
-}) => {
+}: DropdownMenuProps) => {
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
 

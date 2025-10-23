@@ -1,14 +1,14 @@
 import { AddPhotoAlternateIcon, FolderOpenIcon } from '@/assets/icons';
 import { Icon } from '@/components';
 import clsx from 'clsx';
-import { FC } from 'react';
+
 import { useLocation } from 'react-router-dom';
 
 interface PageHeaderLegacyProps {
   className?: string;
 }
 
-const PageHeaderLegacy: FC<PageHeaderLegacyProps> = ({ className = '' }) => {
+const PageHeaderLegacy = ({ className = '' }: PageHeaderLegacyProps) => {
   const location = useLocation();
   const isWritePage = location.pathname === '/blog/write';
 

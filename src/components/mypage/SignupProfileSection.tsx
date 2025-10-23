@@ -1,4 +1,4 @@
-import { FC, RefObject, ChangeEvent } from 'react';
+import { RefObject, ChangeEvent } from 'react';
 import { Spacer, TextBox } from '@/components';
 import { AddPhotoAlternateIcon } from '@/assets/icons';
 import { MYPAGE_TEXTS } from '@/constants';
@@ -12,13 +12,13 @@ interface ProfileSectionProps {
   styles: SignupFormStyles;
 }
 
-const ProfileSection: FC<ProfileSectionProps> = ({
+const ProfileSection = ({
   previewImage,
   fileInputRef,
   handleImageUpload,
   handleButtonClick,
   styles,
-}) => {
+}: ProfileSectionProps) => {
   return (
     <>
       <Spacer height="md" className={styles.spacer()} />

@@ -1,4 +1,3 @@
-import { FC } from 'react';
 import { ChatIcon, MoreVertIcon } from '@/assets/icons';
 import { Icon, DropdownMenu, Modal } from '@/components';
 import { useAuthStore } from '@/stores/useAuthStore';
@@ -9,7 +8,7 @@ interface DetailTypeHeaderProps {
   isOwner?: boolean;
 }
 
-export const DetailTypeHeader: FC<DetailTypeHeaderProps> = ({ isOwner = false }) => {
+export const DetailTypeHeader = ({ isOwner = false }: DetailTypeHeaderProps) => {
   const { isLoggedIn } = useAuthStore();
   const {
     handleChatClick,

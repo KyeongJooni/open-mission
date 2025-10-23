@@ -1,4 +1,3 @@
-import { FC } from 'react';
 import { useEditModeStore } from '@/stores/useEditModeStore';
 import { PAGEHEADER_TEXTS } from '@/constants';
 
@@ -8,7 +7,7 @@ interface EditProfileTypeHeaderProps {
   onSave?: () => void;
 }
 
-export const EditProfileTypeHeader: FC<EditProfileTypeHeaderProps> = ({ onEdit, onCancel, onSave }) => {
+export const EditProfileTypeHeader = ({ onEdit, onCancel, onSave }: EditProfileTypeHeaderProps) => {
   const isEditMode = useEditModeStore(state => state.isEditMode);
 
   if (!isEditMode) {

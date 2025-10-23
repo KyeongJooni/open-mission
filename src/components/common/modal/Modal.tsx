@@ -6,7 +6,7 @@ import {
   modalConfirmButtonVariants,
 } from '@/components/common/Modal/ModalVariants';
 import { cn } from '@/utils/cn';
-import { FC, ReactNode } from 'react';
+import { ReactNode } from 'react';
 import { useBodyScrollLock } from '@/hooks';
 import { Portal } from '@/components';
 
@@ -23,7 +23,7 @@ interface ModalProps {
   ariaDescribedBy?: string;
 }
 
-const Modal: FC<ModalProps> = ({
+const Modal = ({
   children,
   className = '',
   isOpen,
@@ -34,7 +34,7 @@ const Modal: FC<ModalProps> = ({
   confirmButtonVariant = 'danger',
   ariaLabelledBy,
   ariaDescribedBy,
-}) => {
+}: ModalProps) => {
   useBodyScrollLock(isOpen);
 
   if (!isOpen) {

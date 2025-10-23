@@ -2,9 +2,8 @@ import { ButtonProps } from '@/components/common/Button/ButtonTypes';
 import { buttonIconVariants, buttonTextVariants, buttonVariants } from '@/components/common/Button/ButtonVariants';
 import { Icon } from '@/components';
 import { cn } from '@/utils/cn';
-import { FC } from 'react';
 
-const Button: FC<ButtonProps> = ({
+const Button = ({
   children,
   onClick,
   className = '',
@@ -15,7 +14,7 @@ const Button: FC<ButtonProps> = ({
   size = 'md',
   variant = 'solid',
   fullWidth = false,
-}) => {
+}: ButtonProps) => {
   return (
     <button
       type={type}

@@ -1,4 +1,3 @@
-import { FC } from 'react';
 import { cn } from '@/utils/cn';
 import { LogoWebp } from '@/assets/logo';
 import { logoWrapperStyle, logoContainerStyle, textboxContainerStyle, textboxTextStyle } from './LoginLogo.styles';
@@ -7,7 +6,7 @@ interface LoginLogoProps {
   isDark?: boolean;
 }
 
-const LoginLogo: FC<LoginLogoProps> = ({ isDark = false }) => {
+const LoginLogo = ({ isDark = false }: LoginLogoProps) => {
   return (
     <div className={logoWrapperStyle}>
       <div className={logoContainerStyle}>

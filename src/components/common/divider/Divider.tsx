@@ -1,10 +1,8 @@
-import { FC } from 'react';
-
 interface DividerProps {
   className?: string;
 }
 
-const Divider: FC<DividerProps> = ({ className = '' }) => {
+const Divider = ({ className = '' }: DividerProps) => {
   return <div className={`h-px w-[580px] bg-gray-96 ${className}`} />;
 };
 

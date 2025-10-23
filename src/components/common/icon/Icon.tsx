@@ -1,6 +1,6 @@
 import { type VariantProps } from 'class-variance-authority';
 import { cn } from '@/utils/cn';
-import { FC, ReactNode } from 'react';
+import { ReactNode } from 'react';
 import { iconInnerVariants, iconVariants } from './IconVariants';
 
 export type IconSize = 'sm' | 'md' | 'lg';
@@ -12,7 +12,7 @@ interface IconProps extends VariantProps<typeof iconVariants> {
   onClick?: () => void;
 }
 
-const Icon: FC<IconProps> = ({
+const Icon = ({
   children,
   size,
   clickable,
@@ -20,7 +20,7 @@ const Icon: FC<IconProps> = ({
   className = '',
   containerClassName = '',
   onClick,
-}) => {
+}: IconProps) => {
   const isClickable = clickable || Boolean(onClick);
 
   return (

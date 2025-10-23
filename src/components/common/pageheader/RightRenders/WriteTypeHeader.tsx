@@ -1,9 +1,8 @@
-import { FC } from 'react';
 import { Modal } from '@/components';
 import { PAGEHEADER_TEXTS } from '@/constants';
 import { useWriteTypeHeader } from '@/hooks';
 
-export const WriteTypeHeader: FC = () => {
+export const WriteTypeHeader = () => {
   const { handleDeleteClick, handlePublishClick, modalType, confirmButtonText, onModalConfirm, closeModal } =
     useWriteTypeHeader();
 

@@ -1,11 +1,11 @@
-import { FC, useState } from 'react';
+import { useState } from 'react';
 import profileImage from '@/assets/profile.png';
 import { PostInput, Button } from '@/components';
 import { BLOG_TEXTS } from '@/constants';
 import { CommentInputProps } from '@/components/blog/Comment/CommentTypes';
 import { profileStyles, commentInputStyles } from '@/components/blog/Comment/Comment.styles';
 
-const CommentInput: FC<CommentInputProps> = ({ nickName, onSubmit }) => {
+const CommentInput = ({ nickName, onSubmit }: CommentInputProps) => {
   const [comment, setComment] = useState('');
   const hasContent = comment.trim().length > 0;
 

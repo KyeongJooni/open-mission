@@ -1,4 +1,3 @@
-import { FC } from 'react';
 import { useModalStore } from '@/stores/useModalStore';
 import { useBlogComment } from '@/hooks';
 import { tv } from 'tailwind-variants';
@@ -30,11 +29,11 @@ const blogCommentSection = tv({
   },
 });
 
-const BlogCommentSection: FC<BlogCommentSectionProps> = ({
+const BlogCommentSection = ({
   comments: initialComments,
   isLoggedIn = false,
   currentUserNickName = 'User',
-}) => {
+}: BlogCommentSectionProps) => {
   const styles = blogCommentSection();
   const { modalType, confirmButtonText, onModalConfirm, openModal, closeModal } = useModalStore();
   const { comments, handleCommentSubmit, handleCommentDeleteClick } = useBlogComment(

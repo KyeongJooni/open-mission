@@ -1,4 +1,3 @@
-import { FC } from 'react';
 import { cn } from '@/utils/cn';
 import { Outlet } from 'react-router-dom';
 import { Spacer, PostHeader, MyPageHeader } from '@/components';
@@ -17,7 +16,7 @@ const STYLES = {
   spacerBottom: 'w-full max-w-content max-md:h-3',
 } as const;
 
-const MyPage: FC<MyPageProps> = ({ className }) => {
+const MyPage = ({ className }: MyPageProps) => {
   const {
     isMyProfile,
     isEditProfile,

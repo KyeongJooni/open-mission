@@ -1,4 +1,3 @@
-import { FC } from 'react';
 import { FieldErrors, UseFormRegister } from 'react-hook-form';
 import { Textarea } from '@/components';
 import { MYPAGE_TEXTS } from '@/constants';
@@ -22,7 +21,7 @@ interface SignupFormFieldsProps {
   styles: SignupFormStyles;
 }
 
-const SignupFormFields: FC<SignupFormFieldsProps> = ({ fields, isKakaoSignup, register, errors, styles }) => {
+const SignupFormFields = ({ fields, isKakaoSignup, register, errors, styles }: SignupFormFieldsProps) => {
   return (
     <>
       {fields.map(field => {

@@ -1,4 +1,4 @@
-import { FC, useRef } from 'react';
+import { useRef } from 'react';
 import { cn } from '@/utils/cn';
 import { useBodyScrollLock, useFocusTrap } from '@/hooks';
 import LoginPage from '@/pages/auth/LoginPage';
@@ -12,7 +12,7 @@ interface LoginModalProps {
   message?: string;
 }
 
-const LoginModal: FC<LoginModalProps> = ({ className = '', isOpen, onClose }) => {
+const LoginModal = ({ className = '', isOpen, onClose }: LoginModalProps) => {
   const modalRef = useRef<HTMLDivElement>(null);
 
   // 커스텀 훅

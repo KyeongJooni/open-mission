@@ -1,4 +1,3 @@
-import { FC } from 'react';
 import { tv } from 'tailwind-variants';
 import Button from '@/components/common/Button/Button';
 import { BLOG_TEXTS } from '@/constants/blog.constants';
@@ -37,7 +36,7 @@ const modeToggleVariants = tv({
 });
 
 // TitleInput 컴포넌트
-export const TitleInput: FC<TitleInputProps> = ({ title, setTitle }) => {
+export const TitleInput = ({ title, setTitle }: TitleInputProps) => {
   return (
     <input
       type="text"
@@ -50,7 +49,7 @@ export const TitleInput: FC<TitleInputProps> = ({ title, setTitle }) => {
 };
 
 // ModeToggleButtons 컴포넌트
-export const ModeToggleButtons: FC<ModeToggleButtonsProps> = ({ setMode, getButtonProps }) => {
+export const ModeToggleButtons = ({ setMode, getButtonProps }: ModeToggleButtonsProps) => {
   const styles = modeToggleVariants();
 
   return (

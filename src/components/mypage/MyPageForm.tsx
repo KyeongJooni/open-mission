@@ -1,4 +1,3 @@
-import { FC } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { cn } from '@/utils/cn';
 import LoginLogo from '@/components/auth/LoginLogo';
@@ -12,7 +11,7 @@ const STYLES = {
   dividerLineColor: 'bg-[#F5F5F5]',
 } as const;
 
-const MyPageForm: FC<MyPageFormProps> = ({ className, children }) => {
+const MyPageForm = ({ className, children }: MyPageFormProps) => {
   const navigate = useNavigate();
 
   const handleEmailSignup = () => {

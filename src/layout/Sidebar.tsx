@@ -3,7 +3,6 @@ import { Button, Spacer, Modal } from '@/components';
 import { useAuthStore } from '@/stores/useAuthStore';
 import { useModalStore } from '@/stores/useModalStore';
 import { cn } from '@/utils/cn';
-import { FC } from 'react';
 import { SIDEBAR_TEXTS, MYPAGE_TEXTS } from '@/constants';
 import { sidebarStyles } from './Sidebar.styles';
 import { useSidebar } from '@/hooks';
@@ -14,7 +13,7 @@ interface SidebarProps {
   isLoggedIn?: boolean;
 }
 
-const Sidebar: FC<SidebarProps> = ({ className = '', isLoggedIn = false }) => {
+const Sidebar = ({ className = '', isLoggedIn = false }: SidebarProps) => {
   const user = useAuthStore(state => state.user);
   const { modalType, modalMessage, confirmButtonText, onModalConfirm, closeModal } = useModalStore();
   const { handleStartGitlog, handleMyGitlog, handleWriteGitlog, handleSettings, handleLogout } = useSidebar();

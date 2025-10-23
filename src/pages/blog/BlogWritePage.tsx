@@ -1,4 +1,3 @@
-import { FC } from 'react';
 import ReactQuill from 'react-quill';
 import MDEditor from '@uiw/react-md-editor';
 import { tv } from 'tailwind-variants';
@@ -19,7 +18,7 @@ const blogWriteStyles = tv({
   },
 });
 
-const BlogWritePage: FC = () => {
+const BlogWritePage = () => {
   const {
     title,
     setTitle,

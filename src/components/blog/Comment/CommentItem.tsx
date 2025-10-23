@@ -1,4 +1,3 @@
-import { FC } from 'react';
 import profileImage from '@/assets/profile.png';
 import { PostBody, Spacer, Icon, DropdownMenu } from '@/components';
 import { MoreVertIcon } from '@/assets/icons';
@@ -7,7 +6,7 @@ import { CommentItemProps } from '@/components/blog/Comment/CommentTypes';
 import { profileStyles, commentItemStyles } from '@/components/blog/Comment/Comment.styles';
 import { useAuthStore } from '@/stores/useAuthStore';
 
-const CommentItem: FC<CommentItemProps> = ({
+const CommentItem = ({
   commentId,
   content,
   nickName,
@@ -15,7 +14,7 @@ const CommentItem: FC<CommentItemProps> = ({
   createdAt,
   isOwner,
   onDelete,
-}) => {
+}: CommentItemProps) => {
   const styles = commentItemStyles();
   const profileStyle = profileStyles();
   const { isLoggedIn } = useAuthStore();

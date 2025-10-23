@@ -1,8 +1,8 @@
-import { FC, useState } from 'react';
+import { useState } from 'react';
 import { LoginModal } from '@/components/auth';
 import LoginPage from '@/pages/auth/LoginPage';
 
-const LoginPlayground: FC = () => {
+const LoginPlayground = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   return (

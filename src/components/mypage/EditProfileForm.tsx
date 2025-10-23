@@ -1,4 +1,4 @@
-import { FC, useEffect } from 'react';
+import { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { cn } from '@/utils/cn';
@@ -18,7 +18,7 @@ const STYLES = {
 const DISABLED_FIELDS = ['email', 'name'];
 const EXCLUDED_FIELDS = ['nickname', 'bio'];
 
-const EditProfileForm: FC<EditProfileFormProps> = ({ className }) => {
+const EditProfileForm = ({ className }: EditProfileFormProps) => {
   const user = useAuthStore(state => state.user);
   const { isEditMode, setEditMode } = useEditModeStore();
 
