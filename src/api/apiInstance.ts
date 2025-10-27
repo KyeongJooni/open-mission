@@ -14,7 +14,7 @@ const getAccessToken = (): string | null => {
   if (typeof window === 'undefined') {
     return null;
   }
-  return localStorage.getItem('accessToken');
+  return sessionStorage.getItem('accessToken');
 };
 
 const setAccessToken = (token: string | null): void => {
@@ -22,9 +22,9 @@ const setAccessToken = (token: string | null): void => {
     return;
   }
   if (!token) {
-    localStorage.removeItem('accessToken');
+    sessionStorage.removeItem('accessToken');
   } else {
-    localStorage.setItem('accessToken', token);
+    sessionStorage.setItem('accessToken', token);
   }
 };
 
@@ -40,9 +40,9 @@ const setRefreshToken = (token: string | null): void => {
     return;
   }
   if (!token) {
-    localStorage.removeItem('refreshToken');
+    sessionStorage.removeItem('refreshToken');
   } else {
-    localStorage.setItem('refreshToken', token);
+    sessionStorage.setItem('refreshToken', token);
   }
 };
 

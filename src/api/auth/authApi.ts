@@ -44,7 +44,6 @@ export const login = async (loginData: AuthTypes.LoginRequest): Promise<AuthType
 
   const { accessToken, refreshToken } = response.data.data;
 
-  // 로그인 성공 시 토큰들 저장
   setAccessToken(accessToken);
   setRefreshToken(refreshToken);
 

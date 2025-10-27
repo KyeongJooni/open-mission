@@ -59,18 +59,19 @@ export const useSignup = (defaultImage: string): UseSignupReturn => {
         email: data.email,
         nickname: data.nickname,
         password: data.password,
-        profilePicture: previewImage,
+        profilePicture: previewImage || '',
         birthDate: data.birthDate,
         name: data.name,
-        introduction: data.bio,
+        introduction: data.bio || '',
       },
       {
         onSuccess: () => {
           sessionStorage.removeItem('isKakaoSignup');
           setIsCompleteModalOpen(true);
         },
-        onError: (error) => {
+        onError: (error: any) => {
           console.error('회원가입 실패:', error);
+          console.error('에러 응답:', error.response?.data);
           // TODO: 에러 토스트 표시
         },
       }

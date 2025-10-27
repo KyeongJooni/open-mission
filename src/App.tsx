@@ -2,7 +2,10 @@ import router from '@/routes/Route';
 import Playground from '@/playground/Playground';
 import { RouterProvider } from 'react-router-dom';
 import { useMemo } from 'react';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { ToastProvider } from '@/contexts/ToastContext';
+
+const queryClient = new QueryClient();
 
 function App() {
   const isPlayground = useMemo(() => {
@@ -22,11 +25,13 @@ function App() {
   }
 
   return (
-    <ToastProvider>
-      <div className="global-layout">
-        <RouterProvider router={router} />
-      </div>
-    </ToastProvider>
+    <QueryClientProvider client={queryClient}>
+      <ToastProvider>
+        <div className="global-layout">
+          <RouterProvider router={router} />
+        </div>
+      </ToastProvider>
+    </QueryClientProvider>
   );
 }
 

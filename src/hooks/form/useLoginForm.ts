@@ -1,32 +1,26 @@
 import { useState, KeyboardEvent } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { mockUser } from '@/_mocks_/mockUser';
 import { useAuthStore } from '@/stores/useAuthStore';
 
 export const useLoginForm = (onClose?: () => void) => {
   const navigate = useNavigate();
-  const setUser = useAuthStore(state => state.setUser);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
 
-  const handleLogin = () => {
-    if (email === mockUser.email && password === mockUser.password) {
-      setErrorMessage('');
-      // 로그인 상태 및 사용자 정보 업데이트
-      setUser({
-        id: mockUser.id,
-        email: mockUser.email,
-        name: mockUser.name,
-        birthDate: mockUser.birthDate,
-        nickName: mockUser.nickName,
-        bio: mockUser.bio,
-        profileImage: mockUser.profileImage,
-      });
+  const { login } = useAuthStore();
+
+  const handleLogin = async () => {
+    setErrorMessage('');
+
+    try {
+      await login({ email, password });
       onClose?.();
       navigate('/');
-    } else {
-      setErrorMessage('이메일 또는 비밀번호가 일치하지 않습니다.');
+    } catch (error: any) {
+      console.error('로그인 실패:', error);
+      console.error('에러 응답:', error.response?.data);
+      setErrorMessage(error.response?.data?.message || '이메일 또는 비밀번호가 일치하지 않습니다.');
     }
   };
 

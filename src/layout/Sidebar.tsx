@@ -24,16 +24,20 @@ const Sidebar = ({ className = '', isLoggedIn = false }: SidebarProps) => {
         <div className={sidebarStyles.mainContent}>
           <div className={sidebarStyles.profileSection}>
             <div className={sidebarStyles.profileIconWrapper}>
-              {isLoggedIn && user?.profileImage ? (
-                <img src={user.profileImage} alt={`${user.nickName}의 프로필`} className={sidebarStyles.profileImage} />
+              {isLoggedIn && user?.profilePicture ? (
+                <img
+                  src={user.profilePicture}
+                  alt={`${user.nickname}의 프로필`}
+                  className={sidebarStyles.profileImage}
+                />
               ) : (
                 <Profile1Icon />
               )}
             </div>
             {isLoggedIn ? (
               <div className={sidebarStyles.userInfoContainer}>
-                <h2 className={sidebarStyles.userName}>{user?.nickName || MYPAGE_TEXTS.PROFILE.DEFAULT_USER_NAME}</h2>
-                <p className={sidebarStyles.userBio}>{user?.bio || MYPAGE_TEXTS.PROFILE.DEFAULT_BIO}</p>
+                <h2 className={sidebarStyles.userName}>{user?.nickname || MYPAGE_TEXTS.PROFILE.DEFAULT_USER_NAME}</h2>
+                <p className={sidebarStyles.userBio}>{user?.introduction || MYPAGE_TEXTS.PROFILE.DEFAULT_BIO}</p>
               </div>
             ) : (
               <div className={sidebarStyles.quoteContainer}>
