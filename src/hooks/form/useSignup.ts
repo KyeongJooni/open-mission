@@ -2,6 +2,7 @@ import { useState, useRef, ChangeEvent, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { signupSchema, SignupFormData } from '@/utils/schemas';
+import { useRegisterMutation } from '@/api/auth/authQuery';
 
 interface UseSignupReturn {
   previewImage: string;
@@ -24,6 +25,8 @@ export const useSignup = (defaultImage: string): UseSignupReturn => {
   const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
   const [isKakaoSignup, setIsKakaoSignup] = useState(false);
   const fileInputRef = useRef<HTMLInputElement>(null);
+
+  const registerMutation = useRegisterMutation();
 
   const form = useForm<SignupFormData>({
     resolver: zodResolver(signupSchema),
@@ -50,9 +53,28 @@ export const useSignup = (defaultImage: string): UseSignupReturn => {
     fileInputRef.current?.click();
   };
 
-  const onSubmit = (_data: SignupFormData) => {
-    sessionStorage.removeItem('isKakaoSignup');
-    setIsCompleteModalOpen(true);
+  const onSubmit = (data: SignupFormData) => {
+    registerMutation.mutate(
+      {
+        email: data.email,
+        nickname: data.nickname,
+        password: data.password,
+        profilePicture: previewImage,
+        birthDate: data.birthDate,
+        name: data.name,
+        introduction: data.bio,
+      },
+      {
+        onSuccess: () => {
+          sessionStorage.removeItem('isKakaoSignup');
+          setIsCompleteModalOpen(true);
+        },
+        onError: (error) => {
+          console.error('회원가입 실패:', error);
+          // TODO: 에러 토스트 표시
+        },
+      }
+    );
   };
 
   const handleLoginRedirect = () => {
