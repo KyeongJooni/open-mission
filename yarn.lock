@@ -4312,6 +4312,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"axios-auth-refresh@npm:^3.3.6":
+  version: 3.3.6
+  resolution: "axios-auth-refresh@npm:3.3.6"
+  peerDependencies:
+    axios: ">= 0.18 < 0.19.0 || >= 0.19.1"
+  checksum: 10c0/c0089eceeec697f239315ca0b3c79f95cf45831eac92c7f8a7475c776dfa2d64017450422981fbd39a6786fdf10e95c40b70fc70648ed5e2b7fe466ba1e1e4a8
+  languageName: node
+  linkType: hard
+
 "axios@npm:^1.7.2":
   version: 1.12.2
   resolution: "axios@npm:1.12.2"
@@ -9121,6 +9130,7 @@ __metadata:
     "@vitejs/plugin-react-swc": "npm:^3.7.2"
     autoprefixer: "npm:^10.4.19"
     axios: "npm:^1.7.2"
+    axios-auth-refresh: "npm:^3.3.6"
     class-variance-authority: "npm:^0.7.1"
     clsx: "npm:^2.1.1"
     eslint: "npm:^8.57.1"
