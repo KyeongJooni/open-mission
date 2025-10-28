@@ -50,7 +50,17 @@ const LoginForm = ({
   } = useLoginForm(onClose);
 
   return (
-    <div className={cn(variants.loginFormVariants(), className)}>
+    <form
+      className={cn(variants.loginFormVariants(), className)}
+      onSubmit={e => {
+        e.preventDefault();
+        if (onEmailClick) {
+          onEmailClick();
+        } else {
+          handleLogin();
+        }
+      }}
+    >
       <Spacer height="md" className="max-w-login-form-max min-w-login-form-min px-4 py-1" />
       {showInputSection && (
         <InputSection
@@ -66,7 +76,7 @@ const LoginForm = ({
       <SnsDivider text={dividerText} lineColor={dividerLineColor} />
       <KakaoLoginButton onClick={onKakaoClick || handleKakaoLogin} text={kakaoButtonText} />
       {showSignupButton && <SignupButton onClick={handleSignup} />}
-    </div>
+    </form>
   );
 };
 

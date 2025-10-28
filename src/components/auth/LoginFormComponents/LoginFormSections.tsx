@@ -21,6 +21,7 @@ export const InputSection = ({ email, password, onEmailChange, onPasswordChange,
         value={email}
         onChange={e => onEmailChange(e.target.value)}
         onKeyDown={onKeyDown}
+        autoComplete="off"
       />
     </div>
     <div className={variants.inputContainerVariants()}>
@@ -31,6 +32,7 @@ export const InputSection = ({ email, password, onEmailChange, onPasswordChange,
         value={password}
         onChange={e => onPasswordChange(e.target.value)}
         onKeyDown={onKeyDown}
+        autoComplete="off"
       />
     </div>
   </div>
