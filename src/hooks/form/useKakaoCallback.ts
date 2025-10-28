@@ -1,57 +1,90 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { handleKakaoRedirect } from '@/api/auth/authApi';
+import { useKakaoCallbackMutation } from '@/api/auth/authQuery';
 import { useAuthStore } from '@/stores/useAuthStore';
 import { setAccessToken, setRefreshToken } from '@/api/apiInstance';
+import { KAKAO_RESPONSE_CODE, KAKAO_REDIRECT_PATH } from '@/constants';
+import type { ApiResponse } from '@/api/apiTypes';
+import type { KakaoCallbackData } from '@/api/auth/authTypes';
+
+// URL에서 code 파라미터 추출
+const getAuthCode = () => new URLSearchParams(window.location.search).get('code');
+
+const saveNewUserSession = (kakaoId?: number) => {
+  sessionStorage.setItem('isKakaoSignup', 'true');
+  if (kakaoId) {
+    sessionStorage.setItem('kakaoId', kakaoId.toString());
+  }
+};
 
 export const useKakaoCallback = () => {
   const navigate = useNavigate();
   const authStore = useAuthStore();
   const hasCalledRef = useRef(false);
 
+  // 기존 회원 로그인 처리
+  const handleExistingUser = useCallback(
+    async (data: KakaoCallbackData) => {
+      setAccessToken(data.accessToken || null);
+      setRefreshToken(data.refreshToken || null);
+      authStore.resetCheckStatus();
+      await authStore.checkLoginStatus();
+      navigate(KAKAO_REDIRECT_PATH.HOME, { replace: true });
+    },
+    [authStore, navigate]
+  );
+
+  // 신규 회원 회원가입 처리
+  const handleNewUser = useCallback(
+    (data: KakaoCallbackData) => {
+      saveNewUserSession(data.kakaoId);
+      navigate(KAKAO_REDIRECT_PATH.SIGNUP, { replace: true });
+    },
+    [navigate]
+  );
+
+  // 응답 처리
+  const handleResponse = useCallback(
+    async (response: ApiResponse<KakaoCallbackData>) => {
+      switch (response.code) {
+        case KAKAO_RESPONSE_CODE.SUCCESS:
+          await handleExistingUser(response.data);
+          break;
+        case KAKAO_RESPONSE_CODE.SIGNUP_REQUIRED:
+          handleNewUser(response.data);
+          break;
+        default:
+          navigate(KAKAO_REDIRECT_PATH.HOME, { replace: true });
+      }
+    },
+    [handleExistingUser, handleNewUser, navigate]
+  );
+
+  const { mutate, isPending, isError, error } = useKakaoCallbackMutation({
+    onSuccess: handleResponse,
+    onError: () => {
+      navigate(KAKAO_REDIRECT_PATH.HOME, { replace: true });
+    },
+  });
+
   useEffect(() => {
     if (hasCalledRef.current) {
       return;
     }
 
-    const code = new URLSearchParams(window.location.search).get('code');
+    const code = getAuthCode();
     if (!code) {
-      navigate('/');
+      navigate(KAKAO_REDIRECT_PATH.HOME);
       return;
     }
 
     hasCalledRef.current = true;
-
-    // Promise로 직접 처리
-    handleKakaoRedirect({ code })
-      .then(async response => {
-        if (response.code === 200) {
-          // 로그인 성공 (기존 회원)
-          setAccessToken(response.data.accessToken || null);
-          setRefreshToken(response.data.refreshToken || null);
-          authStore.resetCheckStatus();
-          await authStore.checkLoginStatus();
-          window.location.href = '/';
-        } else if (response.code === 401) {
-          // 회원가입 필요 (신규 회원)
-          sessionStorage.setItem('isKakaoSignup', 'true');
-          if (response.data.kakaoId) {
-            sessionStorage.setItem('kakaoId', response.data.kakaoId.toString());
-          }
-          window.location.href = '/mypage/signup';
-        } else {
-          // 알 수 없는 상태
-          window.location.href = '/';
-        }
-      })
-      .catch(() => {
-        window.location.href = '/';
-      });
-  }, [navigate, authStore]);
+    mutate({ code });
+  }, [mutate, navigate]);
 
   return {
-    isLoading: false,
-    isError: false,
-    error: null,
+    isLoading: isPending,
+    isError,
+    error,
   };
 };
