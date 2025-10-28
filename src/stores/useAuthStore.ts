@@ -1,9 +1,9 @@
 import { create } from 'zustand';
-
 import type * as UserTypes from '@/api/user/userTypes';
 import type * as AuthTypes from '@/api/auth/authTypes';
 import { login as loginApi } from '@/api/auth/authApi';
 import { getUserInfo } from '@/api/user/userApi';
+import { setAccessToken, setRefreshToken } from '@/api/apiInstance';
 
 type User = UserTypes.UserData;
 
@@ -16,6 +16,7 @@ interface AuthState {
   login: (data: AuthTypes.LoginRequest) => Promise<void>;
   logout: () => void;
   checkLoginStatus: () => Promise<void>;
+  resetCheckStatus: () => void;
 }
 
 export const useAuthStore = create<AuthState>((set, get) => ({
@@ -51,7 +52,20 @@ export const useAuthStore = create<AuthState>((set, get) => ({
     }
   },
 
-  logout: () => set({ user: null, isLoggedIn: false }),
+  logout: () => {
+    // 토큰 클리어
+    setAccessToken(null);
+    setRefreshToken(null);
+    sessionStorage.removeItem('isKakaoSignup');
+    sessionStorage.removeItem('kakaoId');
+
+    set({
+      user: null,
+      isLoggedIn: false,
+      hasChecked: false, // 다음 마운트 시 다시 체크하도록
+      isLoading: false,
+    });
+  },
 
   checkLoginStatus: async () => {
     if (get().hasChecked) {
@@ -61,24 +75,26 @@ export const useAuthStore = create<AuthState>((set, get) => ({
     set({ isLoading: true });
 
     try {
-      const token = localStorage.getItem('accessToken');
-      const user = get().user;
+      const userResponse = await getUserInfo();
 
-      if (token && user) {
-        set({ isLoggedIn: true, hasChecked: true, isLoading: false });
-      } else {
-        set({
-          isLoggedIn: false,
-          isLoading: false,
-          hasChecked: true,
-        });
-      }
+      set({
+        isLoggedIn: true,
+        user: userResponse.data,
+        hasChecked: true,
+        isLoading: false,
+      });
     } catch {
       set({
         isLoggedIn: false,
+        user: null,
         isLoading: false,
         hasChecked: true,
       });
     }
+  },
+
+  // hasChecked 상태만 리셋 (토큰 저장 후 재체크를 위해)
+  resetCheckStatus: () => {
+    set({ hasChecked: false });
   },
 }));
