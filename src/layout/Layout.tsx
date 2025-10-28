@@ -13,6 +13,7 @@ import {
 export default function Layout() {
   const { isSidebarOpen, sidebarRef, toggleSidebar } = useSidebar();
   const isLoggedIn = useAuthStore(state => state.isLoggedIn);
+
   const pageHeaderType = usePageHeaderType();
   const { handleEdit, handleCancel, handleSave } = useEditProfile();
   const { id } = useParams();
