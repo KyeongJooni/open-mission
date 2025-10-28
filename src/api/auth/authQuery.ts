@@ -27,8 +27,12 @@ export const useReissueTokenMutation = () => {
   });
 };
 
-export const useKakaoCallbackMutation = () => {
+export const useKakaoCallbackMutation = (options?: {
+  onSuccess?: (data: ApiResponse<AuthTypes.KakaoCallbackData>) => void | Promise<void>;
+  onError?: (error: Error) => void;
+}) => {
   return useMutation<ApiResponse<AuthTypes.KakaoCallbackData>, Error, AuthTypes.KakaoRedirectRequest>({
     mutationFn: handleKakaoRedirect,
+    ...options,
   });
 };
