@@ -51,8 +51,8 @@ const EditProfileForm = ({ className }: EditProfileFormProps) => {
       passwordConfirm: '',
       name: user?.name || '',
       birthDate: user?.birthDate || '',
-      nickname: user?.nickName || '',
-      bio: user?.bio || '',
+      nickname: user?.nickname || '',
+      bio: user?.introduction || '',
     },
   });
 
@@ -65,8 +65,8 @@ const EditProfileForm = ({ className }: EditProfileFormProps) => {
         passwordConfirm: '',
         name: user?.name || '',
         birthDate: user?.birthDate || '',
-        nickname: user?.nickName || '',
-        bio: user?.bio || '',
+        nickname: user?.nickname || '',
+        bio: user?.introduction || '',
       });
     }
   }, [isEditMode, user, reset]);

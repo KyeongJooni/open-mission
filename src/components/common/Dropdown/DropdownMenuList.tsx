@@ -2,12 +2,7 @@ import clsx from 'clsx';
 
 import { DropdownMenuListProps } from './DropdownMenuTypes';
 
-const DropdownMenuList = ({
-  items,
-  onItemClick,
-  position = 'right',
-  menuClassName = '',
-}: DropdownMenuListProps) => {
+const DropdownMenuList = ({ items, onItemClick, position = 'right', menuClassName = '' }: DropdownMenuListProps) => {
   return (
     <div
       className={clsx(

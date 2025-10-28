@@ -1,15 +1,7 @@
 import { PageHeaderLeft, PageHeaderRight } from '@/components';
 import { PageHeaderProps } from '@/types/pageheader';
 
-const PageHeader = ({
-  className = '',
-  type,
-  onHamburgerClick,
-  onEdit,
-  onCancel,
-  onSave,
-  isOwner,
-}: PageHeaderProps) => {
+const PageHeader = ({ className = '', type, onHamburgerClick, onEdit, onCancel, onSave, isOwner }: PageHeaderProps) => {
   return (
     <header className={`page-header-container ${className}`}>
       <PageHeaderLeft onHamburgerClick={onHamburgerClick} />

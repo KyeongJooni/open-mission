@@ -43,7 +43,7 @@ const BlogDetailPage = () => {
       <BlogCommentSection
         comments={postData.comments}
         isLoggedIn={isLoggedIn}
-        currentUserNickName={user?.nickName || 'User'}
+        currentUserNickName={user?.nickname || 'User'}
       />
       <BlogAuthorSection nickName={postData.nickName} introduction={postData.introduction} />
       <Spacer height="custom" />

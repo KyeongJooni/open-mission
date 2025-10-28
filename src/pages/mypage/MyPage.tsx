@@ -36,8 +36,8 @@ const MyPage = ({ className }: MyPageProps) => {
         {isProfilePage ? (
           <MyPageHeader
             isEditMode={isEditProfile && isEditMode}
-            nickname={user?.nickName || MYPAGE_TEXTS.PROFILE.DEFAULT_USER_NAME}
-            bio={user?.bio || MYPAGE_TEXTS.PROFILE.DEFAULT_BIO}
+            nickname={user?.nickname || MYPAGE_TEXTS.PROFILE.DEFAULT_USER_NAME}
+            bio={user?.introduction || MYPAGE_TEXTS.PROFILE.DEFAULT_BIO}
             onEditClick={handleEditProfile}
             showSettingsButton={isMyProfile}
             isEditProfilePage={isEditProfile}

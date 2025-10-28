@@ -12,15 +12,7 @@ interface IconProps extends VariantProps<typeof iconVariants> {
   onClick?: () => void;
 }
 
-const Icon = ({
-  children,
-  size,
-  clickable,
-  padding,
-  className = '',
-  containerClassName = '',
-  onClick,
-}: IconProps) => {
+const Icon = ({ children, size, clickable, padding, className = '', containerClassName = '', onClick }: IconProps) => {
   const isClickable = clickable || Boolean(onClick);
 
   return (
