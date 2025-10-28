@@ -1,6 +1,6 @@
 import { CreateIcon } from '@/assets/icons';
 import { Icon } from '@/components';
-import { textBoxTextVariants, textBoxVariants } from '@/components/common/Textbox/TextBoxVariants';
+import { textBoxTextVariants, textBoxVariants } from '@/components/common/TextBox/TextBoxVariants';
 import clsx from 'clsx';
 import { ReactNode } from 'react';
 

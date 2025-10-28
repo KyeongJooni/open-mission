@@ -9,6 +9,7 @@ interface BaseInputProps {
   type?: 'text' | 'password' | 'email';
   name?: string;
   disabled?: boolean;
+  autoComplete?: string;
 }
 
 // 색상 관련 타입

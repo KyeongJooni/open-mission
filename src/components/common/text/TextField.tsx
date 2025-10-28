@@ -21,6 +21,7 @@ const TextField = forwardRef<HTMLInputElement, TextFieldProps>(
       fontSize = 'light',
       disabled = false,
       fullWidth = false,
+      autoComplete = 'off',
     },
     ref
   ) => {
@@ -42,6 +43,7 @@ const TextField = forwardRef<HTMLInputElement, TextFieldProps>(
             onChange={onChange}
             onBlur={onBlur}
             disabled={disabled}
+            autoComplete={autoComplete}
             className={inputVariants({ textColor, fontSize })}
           />
         </div>
