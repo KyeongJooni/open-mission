@@ -1,8 +1,12 @@
-import { useState, useRef, ChangeEvent, useEffect } from 'react';
+import { useState, useRef, ChangeEvent } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { signupSchema, SignupFormData } from '@/utils/schemas';
-import { useRegisterMutation } from '@/api/auth/authQuery';
+import { useRegisterMutation, useRegisterOAuthMutation } from '@/api/auth/authQuery';
+import { useAuthStore } from '@/stores/useAuthStore';
+import { useNavigate } from 'react-router-dom';
+import { useToast } from '@/contexts/ToastContext';
+import { setAccessToken, setRefreshToken } from '@/api/apiInstance';
 
 interface UseSignupReturn {
   previewImage: string;
@@ -20,23 +24,28 @@ interface UseSignupReturn {
 }
 
 export const useSignup = (defaultImage: string): UseSignupReturn => {
+  // sessionStorage를 먼저 읽어서 카카오 회원가입 정보 확인
+  const kakaoFlag = sessionStorage.getItem('isKakaoSignup') === 'true';
+  const storedKakaoId = sessionStorage.getItem('kakaoId');
+
   const [previewImage, setPreviewImage] = useState<string>(defaultImage);
   const [isCompleteModalOpen, setIsCompleteModalOpen] = useState(false);
   const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
-  const [isKakaoSignup, setIsKakaoSignup] = useState(false);
+  const [kakaoId] = useState<number | null>(storedKakaoId ? Number(storedKakaoId) : null);
   const fileInputRef = useRef<HTMLInputElement>(null);
 
+  const isKakaoSignup = kakaoFlag;
+
   const registerMutation = useRegisterMutation();
+  const registerOAuthMutation = useRegisterOAuthMutation();
+  const { checkLoginStatus } = useAuthStore();
+  const navigate = useNavigate();
+  const { showToast } = useToast();
 
   const form = useForm<SignupFormData>({
     resolver: zodResolver(signupSchema),
     mode: 'onChange',
   });
-
-  useEffect(() => {
-    const kakaoFlag = sessionStorage.getItem('isKakaoSignup') === 'true';
-    setIsKakaoSignup(kakaoFlag);
-  }, []);
 
   const handleImageUpload = (event: ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
@@ -54,28 +63,58 @@ export const useSignup = (defaultImage: string): UseSignupReturn => {
   };
 
   const onSubmit = (data: SignupFormData) => {
-    registerMutation.mutate(
-      {
-        email: data.email,
-        nickname: data.nickname,
-        password: data.password,
-        profilePicture: previewImage || '',
-        birthDate: data.birthDate,
-        name: data.name,
-        introduction: data.bio || '',
-      },
-      {
-        onSuccess: () => {
-          sessionStorage.removeItem('isKakaoSignup');
-          setIsCompleteModalOpen(true);
-        },
-        onError: (error: any) => {
-          console.error('회원가입 실패:', error);
-          console.error('에러 응답:', error.response?.data);
-          // TODO: 에러 토스트 표시
-        },
+    if (isKakaoSignup) {
+      if (!kakaoId) {
+        return;
       }
-    );
+
+      registerOAuthMutation.mutate(
+        {
+          email: data.email,
+          nickname: data.nickname,
+          profilePicture: previewImage || '',
+          birthDate: data.birthDate,
+          name: data.name,
+          introduction: data.bio || '',
+          kakaoId: kakaoId,
+        },
+        {
+          onSuccess: async response => {
+            sessionStorage.removeItem('isKakaoSignup');
+            sessionStorage.removeItem('kakaoId');
+            setAccessToken(response.data.accessToken || null);
+            setRefreshToken(response.data.refreshToken || null);
+            await checkLoginStatus();
+            navigate('/');
+          },
+          onError: () => {
+            showToast('회원가입을 할 수 없습니다.', 'warning');
+          },
+        }
+      );
+    } else {
+      // 일반 회원가입
+      registerMutation.mutate(
+        {
+          email: data.email,
+          nickname: data.nickname,
+          password: data.password,
+          profilePicture: previewImage || '',
+          birthDate: data.birthDate,
+          name: data.name,
+          introduction: data.bio || '',
+        },
+        {
+          onSuccess: () => {
+            sessionStorage.removeItem('isKakaoSignup');
+            setIsCompleteModalOpen(true);
+          },
+          onError: () => {
+            showToast('회원가입을 할 수 없습니다.', 'warning');
+          },
+        }
+      );
+    }
   };
 
   const handleLoginRedirect = () => {

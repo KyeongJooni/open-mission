@@ -1,6 +1,7 @@
 import { z as zod } from 'zod';
 import { validators, VALIDATION_MESSAGES } from '@/utils/validation';
 
+// 회원가입 스키마 (일반 & 카카오 공통)
 export const signupSchema = zod
   .object({
     email: validators.email(),

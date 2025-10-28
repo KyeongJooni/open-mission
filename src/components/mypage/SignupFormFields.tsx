@@ -24,31 +24,27 @@ interface SignupFormFieldsProps {
 const SignupFormFields = ({ fields, isKakaoSignup, register, errors, styles }: SignupFormFieldsProps) => {
   return (
     <>
-      {fields.map(field => {
-        if (field.name === 'email' && isKakaoSignup) {
-          return (
-            <div key={field.name} className={styles.kakaoEmailField()}>
-              <span className={styles.kakaoEmailTitle()}>{field.title}</span>
-              <div className={styles.kakaoEmailBox()}>
-                <KakaoIcon width={18} height={18} />
-                {MYPAGE_TEXTS.LABELS.KAKAO_LOGIN}
-              </div>
-            </div>
-          );
-        }
-        return (
-          <Textarea
-            key={field.name}
-            title={field.title}
-            type={field.type}
-            placeholder={field.placeholder}
-            hintText={field.hintText}
-            error={errors[field.name]?.message}
-            className={styles.textareaCommon()}
-            {...register(field.name)}
-          />
-        );
-      })}
+      {isKakaoSignup && (
+        <div className={styles.kakaoEmailField()}>
+          <span className={styles.kakaoEmailTitle()}>{MYPAGE_TEXTS.LABELS.SOCIAL_LOGIN}</span>
+          <div className={styles.kakaoEmailBox()}>
+            <KakaoIcon width={18} height={18} />
+            {MYPAGE_TEXTS.LABELS.KAKAO_LOGIN}
+          </div>
+        </div>
+      )}
+      {fields.map(field => (
+        <Textarea
+          key={field.name}
+          title={field.title}
+          type={field.type}
+          placeholder={field.placeholder}
+          hintText={field.hintText}
+          error={errors[field.name]?.message}
+          className={styles.textareaCommon()}
+          {...register(field.name)}
+        />
+      ))}
     </>
   );
 };

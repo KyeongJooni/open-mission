@@ -39,7 +39,13 @@ const SignupForm = ({ className }: SignupFormProps) => {
         handleButtonClick={handleButtonClick}
         styles={styles}
       />
-      <SignupFormFields fields={SIGNUP_FORM_FIELDS} isKakaoSignup={isKakaoSignup} register={register} errors={errors} styles={styles} />
+      <SignupFormFields
+        fields={SIGNUP_FORM_FIELDS}
+        isKakaoSignup={isKakaoSignup}
+        register={register}
+        errors={errors}
+        styles={styles}
+      />
       <Spacer height="md" className={styles.spacer()} />
       <div className={styles.buttonWrapper()}>
         <Button type="submit" intent="primary" variant="solid" fullWidth>
