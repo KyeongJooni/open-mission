@@ -18,8 +18,6 @@ export const useLoginForm = (onClose?: () => void) => {
       onClose?.();
       navigate('/');
     } catch (error: any) {
-      console.error('로그인 실패:', error);
-      console.error('에러 응답:', error.response?.data);
       setErrorMessage(error.response?.data?.message || '이메일 또는 비밀번호가 일치하지 않습니다.');
     }
   };
@@ -31,7 +29,7 @@ export const useLoginForm = (onClose?: () => void) => {
   };
 
   const handleKakaoLogin = () => {
-    // TODO: 카카오 로그인 구현
+    window.location.href = `${import.meta.env.VITE_API_BASE_URL}/auth/kakao`;
   };
 
   const handleSignup = () => {

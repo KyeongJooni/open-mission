@@ -1,7 +1,8 @@
-export interface ApiResponse<T> {
-  code: number;
-  message: string;
-  data: T;
+// ===== 공통 타입 =====
+
+export interface TokenPair {
+  accessToken: string;
+  refreshToken: string;
 }
 
 export interface BaseUserInfo {
@@ -13,20 +14,22 @@ export interface BaseUserInfo {
   introduction: string;
 }
 
+// ===== 로그인 =====
+
 export interface LoginRequest {
   email: string;
   password: string;
 }
 
-export interface LoginData {
-  accessToken: string;
-  refreshToken: string;
+export interface LoginData extends TokenPair {
   nickname: string;
   profilePicture: string;
   introduction: string;
   httpStatus: string;
   responseMessage: string;
 }
+
+// ===== 일반 회원가입 =====
 
 export type RegisterRequest = BaseUserInfo & {
   password: string;
@@ -39,19 +42,16 @@ export interface RegisterData {
   introduction: string;
 }
 
+// ===== OAuth 회원가입 =====
+
 export type RegisterOAuthRequest = BaseUserInfo & {
   kakaoId: number;
 };
 
-export interface RegisterOAuthData {
-  email: string;
-  nickname: string;
-  profilePicture: string;
-  birthDate: string;
-  name: string;
-  introduction: string;
-  kakaoId: number;
-}
+export type RegisterOAuthData = TokenPair &
+  BaseUserInfo & {
+    kakaoId: number;
+  };
 
 export interface KakaoRedirectData {
   redirectUrl: string;
@@ -62,16 +62,18 @@ export interface KakaoRedirectRequest {
   state?: string;
 }
 
-export interface KakaoCallbackData {
+export type KakaoCallbackData = Partial<TokenPair> & {
+  nickname?: string;
+  profilePicture?: string;
+  introduction?: string;
   httpStatus: string;
   responseMessage: string;
-}
+  kakaoId?: number;
+  email?: string;
+};
 
 export interface ReissueRequest {
   refreshToken: string;
 }
 
-export interface ReissueData {
-  accessToken: string;
-  refreshToken: string;
-}
+export type ReissueData = TokenPair;
