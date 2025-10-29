@@ -1,7 +1,7 @@
 import { useEffect, useRef, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useQueryClient } from '@tanstack/react-query';
 import { useKakaoCallbackMutation } from '@/api/auth/authQuery';
-import { useAuthStore } from '@/stores/useAuthStore';
 import { setAccessToken, setRefreshToken } from '@/api/apiInstance';
 import { KAKAO_RESPONSE_CODE, KAKAO_REDIRECT_PATH } from '@/constants';
 import type { ApiResponse } from '@/api/apiTypes';
@@ -19,7 +19,7 @@ const saveNewUserSession = (kakaoId?: number) => {
 
 export const useKakaoCallback = () => {
   const navigate = useNavigate();
-  const authStore = useAuthStore();
+  const queryClient = useQueryClient();
   const hasCalledRef = useRef(false);
 
   // 기존 회원
@@ -27,11 +27,11 @@ export const useKakaoCallback = () => {
     async (data: KakaoCallbackData) => {
       setAccessToken(data.accessToken || null);
       setRefreshToken(data.refreshToken || null);
-      authStore.resetCheckStatus();
-      await authStore.checkLoginStatus();
+      // React Query 캐시 무효화로 유저 정보 다시 가져오기
+      await queryClient.invalidateQueries({ queryKey: ['userInfo'] });
       navigate(KAKAO_REDIRECT_PATH.HOME, { replace: true });
     },
-    [authStore, navigate]
+    [queryClient, navigate]
   );
 
   // 신규 회원

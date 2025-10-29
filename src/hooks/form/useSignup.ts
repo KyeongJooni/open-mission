@@ -1,9 +1,9 @@
 import { useState, useRef, ChangeEvent } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
+import { useQueryClient } from '@tanstack/react-query';
 import { signupSchema, SignupFormData } from '@/utils/schemas';
 import { useRegisterMutation, useRegisterOAuthMutation } from '@/api/auth/authQuery';
-import { useAuthStore } from '@/stores/useAuthStore';
 import { useNavigate } from 'react-router-dom';
 import { useToast } from '@/contexts/ToastContext';
 import { setAccessToken, setRefreshToken } from '@/api/apiInstance';
@@ -36,9 +36,9 @@ export const useSignup = (defaultImage: string): UseSignupReturn => {
 
   const isKakaoSignup = kakaoFlag;
 
+  const queryClient = useQueryClient();
   const registerMutation = useRegisterMutation();
   const registerOAuthMutation = useRegisterOAuthMutation();
-  const { checkLoginStatus } = useAuthStore();
   const navigate = useNavigate();
   const { showToast } = useToast();
 
@@ -84,7 +84,7 @@ export const useSignup = (defaultImage: string): UseSignupReturn => {
             sessionStorage.removeItem('kakaoId');
             setAccessToken(response.data.accessToken || null);
             setRefreshToken(response.data.refreshToken || null);
-            await checkLoginStatus();
+            await queryClient.invalidateQueries({ queryKey: ['userInfo'] });
             navigate('/');
           },
           onError: () => {

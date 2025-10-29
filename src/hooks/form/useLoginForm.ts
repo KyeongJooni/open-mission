@@ -1,7 +1,8 @@
 import { useState, KeyboardEvent } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { AxiosError } from 'axios';
-import { useAuthStore } from '@/stores/useAuthStore';
+import { useLoginMutation } from '@/api/auth/authQuery';
+import { setAccessToken, setRefreshToken } from '@/api/apiInstance';
 
 export const useLoginForm = (onClose?: () => void) => {
   const navigate = useNavigate();
@@ -9,22 +10,29 @@ export const useLoginForm = (onClose?: () => void) => {
   const [password, setPassword] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
 
-  const { login } = useAuthStore();
+  const loginMutation = useLoginMutation();
 
   const handleLogin = async () => {
     setErrorMessage('');
 
-    try {
-      await login({ email, password });
-      onClose?.();
-      navigate('/');
-    } catch (error) {
-      if (error instanceof AxiosError) {
-        setErrorMessage(error.response?.data?.message || '이메일 또는 비밀번호가 일치하지 않습니다.');
-      } else {
-        setErrorMessage('이메일 또는 비밀번호가 일치하지 않습니다.');
+    loginMutation.mutate(
+      { email, password },
+      {
+        onSuccess: response => {
+          setAccessToken(response.data.accessToken || null);
+          setRefreshToken(response.data.refreshToken || null);
+          onClose?.();
+          navigate('/');
+        },
+        onError: error => {
+          if (error instanceof AxiosError) {
+            setErrorMessage(error.response?.data?.message || '이메일 또는 비밀번호가 일치하지 않습니다.');
+          } else {
+            setErrorMessage('이메일 또는 비밀번호가 일치하지 않습니다.');
+          }
+        },
       }
-    }
+    );
   };
 
   const handleKeyDown = (e: KeyboardEvent<HTMLInputElement>) => {
