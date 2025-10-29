@@ -1,17 +1,13 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { Navigate } from 'react-router-dom';
-import { useAuthStore } from '@/stores/useAuthStore';
+import { useAuth } from '@/api/user/userQuery';
 
 interface PrivateRouteProps {
   children: React.ReactElement;
 }
 
 export const PrivateRoute = ({ children }: PrivateRouteProps) => {
-  const { isLoggedIn, isLoading, checkLoginStatus } = useAuthStore();
-
-  useEffect(() => {
-    checkLoginStatus();
-  }, [checkLoginStatus]);
+  const { isLoggedIn, isLoading } = useAuth();
 
   if (isLoading) {
     return null;
