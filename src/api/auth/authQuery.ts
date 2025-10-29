@@ -1,28 +1,43 @@
-import { useMutation } from '@tanstack/react-query';
+import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { register, login, registerOAuth, reissueToken, handleKakaoRedirect } from './authApi';
 import type { ApiResponse } from '../apiTypes';
 import type * as AuthTypes from './authTypes';
 
 export const useRegisterMutation = () => {
-  return useMutation<ApiResponse<AuthTypes.RegisterData>, Error, AuthTypes.RegisterRequest>({
+  const queryClient = useQueryClient();
+
+  return useMutation({
     mutationFn: register,
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ['userInfo'] });
+    },
   });
 };
 
 export const useRegisterOAuthMutation = () => {
-  return useMutation<ApiResponse<AuthTypes.RegisterOAuthData>, Error, AuthTypes.RegisterOAuthRequest>({
+  const queryClient = useQueryClient();
+
+  return useMutation({
     mutationFn: registerOAuth,
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ['userInfo'] });
+    },
   });
 };
 
 export const useLoginMutation = () => {
-  return useMutation<ApiResponse<AuthTypes.LoginData>, Error, AuthTypes.LoginRequest>({
+  const queryClient = useQueryClient();
+
+  return useMutation({
     mutationFn: login,
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ['userInfo'] });
+    },
   });
 };
 
 export const useReissueTokenMutation = () => {
-  return useMutation<ApiResponse<AuthTypes.ReissueData>, Error, AuthTypes.ReissueRequest>({
+  return useMutation({
     mutationFn: reissueToken,
   });
 };
