@@ -4,7 +4,7 @@ import { MoreVertIcon } from '@/assets/icons';
 import { formatCommentDate } from '@/utils/date';
 import { CommentItemProps } from '@/components/blog/Comment/CommentTypes';
 import { profileStyles, commentItemStyles } from '@/components/blog/Comment/Comment.styles';
-import { useAuthStore } from '@/stores/useAuthStore';
+import { useAuth } from '@/api/user/userQuery';
 
 const CommentItem = ({
   commentId,
@@ -17,7 +17,7 @@ const CommentItem = ({
 }: CommentItemProps) => {
   const styles = commentItemStyles();
   const profileStyle = profileStyles();
-  const { isLoggedIn } = useAuthStore();
+  const { isLoggedIn } = useAuth();
 
   const dropdownItems = [
     {

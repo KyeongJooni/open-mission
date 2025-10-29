@@ -1,12 +1,12 @@
 import { useLocation, useNavigate } from 'react-router-dom';
-import { useAuthStore } from '@/stores/useAuthStore';
+import { useAuth } from '@/api/user/userQuery';
 import { useEditModeStore } from '@/stores/useEditModeStore';
 import { MYPAGE_HEADER_CONTENT, MYPAGE_ROUTES } from '@/constants';
 
 export const useMyPage = () => {
   const location = useLocation();
   const navigate = useNavigate();
-  const user = useAuthStore(state => state.user);
+  const { user } = useAuth();
   const isEditMode = useEditModeStore(state => state.isEditMode);
 
   // 라우팅 상태

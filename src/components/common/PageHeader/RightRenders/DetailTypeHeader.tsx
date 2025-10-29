@@ -1,6 +1,6 @@
 import { ChatIcon, MoreVertIcon } from '@/assets/icons';
 import { Icon, DropdownMenu, Modal } from '@/components';
-import { useAuthStore } from '@/stores/useAuthStore';
+import { useAuth } from '@/api/user/userQuery';
 import { useDetailTypeHeader } from '@/hooks';
 import { PAGEHEADER_TEXTS } from '@/constants';
 
@@ -9,7 +9,7 @@ interface DetailTypeHeaderProps {
 }
 
 export const DetailTypeHeader = ({ isOwner = false }: DetailTypeHeaderProps) => {
-  const { isLoggedIn } = useAuthStore();
+  const { isLoggedIn } = useAuth();
   const {
     handleChatClick,
     handleEdit,

@@ -2,13 +2,13 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { CreateIcon } from '@/assets/icons';
 import Icon from '@/components/common/Icon/Icon';
-import { useAuthStore } from '@/stores/useAuthStore';
+import { useAuth } from '@/api/user/userQuery';
 import Modal from '@/components/common/Modal/Modal';
 import { LoginModal } from '@/components/auth';
 import { PAGEHEADER_TEXTS } from '@/constants';
 
 export const MainTypeHeader = () => {
-  const isLoggedIn = useAuthStore(state => state.isLoggedIn);
+  const { isLoggedIn } = useAuth();
   const [isMessageModalOpen, setIsMessageModalOpen] = useState(false);
   const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
   const navigate = useNavigate();

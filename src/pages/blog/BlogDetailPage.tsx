@@ -7,12 +7,12 @@ import {
   mockPostDetailWithMyComments,
   mockPostDetailByHongGilDong,
 } from '@/_mocks_/mockPostDetail';
-import { useAuthStore } from '@/stores/useAuthStore';
+import { useAuth } from '@/api/user/userQuery';
 import type { PostDetail } from '@/types/blog';
 
 const BlogDetailPage = () => {
   const { id } = useParams();
-  const { isLoggedIn, user } = useAuthStore();
+  const { isLoggedIn, user } = useAuth();
   const [postData, setPostData] = useState<PostDetail>(mockPostDetail);
 
   useEffect(() => {

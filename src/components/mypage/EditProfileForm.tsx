@@ -3,7 +3,7 @@ import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { cn } from '@/utils/cn';
 import { Spacer, Textarea } from '@/components';
-import { useAuthStore } from '@/stores/useAuthStore';
+import { useAuth } from '@/api/user/userQuery';
 import { useEditModeStore } from '@/stores/useEditModeStore';
 import { SIGNUP_FORM_FIELDS } from '@/constants';
 import { signupSchema, SignupFormData } from '@/utils/schemas';
@@ -19,7 +19,7 @@ const DISABLED_FIELDS = ['email', 'name'];
 const EXCLUDED_FIELDS = ['nickname', 'bio'];
 
 const EditProfileForm = ({ className }: EditProfileFormProps) => {
-  const user = useAuthStore(state => state.user);
+  const { user } = useAuth();
   const { isEditMode, setEditMode } = useEditModeStore();
 
   useEffect(() => {

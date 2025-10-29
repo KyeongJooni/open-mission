@@ -1,6 +1,6 @@
 import { Profile1Icon } from '@/assets/icons';
 import { Button, Spacer, Modal } from '@/components';
-import { useAuthStore } from '@/stores/useAuthStore';
+import { useAuth } from '@/api/user/userQuery';
 import { useModalStore } from '@/stores/useModalStore';
 import { cn } from '@/utils/cn';
 import { SIDEBAR_TEXTS, MYPAGE_TEXTS } from '@/constants';
@@ -14,7 +14,7 @@ interface SidebarProps {
 }
 
 const Sidebar = ({ className = '', isLoggedIn = false }: SidebarProps) => {
-  const user = useAuthStore(state => state.user);
+  const { user } = useAuth();
   const { modalType, modalMessage, confirmButtonText, onModalConfirm, closeModal } = useModalStore();
   const { handleStartGitlog, handleMyGitlog, handleWriteGitlog, handleSettings, handleLogout } = useSidebar();
 

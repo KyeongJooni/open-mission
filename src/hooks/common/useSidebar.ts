@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useQueryClient } from '@tanstack/react-query';
 import { useModalStore } from '@/stores/useModalStore';
 import { useAuthStore } from '@/stores/useAuthStore';
 import { MYPAGE_ROUTES, SIDEBAR_TEXTS, SIDEBAR_ROUTES, SIDEBAR_MODAL_TYPES } from '@/constants';
@@ -8,6 +9,7 @@ export const useSidebar = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const sidebarRef = useRef<HTMLDivElement>(null);
   const navigate = useNavigate();
+  const queryClient = useQueryClient();
   const { openModal, closeModal } = useModalStore();
   const logout = useAuthStore(state => state.logout);
 
@@ -73,6 +75,7 @@ export const useSidebar = () => {
   const handleLogout = () => {
     const confirmLogout = () => {
       logout();
+      queryClient.clear(); // React Query 캐시 모두 제거
       closeModal();
       navigate(SIDEBAR_ROUTES.HOME);
       dispatchClose();
