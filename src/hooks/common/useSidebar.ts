@@ -75,7 +75,7 @@ export const useSidebar = () => {
   const handleLogout = () => {
     const confirmLogout = () => {
       logout();
-      queryClient.clear(); // React Query 캐시 모두 제거
+      queryClient.clear();
       closeModal();
       navigate(SIDEBAR_ROUTES.HOME);
       dispatchClose();

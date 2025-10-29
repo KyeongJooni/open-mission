@@ -24,7 +24,6 @@ interface UseSignupReturn {
 }
 
 export const useSignup = (defaultImage: string): UseSignupReturn => {
-  // sessionStorage를 먼저 읽어서 카카오 회원가입 정보 확인
   const kakaoFlag = sessionStorage.getItem('isKakaoSignup') === 'true';
   const storedKakaoId = sessionStorage.getItem('kakaoId');
 

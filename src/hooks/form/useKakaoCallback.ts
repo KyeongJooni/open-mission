@@ -27,7 +27,6 @@ export const useKakaoCallback = () => {
     async (data: KakaoCallbackData) => {
       setAccessToken(data.accessToken || null);
       setRefreshToken(data.refreshToken || null);
-      // React Query 캐시 무효화로 유저 정보 다시 가져오기
       await queryClient.invalidateQueries({ queryKey: ['userInfo'] });
       navigate(KAKAO_REDIRECT_PATH.HOME, { replace: true });
     },
