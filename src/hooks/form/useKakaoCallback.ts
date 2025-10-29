@@ -7,7 +7,7 @@ import { KAKAO_RESPONSE_CODE, KAKAO_REDIRECT_PATH } from '@/constants';
 import type { ApiResponse } from '@/api/apiTypes';
 import type { KakaoCallbackData } from '@/api/auth/authTypes';
 
-// URL에서 code 파라미터 추출
+// code 추출
 const getAuthCode = () => new URLSearchParams(window.location.search).get('code');
 
 const saveNewUserSession = (kakaoId?: number) => {
@@ -22,7 +22,7 @@ export const useKakaoCallback = () => {
   const authStore = useAuthStore();
   const hasCalledRef = useRef(false);
 
-  // 기존 회원 로그인 처리
+  // 기존 회원
   const handleExistingUser = useCallback(
     async (data: KakaoCallbackData) => {
       setAccessToken(data.accessToken || null);
@@ -34,7 +34,7 @@ export const useKakaoCallback = () => {
     [authStore, navigate]
   );
 
-  // 신규 회원 회원가입 처리
+  // 신규 회원
   const handleNewUser = useCallback(
     (data: KakaoCallbackData) => {
       saveNewUserSession(data.kakaoId);

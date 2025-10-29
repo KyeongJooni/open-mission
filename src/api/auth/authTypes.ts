@@ -1,4 +1,4 @@
-// ===== 공통 타입 =====
+// 공통
 
 export interface TokenPair {
   accessToken: string;
@@ -14,7 +14,7 @@ export interface BaseUserInfo {
   introduction: string;
 }
 
-// ===== 로그인 =====
+// 로그인
 
 export interface LoginRequest {
   email: string;
@@ -29,7 +29,7 @@ export interface LoginData extends TokenPair {
   responseMessage: string;
 }
 
-// ===== 일반 회원가입 =====
+// 회원가입
 
 export type RegisterRequest = BaseUserInfo & {
   password: string;
@@ -42,7 +42,7 @@ export interface RegisterData {
   introduction: string;
 }
 
-// ===== OAuth 회원가입 =====
+// OAuth 회원가입
 
 export type RegisterOAuthRequest = BaseUserInfo & {
   kakaoId: number;

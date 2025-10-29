@@ -7,10 +7,8 @@ export const login = async (loginData: AuthTypes.LoginRequest): Promise<ApiRespo
   const response = await axiosInstance.post<ApiResponse<AuthTypes.LoginData>>('/auth/login', loginData);
 
   const { accessToken, refreshToken } = response.data.data;
-
   setAccessToken(accessToken);
   setRefreshToken(refreshToken);
-
   return response.data;
 };
 
@@ -30,8 +28,6 @@ export const registerOAuth = async (
     '/auth/register-oauth',
     registerData
   );
-
-  // 토큰 저장
   const { accessToken, refreshToken } = response.data.data;
   setAccessToken(accessToken);
   setRefreshToken(refreshToken);
@@ -63,7 +59,6 @@ export const reissueToken = async (
 
   const { accessToken, refreshToken } = response.data.data;
 
-  // 새로운 토큰들 저장
   setAccessToken(accessToken);
   setRefreshToken(refreshToken);
 

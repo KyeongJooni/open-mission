@@ -1,6 +1,6 @@
 import type { ApiResponse } from '../apiTypes';
 
-// 사용자 정보 응답
+// 사용자 정보
 export interface UserData {
   id: number;
   email: string;
