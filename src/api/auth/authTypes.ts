@@ -14,6 +14,9 @@ export interface BaseUserInfo {
   introduction: string;
 }
 
+// 재사용 타입
+type BasicProfile = Pick<BaseUserInfo, 'nickname' | 'profilePicture' | 'introduction'>;
+
 // 로그인
 
 export interface LoginRequest {
@@ -21,10 +24,7 @@ export interface LoginRequest {
   password: string;
 }
 
-export interface LoginData extends TokenPair {
-  nickname: string;
-  profilePicture: string;
-  introduction: string;
+export interface LoginData extends TokenPair, BasicProfile {
   httpStatus: string;
   responseMessage: string;
 }
@@ -35,12 +35,7 @@ export type RegisterRequest = BaseUserInfo & {
   password: string;
 };
 
-export interface RegisterData {
-  email: string;
-  nickname: string;
-  profilePicture: string;
-  introduction: string;
-}
+export type RegisterData = Pick<BaseUserInfo, 'email' | 'nickname' | 'profilePicture' | 'introduction'>;
 
 // OAuth 회원가입
 
@@ -62,15 +57,12 @@ export interface KakaoRedirectRequest {
   state?: string;
 }
 
-export type KakaoCallbackData = Partial<TokenPair> & {
-  nickname?: string;
-  profilePicture?: string;
-  introduction?: string;
-  httpStatus: string;
-  responseMessage: string;
-  kakaoId?: number;
-  email?: string;
-};
+export type KakaoCallbackData = Partial<TokenPair> &
+  Partial<BaseUserInfo> & {
+    httpStatus: string;
+    responseMessage: string;
+    kakaoId?: number;
+  };
 
 export interface ReissueRequest {
   refreshToken: string;
