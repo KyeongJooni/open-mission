@@ -1,9 +1,10 @@
-import { useState, useRef, ChangeEvent } from 'react';
+import { useState, useRef, ChangeEvent, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useEditModeStore } from '@/stores/useEditModeStore';
 import { useToast } from '@/contexts/ToastContext';
 import * as UserQuery from '@/api/user/userQuery';
 import { MYPAGE_ROUTES, MYPAGE_TEXTS } from '@/constants';
+import { validators } from '@/utils/validation';
 import type { SignupFormData } from '@/utils/schemas';
 
 interface UseEditProfileProps {
@@ -11,7 +12,7 @@ interface UseEditProfileProps {
 }
 
 export const useEditProfile = ({ defaultProfileImage = '' }: UseEditProfileProps = {}) => {
-  const { setEditMode } = useEditModeStore();
+  const { setEditMode, isEditMode } = useEditModeStore();
   const navigate = useNavigate();
   const { showToast } = useToast();
   const { user } = UserQuery.useAuth();
@@ -20,6 +21,24 @@ export const useEditProfile = ({ defaultProfileImage = '' }: UseEditProfileProps
   const updatePassword = UserQuery.useUpdatePassword();
   const [previewImage, setPreviewImage] = useState<string>(defaultProfileImage);
   const fileInputRef = useRef<HTMLInputElement>(null);
+  const [headerNickname, setHeaderNickname] = useState(user?.nickname || '');
+  const [headerIntroduction, setHeaderIntroduction] = useState(user?.introduction || '');
+
+  // user 정보 변경 시 state 업데이트
+  useEffect(() => {
+    if (user) {
+      setHeaderNickname(user.nickname);
+      setHeaderIntroduction(user.introduction || '');
+    }
+  }, [user]);
+
+  // 편집 모드 종료 시 리셋
+  useEffect(() => {
+    if (!isEditMode && user) {
+      setHeaderNickname(user.nickname);
+      setHeaderIntroduction(user.introduction || '');
+    }
+  }, [isEditMode, user]);
 
   const handleEdit = () => {
     setEditMode(true);
@@ -123,6 +142,19 @@ export const useEditProfile = ({ defaultProfileImage = '' }: UseEditProfileProps
     fileInputRef.current?.click();
   };
 
+  // 필드 검증
+  const validateField = (fieldName: 'nickname' | 'bio', value: string): string | undefined => {
+    const validatorMap = {
+      nickname: validators.nickname(),
+      bio: validators.bio(),
+    };
+    const result = validatorMap[fieldName].safeParse(value);
+    if (!result.success) {
+      return result.error.issues[0]?.message;
+    }
+    return undefined;
+  };
+
   return {
     // 이미지 관련
     previewImage,
@@ -133,5 +165,12 @@ export const useEditProfile = ({ defaultProfileImage = '' }: UseEditProfileProps
     handleEdit,
     handleCancel,
     handleSave,
+    // 검증
+    validateField,
+    // 헤더 필드
+    headerNickname,
+    headerIntroduction,
+    setHeaderNickname,
+    setHeaderIntroduction,
   };
 };

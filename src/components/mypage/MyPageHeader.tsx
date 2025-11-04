@@ -1,3 +1,4 @@
+import { useState, useEffect } from 'react';
 import { PostHeader, TextBox, TextField } from '@/components';
 import { MYPAGE_TEXTS } from '@/constants';
 import { SettingsIcon, EditProfileIcon } from '@/assets/icons';
@@ -26,9 +27,31 @@ const MyPageHeader = ({
   showSettingsButton = true,
   isEditProfilePage = false,
 }: MyPageHeaderProps) => {
-  const { previewImage, fileInputRef, handleImageUpload, handleProfileImageClick } = useEditProfile({
+  const { previewImage, fileInputRef, handleImageUpload, handleProfileImageClick, validateField } = useEditProfile({
     defaultProfileImage: profileImage,
   });
+
+  const [nicknameError, setNicknameError] = useState<string | undefined>();
+  const [bioError, setBioError] = useState<string | undefined>();
+
+  useEffect(() => {
+    if (!isEditMode) {
+      setNicknameError(undefined);
+      setBioError(undefined);
+    }
+  }, [isEditMode]);
+
+  const handleNicknameChange = (value: string) => {
+    onNicknameChange?.(value);
+    const error = validateField('nickname', value);
+    setNicknameError(error);
+  };
+
+  const handleBioChange = (value: string) => {
+    onBioChange?.(value);
+    const error = validateField('bio', value);
+    setBioError(error);
+  };
 
   return (
     <>
@@ -55,25 +78,29 @@ const MyPageHeader = ({
         <div className={STYLES.profileEditFields}>
           <TextField
             value={nickname}
-            onChange={e => onNicknameChange?.(e.target.value)}
+            onChange={e => handleNicknameChange(e.target.value)}
             placeholder={MYPAGE_TEXTS.PROFILE.NICKNAME_PLACEHOLDER}
             fullWidth
             fontSize="medium"
             textColor="title"
             disabled={!isEditMode}
+            error={Boolean(nicknameError)}
+            errorMessage={nicknameError}
           />
           <div className={STYLES.textFieldDivider}>
             <span className={STYLES.hintText}>{MYPAGE_TEXTS.PROFILE.NICKNAME_HINT}</span>
           </div>
           <TextField
             value={bio}
-            onChange={e => onBioChange?.(e.target.value)}
+            onChange={e => handleBioChange(e.target.value)}
             placeholder={MYPAGE_TEXTS.PROFILE.BIO_PLACEHOLDER}
             fullWidth
             fontSize="light"
             textColor="gray78"
             className="mb-3 mt-3"
             disabled={!isEditMode}
+            error={Boolean(bioError)}
+            errorMessage={bioError}
           />
         </div>
       ) : (
