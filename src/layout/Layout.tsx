@@ -15,7 +15,7 @@ export default function Layout() {
   const isLoggedIn = useAuthStore(state => state.isLoggedIn);
 
   const pageHeaderType = usePageHeaderType();
-  const { handleEdit, handleCancel, handleSave } = useEditProfile();
+  const { handleEdit, handleCancel } = useEditProfile();
   const { id } = useParams();
   const location = useLocation();
 
@@ -38,7 +38,6 @@ export default function Layout() {
         onHamburgerClick={toggleSidebar}
         onEdit={handleEdit}
         onCancel={handleCancel}
-        onSave={handleSave}
         isOwner={isOwner}
       />
       <div ref={sidebarRef} className={`sidebar-container ${isSidebarOpen ? 'sidebar-open' : 'sidebar-closed'}`}>
