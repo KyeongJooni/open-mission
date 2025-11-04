@@ -14,7 +14,7 @@ export const textFieldVariants = tv({
       filled: 'bg-gray-90',
     },
     disabled: {
-      true: 'opacity-50 cursor-not-allowed',
+      true: 'opacity-100 cursor-not-allowed',
       false: '',
     },
     fullWidth: {
