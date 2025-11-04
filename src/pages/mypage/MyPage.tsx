@@ -1,8 +1,7 @@
-import { useState, useEffect } from 'react';
 import { cn } from '@/utils/cn';
 import { Outlet } from 'react-router-dom';
 import { Spacer, PostHeader, MyPageHeader } from '@/components';
-import { useMyPage } from '@/hooks';
+import { useMyPage, useEditProfile } from '@/hooks';
 
 interface MyPageProps {
   className?: string;
@@ -17,29 +16,10 @@ const STYLES = {
 } as const;
 
 const MyPage = ({ className }: MyPageProps) => {
-  const {
-    isMyProfile,
-    isEditProfile,
-    isProfilePage,
-    user,
-    isEditMode,
-    title,
-    subtitle,
-    spacerTopHeight,
-    handleEditProfile,
-  } = useMyPage();
+  const { isMyProfile, isEditProfile, isProfilePage, isEditMode, title, subtitle, spacerTopHeight, handleEditProfile } =
+    useMyPage();
 
-  // EditProfile 페이지에서 MyPageHeader와 EditProfileForm이 공유할 state
-  const [headerNickname, setHeaderNickname] = useState(user?.nickname || '');
-  const [headerIntroduction, setHeaderIntroduction] = useState(user?.introduction || '');
-
-  // user 정보가 변경되면 state 업데이트
-  useEffect(() => {
-    if (user) {
-      setHeaderNickname(user.nickname);
-      setHeaderIntroduction(user.introduction || '');
-    }
-  }, [user]);
+  const { headerNickname, headerIntroduction, setHeaderNickname, setHeaderIntroduction } = useEditProfile();
 
   return (
     <div className={STYLES.wrapper}>
