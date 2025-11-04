@@ -15,6 +15,8 @@ export type MyPageHeaderProps = ComponentWithBase<{
   isEditMode: boolean;
   nickname: string;
   bio: string;
+  onNicknameChange?: (nickname: string) => void;
+  onBioChange?: (bio: string) => void;
   onEditClick: () => void;
   showSettingsButton?: boolean;
   isEditProfilePage?: boolean;

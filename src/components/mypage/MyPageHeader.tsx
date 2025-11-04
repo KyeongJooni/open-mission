@@ -7,9 +7,9 @@ import { useEditProfile } from '@/hooks';
 
 const STYLES = {
   profileContent: 'flex flex-col w-full max-w-content py-3 px-4 items-start gap-2.5',
-  profileImageWrapper: 'relative flex w-16 h-16 items-center gap-2.5 aspect-square rounded-full overflow-hidden',
-  profileImage: 'w-full h-full object-cover',
-  profileEditIcon: 'absolute right-0 bottom-0 w-6 h-6 flex-shrink-0',
+  profileImageWrapper: 'relative flex w-16 h-16 items-center gap-2.5 aspect-square',
+  profileImage: 'w-full h-full object-cover rounded-full',
+  profileEditIcon: 'absolute right-0 bottom-0 w-6 h-6 flex-shrink-0 z-10',
   profileEditFields: 'flex flex-col w-full max-w-content px-4 items-start',
   textFieldDivider: 'flex px-1.5 justify-center items-center gap-2.5 self-stretch mt-1',
   hintText: 'flex-1 text-gray-78 font-light text-xs leading-[160%]',
@@ -20,23 +20,13 @@ const MyPageHeader = ({
   isEditMode,
   nickname,
   bio,
+  onNicknameChange,
+  onBioChange,
   onEditClick,
   showSettingsButton = true,
   isEditProfilePage = false,
 }: MyPageHeaderProps) => {
-  const {
-    register,
-    errors,
-    watchedNickname,
-    watchedBio,
-    previewImage,
-    fileInputRef,
-    handleImageUpload,
-    handleProfileImageClick,
-  } = useEditProfile({
-    nickname,
-    bio,
-    isEditMode,
+  const { previewImage, fileInputRef, handleImageUpload, handleProfileImageClick } = useEditProfile({
     defaultProfileImage: profileImage,
   });
 
@@ -64,30 +54,26 @@ const MyPageHeader = ({
       {isEditProfilePage ? (
         <div className={STYLES.profileEditFields}>
           <TextField
-            {...register('nickname')}
-            value={watchedNickname}
+            value={nickname}
+            onChange={e => onNicknameChange?.(e.target.value)}
             placeholder={MYPAGE_TEXTS.PROFILE.NICKNAME_PLACEHOLDER}
             fullWidth
             fontSize="medium"
             textColor="title"
             disabled={!isEditMode}
-            error={Boolean(errors.nickname?.message)}
-            errorMessage={errors.nickname?.message}
           />
           <div className={STYLES.textFieldDivider}>
             <span className={STYLES.hintText}>{MYPAGE_TEXTS.PROFILE.NICKNAME_HINT}</span>
           </div>
           <TextField
-            {...register('bio')}
-            value={watchedBio}
+            value={bio}
+            onChange={e => onBioChange?.(e.target.value)}
             placeholder={MYPAGE_TEXTS.PROFILE.BIO_PLACEHOLDER}
             fullWidth
             fontSize="light"
             textColor="gray78"
             className="mb-3 mt-3"
             disabled={!isEditMode}
-            error={Boolean(errors.bio?.message)}
-            errorMessage={errors.bio?.message}
           />
         </div>
       ) : (

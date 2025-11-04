@@ -1,8 +1,8 @@
+import { useState, useEffect } from 'react';
 import { cn } from '@/utils/cn';
 import { Outlet } from 'react-router-dom';
 import { Spacer, PostHeader, MyPageHeader } from '@/components';
 import { useMyPage } from '@/hooks';
-import { MYPAGE_TEXTS } from '@/constants';
 
 interface MyPageProps {
   className?: string;
@@ -29,6 +29,18 @@ const MyPage = ({ className }: MyPageProps) => {
     handleEditProfile,
   } = useMyPage();
 
+  // EditProfile 페이지에서 MyPageHeader와 EditProfileForm이 공유할 state
+  const [headerNickname, setHeaderNickname] = useState(user?.nickname || '');
+  const [headerIntroduction, setHeaderIntroduction] = useState(user?.introduction || '');
+
+  // user 정보가 변경되면 state 업데이트
+  useEffect(() => {
+    if (user) {
+      setHeaderNickname(user.nickname);
+      setHeaderIntroduction(user.introduction || '');
+    }
+  }, [user]);
+
   return (
     <div className={STYLES.wrapper}>
       <div className={cn(STYLES.container, className)}>
@@ -36,8 +48,10 @@ const MyPage = ({ className }: MyPageProps) => {
         {isProfilePage ? (
           <MyPageHeader
             isEditMode={isEditProfile && isEditMode}
-            nickname={user?.nickname || MYPAGE_TEXTS.PROFILE.DEFAULT_USER_NAME}
-            bio={user?.introduction || MYPAGE_TEXTS.PROFILE.DEFAULT_BIO}
+            nickname={headerNickname}
+            bio={headerIntroduction}
+            onNicknameChange={setHeaderNickname}
+            onBioChange={setHeaderIntroduction}
             onEditClick={handleEditProfile}
             showSettingsButton={isMyProfile}
             isEditProfilePage={isEditProfile}
@@ -47,7 +61,7 @@ const MyPage = ({ className }: MyPageProps) => {
         )}
         <Spacer height="sm" className={STYLES.spacerBottom} />
       </div>
-      <Outlet />
+      <Outlet context={{ headerNickname, headerIntroduction }} />
     </div>
   );
 };
