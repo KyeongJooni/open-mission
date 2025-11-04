@@ -1,6 +1,6 @@
-import { useQuery } from '@tanstack/react-query';
+import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import { useEffect } from 'react';
-import { getUserInfo } from './userApi';
+import { getUserInfo, updateUser, updateProfilePicture, updatePassword, updateNickname } from './userApi';
 import { useAuthStore } from '@/stores/useAuthStore';
 import type { ApiResponse } from '../apiTypes';
 import type * as UserTypes from './userTypes';
@@ -39,4 +39,47 @@ export const useAuth = () => {
     isLoading,
     error,
   };
+};
+
+// 유저 정보 수정
+export const useUpdateUser = () => {
+  const queryClient = useQueryClient();
+
+  return useMutation({
+    mutationFn: updateUser,
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ['userInfo'] });
+    },
+  });
+};
+
+// 프로필 사진 수정
+export const useUpdateProfilePicture = () => {
+  const queryClient = useQueryClient();
+
+  return useMutation({
+    mutationFn: updateProfilePicture,
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ['userInfo'] });
+    },
+  });
+};
+
+// 비밀번호 수정
+export const useUpdatePassword = () => {
+  return useMutation({
+    mutationFn: updatePassword,
+  });
+};
+
+// 닉네임 수정
+export const useUpdateNickname = () => {
+  const queryClient = useQueryClient();
+
+  return useMutation({
+    mutationFn: updateNickname,
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ['userInfo'] });
+    },
+  });
 };

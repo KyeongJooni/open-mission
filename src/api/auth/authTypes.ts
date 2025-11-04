@@ -1,5 +1,4 @@
 // 공통
-
 export interface TokenPair {
   accessToken: string;
   refreshToken: string;
@@ -18,7 +17,6 @@ export interface BaseUserInfo {
 type BasicProfile = Pick<BaseUserInfo, 'nickname' | 'profilePicture' | 'introduction'>;
 
 // 로그인
-
 export interface LoginRequest {
   email: string;
   password: string;
@@ -30,7 +28,6 @@ export interface LoginData extends TokenPair, BasicProfile {
 }
 
 // 회원가입
-
 export type RegisterRequest = BaseUserInfo & {
   password: string;
 };
@@ -38,7 +35,6 @@ export type RegisterRequest = BaseUserInfo & {
 export type RegisterData = Pick<BaseUserInfo, 'email' | 'nickname' | 'profilePicture' | 'introduction'>;
 
 // OAuth 회원가입
-
 export type RegisterOAuthRequest = BaseUserInfo & {
   kakaoId: number;
 };

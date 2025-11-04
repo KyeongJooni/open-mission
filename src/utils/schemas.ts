@@ -10,7 +10,7 @@ export const signupSchema = zod
     name: validators.name(),
     birthDate: validators.birthDate(),
     nickname: validators.nickname(),
-    bio: validators.bio(),
+    introduction: validators.bio(),
   })
   .refine(data => data.password === data.passwordConfirm, {
     message: VALIDATION_MESSAGES.passwordConfirm.mismatch,

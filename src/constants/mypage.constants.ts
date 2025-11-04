@@ -59,5 +59,5 @@ export const SIGNUP_FORM_FIELDS = [
   { name: 'name', title: '이름', type: undefined, placeholder: '이름', hintText: undefined },
   { name: 'birthDate', title: '생년월일', type: undefined, placeholder: 'YYYY-MM-DD', hintText: undefined },
   { name: 'nickname', title: '닉네임', type: undefined, placeholder: '닉네임', hintText: '20글자 이내' },
-  { name: 'bio', title: '한 줄 소개', type: undefined, placeholder: '한 줄 소개', hintText: undefined },
+  { name: 'introduction', title: '한 줄 소개', type: undefined, placeholder: '한 줄 소개', hintText: undefined },
 ] as const;
