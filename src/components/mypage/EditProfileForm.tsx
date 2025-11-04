@@ -1,10 +1,12 @@
 import { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
+import { useOutletContext } from 'react-router-dom';
 import { cn } from '@/utils/cn';
 import { Spacer, Textarea } from '@/components';
-import { useAuth } from '@/api/user/userQuery';
+import * as UserQuery from '@/api/user/userQuery';
 import { useEditModeStore } from '@/stores/useEditModeStore';
+import { useEditProfile } from '@/hooks';
 import { SIGNUP_FORM_FIELDS } from '@/constants';
 import { signupSchema, SignupFormData } from '@/utils/schemas';
 import { EditProfileFormProps } from '@/types/mypage';
@@ -16,11 +18,15 @@ const STYLES = {
 } as const;
 
 const DISABLED_FIELDS = ['email', 'name'];
-const EXCLUDED_FIELDS = ['nickname', 'bio'];
+const EXCLUDED_FIELDS = ['nickname', 'introduction'];
 
 const EditProfileForm = ({ className }: EditProfileFormProps) => {
-  const { user } = useAuth();
+  const { user } = UserQuery.useAuth();
   const { isEditMode, setEditMode } = useEditModeStore();
+  const { headerNickname, headerIntroduction } = useOutletContext<{
+    headerNickname: string;
+    headerIntroduction: string;
+  }>();
 
   useEffect(() => {
     // 초기화
@@ -52,11 +58,13 @@ const EditProfileForm = ({ className }: EditProfileFormProps) => {
       name: user?.name || '',
       birthDate: user?.birthDate || '',
       nickname: user?.nickname || '',
-      bio: user?.introduction || '',
+      introduction: user?.introduction || '',
     },
   });
 
-  // 초기값으로 리셋
+  const { handleSave } = useEditProfile();
+
+  // 초기값 리셋
   useEffect(() => {
     if (!isEditMode) {
       reset({
@@ -66,17 +74,23 @@ const EditProfileForm = ({ className }: EditProfileFormProps) => {
         name: user?.name || '',
         birthDate: user?.birthDate || '',
         nickname: user?.nickname || '',
-        bio: user?.introduction || '',
+        introduction: user?.introduction || '',
       });
     }
   }, [isEditMode, user, reset]);
 
-  const onSubmit = (_data: SignupFormData) => {
-    // TODO: API 호출로 프로필 업데이트
+  const onSubmit = (data: SignupFormData) => {
+    // MyPageHeader에서 입력한 nickname과 introduction을 병합
+    const mergedData = {
+      ...data,
+      nickname: headerNickname,
+      introduction: headerIntroduction,
+    };
+    handleSave(mergedData);
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className={cn(STYLES.container, className)}>
+    <form id="edit-profile-form" onSubmit={handleSubmit(onSubmit)} className={cn(STYLES.container, className)}>
       <Spacer height="md" className={STYLES.spacer} />
 
       {SIGNUP_FORM_FIELDS.filter(field => !EXCLUDED_FIELDS.includes(field.name)).map(field => {
