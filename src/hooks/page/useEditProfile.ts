@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { useEditModeStore } from '@/stores/useEditModeStore';
 import { useToast } from '@/contexts/ToastContext';
 import * as UserQuery from '@/api/user/userQuery';
+import { useS3ImageUpload } from '@/hooks/common/useS3ImageUpload';
 import { MYPAGE_ROUTES, MYPAGE_TEXTS } from '@/constants';
 import { validators } from '@/utils/validation';
 import type { SignupFormData } from '@/utils/schemas';
@@ -19,6 +20,7 @@ export const useEditProfile = ({ defaultProfileImage = '' }: UseEditProfileProps
   const updateUser = UserQuery.useUpdateUser();
   const updateNickname = UserQuery.useUpdateNickname();
   const updatePassword = UserQuery.useUpdatePassword();
+  const updateProfilePicture = UserQuery.useUpdateProfilePicture();
   const [previewImage, setPreviewImage] = useState<string>(defaultProfileImage);
   const fileInputRef = useRef<HTMLInputElement>(null);
   const [headerNickname, setHeaderNickname] = useState(user?.nickname || '');
@@ -47,6 +49,22 @@ export const useEditProfile = ({ defaultProfileImage = '' }: UseEditProfileProps
   const handleCancel = () => {
     setEditMode(false);
   };
+
+  // 프로필 사진 업로드 성공 핸들러
+  const handleProfileImageUploadSuccess = async (imageUrl: string) => {
+    await updateProfilePicture.mutateAsync({ profilePicture: imageUrl });
+    showToast('프로필 사진이 변경되었습니다.', 'positive');
+  };
+
+  // 프로필 사진 업로드 실패 핸들러
+  const handleProfileImageUploadError = () => {
+    showToast('프로필 사진 업데이트에 실패했습니다.', 'warning');
+  };
+
+  const { uploadImage } = useS3ImageUpload({
+    onSuccess: handleProfileImageUploadSuccess,
+    onError: handleProfileImageUploadError,
+  });
 
   const handleSave = (data: Partial<SignupFormData>) => {
     if (!user) {
@@ -127,15 +145,21 @@ export const useEditProfile = ({ defaultProfileImage = '' }: UseEditProfileProps
     updateUser.mutate(requestData, { onSuccess, onError });
   };
 
-  const handleImageUpload = (event: ChangeEvent<HTMLInputElement>) => {
+  const handleImageUpload = async (event: ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
-    if (file) {
-      const reader = new FileReader();
-      reader.onloadend = () => {
-        setPreviewImage(reader.result as string);
-      };
-      reader.readAsDataURL(file);
+    if (!file) {
+      return;
     }
+
+    // 미리보기용 base64
+    const reader = new FileReader();
+    reader.onloadend = () => {
+      setPreviewImage(reader.result as string);
+    };
+    reader.readAsDataURL(file);
+
+    // S3 업로드 + 프로필 사진 업데이트 (콜백으로 처리됨)
+    await uploadImage(file);
   };
 
   const handleProfileImageClick = () => {
