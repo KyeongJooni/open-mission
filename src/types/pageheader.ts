@@ -7,7 +7,6 @@ export type PageHeaderType = 'main' | 'detail' | 'write' | 'mypage' | 'editprofi
 export interface HeaderActionProps {
   onEdit?: () => void;
   onCancel?: () => void;
-  onSave?: () => void;
 }
 
 // 제네릭 타입

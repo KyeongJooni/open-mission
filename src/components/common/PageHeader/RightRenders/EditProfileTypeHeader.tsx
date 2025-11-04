@@ -4,10 +4,9 @@ import { PAGEHEADER_TEXTS } from '@/constants';
 interface EditProfileTypeHeaderProps {
   onEdit?: () => void;
   onCancel?: () => void;
-  onSave?: () => void;
 }
 
-export const EditProfileTypeHeader = ({ onEdit, onCancel, onSave }: EditProfileTypeHeaderProps) => {
+export const EditProfileTypeHeader = ({ onEdit, onCancel }: EditProfileTypeHeaderProps) => {
   const isEditMode = useEditModeStore(state => state.isEditMode);
 
   if (!isEditMode) {
@@ -23,7 +22,7 @@ export const EditProfileTypeHeader = ({ onEdit, onCancel, onSave }: EditProfileT
       <button type="button" onClick={onCancel} className="flex items-center justify-center gap-1 px-3 py-2">
         <span className="text-sm font-regular text-warning">{PAGEHEADER_TEXTS.EDIT_PROFILE.CANCEL_BUTTON}</span>
       </button>
-      <button type="submit" onClick={onSave} className="flex items-center justify-center gap-1 px-3 py-2">
+      <button type="submit" form="edit-profile-form" className="flex items-center justify-center gap-1 px-3 py-2">
         <span className="text-sm font-regular text-black">{PAGEHEADER_TEXTS.EDIT_PROFILE.SAVE_BUTTON}</span>
       </button>
     </div>

@@ -1,8 +1,8 @@
-import { PageHeaderRenderers } from '@/components/common/Pageheader/PageHeaderRightRenderers';
+import { PageHeaderRenderers } from '@/components/common/PageHeader/PageHeaderRightRenderers';
 import { PageHeaderRightProps } from '@/types/pageheader';
 
-const PageHeaderRight = ({ type, onEdit, onCancel, onSave, isOwner }: PageHeaderRightProps) => {
-  return PageHeaderRenderers[type]({ onEdit, onCancel, onSave, isOwner });
+const PageHeaderRight = ({ type, onEdit, onCancel, isOwner }: PageHeaderRightProps) => {
+  return PageHeaderRenderers[type]({ onEdit, onCancel, isOwner });
 };
 
 export default PageHeaderRight;
