@@ -2,6 +2,7 @@ import { cn } from '@/utils/cn';
 import { Outlet } from 'react-router-dom';
 import { Spacer, PostHeader, MyPageHeader } from '@/components';
 import { useMyPage, useEditProfile } from '@/hooks';
+import * as UserQuery from '@/api/user/userQuery';
 
 interface MyPageProps {
   className?: string;
@@ -19,7 +20,19 @@ const MyPage = ({ className }: MyPageProps) => {
   const { isMyProfile, isEditProfile, isProfilePage, isEditMode, title, subtitle, spacerTopHeight, handleEditProfile } =
     useMyPage();
 
-  const { headerNickname, headerIntroduction, setHeaderNickname, setHeaderIntroduction } = useEditProfile();
+  const { user } = UserQuery.useAuth();
+  const {
+    headerNickname,
+    headerIntroduction,
+    setHeaderNickname,
+    setHeaderIntroduction,
+    previewImage,
+    fileInputRef,
+    handleImageUpload,
+    handleProfileImageClick,
+    validateField,
+    handleSave,
+  } = useEditProfile({ defaultProfileImage: user?.profilePicture });
 
   return (
     <div className={STYLES.wrapper}>
@@ -30,18 +43,24 @@ const MyPage = ({ className }: MyPageProps) => {
             isEditMode={isEditProfile && isEditMode}
             nickname={headerNickname}
             bio={headerIntroduction}
+            profilePicture={user?.profilePicture}
             onNicknameChange={setHeaderNickname}
             onBioChange={setHeaderIntroduction}
             onEditClick={handleEditProfile}
             showSettingsButton={isMyProfile}
             isEditProfilePage={isEditProfile}
+            previewImage={previewImage}
+            fileInputRef={fileInputRef}
+            handleImageUpload={handleImageUpload}
+            handleProfileImageClick={handleProfileImageClick}
+            validateField={validateField}
           />
         ) : (
           <PostHeader title={title} subtitle={subtitle} className="w-full px-1" />
         )}
         <Spacer height="sm" className={STYLES.spacerBottom} />
       </div>
-      <Outlet context={{ headerNickname, headerIntroduction }} />
+      <Outlet context={{ headerNickname, headerIntroduction, handleSave }} />
     </div>
   );
 };

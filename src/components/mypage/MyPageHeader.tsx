@@ -4,7 +4,6 @@ import { MYPAGE_TEXTS } from '@/constants';
 import { SettingsIcon, EditProfileIcon } from '@/assets/icons';
 import profileImage from '@/assets/profile.png';
 import { MyPageHeaderProps } from '@/types/mypage';
-import { useEditProfile } from '@/hooks';
 
 const STYLES = {
   profileContent: 'flex flex-col w-full max-w-content py-3 px-4 items-start gap-2.5',
@@ -21,15 +20,23 @@ const MyPageHeader = ({
   isEditMode,
   nickname,
   bio,
+  profilePicture,
   onNicknameChange,
   onBioChange,
   onEditClick,
   showSettingsButton = true,
   isEditProfilePage = false,
+  previewImage: previewImageProp,
+  fileInputRef: fileInputRefProp,
+  handleImageUpload: handleImageUploadProp,
+  handleProfileImageClick: handleProfileImageClickProp,
+  validateField: validateFieldProp,
 }: MyPageHeaderProps) => {
-  const { previewImage, fileInputRef, handleImageUpload, handleProfileImageClick, validateField } = useEditProfile({
-    defaultProfileImage: profileImage,
-  });
+  const previewImage = previewImageProp || profilePicture || profileImage;
+  const fileInputRef = fileInputRefProp || { current: null };
+  const handleImageUpload = handleImageUploadProp || (() => {});
+  const handleProfileImageClick = handleProfileImageClickProp || (() => {});
+  const validateField = validateFieldProp || (() => undefined);
 
   const [nicknameError, setNicknameError] = useState<string | undefined>();
   const [bioError, setBioError] = useState<string | undefined>();

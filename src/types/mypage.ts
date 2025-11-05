@@ -15,11 +15,17 @@ export type MyPageHeaderProps = ComponentWithBase<{
   isEditMode: boolean;
   nickname: string;
   bio: string;
+  profilePicture?: string;
   onNicknameChange?: (nickname: string) => void;
   onBioChange?: (bio: string) => void;
   onEditClick: () => void;
   showSettingsButton?: boolean;
   isEditProfilePage?: boolean;
+  previewImage?: string;
+  fileInputRef?: React.RefObject<HTMLInputElement>;
+  handleImageUpload?: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  handleProfileImageClick?: () => void;
+  validateField?: (fieldName: 'nickname' | 'bio', value: string) => string | undefined;
 }>;
 
 export type MyPageFormProps = ComponentWithChildren;

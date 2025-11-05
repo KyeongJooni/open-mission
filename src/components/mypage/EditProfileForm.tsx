@@ -7,9 +7,8 @@ import { Spacer, Textarea } from '@/components';
 import * as UserQuery from '@/api/user/userQuery';
 import { useEditModeStore } from '@/stores/useEditModeStore';
 import { useAuthStore } from '@/stores/useAuthStore';
-import { useEditProfile } from '@/hooks';
 import { SIGNUP_FORM_FIELDS, MYPAGE_TEXTS } from '@/constants';
-import { signupSchema, SignupFormData } from '@/utils/schemas';
+import { profileEditSchema, ProfileEditFormData } from '@/utils/schemas';
 import { EditProfileFormProps } from '@/types/mypage';
 import KakaoIcon from '@/assets/icons/common/kakao.svg?react';
 
@@ -24,26 +23,19 @@ const STYLES = {
 } as const;
 
 const DISABLED_FIELDS = ['email', 'name'];
-const EXCLUDED_FIELDS = ['nickname', 'introduction'];
-
-// 백엔드 API 수정 후 제거 필요
-// 현재 카카오 유저는 introduction 필드를 헤더에서만 표시하고 폼에서는 제외
-// 이유: /users API의 password가 required여서 introduction 변경 시 password 필요
-// 백엔드 수정 후: getExcludedFields 함수 제거하고 EXCLUDED_FIELDS만 사용
-const getExcludedFields = (isKakaoUser: boolean) => {
-  return isKakaoUser ? [...EXCLUDED_FIELDS, 'password', 'passwordConfirm'] : EXCLUDED_FIELDS;
-};
+const EXCLUDED_FIELDS = ['nickname', 'introduction', 'password', 'passwordConfirm'];
 
 const EditProfileForm = ({ className }: EditProfileFormProps) => {
   const { user } = UserQuery.useAuth();
   const { isEditMode, setEditMode } = useEditModeStore();
   const isKakaoUser = useAuthStore(state => state.isKakaoUser);
-  const { headerNickname, headerIntroduction } = useOutletContext<{
+  const { headerNickname, headerIntroduction, handleSave } = useOutletContext<{
     headerNickname: string;
     headerIntroduction: string;
+    handleSave: (
+      data: Partial<{ nickname: string; introduction: string; email: string; name: string; birthDate: string }>
+    ) => void;
   }>();
-
-  const excludedFields = getExcludedFields(isKakaoUser);
 
   // 컴포넌트 unmount 시 편집 모드 종료
   useEffect(() => {
@@ -65,16 +57,11 @@ const EditProfileForm = ({ className }: EditProfileFormProps) => {
     handleSubmit,
     formState: { errors },
     reset,
-  } = useForm<SignupFormData>({
-    // 백엔드 API 수정 후 수정 필요
-    // 현재 카카오 유저는 validation 제외 (password 필드가 없어서 signupSchema 통과 불가)
-    // 백엔드 수정 후: 카카오 유저용 별도 schema 생성 또는 조건부 validation 적용
-    resolver: isKakaoUser ? undefined : zodResolver(signupSchema),
+  } = useForm<ProfileEditFormData>({
+    resolver: zodResolver(profileEditSchema),
     mode: 'onChange',
     defaultValues: {
       email: user?.email || '',
-      password: '',
-      passwordConfirm: '',
       name: user?.name || '',
       birthDate: user?.birthDate || '',
       nickname: user?.nickname || '',
@@ -82,15 +69,11 @@ const EditProfileForm = ({ className }: EditProfileFormProps) => {
     },
   });
 
-  const { handleSave } = useEditProfile();
-
   // 초기값 리셋
   useEffect(() => {
     if (!isEditMode) {
       reset({
         email: user?.email || '',
-        password: '',
-        passwordConfirm: '',
         name: user?.name || '',
         birthDate: user?.birthDate || '',
         nickname: user?.nickname || '',
@@ -99,7 +82,7 @@ const EditProfileForm = ({ className }: EditProfileFormProps) => {
     }
   }, [isEditMode, user, reset]);
 
-  const onSubmit = (data: SignupFormData) => {
+  const onSubmit = (data: ProfileEditFormData) => {
     const mergedData = {
       ...data,
       nickname: headerNickname,
@@ -122,24 +105,22 @@ const EditProfileForm = ({ className }: EditProfileFormProps) => {
         </div>
       )}
 
-      {SIGNUP_FORM_FIELDS.filter(field => !excludedFields.includes(field.name)).map(field => {
+      {SIGNUP_FORM_FIELDS.filter(field => !EXCLUDED_FIELDS.includes(field.name)).map(field => {
         const isDisabled = isFieldDisabled(field.name);
         const isAlwaysDisabled = DISABLED_FIELDS.includes(field.name);
-        const isPasswordField = field.name === 'password' || field.name === 'passwordConfirm';
-        const placeholder = !isEditMode && isPasswordField ? '******' : field.placeholder;
 
         return (
           <Textarea
             key={field.name}
             title={field.title}
             type={field.type}
-            placeholder={placeholder}
+            placeholder={field.placeholder}
             hintText={field.hintText}
-            error={errors[field.name]?.message}
+            error={errors[field.name as keyof ProfileEditFormData]?.message}
             textFieldBackgroundColor={isAlwaysDisabled ? 'filled' : undefined}
             disabled={isDisabled}
             className={STYLES.textareaCommon}
-            {...register(field.name)}
+            {...register(field.name as keyof ProfileEditFormData)}
           />
         );
       })}
