@@ -1,5 +1,6 @@
 import { useUploadImageMutation } from '@/api/image/imageQuery';
 import { useToast } from '@/contexts/ToastContext';
+import { IMAGE_UPLOAD, IMAGE_TEXTS } from '@/constants';
 
 interface UseImageUploadOptions {
   onSuccess?: (imageUrl: string) => void | Promise<void>;
@@ -13,15 +14,14 @@ export const useS3ImageUpload = (options?: UseImageUploadOptions) => {
   const uploadImage = async (file: File): Promise<string | null> => {
     try {
       // 이미지 파일 검증
-      if (!file.type.startsWith('image/')) {
-        showToast('이미지 파일만 선택해주세요.', 'warning');
+      if (!file.type.startsWith(IMAGE_UPLOAD.ALLOWED_TYPES[0])) {
+        showToast(IMAGE_TEXTS.UPLOAD.INVALID_TYPE, 'warning');
         return null;
       }
 
-      // 파일 크기 제한 (5MB)
-      const maxSize = 5 * 1024 * 1024;
-      if (file.size > maxSize) {
-        showToast('이미지 크기는 5MB 이하여야 합니다.', 'warning');
+      // 파일 크기 제한
+      if (file.size > IMAGE_UPLOAD.MAX_SIZE) {
+        showToast(IMAGE_TEXTS.UPLOAD.SIZE_EXCEEDED, 'warning');
         return null;
       }
 
@@ -37,13 +37,12 @@ export const useS3ImageUpload = (options?: UseImageUploadOptions) => {
       return imageUrl;
     } catch (error) {
       console.error('이미지 업로드 실패:', error);
-      showToast('이미지 업로드에 실패했습니다.', 'warning');
+      showToast(IMAGE_TEXTS.UPLOAD.FAILED, 'warning');
 
       // 에러 콜백
       if (options?.onError) {
         options.onError(error);
       }
-
       return null;
     }
   };
