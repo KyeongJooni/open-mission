@@ -17,4 +17,11 @@ export const signupSchema = zod
     path: ['passwordConfirm'],
   });
 
+// 프로필 수정 스키마
+export const profileEditSchema = signupSchema.omit({
+  password: true,
+  passwordConfirm: true,
+});
+
 export type SignupFormData = zod.infer<typeof signupSchema>;
+export type ProfileEditFormData = zod.infer<typeof profileEditSchema>;

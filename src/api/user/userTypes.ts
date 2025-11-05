@@ -10,9 +10,7 @@ export interface UserData {
 }
 
 // 유저 정보 수정
-export type UpdateUserRequest = Omit<UserData, 'id'> & {
-  password: string;
-};
+export type UpdateUserRequest = Omit<UserData, 'id'>;
 
 export type UpdateUserData = Record<string, never>;
 
