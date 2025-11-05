@@ -26,6 +26,10 @@ const STYLES = {
 const DISABLED_FIELDS = ['email', 'name'];
 const EXCLUDED_FIELDS = ['nickname', 'introduction'];
 
+// 백엔드 API 수정 후 제거 필요
+// 현재 카카오 유저는 introduction 필드를 헤더에서만 표시하고 폼에서는 제외
+// 이유: /users API의 password가 required여서 introduction 변경 시 password 필요
+// 백엔드 수정 후: getExcludedFields 함수 제거하고 EXCLUDED_FIELDS만 사용
 const getExcludedFields = (isKakaoUser: boolean) => {
   return isKakaoUser ? [...EXCLUDED_FIELDS, 'password', 'passwordConfirm'] : EXCLUDED_FIELDS;
 };
@@ -62,7 +66,10 @@ const EditProfileForm = ({ className }: EditProfileFormProps) => {
     formState: { errors },
     reset,
   } = useForm<SignupFormData>({
-    resolver: zodResolver(signupSchema),
+    // 백엔드 API 수정 후 수정 필요
+    // 현재 카카오 유저는 validation 제외 (password 필드가 없어서 signupSchema 통과 불가)
+    // 백엔드 수정 후: 카카오 유저용 별도 schema 생성 또는 조건부 validation 적용
+    resolver: isKakaoUser ? undefined : zodResolver(signupSchema),
     mode: 'onChange',
     defaultValues: {
       email: user?.email || '',
