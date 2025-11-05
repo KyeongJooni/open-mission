@@ -19,11 +19,6 @@ export type UpdateProfilePictureRequest = Pick<UserData, 'profilePicture'>;
 
 export type UpdateProfilePictureData = Record<string, never>;
 
-// 비밀번호 수정
-export interface UpdatePasswordRequest {
-  password: string;
-}
-
 export type UpdatePasswordData = Record<string, never>;
 
 // 닉네임 수정

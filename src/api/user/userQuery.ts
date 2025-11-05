@@ -1,6 +1,6 @@
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import { useEffect } from 'react';
-import { getUserInfo, updateUser, updateProfilePicture, updatePassword, updateNickname } from './userApi';
+import { getUserInfo, updateUser, updateProfilePicture, updateNickname } from './userApi';
 import { useAuthStore } from '@/stores/useAuthStore';
 import type { ApiResponse } from '../apiTypes';
 import type * as UserTypes from './userTypes';
@@ -62,13 +62,6 @@ export const useUpdateProfilePicture = () => {
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['userInfo'] });
     },
-  });
-};
-
-// 비밀번호 수정
-export const useUpdatePassword = () => {
-  return useMutation({
-    mutationFn: updatePassword,
   });
 };
 

@@ -22,14 +22,6 @@ export const updateProfilePicture = async (
   return response.data;
 };
 
-// 비밀번호 수정
-export const updatePassword = async (
-  data: UserTypes.UpdatePasswordRequest
-): Promise<ApiResponse<UserTypes.UpdatePasswordData>> => {
-  const response = await axiosInstance.patch<ApiResponse<UserTypes.UpdatePasswordData>>('/users/password', data);
-  return response.data;
-};
-
 // 닉네임 수정
 export const updateNickname = async (
   data: UserTypes.UpdateNicknameRequest
