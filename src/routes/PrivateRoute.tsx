@@ -14,7 +14,7 @@ export const PrivateRoute = ({ children }: PrivateRouteProps) => {
   }
 
   if (!isLoggedIn) {
-    return <Navigate to="/mypage" replace />;
+    return <Navigate to="/" replace />;
   }
 
   return children;
