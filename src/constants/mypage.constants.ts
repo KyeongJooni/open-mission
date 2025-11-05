@@ -32,6 +32,9 @@ export const MYPAGE_TEXTS = {
     BIO_PLACEHOLDER: '한줄 소개',
     NICKNAME_HINT: '*20글자 이내',
     SAVE_SUCCESS: '저장했습니다!',
+    NO_USER_INFO: '유저 정보가 없습니다.',
+    NO_CHANGES: '변경된 내용이 없습니다.',
+    UPDATE_FAILED: '프로필 업데이트에 실패했습니다.',
   },
 } as const;
 
