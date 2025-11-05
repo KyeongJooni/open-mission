@@ -20,9 +20,9 @@ export const useEditProfile = ({ defaultProfileImage = '' }: UseEditProfileProps
   const { user } = UserQuery.useAuth();
   const updateUser = UserQuery.useUpdateUser();
   const updateNickname = UserQuery.useUpdateNickname();
-  const updatePassword = UserQuery.useUpdatePassword();
   const updateProfilePicture = UserQuery.useUpdateProfilePicture();
   const [previewImage, setPreviewImage] = useState<string>(defaultProfileImage);
+  const [selectedImageFile, setSelectedImageFile] = useState<File | null>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
   const [headerNickname, setHeaderNickname] = useState(user?.nickname || '');
   const [headerIntroduction, setHeaderIntroduction] = useState(user?.introduction || '');
@@ -35,21 +35,18 @@ export const useEditProfile = ({ defaultProfileImage = '' }: UseEditProfileProps
     }
   }, [user, isEditMode]);
 
-  const { uploadImage } = useS3ImageUpload({
-    onSuccess: async imageUrl => {
-      await updateProfilePicture.mutateAsync({ profilePicture: imageUrl });
-    },
-  });
+  const { uploadImage } = useS3ImageUpload();
 
-  const handleSave = (data: Partial<SignupFormData>) => {
+  const handleSave = async (data: Partial<SignupFormData>) => {
     if (!user) {
       showToast(MYPAGE_TEXTS.PROFILE.NO_USER_INFO, 'warning');
       return;
     }
 
     const changes = detectProfileChanges(data, user);
+    const hasProfileImageChange = selectedImageFile !== null;
 
-    if (changes.length === 0) {
+    if (changes.length === 0 && !hasProfileImageChange) {
       showToast(MYPAGE_TEXTS.PROFILE.NO_CHANGES, 'warning');
       return;
     }
@@ -58,6 +55,7 @@ export const useEditProfile = ({ defaultProfileImage = '' }: UseEditProfileProps
     const onSuccess = () => {
       setEditMode(false);
       showToast(MYPAGE_TEXTS.PROFILE.SAVE_SUCCESS, 'positive');
+      setSelectedImageFile(null);
       navigate(MYPAGE_ROUTES.MY_PROFILE);
     };
 
@@ -65,25 +63,41 @@ export const useEditProfile = ({ defaultProfileImage = '' }: UseEditProfileProps
       showToast(MYPAGE_TEXTS.PROFILE.UPDATE_FAILED, 'warning');
     };
 
-    // 업데이트 전략 결정
-    const strategy = getUpdateStrategy(changes);
-
-    // 단일 필드 업데이트
-    if (strategy.type === 'single' && strategy.field && strategy.value) {
-      const apiMap: Record<string, () => void> = {
-        nickname: () => updateNickname.mutate({ nickname: strategy.value as string }, { onSuccess, onError }),
-        password: () => updatePassword.mutate({ password: strategy.value as string }, { onSuccess, onError }),
-      };
-
-      if (apiMap[strategy.field]) {
-        apiMap[strategy.field]();
-        return;
+    try {
+      // 프로필 사진 업로드 (있는 경우)
+      if (hasProfileImageChange) {
+        const result = await uploadImage(selectedImageFile);
+        if (result) {
+          await updateProfilePicture.mutateAsync({ profilePicture: result });
+        }
       }
-    }
 
-    // 복수 필드 업데이트
-    const requestData = buildUpdateRequest(data, user);
-    updateUser.mutate(requestData, { onSuccess, onError });
+      // 다른 필드 업데이트
+      if (changes.length > 0) {
+        const strategy = getUpdateStrategy(changes);
+
+        // 단일 필드 업데이트
+        if (strategy.type === 'single' && strategy.field && strategy.value) {
+          const apiMap: Record<string, () => void> = {
+            nickname: () => updateNickname.mutate({ nickname: strategy.value as string }, { onSuccess, onError }),
+          };
+
+          if (apiMap[strategy.field]) {
+            apiMap[strategy.field]();
+            return;
+          }
+        }
+
+        // 복수 필드 업데이트
+        const requestData = buildUpdateRequest(data, user);
+        updateUser.mutate(requestData, { onSuccess, onError });
+      } else if (hasProfileImageChange) {
+        // 프로필 사진만 변경된 경우
+        onSuccess();
+      }
+    } catch {
+      onError();
+    }
   };
 
   const handleImageUpload = async (event: ChangeEvent<HTMLInputElement>) => {
@@ -99,8 +113,8 @@ export const useEditProfile = ({ defaultProfileImage = '' }: UseEditProfileProps
     };
     reader.readAsDataURL(file);
 
-    // S3 업로드 + 프로필 사진 업데이트
-    await uploadImage(file);
+    // 저장 버튼 클릭 시 업로드하기 위해 파일 저장
+    setSelectedImageFile(file);
   };
 
   const handleProfileImageClick = () => {
