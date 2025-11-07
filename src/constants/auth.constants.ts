@@ -13,4 +13,8 @@ export const AUTH_TEXTS = {
       SNS: 'SNS',
     },
   },
+  SIGNUP: {
+    IMAGE_UPLOADED: '이미지가 업로드되었습니다.',
+    SIGNUP_FAILED: '회원가입을 할 수 없습니다.',
+  },
 } as const;

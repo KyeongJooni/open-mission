@@ -9,6 +9,7 @@ import { useNavigate } from 'react-router-dom';
 import { useToast } from '@/contexts/ToastContext';
 import { setAccessToken, setRefreshToken } from '@/api/apiInstance';
 import { useAuthStore } from '@/stores/useAuthStore';
+import { AUTH_TEXTS } from '@/constants';
 
 interface UseSignupReturn {
   previewImage: string;
@@ -68,7 +69,7 @@ export const useSignup = (defaultImage: string): UseSignupReturn => {
     const imageUrl = await uploadImage(file);
     if (imageUrl) {
       setUploadedImageUrl(imageUrl);
-      showToast('이미지가 업로드되었습니다.', 'positive');
+      showToast(AUTH_TEXTS.SIGNUP.IMAGE_UPLOADED, 'positive');
     }
   };
 
@@ -103,7 +104,7 @@ export const useSignup = (defaultImage: string): UseSignupReturn => {
             navigate('/');
           },
           onError: () => {
-            showToast('회원가입을 할 수 없습니다.', 'warning');
+            showToast(AUTH_TEXTS.SIGNUP.SIGNUP_FAILED, 'warning');
           },
         }
       );
@@ -125,7 +126,7 @@ export const useSignup = (defaultImage: string): UseSignupReturn => {
             setIsCompleteModalOpen(true);
           },
           onError: () => {
-            showToast('회원가입을 할 수 없습니다.', 'warning');
+            showToast(AUTH_TEXTS.SIGNUP.SIGNUP_FAILED, 'warning');
           },
         }
       );
