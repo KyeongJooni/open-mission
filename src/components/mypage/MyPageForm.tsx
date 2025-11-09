@@ -2,7 +2,7 @@ import { useNavigate } from 'react-router-dom';
 import { cn } from '@/utils/cn';
 import LoginLogo from '@/components/auth/LoginLogo';
 import LoginForm from '@/components/auth/LoginForm';
-import { MYPAGE_TEXTS, MYPAGE_ROUTES, KAKAO_AUTH_URL } from '@/constants';
+import { MYPAGE_TEXTS, ROUTES, KAKAO_AUTH_URL } from '@/constants';
 import { MyPageFormProps } from '@/types/mypage';
 
 const STYLES = {
@@ -15,7 +15,7 @@ const MyPageForm = ({ className, children }: MyPageFormProps) => {
   const navigate = useNavigate();
 
   const handleEmailSignup = () => {
-    navigate(MYPAGE_ROUTES.SIGNUP);
+    navigate(ROUTES.MYPAGE.SIGNUP);
   };
 
   const handleKakaoSignup = () => {
