@@ -25,6 +25,7 @@ export const useBlogWrite = () => {
     markdownContent,
     setMarkdownContent,
     setEditPostId,
+    reset,
   } = useBlogWriteStore();
 
   // 수정 모드일 때 블로그 데이터 불러오기
@@ -66,6 +67,13 @@ export const useBlogWrite = () => {
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
   }, [mode, setMode]);
+
+  // 페이지 이탈 시 에디터 상태 초기화
+  useEffect(() => {
+    return () => {
+      reset();
+    };
+  }, [reset]);
 
   // ReactQuill 모듈 설정
   const modules = useMemo(

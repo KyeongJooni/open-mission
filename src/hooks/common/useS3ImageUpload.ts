@@ -36,7 +36,6 @@ export const useS3ImageUpload = (options?: UseImageUploadOptions) => {
 
       return imageUrl;
     } catch (error) {
-      console.error('이미지 업로드 실패:', error);
       showToast(IMAGE_TEXTS.UPLOAD.FAILED, 'warning');
 
       // 에러 콜백

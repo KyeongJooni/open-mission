@@ -50,7 +50,6 @@ export const useWriteTypeHeader = () => {
     }
 
     const payload = convertToApiFormat(title, content, mode === 'markdown');
-    console.log('Sending payload:', JSON.stringify(payload, null, 2));
 
     try {
       if (editPostId) {

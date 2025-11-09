@@ -1,5 +1,23 @@
 import type { CreatePostPayload, ContentItem } from '@/types/blog';
 
+const MAX_CONTENT_LENGTH = 255;
+
+const splitContentByLength = (text: string, maxLength: number): string[] => {
+  const chunks: string[] = [];
+  let remaining = text;
+
+  while (remaining.length > maxLength) {
+    chunks.push(remaining.substring(0, maxLength));
+    remaining = remaining.substring(maxLength);
+  }
+
+  if (remaining) {
+    chunks.push(remaining);
+  }
+
+  return chunks;
+};
+
 export const convertToApiFormat = (title: string, content: string, isMarkdown = false): CreatePostPayload => {
   if (isMarkdown) {
     const imageRegex = /!\[([^\]]*)\]\(([^)]+)\)/g;
@@ -12,10 +30,13 @@ export const convertToApiFormat = (title: string, content: string, isMarkdown = 
       const textBefore = content.substring(lastIndex, match.index).trim();
 
       if (textBefore) {
-        contents.push({
-          contentOrder: order++,
-          content: textBefore,
-          contentType: 'TEXT',
+        const chunks = splitContentByLength(textBefore, MAX_CONTENT_LENGTH);
+        chunks.forEach(chunk => {
+          contents.push({
+            contentOrder: order++,
+            content: chunk,
+            contentType: 'TEXT',
+          });
         });
       }
 
@@ -31,18 +52,25 @@ export const convertToApiFormat = (title: string, content: string, isMarkdown = 
 
     const remainingText = content.substring(lastIndex).trim();
     if (remainingText) {
-      contents.push({
-        contentOrder: order++,
-        content: remainingText,
-        contentType: 'TEXT',
+      const chunks = splitContentByLength(remainingText, MAX_CONTENT_LENGTH);
+      chunks.forEach(chunk => {
+        contents.push({
+          contentOrder: order++,
+          content: chunk,
+          contentType: 'TEXT',
+        });
       });
     }
 
     if (contents.length === 0) {
-      contents.push({
-        contentOrder: 1,
-        content: content.trim(),
-        contentType: 'TEXT',
+      const textContent = content.trim();
+      const chunks = splitContentByLength(textContent, MAX_CONTENT_LENGTH);
+      chunks.forEach(chunk => {
+        contents.push({
+          contentOrder: order++,
+          content: chunk,
+          contentType: 'TEXT',
+        });
       });
     }
 
@@ -76,10 +104,13 @@ export const convertToApiFormat = (title: string, content: string, isMarkdown = 
     if (node.nodeType === Node.TEXT_NODE && insideImgBlock) {
       const text = node.textContent?.trim();
       if (text) {
-        contents.push({
-          contentOrder: order++,
-          content: text,
-          contentType: 'TEXT',
+        const chunks = splitContentByLength(text, MAX_CONTENT_LENGTH);
+        chunks.forEach(chunk => {
+          contents.push({
+            contentOrder: order++,
+            content: chunk,
+            contentType: 'TEXT',
+          });
         });
       }
       return;
@@ -98,10 +129,13 @@ export const convertToApiFormat = (title: string, content: string, isMarkdown = 
         const text = element.textContent?.trim();
         if (text) {
           const htmlContent = element.outerHTML.trim();
-          contents.push({
-            contentOrder: order++,
-            content: htmlContent,
-            contentType: 'TEXT',
+          const chunks = splitContentByLength(htmlContent, MAX_CONTENT_LENGTH);
+          chunks.forEach(chunk => {
+            contents.push({
+              contentOrder: order++,
+              content: chunk,
+              contentType: 'TEXT',
+            });
           });
         }
       } else {
