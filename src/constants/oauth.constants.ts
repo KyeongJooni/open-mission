@@ -7,8 +7,3 @@ export const KAKAO_RESPONSE_CODE = {
   SUCCESS: 200,
   SIGNUP_REQUIRED: 401,
 } as const;
-
-export const KAKAO_REDIRECT_PATH = {
-  HOME: '/',
-  SIGNUP: '/mypage/signup',
-} as const;

@@ -1,9 +1,4 @@
-export const MYPAGE_ROUTES = {
-  BASE: '/mypage',
-  MY_PROFILE: '/mypage/myprofile',
-  EDIT_PROFILE: '/mypage/editprofile',
-  SIGNUP: '/mypage/signup',
-} as const;
+import { ROUTES } from './routes.constants';
 
 export const MYPAGE_TEXTS = {
   BUTTONS: {
@@ -39,11 +34,11 @@ export const MYPAGE_TEXTS = {
 } as const;
 
 export const MYPAGE_HEADER_CONTENT = {
-  [MYPAGE_ROUTES.BASE]: {
+  [ROUTES.MYPAGE.BASE]: {
     title: '회원가입',
     subtitle: undefined,
   },
-  [MYPAGE_ROUTES.SIGNUP]: {
+  [ROUTES.MYPAGE.SIGNUP]: {
     title: '회원가입',
     subtitle: '가입을 위해 회원님의 정보를 입력해주세요.',
   },
