@@ -33,6 +33,8 @@ const BlogWritePage = () => {
     editorStyles,
     getButtonProps,
     quillRef,
+    handleImageDrop,
+    handleImagePaste,
   } = useBlogWrite();
 
   const isMobile = useIsMobile();
@@ -55,7 +57,12 @@ const BlogWritePage = () => {
 
         <div className={styles.editorContainer()}>
           {isMobile ? (
-            <div className={styles.editorWrapper()}>
+            <div
+              className={styles.editorWrapper()}
+              onDrop={handleImageDrop}
+              onDragOver={e => e.preventDefault()}
+              onPaste={handleImagePaste}
+            >
               <div className="m-mobile-quill w-full max-w-content">
                 <ReactQuill
                   ref={quillRef}
@@ -71,7 +78,12 @@ const BlogWritePage = () => {
           ) : (
             <>
               {mode === 'basic' ? (
-                <div className="desktop-quill w-full">
+                <div
+                  className="desktop-quill w-full"
+                  onDrop={handleImageDrop}
+                  onDragOver={e => e.preventDefault()}
+                  onPaste={handleImagePaste}
+                >
                   <ReactQuill
                     ref={quillRef}
                     value={basicContent}
@@ -82,7 +94,12 @@ const BlogWritePage = () => {
                   />
                 </div>
               ) : (
-                <div className={styles.editorWrapper()}>
+                <div
+                  className={styles.editorWrapper()}
+                  onDrop={handleImageDrop}
+                  onDragOver={e => e.preventDefault()}
+                  onPaste={handleImagePaste}
+                >
                   <MDEditor
                     value={markdownContent}
                     onChange={val => setMarkdownContent(val || '')}
