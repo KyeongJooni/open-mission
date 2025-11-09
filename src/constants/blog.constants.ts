@@ -1,4 +1,7 @@
 export const BLOG_TEXTS = {
+  POST_DETAILS: {
+    COMMENT_LABEL: '댓글',
+  },
   COMMENTS: {
     TITLE: '댓글',
     NO_COMMENTS_LINE1: '작성된 댓글이 없습니다.',

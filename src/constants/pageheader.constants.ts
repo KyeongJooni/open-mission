@@ -21,6 +21,11 @@ export const PAGEHEADER_TEXTS = {
       CANCEL: '취소',
       CONFIRM: '삭제하기',
     },
+    TOAST: {
+      NO_ID: '게시글 ID를 찾을 수 없습니다',
+      DELETE_SUCCESS: '게시글이 삭제되었습니다',
+      DELETE_FAILED: '게시글 삭제에 실패했습니다',
+    },
   },
 
   // 작성 페이지 헤더
@@ -32,6 +37,15 @@ export const PAGEHEADER_TEXTS = {
       DELETE_DESCRIPTION: '삭제된 블로그는 다시 확인할 수 없어요.',
       CANCEL: '취소',
       CONFIRM: '삭제하기',
+    },
+    TOAST: {
+      EMPTY_CONTENT: '내용을 입력해주세요',
+      EMPTY_TITLE: '제목을 입력해주세요',
+      CREATE_SUCCESS: '저장되었습니다!',
+      UPDATE_SUCCESS: '수정되었습니다!',
+      SAVE_FAILED: '게시글 저장에 실패했습니다',
+      UPDATE_FAILED: '게시글 수정에 실패했습니다',
+      SERVER_ERROR: '서버 오류가 발생했습니다',
     },
   },
 
