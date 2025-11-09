@@ -1,51 +1,47 @@
 import { useParams } from 'react-router-dom';
-import { useState, useEffect } from 'react';
-import { BlogPostSection, BlogCommentSection, BlogAuthorSection, Spacer } from '@/components';
 import {
-  mockPostDetail,
-  mockPostDetailNoComments,
-  mockPostDetailWithMyComments,
-  mockPostDetailByHongGilDong,
-} from '@/_mocks_/mockPostDetail';
+  BlogPostSection,
+  BlogCommentSection,
+  BlogAuthorSection,
+  Spacer,
+  LoadingSpinner,
+  ErrorMessage,
+} from '@/components';
 import { useAuth } from '@/api/user/userQuery';
-import type { PostDetail } from '@/types/blog';
+import { useBlogDetailQuery } from '@/api/blog/blogQuery';
 
 const BlogDetailPage = () => {
   const { id } = useParams();
-  const { isLoggedIn, user } = useAuth();
-  const [postData, setPostData] = useState<PostDetail>(mockPostDetail);
+  const { isLoggedIn, user, isLoading: authLoading } = useAuth();
+  const { data: blogData, isLoading: blogLoading } = useBlogDetailQuery(id, isLoggedIn, !authLoading);
 
-  useEffect(() => {
-    // TODO: API 연결 시 삭제예정 - localStorage에서 저장된 블로그 찾기
-    const savedPosts = JSON.parse(localStorage.getItem('blogPosts') || '[]');
-    const savedPost = savedPosts.find((post: PostDetail) => post.postId === Number(id));
+  if (authLoading || blogLoading) {
+    return <LoadingSpinner />;
+  }
 
-    if (savedPost) {
-      // TODO: API 연결 시 삭제예정 - localStorage에서 찾은 경우
-      setPostData(savedPost);
-    } else {
-      // Mock 데이터에서 찾기
-      const mockData =
-        id === '1001'
-          ? mockPostDetailByHongGilDong
-          : id === '998'
-            ? mockPostDetailNoComments
-            : id === '997'
-              ? mockPostDetailWithMyComments
-              : mockPostDetail;
-      setPostData(mockData);
-    }
-  }, [id]);
+  if (!blogData?.data) {
+    return <ErrorMessage />;
+  }
+
+  const post = blogData.data;
 
   return (
     <>
-      <BlogPostSection title={postData.title} contents={postData.contents} />
+      <BlogPostSection
+        title={post.title}
+        contents={post.contents}
+        nickName={post.nickName}
+        profileUrl={post.profileUrl}
+        createdAt={post.createdAt}
+        commentCount={post.comments.length}
+      />
       <BlogCommentSection
-        comments={postData.comments}
+        comments={post.comments}
         isLoggedIn={isLoggedIn}
         currentUserNickName={user?.nickname || 'User'}
+        currentUserProfileUrl={user?.profilePicture}
       />
-      <BlogAuthorSection nickName={postData.nickName} introduction={postData.introduction} />
+      <BlogAuthorSection nickName={post.nickName} profileUrl={post.profileUrl} introduction={post.introduction} />
       <Spacer height="custom" />
     </>
   );
