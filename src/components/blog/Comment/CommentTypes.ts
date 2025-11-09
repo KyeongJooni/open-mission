@@ -10,5 +10,6 @@ export interface CommentItemProps {
 
 export interface CommentInputProps {
   nickName: string;
+  profileUrl?: string;
   onSubmit?: (content: string) => void;
 }

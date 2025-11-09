@@ -6,15 +6,7 @@ import { CommentItemProps } from '@/components/blog/Comment/CommentTypes';
 import { profileStyles, commentItemStyles } from '@/components/blog/Comment/Comment.styles';
 import { useAuthStore } from '@/stores/useAuthStore';
 
-const CommentItem = ({
-  commentId,
-  content,
-  nickName,
-  profileUrl: _profileUrl,
-  createdAt,
-  isOwner,
-  onDelete,
-}: CommentItemProps) => {
+const CommentItem = ({ commentId, content, nickName, profileUrl, createdAt, isOwner, onDelete }: CommentItemProps) => {
   const styles = commentItemStyles();
   const profileStyle = profileStyles();
   const isLoggedIn = useAuthStore(state => state.isLoggedIn);
@@ -35,7 +27,7 @@ const CommentItem = ({
           <div className={styles.headerLayout()}>
             <div className={profileStyle.profileSection()}>
               <div className={profileStyle.profileImageWrapper()}>
-                <img src={profileImage} alt="profile" className={profileStyle.profileImage()} />
+                <img src={profileUrl || profileImage} alt="profile" className={profileStyle.profileImage()} />
               </div>
               <div className={profileStyle.userInfo()}>
                 <span className={profileStyle.nickName()}>{nickName}</span>
