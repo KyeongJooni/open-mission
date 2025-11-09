@@ -1,21 +1,23 @@
 import { MainPreviewCard as BlogPreviewCard, Spacer, LoadingSpinner, ErrorMessage } from '@/components';
-import { useBlogsQuery } from '@/api/blog/blogQuery';
 import { useAuth } from '@/api/user/userQuery';
 import { getFirstTextContent, getFirstImageUrl, truncateText } from '@/utils/blogContentExtractor';
+import { useInfiniteScroll } from '@/hooks/common/useInfiniteScroll';
 
 const MainPage = () => {
   const { isLoggedIn, isLoading: authLoading } = useAuth();
-  const { data: blogsData, isLoading: blogsLoading } = useBlogsQuery(1, 10, isLoggedIn, !authLoading);
+  const { blogs, observerRef, isLoading, isFetchingNextPage, hasNextPage, isError } = useInfiniteScroll({
+    size: 10,
+    isLoggedIn,
+    enabled: !authLoading,
+  });
 
-  if (authLoading || blogsLoading) {
+  if (authLoading || isLoading) {
     return <LoadingSpinner />;
   }
 
-  if (!blogsData?.data) {
+  if (isError) {
     return <ErrorMessage />;
   }
-
-  const blogs = blogsData.data.posts || [];
 
   return (
     <div>
@@ -39,6 +41,12 @@ const MainPage = () => {
           />
         );
       })}
+
+      {hasNextPage && (
+        <div ref={observerRef} style={{ height: '20px', margin: '20px 0' }}>
+          {isFetchingNextPage && <LoadingSpinner />}
+        </div>
+      )}
     </div>
   );
 };
