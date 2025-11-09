@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { useQueryClient } from '@tanstack/react-query';
 import { useModalStore } from '@/stores/useModalStore';
 import { useAuthStore } from '@/stores/useAuthStore';
-import { MYPAGE_ROUTES, SIDEBAR_TEXTS, SIDEBAR_ROUTES, SIDEBAR_MODAL_TYPES } from '@/constants';
+import { SIDEBAR_TEXTS, ROUTES, SIDEBAR_MODAL_TYPES } from '@/constants';
 
 export const useSidebar = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
@@ -58,17 +58,16 @@ export const useSidebar = () => {
   };
 
   const handleMyGitlog = () => {
-    navigate(MYPAGE_ROUTES.MY_PROFILE);
+    navigate(ROUTES.MYPAGE.MY_PROFILE);
     dispatchClose();
   };
 
   const handleWriteGitlog = () => {
-    navigate(SIDEBAR_ROUTES.BLOG_WRITE);
+    navigate(ROUTES.BLOG.WRITE);
     dispatchClose();
   };
 
   const handleSettings = () => {
-    // TODO: 설정 페이지 라우팅
     dispatchClose();
   };
 
@@ -77,7 +76,7 @@ export const useSidebar = () => {
       logout();
       queryClient.clear();
       closeModal();
-      navigate(SIDEBAR_ROUTES.HOME);
+      navigate(ROUTES.HOME);
       dispatchClose();
     };
 
