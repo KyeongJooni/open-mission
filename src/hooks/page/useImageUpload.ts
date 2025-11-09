@@ -13,7 +13,7 @@ interface UseImageUploadProps {
 export const useImageUpload = ({ mode, markdownContent, setMarkdownContent, quillRef }: UseImageUploadProps) => {
   const { uploadImage: uploadImageToS3 } = useS3ImageUpload();
 
-  // ReactQuill 에디터에 이미지 삽입
+  // ReactQuill 에디터 이미지 삽입
   const insertImageToQuill = useCallback(
     (imageUrl: string) => {
       const quill = quillRef?.current?.getEditor();
@@ -34,7 +34,7 @@ export const useImageUpload = ({ mode, markdownContent, setMarkdownContent, quil
     [quillRef]
   );
 
-  // 마크다운 에디터에 이미지 삽입
+  // 마크다운 에디터 이미지 삽입
   const insertImageToMarkdown = useCallback(
     (imageUrl: string, fileName: string) => {
       const imageMarkdown = `\n![${fileName}](${imageUrl})\n`;
@@ -52,7 +52,7 @@ export const useImageUpload = ({ mode, markdownContent, setMarkdownContent, quil
         return;
       }
 
-      // 모드에 따라 다른 방식으로 이미지 삽입
+      // 모드 별 이미지 삽입
       if (mode === 'basic') {
         insertImageToQuill(imageUrl);
       } else if (mode === 'markdown') {
@@ -64,7 +64,42 @@ export const useImageUpload = ({ mode, markdownContent, setMarkdownContent, quil
     [mode, uploadImageToS3, insertImageToQuill, insertImageToMarkdown]
   );
 
+  // 이미지 드롭 핸들러
+  const handleImageDrop = useCallback(
+    async (e: React.DragEvent<HTMLDivElement>) => {
+      e.preventDefault();
+      const files = Array.from(e.dataTransfer.files);
+      const imageFiles = files.filter(file => file.type.startsWith('image/'));
+
+      for (const file of imageFiles) {
+        await handleImageUpload(file);
+      }
+    },
+    [handleImageUpload]
+  );
+
+  // 이미지 붙여넣기 핸들러
+  const handleImagePaste = useCallback(
+    async (e: React.ClipboardEvent<HTMLDivElement>) => {
+      const items = Array.from(e.clipboardData.items);
+      const imageItems = items.filter(item => item.type.startsWith('image/'));
+
+      if (imageItems.length > 0) {
+        e.preventDefault();
+        for (const item of imageItems) {
+          const file = item.getAsFile();
+          if (file) {
+            await handleImageUpload(file);
+          }
+        }
+      }
+    },
+    [handleImageUpload]
+  );
+
   return {
     handleImageUpload,
+    handleImageDrop,
+    handleImagePaste,
   };
 };
