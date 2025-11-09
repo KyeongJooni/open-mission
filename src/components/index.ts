@@ -3,19 +3,21 @@ export { default as Button } from '@/components/common/Button/Button';
 export { default as Divider } from '@/components/common/Divider/Divider';
 export { default as DropdownMenu } from '@/components/common/Dropdown/DropdownMenu';
 export { default as DropdownMenuList } from '@/components/common/Dropdown/DropdownMenuList';
+export { ErrorMessage } from '@/components/common/Error/ErrorMessage';
 export { default as Icon } from '@/components/common/Icon/Icon';
+export { LoadingSpinner } from '@/components/common/Loading/LoadingSpinner';
 export { default as Modal } from '@/components/common/Modal/Modal';
-export { default as PageHeader } from '@/components/common/Pageheader/PageHeader';
-export { default as PageHeaderLeft } from '@/components/common/Pageheader/PageHeaderLeft';
-export { default as PageHeaderLegacy } from '@/components/common/Pageheader/PageHeaderLegacy';
-export { default as PageHeaderRight } from '@/components/common/Pageheader/PageHeaderRight';
+export { default as PageHeader } from '@/components/common/PageHeader/PageHeader';
+export { default as PageHeaderLeft } from '@/components/common/PageHeader/PageHeaderLeft';
+export { default as PageHeaderLegacy } from '@/components/common/PageHeader/PageHeaderLegacy';
+export { default as PageHeaderRight } from '@/components/common/PageHeader/PageHeaderRight';
 export { default as Pagination } from '@/components/common/Pagination/Pagination';
 export { default as PaginationButton } from '@/components/common/Pagination/PaginationButton';
 export { default as Portal } from '@/components/common/Portal/Portal';
 export { default as Spacer } from '@/components/common/Spacer/Spacer';
 export { default as TextField } from '@/components/common/Text/TextField';
 export { default as Textarea } from '@/components/common/Text/Textarea';
-export { default as TextBox } from '@/components/common/Textbox/TextBox';
+export { default as TextBox } from '@/components/common/TextBox/TextBox';
 export { default as Toast } from '@/components/common/Toast/Toast';
 
 // Blog Components
