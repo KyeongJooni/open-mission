@@ -4,12 +4,12 @@ import {
   WriteTypeHeader,
   MypageTypeHeader,
   EditProfileTypeHeader,
-} from '@/components/common/Pageheader/RightRenders';
+} from '@/components/common/PageHeader/RightRenders';
 import { RenderProps } from '@/types/pageheader';
 
 export const PageHeaderRenderers = {
   main: (_props?: RenderProps) => <MainTypeHeader />,
-  detail: (props?: RenderProps) => <DetailTypeHeader isOwner={props?.isOwner} />,
+  detail: (_props?: RenderProps) => <DetailTypeHeader />,
   write: (_props?: RenderProps) => <WriteTypeHeader />,
   mypage: (_props?: RenderProps) => <MypageTypeHeader />,
   editprofile: (props?: RenderProps) => <EditProfileTypeHeader {...props} />,

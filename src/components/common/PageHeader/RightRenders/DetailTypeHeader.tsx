@@ -3,13 +3,20 @@ import { Icon, DropdownMenu, Modal } from '@/components';
 import { useAuthStore } from '@/stores/useAuthStore';
 import { useDetailTypeHeader } from '@/hooks';
 import { PAGEHEADER_TEXTS } from '@/constants';
+import { useParams, useLocation } from 'react-router-dom';
+import { useBlogDetailQuery } from '@/api/blog/blogQuery';
+import { useAuth } from '@/api/user/userQuery';
 
-interface DetailTypeHeaderProps {
-  isOwner?: boolean;
-}
-
-export const DetailTypeHeader = ({ isOwner = false }: DetailTypeHeaderProps) => {
+export const DetailTypeHeader = () => {
   const isLoggedIn = useAuthStore(state => state.isLoggedIn);
+  const { id } = useParams();
+  const location = useLocation();
+  const { isLoading: authLoading } = useAuth();
+
+  // isOwner 체크
+  const isBlogDetailPage = location.pathname.includes('/blog/') && id;
+  const { data: blogData } = useBlogDetailQuery(id, isLoggedIn, !authLoading && Boolean(isBlogDetailPage));
+  const isOwner = isBlogDetailPage ? (blogData?.data?.isOwner ?? false) : false;
   const {
     handleChatClick,
     handleEdit,
