@@ -9,6 +9,7 @@ interface BlogCommentSectionProps {
   comments: Comment[];
   isLoggedIn?: boolean;
   currentUserNickName?: string;
+  currentUserProfileUrl?: string;
 }
 
 const blogCommentSection = tv({
@@ -33,6 +34,7 @@ const BlogCommentSection = ({
   comments: initialComments,
   isLoggedIn = false,
   currentUserNickName = 'User',
+  currentUserProfileUrl,
 }: BlogCommentSectionProps) => {
   const styles = blogCommentSection();
   const { modalType, confirmButtonText, onModalConfirm, openModal, closeModal } = useModalStore();
@@ -78,7 +80,11 @@ const BlogCommentSection = ({
       )}
       <Spacer height="sm" className="w-full max-w-content" />
       {isLoggedIn ? (
-        <CommentInput nickName={currentUserNickName} onSubmit={handleCommentSubmit} />
+        <CommentInput
+          nickName={currentUserNickName}
+          profileUrl={currentUserProfileUrl}
+          onSubmit={handleCommentSubmit}
+        />
       ) : (
         <div className={styles.loginPromptWrapper()}>
           <div className={styles.loginPromptInner()}>

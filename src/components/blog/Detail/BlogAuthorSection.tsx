@@ -4,6 +4,7 @@ import { MYPAGE_TEXTS } from '@/constants';
 
 interface BlogAuthorSectionProps {
   nickName: string;
+  profileUrl?: string;
   introduction?: string;
 }
 
@@ -13,7 +14,7 @@ const blogAuthorSection = tv({
   },
 });
 
-const BlogAuthorSection = ({ nickName, introduction }: BlogAuthorSectionProps) => {
+const BlogAuthorSection = ({ nickName, profileUrl, introduction }: BlogAuthorSectionProps) => {
   const styles = blogAuthorSection();
 
   return (
@@ -22,6 +23,7 @@ const BlogAuthorSection = ({ nickName, introduction }: BlogAuthorSectionProps) =
       <MyPageHeader
         isEditMode={false}
         nickname={nickName}
+        profilePicture={profileUrl}
         bio={introduction || MYPAGE_TEXTS.PROFILE.DEFAULT_BIO}
         onEditClick={() => {}}
         showSettingsButton={false}

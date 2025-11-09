@@ -1,10 +1,15 @@
 import { tv } from 'tailwind-variants';
 import { Spacer, PostHeader, PostDetails, PostBody } from '@/components';
 import { ContentItem } from '@/types/blog';
+import { hasMarkdownSyntax } from '@/utils/markdownDetector';
 
 interface BlogPostSectionProps {
   title: string;
   contents: ContentItem[];
+  nickName: string;
+  profileUrl?: string;
+  createdAt: string;
+  commentCount: number;
 }
 
 const blogPostSection = tv({
@@ -16,11 +21,14 @@ const blogPostSection = tv({
   },
 });
 
-const BlogPostSection = ({ title, contents }: BlogPostSectionProps) => {
+const BlogPostSection = ({ title, contents, nickName, profileUrl, createdAt, commentCount }: BlogPostSectionProps) => {
   const styles = blogPostSection();
 
   const contentRenderers = {
-    TEXT: (content: string, index: number) => <PostBody key={index} content={content} isMarkdown={false} />,
+    TEXT: (content: string, index: number) => {
+      const isMarkdown = hasMarkdownSyntax(content);
+      return <PostBody key={index} content={content} isMarkdown={isMarkdown} />;
+    },
     MARKDOWN: (content: string, index: number) => <PostBody key={index} content={content} isMarkdown={true} />,
     IMAGE: (content: string, index: number) => (
       <div key={index} className={styles.imageWrapper()}>
@@ -36,7 +44,7 @@ const BlogPostSection = ({ title, contents }: BlogPostSectionProps) => {
         <div className={styles.headerWrapper()}>
           <PostHeader title={title} className="w-full" />
           <Spacer height="md" className="w-full max-w-content" />
-          <PostDetails />
+          <PostDetails nickName={nickName} profileUrl={profileUrl} createdAt={createdAt} commentCount={commentCount} />
         </div>
       </div>
       <div className={styles.section()}>
