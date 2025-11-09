@@ -4,5 +4,5 @@ export const formatCommentDate = (dateString: string): string => {
   const day = date.getDate();
   const year = date.getFullYear();
 
-  return `${month} ${day}. ${year}.`;
+  return `${month}. ${day}. ${year}.`;
 };
