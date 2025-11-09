@@ -39,6 +39,17 @@ export default defineConfig(() => ({
       },
     }),
   ],
+  build: {
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          vendor: ['react', 'react-dom', 'react-router-dom'],
+          'react-query': ['@tanstack/react-query'],
+          editor: ['react-quill'],
+        },
+      },
+    },
+  },
   resolve: {
     alias: {
       '@': '/src',
@@ -48,5 +59,8 @@ export default defineConfig(() => ({
   server: {
     port: 3000,
     open: true,
+  },
+  preview: {
+    port: 3000,
   },
 }));
