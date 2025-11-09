@@ -2,7 +2,7 @@ import { tv } from 'tailwind-variants';
 
 export const postCardVariants = tv({
   // 기본 스타일
-  base: 'flex px-4 sm:px-2 py-3 flex-col justify-center items-start gap-2 self-stretch',
+  base: 'flex px-4  py-3 flex-col justify-center items-start gap-2 self-stretch',
   variants: {
     hasImage: {
       true: 'max-w-post-card-mobile md:max-w-post-card',
