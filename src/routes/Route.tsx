@@ -1,14 +1,15 @@
 import { createBrowserRouter } from 'react-router-dom';
+import { lazy, Suspense } from 'react';
 import Layout from '@/layout/Layout';
-import MainPage from '@/pages/main/MainPage';
-import BlogDetailPage from '@/pages/blog/BlogDetailPage';
-import BlogWritePage from '@/pages/blog/BlogWritePage';
-import MyPage from '@/pages/mypage/MyPage';
+import { LoadingSpinner, MyPageForm, MyProfileForm, EditProfileForm, SignupForm } from '@/components';
 import KakaoLogin from '@/components/auth/KakaoLogin';
-import { MyPageForm, MyProfileForm, EditProfileForm, SignupForm } from '@/components';
-import Playground from '@/playground/Playground';
 import { PublicRoute } from '@/routes/PublicRoute';
 import { PrivateRoute } from '@/routes/PrivateRoute';
+
+const MainPage = lazy(() => import('@/pages/main/MainPage'));
+const BlogDetailPage = lazy(() => import('@/pages/blog/BlogDetailPage'));
+const BlogWritePage = lazy(() => import('@/pages/blog/BlogWritePage'));
+const MyPage = lazy(() => import('@/pages/mypage/MyPage'));
 
 const router = createBrowserRouter([
   {
@@ -17,23 +18,37 @@ const router = createBrowserRouter([
     children: [
       {
         index: true,
-        element: <MainPage />,
+        element: (
+          <Suspense fallback={<LoadingSpinner />}>
+            <MainPage />
+          </Suspense>
+        ),
       },
       {
         path: 'blog/:id',
-        element: <BlogDetailPage />,
+        element: (
+          <Suspense fallback={<LoadingSpinner />}>
+            <BlogDetailPage />
+          </Suspense>
+        ),
       },
       {
         path: 'blog/write',
         element: (
           <PrivateRoute>
-            <BlogWritePage />
+            <Suspense fallback={<LoadingSpinner />}>
+              <BlogWritePage />
+            </Suspense>
           </PrivateRoute>
         ),
       },
       {
         path: 'mypage',
-        element: <MyPage />,
+        element: (
+          <Suspense fallback={<LoadingSpinner />}>
+            <MyPage />
+          </Suspense>
+        ),
         children: [
           {
             index: true,
@@ -68,10 +83,6 @@ const router = createBrowserRouter([
             ),
           },
         ],
-      },
-      {
-        path: 'playground',
-        element: <Playground />,
       },
       {
         path: 'oauth/kakao/success',
