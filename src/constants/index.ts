@@ -5,3 +5,4 @@ export * from './blog.constants';
 export * from './pageheader.constants';
 export * from './oauth.constants';
 export * from './image.constants';
+export * from './routes.constants';
