@@ -39,6 +39,3 @@ export { default as MyPageForm } from '@/components/mypage/MyPageForm';
 export { default as MyPageHeader } from '@/components/mypage/MyPageHeader';
 export { default as MyProfileForm } from '@/components/mypage/MyProfileForm';
 export { default as SignupForm } from '@/components/mypage/SignupForm';
-
-// UI Components
-export { default as Menu } from '@/components/ui/Menu';
