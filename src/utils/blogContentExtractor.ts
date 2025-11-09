@@ -47,7 +47,7 @@ export const getFirstImageUrl = (contents: BlogContent[]): string | undefined =>
 };
 
 // 텍스트 미리보기
-export const truncateText = (text: string, maxLength = 102): string => {
+export const truncateText = (text: string, maxLength = 100): string => {
   if (text.length <= maxLength) {
     return text;
   }

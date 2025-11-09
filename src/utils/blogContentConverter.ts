@@ -41,10 +41,8 @@ export const parseApiContentToEditor = (contents: ContentItem[]): { content: str
     .sort((a, b) => a.contentOrder - b.contentOrder)
     .forEach((item, index) => {
       if (item.contentType === 'TEXT') {
-        // 이미 HTML 태그가 포함되어 있으므로 그대로 추가
         htmlParts.push(item.content);
 
-        // 다음 항목도 TEXT인 경우에만 줄바꿈 추가
         const nextItem = contents[index + 1];
         if (nextItem && nextItem.contentType === 'TEXT') {
           htmlParts.push('<p><br></p>');
