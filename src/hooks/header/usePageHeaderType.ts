@@ -1,11 +1,11 @@
 import { useLocation } from 'react-router-dom';
-import { MYPAGE_ROUTES } from '@/constants';
+import { ROUTES } from '@/constants';
 import { PageHeaderType } from '@/types/pageheader';
 
 export const usePageHeaderType = (): PageHeaderType => {
   const location = useLocation();
 
-  if (location.pathname === '/') {
+  if (location.pathname === ROUTES.HOME) {
     return 'main';
   }
 
@@ -13,11 +13,11 @@ export const usePageHeaderType = (): PageHeaderType => {
     return 'write';
   }
 
-  if (location.pathname === MYPAGE_ROUTES.MY_PROFILE) {
+  if (location.pathname === ROUTES.MYPAGE.MY_PROFILE) {
     return 'main';
   }
 
-  if (location.pathname === MYPAGE_ROUTES.EDIT_PROFILE) {
+  if (location.pathname === ROUTES.MYPAGE.EDIT_PROFILE) {
     return 'editprofile';
   }
 

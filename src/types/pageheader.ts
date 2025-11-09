@@ -17,7 +17,6 @@ export type PageHeaderProps = ComponentWithBase<
   ComponentWithActions<{
     type: PageHeaderType;
     onHamburgerClick?: () => void;
-    isOwner?: boolean;
   }>
 >;
 
@@ -29,13 +28,10 @@ export type PageHeaderLeftProps = {
 // PageHeaderRight
 export type PageHeaderRightProps = ComponentWithActions<{
   type: PageHeaderType;
-  isOwner?: boolean;
 }>;
 
 // RightRenders
-export type RenderProps = HeaderActionProps & {
-  isOwner?: boolean;
-};
+export type RenderProps = HeaderActionProps;
 
 // DetailTypeHeader 훅
 export interface DetailTypeHeaderReturn {
