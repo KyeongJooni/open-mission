@@ -1,17 +1,57 @@
 import { useMemo, useEffect, useRef, useCallback } from 'react';
 import type ReactQuill from 'react-quill';
+import { useSearchParams } from 'react-router-dom';
 import { BLOG_TEXTS } from '@/constants/blog.constants';
 import { getEditorStyles } from '@/styles/editor.styles';
 import { useImageUpload } from './useImageUpload';
 import { useBlogWriteStore } from '@/stores/useBlogWriteStore';
+import { useBlogDetailQuery } from '@/api/blog/blogQuery';
+import { useAuthStore } from '@/stores/useAuthStore';
+import { parseApiContentToEditor } from '@/utils/blogContentConverter';
 
 export const useBlogWrite = () => {
-  // 에디터 상태 관리
-  const { title, setTitle, mode, setMode, basicContent, setBasicContent, markdownContent, setMarkdownContent } =
-    useBlogWriteStore();
+  const [searchParams] = useSearchParams();
+  const editPostId = searchParams.get('edit');
+  const isLoggedIn = useAuthStore(state => state.isLoggedIn);
 
-  // ReactQuill 에디터 ref
+  // 에디터 상태 관리
+  const {
+    title,
+    setTitle,
+    mode,
+    setMode,
+    basicContent,
+    setBasicContent,
+    markdownContent,
+    setMarkdownContent,
+    setEditPostId,
+  } = useBlogWriteStore();
+
+  // 수정 모드일 때 블로그 데이터 불러오기
+  const { data: blogData } = useBlogDetailQuery(editPostId || undefined, isLoggedIn, Boolean(editPostId));
+
+  // ReactQuill 에디터
   const quillRef = useRef<ReactQuill>(null);
+
+  // 수정 모드일 때 데이터 로드
+  useEffect(() => {
+    if (editPostId && blogData?.data) {
+      const { title: blogTitle, contents } = blogData.data;
+      const { content, editorMode } = parseApiContentToEditor(contents);
+
+      setEditPostId(editPostId);
+      setTitle(blogTitle);
+      setMode(editorMode);
+
+      if (editorMode === 'basic') {
+        setBasicContent(content);
+      } else {
+        setMarkdownContent(content);
+      }
+    } else if (!editPostId) {
+      setEditPostId(null);
+    }
+  }, [editPostId, blogData, setEditPostId, setTitle, setMode, setBasicContent, setMarkdownContent]);
 
   // 모바일 기본 모드로 전환
   useEffect(() => {
@@ -21,10 +61,8 @@ export const useBlogWrite = () => {
       }
     };
 
-    // 초기 체크
     handleResize();
 
-    // 리사이즈 이벤트 리스너 등록
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
   }, [mode, setMode]);
@@ -73,7 +111,7 @@ export const useBlogWrite = () => {
   );
 
   // 이미지 업로드
-  const { handleImageUpload } = useImageUpload({
+  const { handleImageUpload, handleImageDrop, handleImagePaste } = useImageUpload({
     mode,
     markdownContent,
     setMarkdownContent,
@@ -102,5 +140,7 @@ export const useBlogWrite = () => {
     // 헬퍼 함수
     getButtonProps,
     handleImageUpload,
+    handleImageDrop,
+    handleImagePaste,
   };
 };
