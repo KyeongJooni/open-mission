@@ -4,13 +4,27 @@ import MainPreviewImage from './MainPreviewImage';
 
 interface BlogPreviewCardProps {
   className?: string;
-  id: number;
+  id: number | string;
   title: string;
   content?: string;
   imageSrc?: string;
+  nickName: string;
+  profileUrl?: string;
+  createdAt: string;
+  commentCount: number;
 }
 
-const BlogPreviewCard = ({ className = '', id, title = '', content, imageSrc }: BlogPreviewCardProps) => {
+const BlogPreviewCard = ({
+  className = '',
+  id,
+  title = '',
+  content,
+  imageSrc,
+  nickName,
+  profileUrl,
+  createdAt,
+  commentCount,
+}: BlogPreviewCardProps) => {
   const navigate = useNavigate();
 
   const handleClick = () => {
@@ -21,7 +35,7 @@ const BlogPreviewCard = ({ className = '', id, title = '', content, imageSrc }: 
     <div className={`blog-preview-row ${className} cursor-pointer`} onClick={handleClick}>
       <div className="flex flex-col">
         <PostCard title={title} content={content} hasImage={Boolean(imageSrc)} />
-        <PostDetails />
+        <PostDetails nickName={nickName} profileUrl={profileUrl} createdAt={createdAt} commentCount={commentCount} />
       </div>
       {imageSrc && <MainPreviewImage src={imageSrc} />}
     </div>
