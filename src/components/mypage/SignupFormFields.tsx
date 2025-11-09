@@ -6,7 +6,7 @@ import { SignupFormStyles } from './SignupForm.styles';
 import KakaoIcon from '@/assets/icons/common/kakao.svg?react';
 
 interface FormField {
-  name: 'email' | 'password' | 'passwordConfirm' | 'name' | 'birthDate' | 'nickname' | 'bio';
+  name: 'email' | 'password' | 'passwordConfirm' | 'name' | 'birthDate' | 'nickname' | 'introduction';
   title: string;
   type?: 'email' | 'password';
   placeholder: string;
