@@ -3,7 +3,7 @@ import { defineConfig } from 'vite';
 import { VitePWA } from 'vite-plugin-pwa';
 import svgr from 'vite-plugin-svgr';
 
-export default defineConfig(({ command }) => ({
+export default defineConfig(() => ({
   plugins: [
     react(),
     svgr(),
@@ -39,10 +39,6 @@ export default defineConfig(({ command }) => ({
       },
     }),
   ],
-  define: {
-    // 빌드 시에는 플레이그라운드 비활성화
-    ENABLE_PLAYGROUND: command === 'serve' ? 'true' : 'false',
-  },
   resolve: {
     alias: {
       '@': '/src',

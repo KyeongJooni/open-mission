@@ -26,5 +26,6 @@
       "@icons/*": ["src/assets/icons/*"]
     }
   },
-  "include": ["src"]
+  "include": ["src"],
+  "exclude": ["src/_mocks_", "src/playground"]
 }
