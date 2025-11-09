@@ -4,7 +4,7 @@ import { useEditModeStore } from '@/stores/useEditModeStore';
 import { useToast } from '@/contexts/ToastContext';
 import * as UserQuery from '@/api/user/userQuery';
 import { useS3ImageUpload } from '@/hooks/common/useS3ImageUpload';
-import { MYPAGE_ROUTES, MYPAGE_TEXTS } from '@/constants';
+import { ROUTES, MYPAGE_TEXTS } from '@/constants';
 import { validators } from '@/utils/validation';
 import { detectProfileChanges, getUpdateStrategy, buildUpdateRequest } from '@/utils/profileHelpers';
 import type { SignupFormData } from '@/utils/schemas';
@@ -56,7 +56,7 @@ export const useEditProfile = ({ defaultProfileImage = '' }: UseEditProfileProps
       setEditMode(false);
       showToast(MYPAGE_TEXTS.PROFILE.SAVE_SUCCESS, 'positive');
       setSelectedImageFile(null);
-      navigate(MYPAGE_ROUTES.MY_PROFILE);
+      navigate(ROUTES.MYPAGE.MY_PROFILE);
     };
 
     const onError = () => {
@@ -64,7 +64,7 @@ export const useEditProfile = ({ defaultProfileImage = '' }: UseEditProfileProps
     };
 
     try {
-      // 프로필 사진 업로드 (있는 경우)
+      // 프로필 사진 업로드
       if (hasProfileImageChange) {
         const result = await uploadImage(selectedImageFile);
         if (result) {

@@ -1,10 +1,5 @@
 import { useEffect, RefObject } from 'react';
 
-/**
- * 모달 내부에서의 포커스 트랩
- * @param ref - 포커스 트랩 컨테이너 ref
- * @param isActive - 포커스 트랩 활성화 여부
- */
 export const useFocusTrap = (ref: RefObject<HTMLElement>, isActive: boolean) => {
   useEffect(() => {
     if (!isActive || !ref.current) {

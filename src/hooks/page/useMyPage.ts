@@ -1,7 +1,7 @@
 import { useLocation, useNavigate } from 'react-router-dom';
 import { useAuth } from '@/api/user/userQuery';
 import { useEditModeStore } from '@/stores/useEditModeStore';
-import { MYPAGE_HEADER_CONTENT, MYPAGE_ROUTES } from '@/constants';
+import { MYPAGE_HEADER_CONTENT, ROUTES } from '@/constants';
 
 export const useMyPage = () => {
   const location = useLocation();
@@ -10,21 +10,21 @@ export const useMyPage = () => {
   const isEditMode = useEditModeStore(state => state.isEditMode);
 
   // 라우팅 상태
-  const isMyProfile = location.pathname === MYPAGE_ROUTES.MY_PROFILE;
-  const isEditProfile = location.pathname === MYPAGE_ROUTES.EDIT_PROFILE;
+  const isMyProfile = location.pathname === ROUTES.MYPAGE.MY_PROFILE;
+  const isEditProfile = location.pathname === ROUTES.MYPAGE.EDIT_PROFILE;
   const isProfilePage = isMyProfile || isEditProfile;
 
   // 헤더 컨텐츠
   const { title, subtitle } =
     MYPAGE_HEADER_CONTENT[location.pathname as keyof typeof MYPAGE_HEADER_CONTENT] ||
-    MYPAGE_HEADER_CONTENT[MYPAGE_ROUTES.BASE];
+    MYPAGE_HEADER_CONTENT[ROUTES.MYPAGE.BASE];
 
   // 스페이서 높이
   const spacerTopHeight: 'lg' | 'md' = isProfilePage ? 'lg' : 'md';
 
   // 네비게이션 핸들러
   const handleEditProfile = () => {
-    navigate(MYPAGE_ROUTES.EDIT_PROFILE);
+    navigate(ROUTES.MYPAGE.EDIT_PROFILE);
   };
 
   return {

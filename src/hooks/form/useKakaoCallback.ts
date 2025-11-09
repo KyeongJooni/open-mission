@@ -4,7 +4,7 @@ import { useQueryClient } from '@tanstack/react-query';
 import { useKakaoCallbackMutation } from '@/api/auth/authQuery';
 import { setAccessToken, setRefreshToken } from '@/api/apiInstance';
 import { useAuthStore } from '@/stores/useAuthStore';
-import { KAKAO_RESPONSE_CODE, KAKAO_REDIRECT_PATH } from '@/constants';
+import { KAKAO_RESPONSE_CODE, ROUTES } from '@/constants';
 import type { ApiResponse } from '@/api/apiTypes';
 import type { KakaoCallbackData } from '@/api/auth/authTypes';
 
@@ -31,7 +31,7 @@ export const useKakaoCallback = () => {
       setRefreshToken(data.refreshToken || null);
       setIsKakaoUser(true); // 카카오 사용자로 설정
       await queryClient.invalidateQueries({ queryKey: ['userInfo'] });
-      navigate(KAKAO_REDIRECT_PATH.HOME, { replace: true });
+      navigate(ROUTES.HOME, { replace: true });
     },
     [queryClient, navigate, setIsKakaoUser]
   );
@@ -40,7 +40,7 @@ export const useKakaoCallback = () => {
   const handleNewUser = useCallback(
     (data: KakaoCallbackData) => {
       saveNewUserSession(data.kakaoId);
-      navigate(KAKAO_REDIRECT_PATH.SIGNUP, { replace: true });
+      navigate(ROUTES.MYPAGE.SIGNUP, { replace: true });
     },
     [navigate]
   );
@@ -56,7 +56,7 @@ export const useKakaoCallback = () => {
           handleNewUser(response.data);
           break;
         default:
-          navigate(KAKAO_REDIRECT_PATH.HOME, { replace: true });
+          navigate(ROUTES.HOME, { replace: true });
       }
     },
     [handleExistingUser, handleNewUser, navigate]
@@ -65,7 +65,7 @@ export const useKakaoCallback = () => {
   const { mutate, isPending, isError, error } = useKakaoCallbackMutation({
     onSuccess: handleResponse,
     onError: () => {
-      navigate(KAKAO_REDIRECT_PATH.HOME, { replace: true });
+      navigate(ROUTES.HOME, { replace: true });
     },
   });
 
@@ -76,7 +76,7 @@ export const useKakaoCallback = () => {
 
     const code = getAuthCode();
     if (!code) {
-      navigate(KAKAO_REDIRECT_PATH.HOME);
+      navigate(ROUTES.HOME);
       return;
     }
 

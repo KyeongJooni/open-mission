@@ -1,9 +1,5 @@
 import { useEffect } from 'react';
 
-/**
- * 모달이 열릴 때 body 스크롤을 비활성화
- * @param isLocked - 스크롤을 잠글지 여부
- */
 export const useBodyScrollLock = (isLocked: boolean) => {
   useEffect(() => {
     if (!isLocked) {
