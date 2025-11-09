@@ -50,6 +50,7 @@
     "@storybook/react-vite": "9.1.7",
     "@swc-node/register": "1.6.7",
     "@swc/core": "^1.4.8",
+    "@tailwindcss/typography": "^0.5.19",
     "@testing-library/jest-dom": "^6.9.1",
     "@testing-library/react": "^16.3.0",
     "@testing-library/user-event": "^14.6.1",
