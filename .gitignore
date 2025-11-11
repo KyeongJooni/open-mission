@@ -35,3 +35,7 @@ storybook-static
 
 # 개인 아카이브 (Git에 포함하지 않음)
 src/_docs/
+
+# Yarn
+.yarn/cache
+.yarn/install-state.gz
