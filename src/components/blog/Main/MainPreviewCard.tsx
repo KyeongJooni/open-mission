@@ -12,6 +12,7 @@ interface BlogPreviewCardProps {
   profileUrl?: string;
   createdAt: string;
   commentCount: number;
+  priority?: boolean;
 }
 
 const BlogPreviewCard = ({
@@ -24,6 +25,7 @@ const BlogPreviewCard = ({
   profileUrl,
   createdAt,
   commentCount,
+  priority = false,
 }: BlogPreviewCardProps) => {
   const navigate = useNavigate();
 
@@ -37,7 +39,7 @@ const BlogPreviewCard = ({
         <PostCard title={title} content={content} hasImage={Boolean(imageSrc)} />
         <PostDetails nickName={nickName} profileUrl={profileUrl} createdAt={createdAt} commentCount={commentCount} />
       </div>
-      {imageSrc && <MainPreviewImage src={imageSrc} />}
+      {imageSrc && <MainPreviewImage src={imageSrc} priority={priority} />}
     </div>
   );
 };

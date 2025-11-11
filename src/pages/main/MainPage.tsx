@@ -23,7 +23,7 @@ const MainPage = () => {
     <div>
       <Spacer height="md" />
 
-      {blogs.map(blog => {
+      {blogs.map((blog, index) => {
         const textContent = getFirstTextContent(blog.contents);
         const imageUrl = getFirstImageUrl(blog.contents);
 
@@ -38,6 +38,7 @@ const MainPage = () => {
             profileUrl={blog.profileUrl}
             createdAt={blog.createdAt}
             commentCount={blog.commentCount}
+            priority={index === 0}
           />
         );
       })}

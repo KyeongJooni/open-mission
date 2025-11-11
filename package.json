@@ -17,8 +17,6 @@
     "test:coverage": "jest --coverage"
   },
   "dependencies": {
-    "@emotion/react": "^11.14.0",
-    "@emotion/styled": "^11.14.0",
     "@hookform/resolvers": "^5.2.2",
     "@radix-ui/react-slot": "^1.0.2",
     "@tanstack/react-query": "^5.90.5",
@@ -28,9 +26,6 @@
     "axios-auth-refresh": "^3.3.6",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
-    "framer-motion": "^11.0.28",
-    "fuse.js": "^7.0.0",
-    "normalize.css": "^8.0.1",
     "react": "^18",
     "react-dom": "^18",
     "react-hook-form": "^7.51.2",
