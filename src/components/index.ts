@@ -3,6 +3,7 @@ export { default as Button } from '@/components/common/Button/Button';
 export { default as Divider } from '@/components/common/Divider/Divider';
 export { default as DropdownMenu } from '@/components/common/Dropdown/DropdownMenu';
 export { default as DropdownMenuList } from '@/components/common/Dropdown/DropdownMenuList';
+export { ErrorBoundary } from '@/components/common/Error/ErrorBoundary';
 export { ErrorMessage } from '@/components/common/Error/ErrorMessage';
 export { default as Icon } from '@/components/common/Icon/Icon';
 export { LoadingSpinner } from '@/components/common/Loading/LoadingSpinner';

@@ -1,7 +1,7 @@
 import { createBrowserRouter } from 'react-router-dom';
 import { lazy, Suspense } from 'react';
 import Layout from '@/layout/Layout';
-import { LoadingSpinner, MyPageForm, MyProfileForm, EditProfileForm, SignupForm } from '@/components';
+import { ErrorBoundary, LoadingSpinner, MyPageForm, MyProfileForm, EditProfileForm, SignupForm } from '@/components';
 import KakaoLogin from '@/components/auth/KakaoLogin';
 import { PublicRoute } from '@/routes/PublicRoute';
 import { PrivateRoute } from '@/routes/PrivateRoute';
@@ -19,35 +19,43 @@ const router = createBrowserRouter([
       {
         index: true,
         element: (
-          <Suspense fallback={<LoadingSpinner />}>
-            <MainPage />
-          </Suspense>
+          <ErrorBoundary>
+            <Suspense fallback={<LoadingSpinner />}>
+              <MainPage />
+            </Suspense>
+          </ErrorBoundary>
         ),
       },
       {
         path: 'blog/:id',
         element: (
-          <Suspense fallback={<LoadingSpinner />}>
-            <BlogDetailPage />
-          </Suspense>
+          <ErrorBoundary>
+            <Suspense fallback={<LoadingSpinner />}>
+              <BlogDetailPage />
+            </Suspense>
+          </ErrorBoundary>
         ),
       },
       {
         path: 'blog/write',
         element: (
-          <PrivateRoute>
-            <Suspense fallback={<LoadingSpinner />}>
-              <BlogWritePage />
-            </Suspense>
-          </PrivateRoute>
+          <ErrorBoundary>
+            <PrivateRoute>
+              <Suspense fallback={<LoadingSpinner />}>
+                <BlogWritePage />
+              </Suspense>
+            </PrivateRoute>
+          </ErrorBoundary>
         ),
       },
       {
         path: 'mypage',
         element: (
-          <Suspense fallback={<LoadingSpinner />}>
-            <MyPage />
-          </Suspense>
+          <ErrorBoundary>
+            <Suspense fallback={<LoadingSpinner />}>
+              <MyPage />
+            </Suspense>
+          </ErrorBoundary>
         ),
         children: [
           {
