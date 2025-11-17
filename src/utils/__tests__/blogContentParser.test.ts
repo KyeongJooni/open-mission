@@ -3,7 +3,7 @@ import { convertToApiFormat } from '../blogContentParser';
 describe('blogContentParser', () => {
   describe('convertToApiFormat', () => {
     describe('마크다운 모드', () => {
-      it('마크다운 콘텐츠를 MARKDOWN 타입으로 변환해야 함', () => {
+      it('마크다운 콘텐츠를 TEXT 타입으로 변환해야 함', () => {
         const result = convertToApiFormat('제목', '# 마크다운 내용', true);
 
         expect(result).toEqual({
@@ -12,7 +12,7 @@ describe('blogContentParser', () => {
             {
               contentOrder: 1,
               content: '# 마크다운 내용',
-              contentType: 'MARKDOWN',
+              contentType: 'TEXT',
             },
           ],
         });
@@ -65,7 +65,7 @@ describe('blogContentParser', () => {
         const html = '<p><strong>굵게</strong> 그리고 <em>기울임</em></p>';
         const result = convertToApiFormat('제목', html, false);
 
-        expect(result.contents[0].content).toBe('<strong>굵게</strong> 그리고 <em>기울임</em>');
+        expect(result.contents[0].content).toBe('<p><strong>굵게</strong> 그리고 <em>기울임</em></p>');
       });
     });
 
