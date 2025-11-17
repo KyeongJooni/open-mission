@@ -4,6 +4,7 @@ import { useEditModeStore } from '@/stores/useEditModeStore';
 import { useToast } from '@/contexts/ToastContext';
 import * as UserQuery from '@/api/user/userQuery';
 import { useS3ImageUpload } from '@/hooks/common/useS3ImageUpload';
+import { useImagePreview } from '@/hooks/common/useImagePreview';
 import { ROUTES, MYPAGE_TEXTS } from '@/constants';
 import { validators } from '@/utils/validation';
 import { detectProfileChanges, getUpdateStrategy, buildUpdateRequest } from '@/utils/profileHelpers';
@@ -21,11 +22,18 @@ export const useEditProfile = ({ defaultProfileImage = '' }: UseEditProfileProps
   const updateUser = UserQuery.useUpdateUser();
   const updateNickname = UserQuery.useUpdateNickname();
   const updateProfilePicture = UserQuery.useUpdateProfilePicture();
-  const [previewImage, setPreviewImage] = useState<string>(defaultProfileImage);
+  const { previewImage, setPreviewImage, generatePreview } = useImagePreview();
   const [selectedImageFile, setSelectedImageFile] = useState<File | null>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
   const [headerNickname, setHeaderNickname] = useState(user?.nickname || '');
   const [headerIntroduction, setHeaderIntroduction] = useState(user?.introduction || '');
+
+  // defaultImage 초기화
+  useEffect(() => {
+    if (!previewImage && defaultProfileImage) {
+      setPreviewImage(defaultProfileImage);
+    }
+  }, [defaultProfileImage, previewImage, setPreviewImage]);
 
   // state 업데이트
   useEffect(() => {
@@ -106,12 +114,8 @@ export const useEditProfile = ({ defaultProfileImage = '' }: UseEditProfileProps
       return;
     }
 
-    // 미리보기용 base64
-    const reader = new FileReader();
-    reader.onloadend = () => {
-      setPreviewImage(reader.result as string);
-    };
-    reader.readAsDataURL(file);
+    // 미리보기 생성
+    generatePreview(file);
 
     // 저장 버튼 클릭 시 업로드하기 위해 파일 저장
     setSelectedImageFile(file);

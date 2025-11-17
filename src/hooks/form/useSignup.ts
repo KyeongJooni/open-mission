@@ -5,6 +5,7 @@ import { useQueryClient } from '@tanstack/react-query';
 import { signupSchema, SignupFormData } from '@/utils/schemas';
 import { useRegisterMutation, useRegisterOAuthMutation } from '@/api/auth/authQuery';
 import { useS3ImageUpload } from '@/hooks/common/useS3ImageUpload';
+import { useImagePreview } from '@/hooks/common/useImagePreview';
 import { useNavigate } from 'react-router-dom';
 import { useToast } from '@/contexts/ToastContext';
 import { setAccessToken, setRefreshToken } from '@/api/apiInstance';
@@ -30,7 +31,7 @@ export const useSignup = (defaultImage: string): UseSignupReturn => {
   const kakaoFlag = sessionStorage.getItem('isKakaoSignup') === 'true';
   const storedKakaoId = sessionStorage.getItem('kakaoId');
 
-  const [previewImage, setPreviewImage] = useState<string>(defaultImage);
+  const { previewImage, setPreviewImage, generatePreview } = useImagePreview();
   const [uploadedImageUrl, setUploadedImageUrl] = useState<string | null>(null);
   const [isCompleteModalOpen, setIsCompleteModalOpen] = useState(false);
   const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
@@ -52,18 +53,19 @@ export const useSignup = (defaultImage: string): UseSignupReturn => {
     mode: 'onChange',
   });
 
+  // defaultImage 초기화
+  if (!previewImage && defaultImage) {
+    setPreviewImage(defaultImage);
+  }
+
   const handleImageUpload = async (event: ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
     if (!file) {
       return;
     }
 
-    // 미리보기용 base64
-    const reader = new FileReader();
-    reader.onloadend = () => {
-      setPreviewImage(reader.result as string);
-    };
-    reader.readAsDataURL(file);
+    // 미리보기 생성
+    generatePreview(file);
 
     // S3 업로드
     const imageUrl = await uploadImage(file);
