@@ -1,3 +1,5 @@
+import type { ContentItem } from '@/types/blog';
+
 // 공통 타입
 export interface UserInfo {
   nickName: string;
@@ -10,11 +12,7 @@ export interface PostBase {
   createdAt: string;
 }
 
-export interface BlogContent {
-  contentOrder: number;
-  content: string;
-  contentType: 'TEXT' | 'IMAGE' | 'MARKDOWN';
-}
+export type BlogContent = ContentItem;
 
 // 댓글
 export interface BlogComment extends UserInfo {
