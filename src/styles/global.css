@@ -17,48 +17,47 @@ body {
 
 /* 커스텀 유틸리티 클래스*/
 .global-layout {
-  @apply flex w-full min-h-screen flex-col items-center flex-shrink-0;
+  @apply flex min-h-screen w-full flex-shrink-0 flex-col items-center;
 }
 
 @media (max-width: 767px) {
   .global-layout {
-    @apply w-full min-h-mobile flex py-2 px-0 items-center gap-4;
+    @apply flex min-h-mobile w-full items-center gap-4 px-0 py-2;
   }
 }
 
 /* 토스트 컨테이너 */
 .toast-container {
-  @apply inline-flex h-10 px-3 py-2 justify-center items-center gap-1 flex-shrink-0 rounded-[25px] border transition-all duration-200;
+  @apply inline-flex h-10 flex-shrink-0 items-center justify-center gap-1 rounded-[25px] border px-3 py-2 transition-all duration-200;
 }
 
 /* 페이지헤더 컨테이너 */
 .page-header-container {
-  @apply fixed top-0 z-50 flex h-[72px] w-full max-w-[1440px] p-page-header justify-between items-center bg-white/100 backdrop-blur-sm;
+  @apply fixed top-0 z-50 flex h-[72px] w-full max-w-[1440px] items-center justify-between bg-white/100 p-page-header backdrop-blur-sm;
   left: 50%;
   transform: translateX(-50%);
 }
 
 .page-header-legacy-container {
-  @apply flex w-full max-w-content h-page-header-legacy px-4 justify-center items-center gap-8 bg-white/90 backdrop-blur-sm shadow-page-header;
+  @apply flex h-page-header-legacy w-full max-w-content items-center justify-center gap-8 bg-white/90 px-4 shadow-page-header backdrop-blur-sm;
 }
-
 
 /* 블로그 미리보기 행 레이아웃 */
 .blog-preview-row {
   /* 기본 웹 레이아웃 */
-  @apply flex max-w-content py-2 px-0 items-start gap-4 self-stretch border-b border-gray-96 bg-white;
+  @apply flex max-w-content items-start gap-4 self-stretch border-b border-gray-96 bg-white px-0 py-2;
 }
 
 /* 모바일 반응형 - 768px 이하에서 가로 배치 유지 */
 @media (max-width: 767px) {
   .blog-preview-row {
-    @apply flex max-w-content py-2 px-0 items-start gap-4 self-stretch border-b border-gray-96 bg-white;
+    @apply flex max-w-content items-start gap-4 self-stretch border-b border-gray-96 bg-white px-0 py-2;
   }
 }
 
 /* 사이드바 */
 .sidebar-container {
-  @apply fixed left-0 top-0 h-full z-50 transform transition-transform duration-300;
+  @apply fixed left-0 top-0 z-50 h-full transform transition-transform duration-300;
 }
 
 .sidebar-open {
@@ -77,7 +76,7 @@ body {
   }
 
   .login-modal-container {
-    @apply relative flex w-login-page max-w-login-page max-h-login-modal py-20 justify-between items-center content-center flex-wrap rounded-login-modal bg-dark;
+    @apply relative flex max-h-login-modal w-login-page max-w-login-page flex-wrap content-center items-center justify-between rounded-login-modal bg-dark py-20;
   }
 
   /* 로그인 페이지 레이아웃 */
@@ -92,7 +91,7 @@ body {
     }
 
     .login-modal-container {
-      @apply relative flex w-full max-w-mobile max-h-login-modal-mobile py-20 px-4 justify-center items-center content-center flex-wrap rounded-login-modal bg-dark overflow-y-auto;
+      @apply relative flex max-h-login-modal-mobile w-full max-w-mobile flex-wrap content-center items-center justify-center overflow-hidden rounded-login-modal bg-dark px-4 py-20;
     }
 
     .login-page-row {
