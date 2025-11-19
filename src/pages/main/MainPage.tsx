@@ -1,3 +1,4 @@
+import { useMemo } from 'react';
 import { MainPreviewCard as BlogPreviewCard, Spacer, LoadingSpinner, ErrorMessage } from '@/components';
 import { useAuth } from '@/api/user/userQuery';
 import { getFirstTextContent, getFirstImageUrl, truncateText } from '@/utils/blogContentExtractor';
@@ -11,6 +12,24 @@ const MainPage = () => {
     enabled: !authLoading,
   });
 
+  const processedBlogs = useMemo(() => {
+    return blogs.map(blog => {
+      const textContent = getFirstTextContent(blog.contents);
+      const imageUrl = getFirstImageUrl(blog.contents);
+
+      return {
+        postId: blog.postId,
+        title: blog.title,
+        content: truncateText(textContent),
+        imageSrc: imageUrl,
+        nickName: blog.nickName,
+        profileUrl: blog.profileUrl,
+        createdAt: blog.createdAt,
+        commentCount: blog.commentCount,
+      };
+    });
+  }, [blogs]);
+
   if (authLoading || isLoading) {
     return <LoadingSpinner />;
   }
@@ -23,25 +42,20 @@ const MainPage = () => {
     <div>
       <Spacer height="md" />
 
-      {blogs.map((blog, index) => {
-        const textContent = getFirstTextContent(blog.contents);
-        const imageUrl = getFirstImageUrl(blog.contents);
-
-        return (
-          <BlogPreviewCard
-            key={blog.postId}
-            id={blog.postId}
-            title={blog.title}
-            content={truncateText(textContent)}
-            imageSrc={imageUrl}
-            nickName={blog.nickName}
-            profileUrl={blog.profileUrl}
-            createdAt={blog.createdAt}
-            commentCount={blog.commentCount}
-            priority={index === 0}
-          />
-        );
-      })}
+      {processedBlogs.map((blog, index) => (
+        <BlogPreviewCard
+          key={blog.postId}
+          id={blog.postId}
+          title={blog.title}
+          content={blog.content}
+          imageSrc={blog.imageSrc}
+          nickName={blog.nickName}
+          profileUrl={blog.profileUrl}
+          createdAt={blog.createdAt}
+          commentCount={blog.commentCount}
+          priority={index === 0}
+        />
+      ))}
 
       {hasNextPage && (
         <div ref={observerRef} style={{ height: '20px', margin: '20px 0' }}>
