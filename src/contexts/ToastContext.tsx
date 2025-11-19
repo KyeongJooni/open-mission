@@ -1,4 +1,4 @@
-import { createContext, useContext, useState, ReactNode, useCallback } from 'react';
+import { createContext, useContext, useState, ReactNode, useCallback, useMemo } from 'react';
 import { Toast, Portal } from '@/components';
 import { tv } from 'tailwind-variants';
 
@@ -54,8 +54,10 @@ export const ToastProvider = ({ children }: ToastProviderProps) => {
     }, 3000);
   }, []);
 
+  const contextValue = useMemo(() => ({ showToast }), [showToast]);
+
   return (
-    <ToastContext.Provider value={{ showToast }}>
+    <ToastContext.Provider value={contextValue}>
       {children}
       {isVisible && (
         <Portal>
