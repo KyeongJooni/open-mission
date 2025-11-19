@@ -1,4 +1,4 @@
-import { ReactNode } from 'react';
+import { ReactNode, memo } from 'react';
 import { cn } from '@/utils/cn';
 import { postCardVariants, postTitleVariants, postContentVariants } from './PostCardVariants';
 
@@ -10,13 +10,15 @@ interface PostCardProps {
   renderTitle?: ReactNode;
 }
 
-const PostCard = ({ title, content, className, hasImage = false, renderTitle }: PostCardProps) => {
+const PostCard = memo(({ title, content, className, hasImage = false, renderTitle }: PostCardProps) => {
   return (
     <div className={cn(postCardVariants({ hasImage }), className)}>
       {renderTitle ? renderTitle : <h3 className={postTitleVariants()}>{title}</h3>}
       {content && <p className={postContentVariants()}>{content}</p>}
     </div>
   );
-};
+});
+
+PostCard.displayName = 'PostCard';
 
 export default PostCard;

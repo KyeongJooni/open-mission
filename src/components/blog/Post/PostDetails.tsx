@@ -1,3 +1,4 @@
+import { memo } from 'react';
 import profileImage from '@/assets/profile.png';
 import { cn } from '@/utils/cn';
 import { MiddleDotIcon } from '@/assets/icons';
@@ -13,7 +14,7 @@ interface PostDetailsProps {
   commentCount: number;
 }
 
-const PostDetails = ({ className, nickName, profileUrl, createdAt, commentCount }: PostDetailsProps) => {
+const PostDetails = memo(({ className, nickName, profileUrl, createdAt, commentCount }: PostDetailsProps) => {
   return (
     <div className={cn(postDetailsStyles.container, className)}>
       <div className={postDetailsStyles.profileContainer}>
@@ -43,6 +44,8 @@ const PostDetails = ({ className, nickName, profileUrl, createdAt, commentCount 
       </div>
     </div>
   );
-};
+});
+
+PostDetails.displayName = 'PostDetails';
 
 export default PostDetails;
