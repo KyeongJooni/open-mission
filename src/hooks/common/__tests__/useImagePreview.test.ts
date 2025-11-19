@@ -62,30 +62,30 @@ describe('useImagePreview', () => {
 
       const file1 = new File(['test1'], 'test1.png', { type: 'image/png' });
       const file2 = new File(['test2'], 'test2.png', { type: 'image/png' });
-      const base64_1 = 'data:image/png;base64,image1';
-      const base64_2 = 'data:image/png;base64,image2';
+      const base64One = 'data:image/png;base64,image1';
+      const base64Two = 'data:image/png;base64,image2';
 
       // 첫 번째 파일
       act(() => {
         result.current.generatePreview(file1);
-        mockFileReader.result = base64_1;
+        mockFileReader.result = base64One;
         if (mockFileReader.onloadend) {
           mockFileReader.onloadend();
         }
       });
 
-      expect(result.current.previewImage).toBe(base64_1);
+      expect(result.current.previewImage).toBe(base64One);
 
       // 두 번째 파일
       act(() => {
         result.current.generatePreview(file2);
-        mockFileReader.result = base64_2;
+        mockFileReader.result = base64Two;
         if (mockFileReader.onloadend) {
           mockFileReader.onloadend();
         }
       });
 
-      expect(result.current.previewImage).toBe(base64_2);
+      expect(result.current.previewImage).toBe(base64Two);
     });
   });
 

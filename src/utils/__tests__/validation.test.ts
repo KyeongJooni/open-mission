@@ -1,5 +1,4 @@
 import { validators, VALIDATION_MESSAGES } from '../validation';
-import type { ZodIssue } from 'zod';
 
 describe('validators', () => {
   describe('email', () => {
