@@ -31,9 +31,7 @@ describe('profileHelpers', () => {
 
       const result = detectProfileChanges(data, mockUser);
 
-      expect(result).toEqual([
-        { field: 'nickname', value: 'newNickname' },
-      ]);
+      expect(result).toEqual([{ field: 'nickname', value: 'newNickname' }]);
     });
 
     it('소개글 변경을 감지해야 함', () => {
@@ -43,9 +41,7 @@ describe('profileHelpers', () => {
 
       const result = detectProfileChanges(data, mockUser);
 
-      expect(result).toEqual([
-        { field: 'introduction', value: 'New introduction' },
-      ]);
+      expect(result).toEqual([{ field: 'introduction', value: 'New introduction' }]);
     });
 
     it('소개글을 빈 문자열로 변경하는 것도 감지해야 함', () => {
@@ -55,9 +51,7 @@ describe('profileHelpers', () => {
 
       const result = detectProfileChanges(data, mockUser);
 
-      expect(result).toEqual([
-        { field: 'introduction', value: '' },
-      ]);
+      expect(result).toEqual([{ field: 'introduction', value: '' }]);
     });
 
     it('생년월일 변경을 감지해야 함', () => {
@@ -67,9 +61,7 @@ describe('profileHelpers', () => {
 
       const result = detectProfileChanges(data, mockUser);
 
-      expect(result).toEqual([
-        { field: 'birthDate', value: '2000-12-31' },
-      ]);
+      expect(result).toEqual([{ field: 'birthDate', value: '2000-12-31' }]);
     });
 
     it('여러 필드의 변경을 동시에 감지해야 함', () => {
@@ -96,9 +88,7 @@ describe('profileHelpers', () => {
 
       const result = detectProfileChanges(data, userWithoutIntro);
 
-      expect(result).toEqual([
-        { field: 'introduction', value: 'New introduction' },
-      ]);
+      expect(result).toEqual([{ field: 'introduction', value: 'New introduction' }]);
     });
   });
 
@@ -112,9 +102,7 @@ describe('profileHelpers', () => {
     });
 
     it('닉네임만 변경되면 "single" 전략을 반환해야 함', () => {
-      const changes = [
-        { field: 'nickname', value: 'newNickname' },
-      ];
+      const changes = [{ field: 'nickname', value: 'newNickname' }];
 
       const result = getUpdateStrategy(changes);
 
@@ -126,9 +114,7 @@ describe('profileHelpers', () => {
     });
 
     it('소개글만 변경되면 "multiple" 전략을 반환해야 함', () => {
-      const changes = [
-        { field: 'introduction', value: 'New intro' },
-      ];
+      const changes = [{ field: 'introduction', value: 'New intro' }];
 
       const result = getUpdateStrategy(changes);
 
@@ -136,9 +122,7 @@ describe('profileHelpers', () => {
     });
 
     it('생년월일만 변경되면 "multiple" 전략을 반환해야 함', () => {
-      const changes = [
-        { field: 'birthDate', value: '2000-01-01' },
-      ];
+      const changes = [{ field: 'birthDate', value: '2000-01-01' }];
 
       const result = getUpdateStrategy(changes);
 
