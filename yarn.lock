@@ -9824,6 +9824,7 @@ __metadata:
     tailwind-variants: "npm:^3.1.1"
     tailwindcss: "npm:^3.4.4"
     ts-jest: "npm:^29.4.5"
+    ts-jest-mock-import-meta: "npm:^1.3.1"
     ts-node: "npm:^10.9.2"
     tsconfig-paths: "npm:^4.2.0"
     tsx: "npm:^4.19.0"
@@ -12607,6 +12608,15 @@ __metadata:
   version: 0.1.13
   resolution: "ts-interface-checker@npm:0.1.13"
   checksum: 10c0/232509f1b84192d07b81d1e9b9677088e590ac1303436da1e92b296e9be8e31ea042e3e1fd3d29b1742ad2c959e95afe30f63117b8f1bc3a3850070a5142fea7
+  languageName: node
+  linkType: hard
+
+"ts-jest-mock-import-meta@npm:^1.3.1":
+  version: 1.3.1
+  resolution: "ts-jest-mock-import-meta@npm:1.3.1"
+  peerDependencies:
+    ts-jest: ">=20.0.0"
+  checksum: 10c0/33867d47dd05f65b903a48aeec86a8f444a4b6ad984f8f060c82cc1f45ddad35ae497de584a07478dd8084a860f287d99b1041eac00b5dfc204afd475e9cad55
   languageName: node
   linkType: hard
 
