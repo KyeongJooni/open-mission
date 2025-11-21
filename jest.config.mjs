@@ -1,3 +1,6 @@
+import dotenv from 'dotenv';
+dotenv.config();
+
 /** @type {import('jest').Config} */
 const config = {
   preset: 'ts-jest',

@@ -1,5 +1,9 @@
 import '@testing-library/jest-dom';
 
+// TextEncoder/TextDecoder polyfill
+import { TextEncoder, TextDecoder } from 'util';
+Object.assign(global, { TextEncoder, TextDecoder });
+
 // localStorage 모킹
 const localStorageMock = (() => {
   let store: Record<string, string> = {};
@@ -70,10 +74,6 @@ Object.defineProperty(window, 'scrollTo', {
   writable: true,
   value: jest.fn(),
 });
-
-// TextEncoder/TextDecoder 모킹
-import { TextEncoder, TextDecoder } from 'util';
-Object.assign(global, { TextEncoder, TextDecoder });
 
 // 각 테스트 후 모킹 초기화
 afterEach(() => {
