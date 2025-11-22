@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">35.29% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>6/17</span>
+                <span class='fraction'>17/17</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>0/6</span>
+                <span class='fraction'>6/6</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>0/3</span>
+                <span class='fraction'>3/3</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">37.5% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>6/16</span>
+                <span class='fraction'>16/16</span>
             </div>
         
             
@@ -61,7 +61,7 @@
             </div>
         </template>
     </div>
-    <div class='status-line low'></div>
+    <div class='status-line high'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -106,33 +106,31 @@
 <a name='L41'></a><a href='#L41'>41</a>
 <a name='L42'></a><a href='#L42'>42</a>
 <a name='L43'></a><a href='#L43'>43</a>
-<a name='L44'></a><a href='#L44'>44</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">3x</span>
+<a name='L44'></a><a href='#L44'>44</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">5x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">5x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-yes">6x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -148,32 +146,34 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">5x</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { Spacer, MainPreviewCard as BlogPreviewCard, LoadingSpinner } from '@/components';
 import { MyProfileFormProps } from '@/types/mypage';
 import { useBlogsQuery } from '@/api/blog/blogQuery';
 import { useAuth } from '@/api/user/userQuery';
 import { getFirstTextContent, getFirstImageUrl, truncateText } from '@/utils/blogContentExtractor';
 &nbsp;
-const MyProfileForm = <span class="fstat-no" title="function not covered" >({</span> className }: MyProfileFormProps) =&gt; {
-  const { isLoggedIn, user, isLoading: authLoading } = <span class="cstat-no" title="statement not covered" >useAuth();</span>
-  const { data: blogsData, isLoading: blogsLoading } = <span class="cstat-no" title="statement not covered" >useBlogsQuery(1, 100, isLoggedIn, !authLoading);</span>
+const MyProfileForm = ({ className }: MyProfileFormProps) =&gt; {
+  const { isLoggedIn, user, isLoading: authLoading } = useAuth();
+  const { data: blogsData, isLoading: blogsLoading } = useBlogsQuery(1, 100, isLoggedIn, !authLoading);
 &nbsp;
-<span class="cstat-no" title="statement not covered" >  if (authLoading || blogsLoading) {</span>
-<span class="cstat-no" title="statement not covered" >    return &lt;LoadingSpinner /&gt;;</span>
+  if (authLoading || blogsLoading) {
+    return &lt;LoadingSpinner /&gt;;
   }
 &nbsp;
-  const allPosts = <span class="cstat-no" title="statement not covered" >blogsData?.data?.posts || [];</span>
-  const myPosts = <span class="cstat-no" title="statement not covered" >allPosts.filter(<span class="fstat-no" title="function not covered" >post </span>=&gt; <span class="cstat-no" title="statement not covered" >post.nickName === user?.nickname)</span>;</span>
+  const allPosts = blogsData?.data?.posts || [];
+  const myPosts = allPosts.filter(post =&gt; post.nickName === user?.nickname);
 &nbsp;
-<span class="cstat-no" title="statement not covered" >  return (</span>
+  return (
     &lt;div className={className}&gt;
       &lt;Spacer height="md" className="w-full max-w-content" /&gt;
-      {myPosts.map(<span class="fstat-no" title="function not covered" >post </span>=&gt; {
-        const textContent = <span class="cstat-no" title="statement not covered" >getFirstTextContent(post.contents);</span>
-        const imageUrl = <span class="cstat-no" title="statement not covered" >getFirstImageUrl(post.contents);</span>
+      {myPosts.map(post =&gt; {
+        const textContent = getFirstTextContent(post.contents);
+        const imageUrl = getFirstImageUrl(post.contents);
 &nbsp;
-<span class="cstat-no" title="statement not covered" >        return (</span>
+        return (
           &lt;BlogPreviewCard
             key={post.postId}
             id={post.postId}
@@ -199,7 +199,7 @@ export default MyProfileForm;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2025-11-22T04:19:50.637Z
+                at 2025-11-22T04:41:44.527Z
             </div>
         <script src="../../../prettify.js"></script>
         <script>

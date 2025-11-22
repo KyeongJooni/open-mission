@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">27.27% </span>
+                <span class="strong">63.63% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>3/11</span>
+                <span class='fraction'>7/11</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">42.85% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>0/7</span>
+                <span class='fraction'>3/7</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>0/2</span>
+                <span class='fraction'>2/2</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">27.27% </span>
+                <span class="strong">63.63% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>3/11</span>
+                <span class='fraction'>7/11</span>
             </div>
         
             
@@ -61,7 +61,7 @@
             </div>
         </template>
     </div>
-    <div class='status-line low'></div>
+    <div class='status-line medium'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -90,20 +90,18 @@
 <a name='L25'></a><a href='#L25'>25</a>
 <a name='L26'></a><a href='#L26'>26</a>
 <a name='L27'></a><a href='#L27'>27</a>
-<a name='L28'></a><a href='#L28'>28</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">3x</span>
+<a name='L28'></a><a href='#L28'>28</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">18x</span>
+<span class="cline-any cline-yes">18x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">18x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -111,12 +109,14 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">18x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import clsx from 'clsx';
 &nbsp;
 interface SpacerProps {
@@ -124,23 +124,23 @@ interface SpacerProps {
   height?: 'sm' | 'md' | 'custom' | 'lg';
 }
 &nbsp;
-const Spacer = <span class="fstat-no" title="function not covered" >({</span> className = <span class="branch-0 cbranch-no" title="branch not covered" >'',</span> height = <span class="branch-0 cbranch-no" title="branch not covered" >'sm' </span>}: SpacerProps) =&gt; {
-  const getHeightClass = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >(h</span>: 'sm' | 'md' | 'custom' | 'lg') =&gt; {</span>
-<span class="cstat-no" title="statement not covered" >    switch (h) {</span>
+const Spacer = ({ className = '', height = 'sm' }: SpacerProps) =&gt; {
+  const getHeightClass = (h: 'sm' | 'md' | 'custom' | 'lg') =&gt; {
+    switch (h) {
       case 'sm':
-<span class="cstat-no" title="statement not covered" >        return 'h-5'; </span>// 20px
-      case 'md':
+        return 'h-5'; // 20px
+<span class="branch-1 cbranch-no" title="branch not covered" >      case 'md':</span>
 <span class="cstat-no" title="statement not covered" >        return 'h-8'; </span>// 32px
-      case 'custom':
+<span class="branch-2 cbranch-no" title="branch not covered" >      case 'custom':</span>
 <span class="cstat-no" title="statement not covered" >        return 'h-14'; </span>// 56px
-      case 'lg':
+<span class="branch-3 cbranch-no" title="branch not covered" >      case 'lg':</span>
 <span class="cstat-no" title="statement not covered" >        return 'h-16'; </span>// 64px
-      default:
+<span class="branch-4 cbranch-no" title="branch not covered" >      default:</span>
 <span class="cstat-no" title="statement not covered" >        return 'h-5';</span>
     }
   };
 &nbsp;
-<span class="cstat-no" title="statement not covered" >  return &lt;div className={clsx('flex max-w-content flex-shrink-0 items-start', getHeightClass(height), className)} /&gt;;</span>
+  return &lt;div className={clsx('flex max-w-content flex-shrink-0 items-start', getHeightClass(height), className)} /&gt;;
 };
 &nbsp;
 export default Spacer;
@@ -151,7 +151,7 @@ export default Spacer;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2025-11-22T04:19:50.637Z
+                at 2025-11-22T04:41:44.527Z
             </div>
         <script src="../../../../prettify.js"></script>
         <script>
