@@ -7,13 +7,14 @@ const mockHandleWriteGitlog = jest.fn();
 const mockHandleSettings = jest.fn();
 const mockHandleLogout = jest.fn();
 const mockCloseModal = jest.fn();
+const mockOnModalConfirm = jest.fn();
 
 jest.mock('@/api/user/userQuery', () => ({
   useAuth: () => ({
     user: {
-      nickname: 'testuser',
-      introduction: 'Hello',
-      profilePicture: 'profile.jpg',
+      nickname: '테스트 유저',
+      introduction: '테스트 소개',
+      profilePicture: 'https://example.com/profile.png',
     },
   }),
 }));
@@ -22,8 +23,8 @@ jest.mock('@/stores/useModalStore', () => ({
   useModalStore: () => ({
     modalType: null,
     modalMessage: '',
-    confirmButtonText: '',
-    onModalConfirm: jest.fn(),
+    confirmButtonText: '확인',
+    onModalConfirm: mockOnModalConfirm,
     closeModal: mockCloseModal,
   }),
 }));
@@ -38,12 +39,16 @@ jest.mock('@/hooks', () => ({
   }),
 }));
 
-jest.mock('@/components/auth', () => ({
-  LoginModal: () => <div data-testid="login-modal">Login Modal</div>,
+jest.mock('@/components', () => ({
+  Button: ({ children, onClick }: any) => (
+    <button onClick={onClick}>{children}</button>
+  ),
+  Spacer: () => <div data-testid="spacer" />,
+  Modal: ({ children }: any) => <div data-testid="modal">{children}</div>,
 }));
 
-jest.mock('@/assets/icons', () => ({
-  Profile1Icon: () => <div data-testid="profile-icon">Profile Icon</div>,
+jest.mock('@/components/auth', () => ({
+  LoginModal: () => <div data-testid="login-modal" />,
 }));
 
 describe('Sidebar', () => {
@@ -51,96 +56,83 @@ describe('Sidebar', () => {
     jest.clearAllMocks();
   });
 
-  describe('비로그인 상태', () => {
-    it('기본 프로필 아이콘을 표시해야 함', () => {
-      render(<Sidebar isLoggedIn={false} />);
+  it('로그인하지 않았을 때 시작 버튼을 표시해야 함', () => {
+    render(<Sidebar isLoggedIn={false} />);
 
-      expect(screen.getByTestId('profile-icon')).toBeInTheDocument();
-    });
-
-    it('시작하기 버튼을 표시해야 함', () => {
-      render(<Sidebar isLoggedIn={false} />);
-
-      const startButton = screen.getByRole('button');
-      expect(startButton).toBeInTheDocument();
-    });
-
-    it('시작하기 버튼 클릭 시 handleStartGitlog을 호출해야 함', () => {
-      render(<Sidebar isLoggedIn={false} />);
-
-      const startButton = screen.getByRole('button');
-      fireEvent.click(startButton);
-
-      expect(mockHandleStartGitlog).toHaveBeenCalled();
-    });
+    expect(screen.getByText('깃로그 시작하기')).toBeInTheDocument();
   });
 
-  describe('로그인 상태', () => {
-    it('사용자 프로필 이미지를 표시해야 함', () => {
-      render(<Sidebar isLoggedIn={true} />);
+  it('로그인하지 않았을 때 인용구를 표시해야 함', () => {
+    render(<Sidebar isLoggedIn={false} />);
 
-      const profileImage = screen.getByAltText('testuser의 프로필');
-      expect(profileImage).toBeInTheDocument();
-      expect(profileImage).toHaveAttribute('src', 'profile.jpg');
-    });
-
-    it('사용자 닉네임을 표시해야 함', () => {
-      render(<Sidebar isLoggedIn={true} />);
-
-      expect(screen.getByText('testuser')).toBeInTheDocument();
-    });
-
-    it('사용자 소개를 표시해야 함', () => {
-      render(<Sidebar isLoggedIn={true} />);
-
-      expect(screen.getByText('Hello')).toBeInTheDocument();
-    });
-
-    it('마이 깃로그 버튼 클릭 시 handleMyGitlog을 호출해야 함', () => {
-      render(<Sidebar isLoggedIn={true} />);
-
-      const buttons = screen.getAllByRole('button');
-      const myGitlogButton = buttons[0];
-      fireEvent.click(myGitlogButton);
-
-      expect(mockHandleMyGitlog).toHaveBeenCalled();
-    });
-
-    it('글쓰기 버튼 클릭 시 handleWriteGitlog을 호출해야 함', () => {
-      render(<Sidebar isLoggedIn={true} />);
-
-      const buttons = screen.getAllByRole('button');
-      const writeButton = buttons[1];
-      fireEvent.click(writeButton);
-
-      expect(mockHandleWriteGitlog).toHaveBeenCalled();
-    });
-
-    it('설정 버튼 클릭 시 handleSettings을 호출해야 함', () => {
-      render(<Sidebar isLoggedIn={true} />);
-
-      const buttons = screen.getAllByRole('button');
-      const settingsButton = buttons[2];
-      fireEvent.click(settingsButton);
-
-      expect(mockHandleSettings).toHaveBeenCalled();
-    });
-
-    it('로그아웃 버튼 클릭 시 handleLogout을 호출해야 함', () => {
-      render(<Sidebar isLoggedIn={true} />);
-
-      const buttons = screen.getAllByRole('button');
-      const logoutButton = buttons[3];
-      fireEvent.click(logoutButton);
-
-      expect(mockHandleLogout).toHaveBeenCalled();
-    });
+    expect(screen.getByText(/You can make anything by writing/)).toBeInTheDocument();
   });
 
-  it('className을 적용해야 함', () => {
-    render(<Sidebar className="custom-class" />);
+  it('로그인했을 때 사용자 정보를 표시해야 함', () => {
+    render(<Sidebar isLoggedIn={true} />);
 
-    const sidebar = screen.getByRole('complementary');
-    expect(sidebar).toHaveClass('custom-class');
+    expect(screen.getByText('테스트 유저')).toBeInTheDocument();
+    expect(screen.getByText('테스트 소개')).toBeInTheDocument();
+  });
+
+  it('로그인했을 때 내 깃로그/글쓰기 버튼을 표시해야 함', () => {
+    render(<Sidebar isLoggedIn={true} />);
+
+    expect(screen.getByText('나의 깃로그')).toBeInTheDocument();
+    expect(screen.getByText('깃로그 쓰기')).toBeInTheDocument();
+  });
+
+  it('로그인했을 때 설정/로그아웃 버튼을 표시해야 함', () => {
+    render(<Sidebar isLoggedIn={true} />);
+
+    expect(screen.getByText('설정')).toBeInTheDocument();
+    expect(screen.getByText('로그아웃')).toBeInTheDocument();
+  });
+
+  it('시작 버튼 클릭 시 handleStartGitlog를 호출해야 함', () => {
+    render(<Sidebar isLoggedIn={false} />);
+
+    fireEvent.click(screen.getByText('깃로그 시작하기'));
+
+    expect(mockHandleStartGitlog).toHaveBeenCalled();
+  });
+
+  it('내 깃로그 버튼 클릭 시 handleMyGitlog를 호출해야 함', () => {
+    render(<Sidebar isLoggedIn={true} />);
+
+    fireEvent.click(screen.getByText('나의 깃로그'));
+
+    expect(mockHandleMyGitlog).toHaveBeenCalled();
+  });
+
+  it('글쓰기 버튼 클릭 시 handleWriteGitlog를 호출해야 함', () => {
+    render(<Sidebar isLoggedIn={true} />);
+
+    fireEvent.click(screen.getByText('깃로그 쓰기'));
+
+    expect(mockHandleWriteGitlog).toHaveBeenCalled();
+  });
+
+  it('설정 버튼 클릭 시 handleSettings를 호출해야 함', () => {
+    render(<Sidebar isLoggedIn={true} />);
+
+    fireEvent.click(screen.getByText('설정'));
+
+    expect(mockHandleSettings).toHaveBeenCalled();
+  });
+
+  it('로그아웃 버튼 클릭 시 handleLogout을 호출해야 함', () => {
+    render(<Sidebar isLoggedIn={true} />);
+
+    fireEvent.click(screen.getByText('로그아웃'));
+
+    expect(mockHandleLogout).toHaveBeenCalled();
+  });
+
+  it('로그인했을 때 프로필 이미지를 표시해야 함', () => {
+    render(<Sidebar isLoggedIn={true} />);
+
+    const img = screen.getByAltText('테스트 유저의 프로필');
+    expect(img).toHaveAttribute('src', 'https://example.com/profile.png');
   });
 });

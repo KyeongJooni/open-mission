@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">37.5% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>3/8</span>
+                <span class='fraction'>8/8</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">94.11% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>0/17</span>
+                <span class='fraction'>16/17</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>0/1</span>
+                <span class='fraction'>1/1</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">37.5% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>3/8</span>
+                <span class='fraction'>8/8</span>
             </div>
         
             
@@ -61,7 +61,7 @@
             </div>
         </template>
     </div>
-    <div class='status-line low'></div>
+    <div class='status-line high'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -115,24 +115,24 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">7x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">7x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">6x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -156,12 +156,12 @@ interface PostBodyProps {
   isMarkdown?: boolean;
 }
 &nbsp;
-const PostBody = <span class="fstat-no" title="function not covered" >({</span> content, placeholder = <span class="branch-0 cbranch-no" title="branch not covered" >'',</span> className = <span class="branch-0 cbranch-no" title="branch not covered" >'',</span> isMarkdown = <span class="branch-0 cbranch-no" title="branch not covered" >false </span>}: PostBodyProps) =&gt; {
-  const isEmpty = <span class="cstat-no" title="statement not covered" >!content || content.trim().length === 0;</span>
+const PostBody = ({ content, placeholder = '', className = '', isMarkdown = false }: PostBodyProps) =&gt; {
+  const isEmpty = !content || content.trim().length === 0;
 &nbsp;
   // 마크다운 렌더링
-<span class="cstat-no" title="statement not covered" >  if (isMarkdown &amp;&amp; !isEmpty) {</span>
-<span class="cstat-no" title="statement not covered" >    return (</span>
+  if (isMarkdown &amp;&amp; !isEmpty) {
+    return (
       &lt;div className={`flex w-full max-w-[688px] items-center justify-center gap-2.5 p-3 ${className}`}&gt;
         &lt;div className="flex-1" data-color-mode="light"&gt;
           &lt;MDEditor.Markdown source={content} style={{ backgroundColor: 'transparent' }} /&gt;
@@ -171,15 +171,15 @@ const PostBody = <span class="fstat-no" title="function not covered" >({</span> 
   }
 &nbsp;
   // 특수 HTML 태그 감지
-  const hasSpecialTags = <span class="cstat-no" title="statement not covered" >/&lt;(h[1-6]|strong|em|ul|ol|li|blockquote|code|pre)/i.test(content);</span>
+  const hasSpecialTags = /&lt;(h[1-6]|strong|em|ul|ol|li|blockquote|code|pre)/i.test(content);
 &nbsp;
   // HTML 렌더링
-<span class="cstat-no" title="statement not covered" >  return (</span>
+  return (
     &lt;div className={`flex w-full max-w-[688px] items-start justify-start gap-2.5 p-3 ${className}`}&gt;
       &lt;div
         className={
           hasSpecialTags
-            ? `prose prose-sm max-w-none flex-1 ${isEmpty ? 'text-gray-56' : 'text-gray-dark'}`
+            ? `prose prose-sm max-w-none flex-1 ${isEmpty ? <span class="branch-0 cbranch-no" title="branch not covered" >'text-gray-56' </span>: 'text-gray-dark'}`
             : `flex-1 text-sm font-light leading-[160%] tracking-[-0.07px] ${isEmpty ? 'text-gray-56' : 'text-gray-dark'}`
         }
         dangerouslySetInnerHTML={{ __html: isEmpty ? placeholder : content }}
@@ -196,7 +196,7 @@ export default PostBody;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2025-11-22T07:57:53.282Z
+                at 2025-11-22T08:31:36.666Z
             </div>
         <script src="../../../../prettify.js"></script>
         <script>

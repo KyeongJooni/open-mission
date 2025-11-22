@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">57.14% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>8/14</span>
+                <span class='fraction'>14/14</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>0/15</span>
+                <span class='fraction'>15/15</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>0/2</span>
+                <span class='fraction'>2/2</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">57.14% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>8/14</span>
+                <span class='fraction'>14/14</span>
             </div>
         
             
@@ -61,7 +61,7 @@
             </div>
         </template>
     </div>
-    <div class='status-line medium'></div>
+    <div class='status-line high'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -195,17 +195,17 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">10x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">10x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">5x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -256,14 +256,14 @@ interface LoginFormProps {
   onKakaoClick?: () =&gt; void;
 }
 &nbsp;
-const LoginForm = <span class="fstat-no" title="function not covered" >({</span>
+const LoginForm = ({
   className,
   onClose,
-  showInputSection = <span class="branch-0 cbranch-no" title="branch not covered" >true,</span>
-  showSignupButton = <span class="branch-0 cbranch-no" title="branch not covered" >true,</span>
-  emailButtonText = <span class="branch-0 cbranch-no" title="branch not covered" >AUTH_TEXTS.LOGIN_FORM.BUTTONS.EMAIL_LOGIN,</span>
-  kakaoButtonText = <span class="branch-0 cbranch-no" title="branch not covered" >AUTH_TEXTS.LOGIN_FORM.BUTTONS.KAKAO_LOGIN,</span>
-  dividerText = <span class="branch-0 cbranch-no" title="branch not covered" >AUTH_TEXTS.LOGIN_FORM.DIVIDER.SNS,</span>
+  showInputSection = true,
+  showSignupButton = true,
+  emailButtonText = AUTH_TEXTS.LOGIN_FORM.BUTTONS.EMAIL_LOGIN,
+  kakaoButtonText = AUTH_TEXTS.LOGIN_FORM.BUTTONS.KAKAO_LOGIN,
+  dividerText = AUTH_TEXTS.LOGIN_FORM.DIVIDER.SNS,
   dividerLineColor,
   onEmailClick,
   onKakaoClick,
@@ -278,17 +278,17 @@ const LoginForm = <span class="fstat-no" title="function not covered" >({</span>
     handleKeyDown,
     handleKakaoLogin,
     handleSignup,
-  } = <span class="cstat-no" title="statement not covered" >useLoginForm(onClose);</span>
+  } = useLoginForm(onClose);
 &nbsp;
-<span class="cstat-no" title="statement not covered" >  return (</span>
+  return (
     &lt;form
       className={cn(variants.loginFormVariants(), className)}
-      onSubmit={<span class="fstat-no" title="function not covered" >e </span>=&gt; {
-<span class="cstat-no" title="statement not covered" >        e.preventDefault();</span>
-<span class="cstat-no" title="statement not covered" >        if (onEmailClick) {</span>
-<span class="cstat-no" title="statement not covered" >          onEmailClick();</span>
+      onSubmit={e =&gt; {
+        e.preventDefault();
+        if (onEmailClick) {
+          onEmailClick();
         } else {
-<span class="cstat-no" title="statement not covered" >          handleLogin();</span>
+          handleLogin();
         }
       }}
     &gt;
@@ -319,7 +319,7 @@ export default LoginForm;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2025-11-22T07:57:53.282Z
+                at 2025-11-22T08:31:36.666Z
             </div>
         <script src="../../../prettify.js"></script>
         <script>
