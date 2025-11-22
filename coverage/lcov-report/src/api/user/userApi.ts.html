@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">52.94% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>9/17</span>
+                <span class='fraction'>17/17</span>
             </div>
         
             
@@ -37,16 +37,16 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>0/4</span>
+                <span class='fraction'>4/4</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">38.46% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>5/13</span>
+                <span class='fraction'>13/13</span>
             </div>
         
             
@@ -61,7 +61,7 @@
             </div>
         </template>
     </div>
-    <div class='status-line medium'></div>
+    <div class='status-line high'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -94,67 +94,67 @@
 <a name='L29'></a><a href='#L29'>29</a>
 <a name='L30'></a><a href='#L30'>30</a>
 <a name='L31'></a><a href='#L31'>31</a>
-<a name='L32'></a><a href='#L32'>32</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">4x</span>
+<a name='L32'></a><a href='#L32'>32</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">5x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">5x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">5x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { axiosInstance } from '../apiInstance';
 import type { ApiResponse } from '../apiTypes';
 import type * as UserTypes from './userTypes';
 &nbsp;
 // 유저 정보 조회
-export const getUserInfo = <span class="fstat-no" title="function not covered" >async </span>(): Promise&lt;ApiResponse&lt;UserTypes.UserData&gt;&gt; =&gt; {
-  const response = <span class="cstat-no" title="statement not covered" >await axiosInstance.get&lt;ApiResponse&lt;UserTypes.UserData&gt;&gt;('/users/me');</span>
-<span class="cstat-no" title="statement not covered" >  return response.data;</span>
+export const getUserInfo = async (): Promise&lt;ApiResponse&lt;UserTypes.UserData&gt;&gt; =&gt; {
+  const response = await axiosInstance.get&lt;ApiResponse&lt;UserTypes.UserData&gt;&gt;('/users/me');
+  return response.data;
 };
 &nbsp;
 // 유저 정보 수정
-export const updateUser = <span class="fstat-no" title="function not covered" >async </span>(data: UserTypes.UpdateUserRequest): Promise&lt;ApiResponse&lt;UserTypes.UpdateUserData&gt;&gt; =&gt; {
-  const response = <span class="cstat-no" title="statement not covered" >await axiosInstance.patch&lt;ApiResponse&lt;UserTypes.UpdateUserData&gt;&gt;('/users', data);</span>
-<span class="cstat-no" title="statement not covered" >  return response.data;</span>
+export const updateUser = async (data: UserTypes.UpdateUserRequest): Promise&lt;ApiResponse&lt;UserTypes.UpdateUserData&gt;&gt; =&gt; {
+  const response = await axiosInstance.patch&lt;ApiResponse&lt;UserTypes.UpdateUserData&gt;&gt;('/users', data);
+  return response.data;
 };
 &nbsp;
 // 프로필 사진 수정
-export const updateProfilePicture = <span class="fstat-no" title="function not covered" >async </span>(
+export const updateProfilePicture = async (
   data: UserTypes.UpdateProfilePictureRequest
 ): Promise&lt;ApiResponse&lt;UserTypes.UpdateProfilePictureData&gt;&gt; =&gt; {
-  const response = <span class="cstat-no" title="statement not covered" >await axiosInstance.patch&lt;ApiResponse&lt;UserTypes.UpdateProfilePictureData&gt;&gt;('/users/picture', data);</span>
-<span class="cstat-no" title="statement not covered" >  return response.data;</span>
+  const response = await axiosInstance.patch&lt;ApiResponse&lt;UserTypes.UpdateProfilePictureData&gt;&gt;('/users/picture', data);
+  return response.data;
 };
 &nbsp;
 // 닉네임 수정
-export const updateNickname = <span class="fstat-no" title="function not covered" >async </span>(
+export const updateNickname = async (
   data: UserTypes.UpdateNicknameRequest
 ): Promise&lt;ApiResponse&lt;UserTypes.UpdateNicknameData&gt;&gt; =&gt; {
-  const response = <span class="cstat-no" title="statement not covered" >await axiosInstance.patch&lt;ApiResponse&lt;UserTypes.UpdateNicknameData&gt;&gt;('/users/nickname', data);</span>
-<span class="cstat-no" title="statement not covered" >  return response.data;</span>
+  const response = await axiosInstance.patch&lt;ApiResponse&lt;UserTypes.UpdateNicknameData&gt;&gt;('/users/nickname', data);
+  return response.data;
 };
 &nbsp;</pre></td></tr></table></pre>
 
@@ -163,7 +163,7 @@ export const updateNickname = <span class="fstat-no" title="function not covered
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2025-11-22T12:17:05.548Z
+                at 2025-11-22T12:25:06.069Z
             </div>
         <script src="../../../prettify.js"></script>
         <script>

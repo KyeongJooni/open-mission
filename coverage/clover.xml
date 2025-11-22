@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1763813825961" clover="3.2.0">
-  <project timestamp="1763813825961" name="All files">
-    <metrics statements="1993" coveredstatements="1768" conditionals="724" coveredconditionals="537" methods="502" coveredmethods="356" elements="3219" coveredelements="2661" complexity="0" loc="1993" ncloc="1993" packages="52" files="147" classes="147"/>
+<coverage generated="1763814306463" clover="3.2.0">
+  <project timestamp="1763814306464" name="All files">
+    <metrics statements="1993" coveredstatements="1785" conditionals="724" coveredconditionals="540" methods="502" coveredmethods="368" elements="3219" coveredelements="2693" complexity="0" loc="1993" ncloc="1993" packages="52" files="147" classes="147"/>
     <package name="src">
       <metrics statements="2" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
       <file name="App.tsx" path="E:\woowa\open_mission\open_mission\src\App.tsx">
@@ -274,22 +274,22 @@
       </file>
     </package>
     <package name="src.api.user">
-      <metrics statements="42" coveredstatements="30" conditionals="6" coveredconditionals="5" methods="15" coveredmethods="8"/>
+      <metrics statements="42" coveredstatements="38" conditionals="6" coveredconditionals="5" methods="15" coveredmethods="12"/>
       <file name="userApi.ts" path="E:\woowa\open_mission\open_mission\src\api\user\userApi.ts">
-        <metrics statements="13" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="4" coveredmethods="0"/>
-        <line num="1" count="4" type="stmt"/>
-        <line num="6" count="4" type="stmt"/>
-        <line num="7" count="0" type="stmt"/>
-        <line num="8" count="0" type="stmt"/>
-        <line num="12" count="4" type="stmt"/>
-        <line num="13" count="0" type="stmt"/>
-        <line num="14" count="0" type="stmt"/>
-        <line num="18" count="4" type="stmt"/>
-        <line num="21" count="0" type="stmt"/>
-        <line num="22" count="0" type="stmt"/>
-        <line num="26" count="4" type="stmt"/>
-        <line num="29" count="0" type="stmt"/>
-        <line num="30" count="0" type="stmt"/>
+        <metrics statements="13" coveredstatements="13" conditionals="0" coveredconditionals="0" methods="4" coveredmethods="4"/>
+        <line num="1" count="5" type="stmt"/>
+        <line num="6" count="5" type="stmt"/>
+        <line num="7" count="1" type="stmt"/>
+        <line num="8" count="1" type="stmt"/>
+        <line num="12" count="5" type="stmt"/>
+        <line num="13" count="1" type="stmt"/>
+        <line num="14" count="1" type="stmt"/>
+        <line num="18" count="5" type="stmt"/>
+        <line num="21" count="1" type="stmt"/>
+        <line num="22" count="1" type="stmt"/>
+        <line num="26" count="5" type="stmt"/>
+        <line num="29" count="1" type="stmt"/>
+        <line num="30" count="1" type="stmt"/>
       </file>
       <file name="userQuery.ts" path="E:\woowa\open_mission\open_mission\src\api\user\userQuery.ts">
         <metrics statements="29" coveredstatements="25" conditionals="6" coveredconditionals="5" methods="11" coveredmethods="8"/>
@@ -908,7 +908,7 @@
       </file>
     </package>
     <package name="src.components.common.PageHeader">
-      <metrics statements="31" coveredstatements="23" conditionals="4" coveredconditionals="1" methods="10" coveredmethods="4"/>
+      <metrics statements="31" coveredstatements="31" conditionals="4" coveredconditionals="4" methods="10" coveredmethods="10"/>
       <file name="PageHeader.tsx" path="E:\woowa\open_mission\open_mission\src\components\common\PageHeader\PageHeader.tsx">
         <metrics statements="4" coveredstatements="4" conditionals="1" coveredconditionals="1" methods="1" coveredmethods="1"/>
         <line num="1" count="5" type="stmt"/>
@@ -927,16 +927,16 @@
         <line num="29" count="5" type="stmt"/>
       </file>
       <file name="PageHeaderLegacy.tsx" path="E:\woowa\open_mission\open_mission\src\components\common\PageHeader\PageHeaderLegacy.tsx">
-        <metrics statements="9" coveredstatements="6" conditionals="3" coveredconditionals="0" methods="1" coveredmethods="0"/>
-        <line num="1" count="4" type="stmt"/>
-        <line num="2" count="4" type="stmt"/>
-        <line num="3" count="4" type="stmt"/>
-        <line num="5" count="4" type="stmt"/>
-        <line num="11" count="4" type="cond" truecount="0" falsecount="1"/>
-        <line num="12" count="0" type="stmt"/>
-        <line num="13" count="0" type="stmt"/>
-        <line num="15" count="0" type="stmt"/>
-        <line num="37" count="4" type="stmt"/>
+        <metrics statements="9" coveredstatements="9" conditionals="3" coveredconditionals="3" methods="1" coveredmethods="1"/>
+        <line num="1" count="5" type="stmt"/>
+        <line num="2" count="5" type="stmt"/>
+        <line num="3" count="5" type="stmt"/>
+        <line num="5" count="5" type="stmt"/>
+        <line num="11" count="5" type="cond" truecount="1" falsecount="0"/>
+        <line num="12" count="5" type="stmt"/>
+        <line num="13" count="5" type="stmt"/>
+        <line num="15" count="5" type="stmt"/>
+        <line num="37" count="5" type="stmt"/>
       </file>
       <file name="PageHeaderRight.tsx" path="E:\woowa\open_mission\open_mission\src\components\common\PageHeader\PageHeaderRight.tsx">
         <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
@@ -946,18 +946,18 @@
         <line num="8" count="5" type="stmt"/>
       </file>
       <file name="PageHeaderRightRenderers.tsx" path="E:\woowa\open_mission\open_mission\src\components\common\PageHeader\PageHeaderRightRenderers.tsx">
-        <metrics statements="7" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="5" coveredmethods="0"/>
-        <line num="1" count="4" type="stmt"/>
-        <line num="10" count="4" type="stmt"/>
-        <line num="11" count="0" type="stmt"/>
-        <line num="12" count="0" type="stmt"/>
-        <line num="13" count="0" type="stmt"/>
-        <line num="14" count="0" type="stmt"/>
-        <line num="15" count="0" type="stmt"/>
+        <metrics statements="7" coveredstatements="7" conditionals="0" coveredconditionals="0" methods="5" coveredmethods="5"/>
+        <line num="1" count="5" type="stmt"/>
+        <line num="10" count="5" type="stmt"/>
+        <line num="11" count="1" type="stmt"/>
+        <line num="12" count="1" type="stmt"/>
+        <line num="13" count="1" type="stmt"/>
+        <line num="14" count="1" type="stmt"/>
+        <line num="15" count="1" type="stmt"/>
       </file>
     </package>
     <package name="src.components.common.PageHeader.RightRenders">
-      <metrics statements="64" coveredstatements="59" conditionals="20" coveredconditionals="14" methods="18" coveredmethods="8"/>
+      <metrics statements="64" coveredstatements="59" conditionals="20" coveredconditionals="14" methods="18" coveredmethods="9"/>
       <file name="DetailTypeHeader.tsx" path="E:\woowa\open_mission\open_mission\src\components\common\PageHeader\RightRenders\DetailTypeHeader.tsx">
         <metrics statements="20" coveredstatements="20" conditionals="12" coveredconditionals="9" methods="2" coveredmethods="2"/>
         <line num="1" count="5" type="stmt"/>
@@ -1020,8 +1020,8 @@
         <line num="54" count="0" type="stmt"/>
       </file>
       <file name="MypageTypeHeader.tsx" path="E:\woowa\open_mission\open_mission\src\components\common\PageHeader\RightRenders\MypageTypeHeader.tsx">
-        <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
-        <line num="1" count="4" type="stmt"/>
+        <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="1" count="5" type="stmt"/>
       </file>
       <file name="WriteTypeHeader.tsx" path="E:\woowa\open_mission\open_mission\src\components\common\PageHeader\RightRenders\WriteTypeHeader.tsx">
         <metrics statements="6" coveredstatements="6" conditionals="4" coveredconditionals="1" methods="1" coveredmethods="1"/>
@@ -2167,14 +2167,14 @@
       </file>
     </package>
     <package name="src.pages.auth">
-      <metrics statements="5" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
+      <metrics statements="5" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
       <file name="LoginPage.tsx" path="E:\woowa\open_mission\open_mission\src\pages\auth\LoginPage.tsx">
-        <metrics statements="5" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
-        <line num="1" count="4" type="stmt"/>
-        <line num="2" count="4" type="stmt"/>
-        <line num="9" count="4" type="stmt"/>
-        <line num="10" count="0" type="stmt"/>
-        <line num="18" count="4" type="stmt"/>
+        <metrics statements="5" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="1" count="5" type="stmt"/>
+        <line num="2" count="5" type="stmt"/>
+        <line num="9" count="5" type="stmt"/>
+        <line num="10" count="4" type="stmt"/>
+        <line num="18" count="5" type="stmt"/>
       </file>
     </package>
     <package name="src.pages.blog">
@@ -2426,10 +2426,10 @@
       </file>
       <file name="cn.ts" path="E:\woowa\open_mission\open_mission\src\utils\cn.ts">
         <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
-        <line num="1" count="17" type="stmt"/>
-        <line num="2" count="17" type="stmt"/>
-        <line num="4" count="17" type="stmt"/>
-        <line num="5" count="148" type="stmt"/>
+        <line num="1" count="18" type="stmt"/>
+        <line num="2" count="18" type="stmt"/>
+        <line num="4" count="18" type="stmt"/>
+        <line num="5" count="152" type="stmt"/>
       </file>
       <file name="date.ts" path="E:\woowa\open_mission\open_mission\src\utils\date.ts">
         <metrics statements="6" coveredstatements="6" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
