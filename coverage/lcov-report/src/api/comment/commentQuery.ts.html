@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">42.85% </span>
+                <span class="strong">71.42% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>6/14</span>
+                <span class='fraction'>10/14</span>
             </div>
         
             
@@ -37,16 +37,16 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">33.33% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>0/6</span>
+                <span class='fraction'>2/6</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">33.33% </span>
+                <span class="strong">66.66% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>4/12</span>
+                <span class='fraction'>8/12</span>
             </div>
         
             
@@ -61,7 +61,7 @@
             </div>
         </template>
     </div>
-    <div class='status-line low'></div>
+    <div class='status-line medium'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -89,26 +89,26 @@
 <a name='L24'></a><a href='#L24'>24</a>
 <a name='L25'></a><a href='#L25'>25</a>
 <a name='L26'></a><a href='#L26'>26</a>
-<a name='L27'></a><a href='#L27'>27</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
+<a name='L27'></a><a href='#L27'>27</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -119,10 +119,10 @@
 import { createComment, deleteComment } from './commentApi';
 &nbsp;
 // 댓글 작성
-export const useCreateCommentMutation = <span class="fstat-no" title="function not covered" >(p</span>ostId: string) =&gt; {
-  const queryClient = <span class="cstat-no" title="statement not covered" >useQueryClient();</span>
+export const useCreateCommentMutation = (postId: string) =&gt; {
+  const queryClient = useQueryClient();
 &nbsp;
-<span class="cstat-no" title="statement not covered" >  return useMutation({</span>
+  return useMutation({
     mutationFn: <span class="fstat-no" title="function not covered" >(c</span>ontent: string) =&gt; <span class="cstat-no" title="statement not covered" >createComment(postId, content),</span>
     onSuccess: <span class="fstat-no" title="function not covered" >() =</span>&gt; {
 <span class="cstat-no" title="statement not covered" >      queryClient.invalidateQueries({ queryKey: ['blog', postId] });</span>
@@ -131,10 +131,10 @@ export const useCreateCommentMutation = <span class="fstat-no" title="function n
 };
 &nbsp;
 // 댓글 삭제
-export const useDeleteCommentMutation = <span class="fstat-no" title="function not covered" >(p</span>ostId: string) =&gt; {
-  const queryClient = <span class="cstat-no" title="statement not covered" >useQueryClient();</span>
+export const useDeleteCommentMutation = (postId: string) =&gt; {
+  const queryClient = useQueryClient();
 &nbsp;
-<span class="cstat-no" title="statement not covered" >  return useMutation({</span>
+  return useMutation({
     mutationFn: <span class="fstat-no" title="function not covered" >(c</span>ommentId: number) =&gt; <span class="cstat-no" title="statement not covered" >deleteComment(commentId),</span>
     onSuccess: <span class="fstat-no" title="function not covered" >() =</span>&gt; {
 <span class="cstat-no" title="statement not covered" >      queryClient.invalidateQueries({ queryKey: ['blog', postId] });</span>
@@ -148,7 +148,7 @@ export const useDeleteCommentMutation = <span class="fstat-no" title="function n
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2025-11-22T04:47:53.570Z
+                at 2025-11-22T05:14:29.099Z
             </div>
         <script src="../../../prettify.js"></script>
         <script>
