@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1763800297105" clover="3.2.0">
-  <project timestamp="1763800297105" name="All files">
-    <metrics statements="1982" coveredstatements="1666" conditionals="724" coveredconditionals="492" methods="498" coveredmethods="307" elements="3204" coveredelements="2465" complexity="0" loc="1982" ncloc="1982" packages="52" files="147" classes="147"/>
+<coverage generated="1763812346856" clover="3.2.0">
+  <project timestamp="1763812346856" name="All files">
+    <metrics statements="1982" coveredstatements="1699" conditionals="724" coveredconditionals="505" methods="498" coveredmethods="329" elements="3204" coveredelements="2533" complexity="0" loc="1982" ncloc="1982" packages="52" files="147" classes="147"/>
     <package name="src">
       <metrics statements="2" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
       <file name="App.tsx" path="E:\woowa\open_mission\open_mission\src\App.tsx">
@@ -328,49 +328,49 @@
       <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
       <file name="index.ts" path="E:\woowa\open_mission\open_mission\src\assets\icons\index.ts">
         <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
-        <line num="1" count="8" type="stmt"/>
+        <line num="1" count="10" type="stmt"/>
       </file>
     </package>
     <package name="src.assets.icons.common">
       <metrics statements="36" coveredstatements="36" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
       <file name="index.ts" path="E:\woowa\open_mission\open_mission\src\assets\icons\common\index.ts">
         <metrics statements="36" coveredstatements="36" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
-        <line num="2" count="8" type="stmt"/>
-        <line num="3" count="8" type="stmt"/>
-        <line num="4" count="8" type="stmt"/>
-        <line num="5" count="8" type="stmt"/>
-        <line num="6" count="8" type="stmt"/>
-        <line num="7" count="8" type="stmt"/>
-        <line num="8" count="8" type="stmt"/>
-        <line num="9" count="8" type="stmt"/>
-        <line num="10" count="8" type="stmt"/>
-        <line num="11" count="8" type="stmt"/>
-        <line num="12" count="8" type="stmt"/>
-        <line num="13" count="8" type="stmt"/>
-        <line num="14" count="8" type="stmt"/>
-        <line num="15" count="8" type="stmt"/>
-        <line num="16" count="8" type="stmt"/>
-        <line num="17" count="8" type="stmt"/>
-        <line num="18" count="8" type="stmt"/>
-        <line num="19" count="8" type="stmt"/>
-        <line num="22" count="8" type="stmt"/>
-        <line num="23" count="8" type="stmt"/>
-        <line num="24" count="8" type="stmt"/>
-        <line num="25" count="8" type="stmt"/>
-        <line num="26" count="8" type="stmt"/>
-        <line num="27" count="8" type="stmt"/>
-        <line num="28" count="8" type="stmt"/>
-        <line num="29" count="8" type="stmt"/>
-        <line num="30" count="8" type="stmt"/>
-        <line num="31" count="8" type="stmt"/>
-        <line num="32" count="8" type="stmt"/>
-        <line num="33" count="8" type="stmt"/>
-        <line num="34" count="8" type="stmt"/>
-        <line num="35" count="8" type="stmt"/>
-        <line num="36" count="8" type="stmt"/>
-        <line num="37" count="8" type="stmt"/>
-        <line num="38" count="8" type="stmt"/>
-        <line num="39" count="8" type="stmt"/>
+        <line num="2" count="10" type="stmt"/>
+        <line num="3" count="10" type="stmt"/>
+        <line num="4" count="10" type="stmt"/>
+        <line num="5" count="10" type="stmt"/>
+        <line num="6" count="10" type="stmt"/>
+        <line num="7" count="10" type="stmt"/>
+        <line num="8" count="10" type="stmt"/>
+        <line num="9" count="10" type="stmt"/>
+        <line num="10" count="10" type="stmt"/>
+        <line num="11" count="10" type="stmt"/>
+        <line num="12" count="10" type="stmt"/>
+        <line num="13" count="10" type="stmt"/>
+        <line num="14" count="10" type="stmt"/>
+        <line num="15" count="10" type="stmt"/>
+        <line num="16" count="10" type="stmt"/>
+        <line num="17" count="10" type="stmt"/>
+        <line num="18" count="10" type="stmt"/>
+        <line num="19" count="10" type="stmt"/>
+        <line num="22" count="10" type="stmt"/>
+        <line num="23" count="10" type="stmt"/>
+        <line num="24" count="10" type="stmt"/>
+        <line num="25" count="10" type="stmt"/>
+        <line num="26" count="10" type="stmt"/>
+        <line num="27" count="10" type="stmt"/>
+        <line num="28" count="10" type="stmt"/>
+        <line num="29" count="10" type="stmt"/>
+        <line num="30" count="10" type="stmt"/>
+        <line num="31" count="10" type="stmt"/>
+        <line num="32" count="10" type="stmt"/>
+        <line num="33" count="10" type="stmt"/>
+        <line num="34" count="10" type="stmt"/>
+        <line num="35" count="10" type="stmt"/>
+        <line num="36" count="10" type="stmt"/>
+        <line num="37" count="10" type="stmt"/>
+        <line num="38" count="10" type="stmt"/>
+        <line num="39" count="10" type="stmt"/>
       </file>
     </package>
     <package name="src.assets.logo">
@@ -452,25 +452,25 @@
       </file>
       <file name="LoginFormVariants.ts" path="E:\woowa\open_mission\open_mission\src\components\auth\LoginFormVariants.ts">
         <metrics statements="19" coveredstatements="19" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
-        <line num="1" count="4" type="stmt"/>
-        <line num="4" count="4" type="stmt"/>
-        <line num="6" count="4" type="stmt"/>
-        <line num="9" count="4" type="stmt"/>
-        <line num="14" count="4" type="stmt"/>
-        <line num="33" count="4" type="stmt"/>
-        <line num="38" count="4" type="stmt"/>
-        <line num="43" count="4" type="stmt"/>
-        <line num="48" count="4" type="stmt"/>
-        <line num="63" count="4" type="stmt"/>
-        <line num="66" count="4" type="stmt"/>
-        <line num="71" count="4" type="stmt"/>
-        <line num="76" count="4" type="stmt"/>
-        <line num="91" count="4" type="stmt"/>
-        <line num="96" count="4" type="stmt"/>
-        <line num="109" count="4" type="stmt"/>
-        <line num="114" count="4" type="stmt"/>
-        <line num="119" count="4" type="stmt"/>
-        <line num="124" count="4" type="stmt"/>
+        <line num="1" count="6" type="stmt"/>
+        <line num="4" count="6" type="stmt"/>
+        <line num="6" count="6" type="stmt"/>
+        <line num="9" count="6" type="stmt"/>
+        <line num="14" count="6" type="stmt"/>
+        <line num="33" count="6" type="stmt"/>
+        <line num="38" count="6" type="stmt"/>
+        <line num="43" count="6" type="stmt"/>
+        <line num="48" count="6" type="stmt"/>
+        <line num="63" count="6" type="stmt"/>
+        <line num="66" count="6" type="stmt"/>
+        <line num="71" count="6" type="stmt"/>
+        <line num="76" count="6" type="stmt"/>
+        <line num="91" count="6" type="stmt"/>
+        <line num="96" count="6" type="stmt"/>
+        <line num="109" count="6" type="stmt"/>
+        <line num="114" count="6" type="stmt"/>
+        <line num="119" count="6" type="stmt"/>
+        <line num="124" count="6" type="stmt"/>
       </file>
       <file name="LoginLogo.styles.ts" path="E:\woowa\open_mission\open_mission\src\components\auth\LoginLogo.styles.ts">
         <metrics statements="6" coveredstatements="6" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
@@ -517,34 +517,34 @@
       </file>
     </package>
     <package name="src.components.auth.LoginFormComponents">
-      <metrics statements="24" coveredstatements="14" conditionals="2" coveredconditionals="0" methods="14" coveredmethods="0"/>
+      <metrics statements="24" coveredstatements="24" conditionals="2" coveredconditionals="2" methods="14" coveredmethods="8"/>
       <file name="LoginFormButtons.tsx" path="E:\woowa\open_mission\open_mission\src\components\auth\LoginFormComponents\LoginFormButtons.tsx">
-        <metrics statements="9" coveredstatements="6" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="0"/>
-        <line num="1" count="3" type="stmt"/>
-        <line num="2" count="3" type="stmt"/>
-        <line num="3" count="3" type="stmt"/>
-        <line num="10" count="3" type="stmt"/>
-        <line num="11" count="0" type="stmt"/>
-        <line num="23" count="3" type="stmt"/>
-        <line num="24" count="0" type="stmt"/>
-        <line num="38" count="3" type="stmt"/>
-        <line num="39" count="0" type="stmt"/>
+        <metrics statements="9" coveredstatements="9" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="3"/>
+        <line num="1" count="4" type="stmt"/>
+        <line num="2" count="4" type="stmt"/>
+        <line num="3" count="4" type="stmt"/>
+        <line num="10" count="4" type="stmt"/>
+        <line num="11" count="2" type="stmt"/>
+        <line num="23" count="4" type="stmt"/>
+        <line num="24" count="2" type="stmt"/>
+        <line num="38" count="4" type="stmt"/>
+        <line num="39" count="2" type="stmt"/>
       </file>
       <file name="LoginFormSections.tsx" path="E:\woowa\open_mission\open_mission\src\components\auth\LoginFormComponents\LoginFormSections.tsx">
-        <metrics statements="13" coveredstatements="6" conditionals="2" coveredconditionals="0" methods="5" coveredmethods="0"/>
-        <line num="2" count="3" type="stmt"/>
-        <line num="3" count="3" type="stmt"/>
-        <line num="4" count="3" type="stmt"/>
-        <line num="14" count="3" type="stmt"/>
-        <line num="15" count="0" type="stmt"/>
-        <line num="22" count="0" type="stmt"/>
-        <line num="33" count="0" type="stmt"/>
-        <line num="45" count="3" type="stmt"/>
-        <line num="46" count="0" type="cond" truecount="0" falsecount="2"/>
-        <line num="47" count="0" type="stmt"/>
-        <line num="50" count="0" type="stmt"/>
-        <line num="64" count="3" type="stmt"/>
-        <line num="65" count="0" type="stmt"/>
+        <metrics statements="13" coveredstatements="13" conditionals="2" coveredconditionals="2" methods="5" coveredmethods="5"/>
+        <line num="2" count="4" type="stmt"/>
+        <line num="3" count="4" type="stmt"/>
+        <line num="4" count="4" type="stmt"/>
+        <line num="14" count="4" type="stmt"/>
+        <line num="15" count="5" type="stmt"/>
+        <line num="22" count="1" type="stmt"/>
+        <line num="33" count="1" type="stmt"/>
+        <line num="45" count="4" type="stmt"/>
+        <line num="46" count="2" type="cond" truecount="2" falsecount="0"/>
+        <line num="47" count="1" type="stmt"/>
+        <line num="50" count="1" type="stmt"/>
+        <line num="64" count="4" type="stmt"/>
+        <line num="65" count="1" type="stmt"/>
       </file>
       <file name="index.ts" path="E:\woowa\open_mission\open_mission\src\components\auth\LoginFormComponents\index.ts">
         <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="6" coveredmethods="0"/>
@@ -605,53 +605,53 @@
       </file>
     </package>
     <package name="src.components.blog.Detail">
-      <metrics statements="38" coveredstatements="20" conditionals="14" coveredconditionals="0" methods="11" coveredmethods="0"/>
+      <metrics statements="38" coveredstatements="38" conditionals="14" coveredconditionals="10" methods="11" coveredmethods="10"/>
       <file name="BlogAuthorSection.tsx" path="E:\woowa\open_mission\open_mission\src\components\blog\Detail\BlogAuthorSection.tsx">
-        <metrics statements="8" coveredstatements="6" conditionals="2" coveredconditionals="0" methods="2" coveredmethods="0"/>
-        <line num="1" count="3" type="stmt"/>
-        <line num="2" count="3" type="stmt"/>
-        <line num="3" count="3" type="stmt"/>
-        <line num="11" count="3" type="stmt"/>
-        <line num="17" count="3" type="stmt"/>
-        <line num="18" count="0" type="stmt"/>
-        <line num="20" count="0" type="stmt"/>
-        <line num="37" count="3" type="stmt"/>
+        <metrics statements="8" coveredstatements="8" conditionals="2" coveredconditionals="2" methods="2" coveredmethods="1"/>
+        <line num="1" count="4" type="stmt"/>
+        <line num="2" count="4" type="stmt"/>
+        <line num="3" count="4" type="stmt"/>
+        <line num="11" count="4" type="stmt"/>
+        <line num="17" count="4" type="stmt"/>
+        <line num="18" count="4" type="stmt"/>
+        <line num="20" count="4" type="stmt"/>
+        <line num="37" count="4" type="stmt"/>
       </file>
       <file name="BlogCommentSection.tsx" path="E:\woowa\open_mission\open_mission\src\components\blog\Detail\BlogCommentSection.tsx">
-        <metrics statements="14" coveredstatements="8" conditionals="10" coveredconditionals="0" methods="3" coveredmethods="0"/>
-        <line num="1" count="3" type="stmt"/>
-        <line num="2" count="3" type="stmt"/>
-        <line num="3" count="3" type="stmt"/>
-        <line num="4" count="3" type="stmt"/>
-        <line num="5" count="3" type="stmt"/>
-        <line num="15" count="3" type="stmt"/>
-        <line num="33" count="3" type="stmt"/>
-        <line num="39" count="0" type="stmt"/>
-        <line num="40" count="0" type="stmt"/>
-        <line num="41" count="0" type="stmt"/>
-        <line num="46" count="0" type="stmt"/>
-        <line num="68" count="0" type="stmt"/>
-        <line num="91" count="0" type="stmt"/>
-        <line num="115" count="3" type="stmt"/>
+        <metrics statements="14" coveredstatements="14" conditionals="10" coveredconditionals="7" methods="3" coveredmethods="3"/>
+        <line num="1" count="4" type="stmt"/>
+        <line num="2" count="4" type="stmt"/>
+        <line num="3" count="4" type="stmt"/>
+        <line num="4" count="4" type="stmt"/>
+        <line num="5" count="4" type="stmt"/>
+        <line num="15" count="4" type="stmt"/>
+        <line num="33" count="4" type="stmt"/>
+        <line num="39" count="7" type="stmt"/>
+        <line num="40" count="7" type="stmt"/>
+        <line num="41" count="7" type="stmt"/>
+        <line num="46" count="7" type="stmt"/>
+        <line num="68" count="12" type="stmt"/>
+        <line num="91" count="1" type="stmt"/>
+        <line num="115" count="4" type="stmt"/>
       </file>
       <file name="BlogPostSection.tsx" path="E:\woowa\open_mission\open_mission\src\components\blog\Detail\BlogPostSection.tsx">
-        <metrics statements="16" coveredstatements="6" conditionals="2" coveredconditionals="0" methods="6" coveredmethods="0"/>
-        <line num="1" count="3" type="stmt"/>
-        <line num="2" count="3" type="stmt"/>
-        <line num="4" count="3" type="stmt"/>
-        <line num="15" count="3" type="stmt"/>
-        <line num="24" count="3" type="stmt"/>
-        <line num="25" count="0" type="stmt"/>
-        <line num="27" count="0" type="stmt"/>
-        <line num="29" count="0" type="stmt"/>
-        <line num="30" count="0" type="stmt"/>
-        <line num="32" count="0" type="stmt"/>
-        <line num="34" count="0" type="stmt"/>
-        <line num="40" count="0" type="stmt"/>
-        <line num="53" count="0" type="stmt"/>
-        <line num="55" count="0" type="stmt"/>
-        <line num="56" count="0" type="cond" truecount="0" falsecount="2"/>
-        <line num="64" count="3" type="stmt"/>
+        <metrics statements="16" coveredstatements="16" conditionals="2" coveredconditionals="1" methods="6" coveredmethods="6"/>
+        <line num="1" count="4" type="stmt"/>
+        <line num="2" count="4" type="stmt"/>
+        <line num="4" count="4" type="stmt"/>
+        <line num="15" count="4" type="stmt"/>
+        <line num="24" count="4" type="stmt"/>
+        <line num="25" count="6" type="stmt"/>
+        <line num="27" count="6" type="stmt"/>
+        <line num="29" count="6" type="stmt"/>
+        <line num="30" count="6" type="stmt"/>
+        <line num="32" count="1" type="stmt"/>
+        <line num="34" count="4" type="stmt"/>
+        <line num="40" count="6" type="stmt"/>
+        <line num="53" count="5" type="stmt"/>
+        <line num="55" count="11" type="stmt"/>
+        <line num="56" count="11" type="cond" truecount="1" falsecount="1"/>
+        <line num="64" count="4" type="stmt"/>
       </file>
     </package>
     <package name="src.components.blog.Main">
@@ -905,23 +905,23 @@
       </file>
     </package>
     <package name="src.components.common.PageHeader">
-      <metrics statements="31" coveredstatements="18" conditionals="4" coveredconditionals="0" methods="10" coveredmethods="0"/>
+      <metrics statements="31" coveredstatements="23" conditionals="4" coveredconditionals="1" methods="10" coveredmethods="4"/>
       <file name="PageHeader.tsx" path="E:\woowa\open_mission\open_mission\src\components\common\PageHeader\PageHeader.tsx">
-        <metrics statements="4" coveredstatements="3" conditionals="1" coveredconditionals="0" methods="1" coveredmethods="0"/>
-        <line num="1" count="3" type="stmt"/>
-        <line num="4" count="3" type="cond" truecount="0" falsecount="1"/>
-        <line num="5" count="0" type="stmt"/>
-        <line num="13" count="3" type="stmt"/>
+        <metrics statements="4" coveredstatements="4" conditionals="1" coveredconditionals="1" methods="1" coveredmethods="1"/>
+        <line num="1" count="4" type="stmt"/>
+        <line num="4" count="4" type="cond" truecount="1" falsecount="0"/>
+        <line num="5" count="4" type="stmt"/>
+        <line num="13" count="4" type="stmt"/>
       </file>
       <file name="PageHeaderLeft.tsx" path="E:\woowa\open_mission\open_mission\src\components\common\PageHeader\PageHeaderLeft.tsx">
-        <metrics statements="7" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="0"/>
-        <line num="1" count="3" type="stmt"/>
-        <line num="3" count="3" type="stmt"/>
-        <line num="6" count="3" type="stmt"/>
-        <line num="7" count="0" type="stmt"/>
-        <line num="8" count="0" type="stmt"/>
-        <line num="11" count="0" type="stmt"/>
-        <line num="29" count="3" type="stmt"/>
+        <metrics statements="7" coveredstatements="7" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
+        <line num="1" count="4" type="stmt"/>
+        <line num="3" count="4" type="stmt"/>
+        <line num="6" count="4" type="stmt"/>
+        <line num="7" count="5" type="stmt"/>
+        <line num="8" count="2" type="stmt"/>
+        <line num="11" count="5" type="stmt"/>
+        <line num="29" count="4" type="stmt"/>
       </file>
       <file name="PageHeaderLegacy.tsx" path="E:\woowa\open_mission\open_mission\src\components\common\PageHeader\PageHeaderLegacy.tsx">
         <metrics statements="9" coveredstatements="6" conditionals="3" coveredconditionals="0" methods="1" coveredmethods="0"/>
@@ -936,11 +936,11 @@
         <line num="37" count="3" type="stmt"/>
       </file>
       <file name="PageHeaderRight.tsx" path="E:\woowa\open_mission\open_mission\src\components\common\PageHeader\PageHeaderRight.tsx">
-        <metrics statements="4" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
-        <line num="1" count="3" type="stmt"/>
-        <line num="4" count="3" type="stmt"/>
-        <line num="5" count="0" type="stmt"/>
-        <line num="8" count="3" type="stmt"/>
+        <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="1" count="4" type="stmt"/>
+        <line num="4" count="4" type="stmt"/>
+        <line num="5" count="5" type="stmt"/>
+        <line num="8" count="4" type="stmt"/>
       </file>
       <file name="PageHeaderRightRenderers.tsx" path="E:\woowa\open_mission\open_mission\src\components\common\PageHeader\PageHeaderRightRenderers.tsx">
         <metrics statements="7" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="5" coveredmethods="0"/>
@@ -1338,57 +1338,57 @@
       <metrics statements="27" coveredstatements="26" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="1"/>
       <file name="auth.constants.ts" path="E:\woowa\open_mission\open_mission\src\constants\auth.constants.ts">
         <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
-        <line num="1" count="21" type="stmt"/>
+        <line num="1" count="25" type="stmt"/>
       </file>
       <file name="blog.constants.ts" path="E:\woowa\open_mission\open_mission\src\constants\blog.constants.ts">
         <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
-        <line num="1" count="24" type="stmt"/>
-        <line num="37" count="24" type="stmt"/>
+        <line num="1" count="28" type="stmt"/>
+        <line num="37" count="28" type="stmt"/>
       </file>
       <file name="image.constants.ts" path="E:\woowa\open_mission\open_mission\src\constants\image.constants.ts">
         <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
-        <line num="1" count="21" type="stmt"/>
-        <line num="6" count="21" type="stmt"/>
+        <line num="1" count="25" type="stmt"/>
+        <line num="6" count="25" type="stmt"/>
       </file>
       <file name="index.ts" path="E:\woowa\open_mission\open_mission\src\constants\index.ts">
         <metrics statements="8" coveredstatements="8" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
-        <line num="1" count="21" type="stmt"/>
-        <line num="2" count="21" type="stmt"/>
-        <line num="3" count="21" type="stmt"/>
-        <line num="4" count="21" type="stmt"/>
-        <line num="5" count="21" type="stmt"/>
-        <line num="6" count="21" type="stmt"/>
-        <line num="7" count="21" type="stmt"/>
-        <line num="8" count="21" type="stmt"/>
+        <line num="1" count="25" type="stmt"/>
+        <line num="2" count="25" type="stmt"/>
+        <line num="3" count="25" type="stmt"/>
+        <line num="4" count="25" type="stmt"/>
+        <line num="5" count="25" type="stmt"/>
+        <line num="6" count="25" type="stmt"/>
+        <line num="7" count="25" type="stmt"/>
+        <line num="8" count="25" type="stmt"/>
       </file>
       <file name="mypage.constants.ts" path="E:\woowa\open_mission\open_mission\src\constants\mypage.constants.ts">
         <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
-        <line num="1" count="21" type="stmt"/>
-        <line num="3" count="21" type="stmt"/>
-        <line num="36" count="21" type="stmt"/>
-        <line num="47" count="21" type="stmt"/>
+        <line num="1" count="25" type="stmt"/>
+        <line num="3" count="25" type="stmt"/>
+        <line num="36" count="25" type="stmt"/>
+        <line num="47" count="25" type="stmt"/>
       </file>
       <file name="oauth.constants.ts" path="E:\woowa\open_mission\open_mission\src\constants\oauth.constants.ts">
         <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
-        <line num="1" count="21" type="stmt"/>
-        <line num="2" count="21" type="stmt"/>
-        <line num="4" count="21" type="stmt"/>
-        <line num="6" count="21" type="stmt"/>
+        <line num="1" count="25" type="stmt"/>
+        <line num="2" count="25" type="stmt"/>
+        <line num="4" count="25" type="stmt"/>
+        <line num="6" count="25" type="stmt"/>
       </file>
       <file name="pageheader.constants.ts" path="E:\woowa\open_mission\open_mission\src\constants\pageheader.constants.ts">
         <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
-        <line num="1" count="21" type="stmt"/>
+        <line num="1" count="25" type="stmt"/>
       </file>
       <file name="routes.constants.ts" path="E:\woowa\open_mission\open_mission\src\constants\routes.constants.ts">
         <metrics statements="3" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="1"/>
-        <line num="1" count="21" type="stmt"/>
+        <line num="1" count="25" type="stmt"/>
         <line num="5" count="0" type="stmt"/>
         <line num="6" count="1" type="stmt"/>
       </file>
       <file name="sidebar.constants.ts" path="E:\woowa\open_mission\open_mission\src\constants\sidebar.constants.ts">
         <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
-        <line num="1" count="21" type="stmt"/>
-        <line num="24" count="21" type="stmt"/>
+        <line num="1" count="25" type="stmt"/>
+        <line num="24" count="25" type="stmt"/>
       </file>
     </package>
     <package name="src.contexts">
@@ -2415,10 +2415,10 @@
       </file>
       <file name="cn.ts" path="E:\woowa\open_mission\open_mission\src\utils\cn.ts">
         <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
-        <line num="1" count="14" type="stmt"/>
-        <line num="2" count="14" type="stmt"/>
-        <line num="4" count="14" type="stmt"/>
-        <line num="5" count="139" type="stmt"/>
+        <line num="1" count="15" type="stmt"/>
+        <line num="2" count="15" type="stmt"/>
+        <line num="4" count="15" type="stmt"/>
+        <line num="5" count="141" type="stmt"/>
       </file>
       <file name="date.ts" path="E:\woowa\open_mission\open_mission\src\utils\date.ts">
         <metrics statements="6" coveredstatements="6" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
