@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">15% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>0/80</span>
+                <span class='fraction'>12/80</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">13.92% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>0/79</span>
+                <span class='fraction'>11/79</span>
             </div>
         
             
@@ -215,23 +215,23 @@
 <a name='L150'></a><a href='#L150'>150</a>
 <a name='L151'></a><a href='#L151'>151</a>
 <a name='L152'></a><a href='#L152'>152</a>
-<a name='L153'></a><a href='#L153'>153</a></td><td class="line-coverage quiet"><span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<a name='L153'></a><a href='#L153'>153</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -367,23 +367,23 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js"><span class="cstat-no" title="statement not covered" >import { useState, useRef, ChangeEvent, useEffect } from 'react';</span>
-<span class="cstat-no" title="statement not covered" >import { useNavigate } from 'react-router-dom';</span>
-<span class="cstat-no" title="statement not covered" >import { useEditModeStore } from '@/stores/useEditModeStore';</span>
-<span class="cstat-no" title="statement not covered" >import { useToast } from '@/contexts/ToastContext';</span>
-<span class="cstat-no" title="statement not covered" >import * as UserQuery from '@/api/user/userQuery';</span>
-<span class="cstat-no" title="statement not covered" >import { useS3ImageUpload } from '@/hooks/common/useS3ImageUpload';</span>
-<span class="cstat-no" title="statement not covered" >import { useImagePreview } from '@/hooks/common/useImagePreview';</span>
-<span class="cstat-no" title="statement not covered" >import { ROUTES, MYPAGE_TEXTS } from '@/constants';</span>
-<span class="cstat-no" title="statement not covered" >import { validators } from '@/utils/validation';</span>
-<span class="cstat-no" title="statement not covered" >import { detectProfileChanges, getUpdateStrategy, buildUpdateRequest } from '@/utils/profileHelpers';</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { useState, useRef, ChangeEvent, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { useEditModeStore } from '@/stores/useEditModeStore';
+import { useToast } from '@/contexts/ToastContext';
+import * as UserQuery from '@/api/user/userQuery';
+import { useS3ImageUpload } from '@/hooks/common/useS3ImageUpload';
+import { useImagePreview } from '@/hooks/common/useImagePreview';
+import { ROUTES, MYPAGE_TEXTS } from '@/constants';
+import { validators } from '@/utils/validation';
+import { detectProfileChanges, getUpdateStrategy, buildUpdateRequest } from '@/utils/profileHelpers';
 import type { SignupFormData } from '@/utils/schemas';
 &nbsp;
 interface UseEditProfileProps {
   defaultProfileImage?: string;
 }
 &nbsp;
-export const <span class="cstat-no" title="statement not covered" >useEditProfile = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >(</span>{</span> defaultProfileImage = <span class="branch-0 cbranch-no" title="branch not covered" >'' </span>}: UseEditProfileProps = <span class="branch-0 cbranch-no" title="branch not covered" >{})</span> =&gt; {</span>
+export const useEditProfile = <span class="fstat-no" title="function not covered" >({</span> defaultProfileImage = <span class="branch-0 cbranch-no" title="branch not covered" >'' </span>}: UseEditProfileProps = <span class="branch-0 cbranch-no" title="branch not covered" >{})</span> =&gt; {
   const { setEditMode, isEditMode } = <span class="cstat-no" title="statement not covered" >useEditModeStore();</span>
   const navigate = <span class="cstat-no" title="statement not covered" >useNavigate();</span>
   const { showToast } = <span class="cstat-no" title="statement not covered" >useToast();</span>
@@ -526,7 +526,7 @@ export const <span class="cstat-no" title="statement not covered" >useEditProfil
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2025-11-21T14:08:43.856Z
+                at 2025-11-22T04:13:51.597Z
             </div>
         <script src="../../../prettify.js"></script>
         <script>

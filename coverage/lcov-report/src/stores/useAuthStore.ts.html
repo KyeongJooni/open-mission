@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>0/13</span>
+                <span class='fraction'>13/13</span>
             </div>
         
             
@@ -37,16 +37,16 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>0/5</span>
+                <span class='fraction'>5/5</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>0/13</span>
+                <span class='fraction'>13/13</span>
             </div>
         
             
@@ -61,7 +61,7 @@
             </div>
         </template>
     </div>
-    <div class='status-line low'></div>
+    <div class='status-line high'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -100,9 +100,9 @@
 <a name='L35'></a><a href='#L35'>35</a>
 <a name='L36'></a><a href='#L36'>36</a>
 <a name='L37'></a><a href='#L37'>37</a>
-<a name='L38'></a><a href='#L38'>38</a></td><td class="line-coverage quiet"><span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<a name='L38'></a><a href='#L38'>38</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -113,33 +113,33 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js"><span class="cstat-no" title="statement not covered" >import { create } from 'zustand';</span>
-<span class="cstat-no" title="statement not covered" >import { persist, createJSONStorage } from 'zustand/middleware';</span>
-<span class="cstat-no" title="statement not covered" >import { setAccessToken, setRefreshToken } from '@/api/apiInstance';</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { create } from 'zustand';
+import { persist, createJSONStorage } from 'zustand/middleware';
+import { setAccessToken, setRefreshToken } from '@/api/apiInstance';
 &nbsp;
 interface AuthState {
   // UI 상태
@@ -150,27 +150,27 @@ interface AuthState {
   logout: () =&gt; void;
 }
 &nbsp;
-export const <span class="cstat-no" title="statement not covered" >useAuthStore = create&lt;AuthState&gt;()(</span>
+export const useAuthStore = create&lt;AuthState&gt;()(
   persist(
-<span class="fstat-no" title="function not covered" >    set </span>=&gt; (<span class="cstat-no" title="statement not covered" >{</span>
+    set =&gt; ({
       isLoggedIn: false,
       isKakaoUser: false,
 &nbsp;
-      setIsLoggedIn: <span class="fstat-no" title="function not covered" >value </span>=&gt; <span class="cstat-no" title="statement not covered" >set({ isLoggedIn: value }),</span>
-      setIsKakaoUser: <span class="fstat-no" title="function not covered" >value </span>=&gt; <span class="cstat-no" title="statement not covered" >set({ isKakaoUser: value }),</span>
+      setIsLoggedIn: value =&gt; set({ isLoggedIn: value }),
+      setIsKakaoUser: value =&gt; set({ isKakaoUser: value }),
 &nbsp;
-      logout: <span class="fstat-no" title="function not covered" >() =</span>&gt; {
-<span class="cstat-no" title="statement not covered" >        setAccessToken(null);</span>
-<span class="cstat-no" title="statement not covered" >        setRefreshToken(null);</span>
-<span class="cstat-no" title="statement not covered" >        sessionStorage.removeItem('isKakaoSignup');</span>
-<span class="cstat-no" title="statement not covered" >        sessionStorage.removeItem('kakaoId');</span>
+      logout: () =&gt; {
+        setAccessToken(null);
+        setRefreshToken(null);
+        sessionStorage.removeItem('isKakaoSignup');
+        sessionStorage.removeItem('kakaoId');
 &nbsp;
-<span class="cstat-no" title="statement not covered" >        set({ isLoggedIn: false, isKakaoUser: false }); </span>// 로그아웃 시 초기화
+        set({ isLoggedIn: false, isKakaoUser: false }); // 로그아웃 시 초기화
       },
     }),
     {
       name: 'auth-storage',
-      storage: createJSONStorage(<span class="fstat-no" title="function not covered" >() =</span>&gt; <span class="cstat-no" title="statement not covered" >sessionStorage)</span>,
+      storage: createJSONStorage(() =&gt; sessionStorage),
     }
   )
 );
@@ -181,7 +181,7 @@ export const <span class="cstat-no" title="statement not covered" >useAuthStore 
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2025-11-21T14:08:43.856Z
+                at 2025-11-22T04:13:51.597Z
             </div>
         <script src="../../prettify.js"></script>
         <script>

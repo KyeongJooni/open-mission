@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>0/12</span>
+                <span class='fraction'>12/12</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">50% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>0/2</span>
+                <span class='fraction'>1/2</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>0/2</span>
+                <span class='fraction'>2/2</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>0/11</span>
+                <span class='fraction'>11/11</span>
             </div>
         
             
@@ -61,7 +61,7 @@
             </div>
         </template>
     </div>
-    <div class='status-line low'></div>
+    <div class='status-line high'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -88,22 +88,20 @@
 <a name='L23'></a><a href='#L23'>23</a>
 <a name='L24'></a><a href='#L24'>24</a>
 <a name='L25'></a><a href='#L25'>25</a>
-<a name='L26'></a><a href='#L26'>26</a></td><td class="line-coverage quiet"><span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<a name='L26'></a><a href='#L26'>26</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -113,23 +111,25 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js"><span class="cstat-no" title="statement not covered" >import Sidebar from '@/layout/Sidebar';</span>
-<span class="cstat-no" title="statement not covered" >import { PageHeader } from '@/components';</span>
-<span class="cstat-no" title="statement not covered" >import { useSidebar, usePageHeaderType, useEditProfile } from '@/hooks';</span>
-<span class="cstat-no" title="statement not covered" >import { useAuthStore } from '@/stores/useAuthStore';</span>
-<span class="cstat-no" title="statement not covered" >import { Outlet } from 'react-router-dom';</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import Sidebar from '@/layout/Sidebar';
+import { PageHeader } from '@/components';
+import { useSidebar, usePageHeaderType, useEditProfile } from '@/hooks';
+import { useAuthStore } from '@/stores/useAuthStore';
+import { Outlet } from 'react-router-dom';
 &nbsp;
-<span class="cstat-no" title="statement not covered" >export default function <span class="fstat-no" title="function not covered" >L</span>ayout(</span>) {
-  const { isSidebarOpen, sidebarRef, toggleSidebar } = <span class="cstat-no" title="statement not covered" >useSidebar();</span>
-  const isLoggedIn = <span class="cstat-no" title="statement not covered" >useAuthStore(<span class="fstat-no" title="function not covered" >state </span>=&gt; <span class="cstat-no" title="statement not covered" >state.isLoggedIn)</span>;</span>
+export default function Layout() {
+  const { isSidebarOpen, sidebarRef, toggleSidebar } = useSidebar();
+  const isLoggedIn = useAuthStore(state =&gt; state.isLoggedIn);
 &nbsp;
-  const pageHeaderType = <span class="cstat-no" title="statement not covered" >usePageHeaderType();</span>
-  const { handleEdit, handleCancel } = <span class="cstat-no" title="statement not covered" >useEditProfile();</span>
+  const pageHeaderType = usePageHeaderType();
+  const { handleEdit, handleCancel } = useEditProfile();
 &nbsp;
-<span class="cstat-no" title="statement not covered" >  return (</span>
+  return (
     &lt;div className="w-full"&gt;
       &lt;PageHeader type={pageHeaderType} onHamburgerClick={toggleSidebar} onEdit={handleEdit} onCancel={handleCancel} /&gt;
-      &lt;div ref={sidebarRef} className={`sidebar-container ${isSidebarOpen ? 'sidebar-open' : 'sidebar-closed'}`}&gt;
+      &lt;div ref={sidebarRef} className={`sidebar-container ${isSidebarOpen ? <span class="branch-0 cbranch-no" title="branch not covered" >'sidebar-open' </span>: 'sidebar-closed'}`}&gt;
         &lt;Sidebar isLoggedIn={isLoggedIn} /&gt;
       &lt;/div&gt;
       &lt;div className="flex w-full flex-col items-center pt-16"&gt;
@@ -145,7 +145,7 @@
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2025-11-21T14:08:43.856Z
+                at 2025-11-22T04:13:51.597Z
             </div>
         <script src="../../prettify.js"></script>
         <script>

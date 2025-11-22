@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>0/12</span>
+                <span class='fraction'>12/12</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>0/2</span>
+                <span class='fraction'>2/2</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>0/8</span>
+                <span class='fraction'>8/8</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>0/11</span>
+                <span class='fraction'>11/11</span>
             </div>
         
             
@@ -61,7 +61,7 @@
             </div>
         </template>
     </div>
-    <div class='status-line low'></div>
+    <div class='status-line high'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -110,7 +110,7 @@
 <a name='L45'></a><a href='#L45'>45</a>
 <a name='L46'></a><a href='#L46'>46</a>
 <a name='L47'></a><a href='#L47'>47</a>
-<a name='L48'></a><a href='#L48'>48</a></td><td class="line-coverage quiet"><span class="cline-any cline-no">&nbsp;</span>
+<a name='L48'></a><a href='#L48'>48</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -133,7 +133,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -141,23 +141,23 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-yes">10x</span>
+<span class="cline-any cline-yes">7x</span>
+<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-yes">5x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">20x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js"><span class="cstat-no" title="statement not covered" >import { create } from 'zustand';</span>
+<span class="cline-any cline-yes">7x</span>
+<span class="cline-any cline-yes">7x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { create } from 'zustand';
 import type { EditorMode } from '@/types/blog';
 &nbsp;
 interface BlogWriteStore {
@@ -180,7 +180,7 @@ interface BlogWriteStore {
   getCurrentContent: () =&gt; string; // content 반환
 }
 &nbsp;
-const initialState = <span class="cstat-no" title="statement not covered" >{</span>
+const initialState = {
   title: '',
   mode: 'basic' as EditorMode,
   basicContent: '',
@@ -188,20 +188,20 @@ const initialState = <span class="cstat-no" title="statement not covered" >{</sp
   editPostId: null as string | null,
 };
 &nbsp;
-export const <span class="cstat-no" title="statement not covered" >useBlogWriteStore = create&lt;BlogWriteStore&gt;(<span class="fstat-no" title="function not covered" >(s</span>et, get) =&gt; (<span class="cstat-no" title="statement not covered" >{</span></span>
+export const useBlogWriteStore = create&lt;BlogWriteStore&gt;((set, get) =&gt; ({
   ...initialState,
 &nbsp;
-  setTitle: <span class="fstat-no" title="function not covered" >title </span>=&gt; <span class="cstat-no" title="statement not covered" >set({ title }),</span>
-  setMode: <span class="fstat-no" title="function not covered" >mode </span>=&gt; <span class="cstat-no" title="statement not covered" >set({ mode }),</span>
-  setBasicContent: <span class="fstat-no" title="function not covered" >content </span>=&gt; <span class="cstat-no" title="statement not covered" >set({ basicContent: content }),</span>
-  setMarkdownContent: <span class="fstat-no" title="function not covered" >content </span>=&gt; <span class="cstat-no" title="statement not covered" >set({ markdownContent: content }),</span>
-  setEditPostId: <span class="fstat-no" title="function not covered" >id </span>=&gt; <span class="cstat-no" title="statement not covered" >set({ editPostId: id }),</span>
+  setTitle: title =&gt; set({ title }),
+  setMode: mode =&gt; set({ mode }),
+  setBasicContent: content =&gt; set({ basicContent: content }),
+  setMarkdownContent: content =&gt; set({ markdownContent: content }),
+  setEditPostId: id =&gt; set({ editPostId: id }),
 &nbsp;
-  reset: <span class="fstat-no" title="function not covered" >() =</span>&gt; <span class="cstat-no" title="statement not covered" >set(initialState),</span>
+  reset: () =&gt; set(initialState),
 &nbsp;
-  getCurrentContent: <span class="fstat-no" title="function not covered" >() =</span>&gt; {
-    const { mode, basicContent, markdownContent } = <span class="cstat-no" title="statement not covered" >get();</span>
-<span class="cstat-no" title="statement not covered" >    return mode === 'basic' ? basicContent : markdownContent;</span>
+  getCurrentContent: () =&gt; {
+    const { mode, basicContent, markdownContent } = get();
+    return mode === 'basic' ? basicContent : markdownContent;
   },
 }));
 &nbsp;</pre></td></tr></table></pre>
@@ -211,7 +211,7 @@ export const <span class="cstat-no" title="statement not covered" >useBlogWriteS
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2025-11-21T14:08:43.856Z
+                at 2025-11-22T04:13:51.597Z
             </div>
         <script src="../../prettify.js"></script>
         <script>

@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>0/16</span>
+                <span class='fraction'>16/16</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>0/10</span>
+                <span class='fraction'>10/10</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>0/1</span>
+                <span class='fraction'>1/1</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>0/15</span>
+                <span class='fraction'>15/15</span>
             </div>
         
             
@@ -61,7 +61,7 @@
             </div>
         </template>
     </div>
-    <div class='status-line low'></div>
+    <div class='status-line high'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -92,63 +92,63 @@
 <a name='L27'></a><a href='#L27'>27</a>
 <a name='L28'></a><a href='#L28'>28</a>
 <a name='L29'></a><a href='#L29'>29</a>
-<a name='L30'></a><a href='#L30'>30</a></td><td class="line-coverage quiet"><span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<a name='L30'></a><a href='#L30'>30</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">8x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">7x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js"><span class="cstat-no" title="statement not covered" >import { useLocation } from 'react-router-dom';</span>
-<span class="cstat-no" title="statement not covered" >import { ROUTES } from '@/constants';</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { useLocation } from 'react-router-dom';
+import { ROUTES } from '@/constants';
 import { PageHeaderType } from '@/types/pageheader';
 &nbsp;
-export const <span class="cstat-no" title="statement not covered" >usePageHeaderType = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >(</span>): PageHeaderType =</span>&gt; {</span>
-  const location = <span class="cstat-no" title="statement not covered" >useLocation();</span>
+export const usePageHeaderType = (): PageHeaderType =&gt; {
+  const location = useLocation();
 &nbsp;
-<span class="cstat-no" title="statement not covered" >  if (location.pathname === ROUTES.HOME) {</span>
-<span class="cstat-no" title="statement not covered" >    return 'main';</span>
+  if (location.pathname === ROUTES.HOME) {
+    return 'main';
   }
 &nbsp;
-<span class="cstat-no" title="statement not covered" >  if (location.pathname.includes('/write')) {</span>
-<span class="cstat-no" title="statement not covered" >    return 'write';</span>
+  if (location.pathname.includes('/write')) {
+    return 'write';
   }
 &nbsp;
-<span class="cstat-no" title="statement not covered" >  if (location.pathname === ROUTES.MYPAGE.MY_PROFILE) {</span>
-<span class="cstat-no" title="statement not covered" >    return 'main';</span>
+  if (location.pathname === ROUTES.MYPAGE.MY_PROFILE) {
+    return 'main';
   }
 &nbsp;
-<span class="cstat-no" title="statement not covered" >  if (location.pathname === ROUTES.MYPAGE.EDIT_PROFILE) {</span>
-<span class="cstat-no" title="statement not covered" >    return 'editprofile';</span>
+  if (location.pathname === ROUTES.MYPAGE.EDIT_PROFILE) {
+    return 'editprofile';
   }
 &nbsp;
-<span class="cstat-no" title="statement not covered" >  if (location.pathname.startsWith('/mypage')) {</span>
-<span class="cstat-no" title="statement not covered" >    return 'mypage';</span>
+  if (location.pathname.startsWith('/mypage')) {
+    return 'mypage';
   }
 &nbsp;
-<span class="cstat-no" title="statement not covered" >  return 'detail';</span>
+  return 'detail';
 };
 &nbsp;</pre></td></tr></table></pre>
 
@@ -157,7 +157,7 @@ export const <span class="cstat-no" title="statement not covered" >usePageHeader
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2025-11-21T14:08:43.856Z
+                at 2025-11-22T04:13:51.597Z
             </div>
         <script src="../../../prettify.js"></script>
         <script>
