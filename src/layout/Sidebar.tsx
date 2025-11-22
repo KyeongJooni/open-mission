@@ -1,3 +1,4 @@
+import { useNavigate } from 'react-router-dom';
 import { Profile1Icon } from '@/assets/icons';
 import { Button, Spacer, Modal } from '@/components';
 import { useAuth } from '@/api/user/userQuery';
@@ -14,9 +15,14 @@ interface SidebarProps {
 }
 
 const Sidebar = ({ className = '', isLoggedIn = false }: SidebarProps) => {
+  const navigate = useNavigate();
   const { user } = useAuth();
   const { modalType, modalMessage, confirmButtonText, onModalConfirm, closeModal } = useModalStore();
   const { handleStartGitlog, handleMyGitlog, handleWriteGitlog, handleSettings, handleLogout } = useSidebar();
+
+  const handleAnalysis = () => {
+    navigate('/analysis');
+  };
 
   return (
     <>
@@ -61,6 +67,12 @@ const Sidebar = ({ className = '', isLoggedIn = false }: SidebarProps) => {
                 {SIDEBAR_TEXTS.NOT_LOGGED_IN.START_GITLOG}
               </Button>
             )}
+          </div>
+          <Spacer height="sm" />
+          <div className={sidebarStyles.buttonContainer}>
+            <Button intent="gray" variant="outline" onClick={handleAnalysis}>
+              상태 분석
+            </Button>
           </div>
         </div>
 

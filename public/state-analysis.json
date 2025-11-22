@@ -1,0 +1,560 @@
+{
+  "summary": {
+    "totalComponents": 60,
+    "totalStateUsages": 23,
+    "byType": {
+      "useState": 15,
+      "zustand": 8
+    }
+  },
+  "components": [
+    {
+      "name": "App",
+      "file": "..\\src\\App.tsx",
+      "stateUsages": [],
+      "children": []
+    },
+    {
+      "name": "ToastProvider",
+      "file": "..\\src\\contexts\\ToastContext.tsx",
+      "stateUsages": [
+        {
+          "type": "useState",
+          "name": "useState",
+          "file": "..\\src\\contexts\\ToastContext.tsx",
+          "line": 2,
+          "component": "ToastProvider"
+        },
+        {
+          "type": "useState",
+          "name": "useState",
+          "file": "..\\src\\contexts\\ToastContext.tsx",
+          "line": 3,
+          "component": "ToastProvider"
+        },
+        {
+          "type": "useState",
+          "name": "useState",
+          "file": "..\\src\\contexts\\ToastContext.tsx",
+          "line": 4,
+          "component": "ToastProvider"
+        },
+        {
+          "type": "useState",
+          "name": "useState",
+          "file": "..\\src\\contexts\\ToastContext.tsx",
+          "line": 5,
+          "component": "ToastProvider"
+        }
+      ],
+      "children": []
+    },
+    {
+      "name": "Layout",
+      "file": "..\\src\\layout\\Layout.tsx",
+      "stateUsages": [
+        {
+          "type": "zustand",
+          "name": "useAuthStore",
+          "file": "..\\src\\layout\\Layout.tsx",
+          "line": 3,
+          "component": "Layout"
+        }
+      ],
+      "children": []
+    },
+    {
+      "name": "Sidebar",
+      "file": "..\\src\\layout\\Sidebar.tsx",
+      "stateUsages": [
+        {
+          "type": "zustand",
+          "name": "useModalStore",
+          "file": "..\\src\\layout\\Sidebar.tsx",
+          "line": 3,
+          "component": "Sidebar"
+        }
+      ],
+      "children": []
+    },
+    {
+      "name": "LoginPlayground",
+      "file": "..\\src\\playground\\LoginPlayground.tsx",
+      "stateUsages": [
+        {
+          "type": "useState",
+          "name": "useState",
+          "file": "..\\src\\playground\\LoginPlayground.tsx",
+          "line": 2,
+          "component": "LoginPlayground"
+        }
+      ],
+      "children": []
+    },
+    {
+      "name": "Playground",
+      "file": "..\\src\\playground\\Playground.tsx",
+      "stateUsages": [
+        {
+          "type": "useState",
+          "name": "useState",
+          "file": "..\\src\\playground\\Playground.tsx",
+          "line": 2,
+          "component": "Playground"
+        },
+        {
+          "type": "useState",
+          "name": "useState",
+          "file": "..\\src\\playground\\Playground.tsx",
+          "line": 3,
+          "component": "Playground"
+        },
+        {
+          "type": "useState",
+          "name": "useState",
+          "file": "..\\src\\playground\\Playground.tsx",
+          "line": 4,
+          "component": "Playground"
+        },
+        {
+          "type": "useState",
+          "name": "useState",
+          "file": "..\\src\\playground\\Playground.tsx",
+          "line": 5,
+          "component": "Playground"
+        }
+      ],
+      "children": []
+    },
+    {
+      "name": "PrivateRoute",
+      "file": "..\\src\\routes\\PrivateRoute.tsx",
+      "stateUsages": [],
+      "children": []
+    },
+    {
+      "name": "PublicRoute",
+      "file": "..\\src\\routes\\PublicRoute.tsx",
+      "stateUsages": [],
+      "children": []
+    },
+    {
+      "name": "OAuthCallback",
+      "file": "..\\src\\components\\auth\\KakaoLogin.tsx",
+      "stateUsages": [],
+      "children": []
+    },
+    {
+      "name": "LoginForm",
+      "file": "..\\src\\components\\auth\\LoginForm.tsx",
+      "stateUsages": [],
+      "children": []
+    },
+    {
+      "name": "LoginLogo",
+      "file": "..\\src\\components\\auth\\LoginLogo.tsx",
+      "stateUsages": [],
+      "children": []
+    },
+    {
+      "name": "LoginModal",
+      "file": "..\\src\\components\\auth\\LoginModal.tsx",
+      "stateUsages": [],
+      "children": []
+    },
+    {
+      "name": "EditProfileForm",
+      "file": "..\\src\\components\\mypage\\EditProfileForm.tsx",
+      "stateUsages": [
+        {
+          "type": "zustand",
+          "name": "useEditModeStore",
+          "file": "..\\src\\components\\mypage\\EditProfileForm.tsx",
+          "line": 3,
+          "component": "EditProfileForm"
+        },
+        {
+          "type": "zustand",
+          "name": "useAuthStore",
+          "file": "..\\src\\components\\mypage\\EditProfileForm.tsx",
+          "line": 4,
+          "component": "EditProfileForm"
+        }
+      ],
+      "children": []
+    },
+    {
+      "name": "MyPageForm",
+      "file": "..\\src\\components\\mypage\\MyPageForm.tsx",
+      "stateUsages": [],
+      "children": []
+    },
+    {
+      "name": "MyPageHeader",
+      "file": "..\\src\\components\\mypage\\MyPageHeader.tsx",
+      "stateUsages": [
+        {
+          "type": "useState",
+          "name": "useState",
+          "file": "..\\src\\components\\mypage\\MyPageHeader.tsx",
+          "line": 23,
+          "component": "MyPageHeader"
+        },
+        {
+          "type": "useState",
+          "name": "useState",
+          "file": "..\\src\\components\\mypage\\MyPageHeader.tsx",
+          "line": 24,
+          "component": "MyPageHeader"
+        }
+      ],
+      "children": []
+    },
+    {
+      "name": "MyProfileForm",
+      "file": "..\\src\\components\\mypage\\MyProfileForm.tsx",
+      "stateUsages": [],
+      "children": []
+    },
+    {
+      "name": "SignupForm",
+      "file": "..\\src\\components\\mypage\\SignupForm.tsx",
+      "stateUsages": [],
+      "children": []
+    },
+    {
+      "name": "SignupFormFields",
+      "file": "..\\src\\components\\mypage\\SignupFormFields.tsx",
+      "stateUsages": [],
+      "children": []
+    },
+    {
+      "name": "ProfileSection",
+      "file": "..\\src\\components\\mypage\\SignupProfileSection.tsx",
+      "stateUsages": [],
+      "children": []
+    },
+    {
+      "name": "LoginPage",
+      "file": "..\\src\\pages\\auth\\LoginPage.tsx",
+      "stateUsages": [],
+      "children": []
+    },
+    {
+      "name": "BlogDetailPage",
+      "file": "..\\src\\pages\\blog\\BlogDetailPage.tsx",
+      "stateUsages": [],
+      "children": []
+    },
+    {
+      "name": "BlogWritePage",
+      "file": "..\\src\\pages\\blog\\BlogWritePage.tsx",
+      "stateUsages": [],
+      "children": []
+    },
+    {
+      "name": "MainPage",
+      "file": "..\\src\\pages\\main\\MainPage.tsx",
+      "stateUsages": [],
+      "children": []
+    },
+    {
+      "name": "MyPage",
+      "file": "..\\src\\pages\\mypage\\MyPage.tsx",
+      "stateUsages": [],
+      "children": []
+    },
+    {
+      "name": "EmailLoginButton",
+      "file": "..\\src\\components\\auth\\LoginFormComponents\\LoginFormButtons.tsx",
+      "stateUsages": [],
+      "children": []
+    },
+    {
+      "name": "KakaoLoginButton",
+      "file": "..\\src\\components\\auth\\LoginFormComponents\\LoginFormButtons.tsx",
+      "stateUsages": [],
+      "children": []
+    },
+    {
+      "name": "SignupButton",
+      "file": "..\\src\\components\\auth\\LoginFormComponents\\LoginFormButtons.tsx",
+      "stateUsages": [],
+      "children": []
+    },
+    {
+      "name": "InputSection",
+      "file": "..\\src\\components\\auth\\LoginFormComponents\\LoginFormSections.tsx",
+      "stateUsages": [],
+      "children": []
+    },
+    {
+      "name": "ErrorMessage",
+      "file": "..\\src\\components\\auth\\LoginFormComponents\\LoginFormSections.tsx",
+      "stateUsages": [],
+      "children": []
+    },
+    {
+      "name": "SnsDivider",
+      "file": "..\\src\\components\\auth\\LoginFormComponents\\LoginFormSections.tsx",
+      "stateUsages": [],
+      "children": []
+    },
+    {
+      "name": "CommentInput",
+      "file": "..\\src\\components\\blog\\Comment\\CommentInput.tsx",
+      "stateUsages": [
+        {
+          "type": "useState",
+          "name": "useState",
+          "file": "..\\src\\components\\blog\\Comment\\CommentInput.tsx",
+          "line": 2,
+          "component": "CommentInput"
+        }
+      ],
+      "children": []
+    },
+    {
+      "name": "BlogAuthorSection",
+      "file": "..\\src\\components\\blog\\Detail\\BlogAuthorSection.tsx",
+      "stateUsages": [],
+      "children": []
+    },
+    {
+      "name": "BlogCommentSection",
+      "file": "..\\src\\components\\blog\\Detail\\BlogCommentSection.tsx",
+      "stateUsages": [
+        {
+          "type": "zustand",
+          "name": "useModalStore",
+          "file": "..\\src\\components\\blog\\Detail\\BlogCommentSection.tsx",
+          "line": 8,
+          "component": "BlogCommentSection"
+        }
+      ],
+      "children": []
+    },
+    {
+      "name": "BlogPostSection",
+      "file": "..\\src\\components\\blog\\Detail\\BlogPostSection.tsx",
+      "stateUsages": [],
+      "children": []
+    },
+    {
+      "name": "PostBody",
+      "file": "..\\src\\components\\blog\\Post\\PostBody.tsx",
+      "stateUsages": [],
+      "children": []
+    },
+    {
+      "name": "PostHeader",
+      "file": "..\\src\\components\\blog\\Post\\PostHeader.tsx",
+      "stateUsages": [],
+      "children": []
+    },
+    {
+      "name": "PostInput",
+      "file": "..\\src\\components\\blog\\Post\\PostInput.tsx",
+      "stateUsages": [],
+      "children": []
+    },
+    {
+      "name": "TitleInput",
+      "file": "..\\src\\components\\blog\\Write\\BlogWriteComponents.tsx",
+      "stateUsages": [],
+      "children": []
+    },
+    {
+      "name": "ModeToggleButtons",
+      "file": "..\\src\\components\\blog\\Write\\BlogWriteComponents.tsx",
+      "stateUsages": [],
+      "children": []
+    },
+    {
+      "name": "Button",
+      "file": "..\\src\\components\\common\\Button\\Button.tsx",
+      "stateUsages": [],
+      "children": []
+    },
+    {
+      "name": "Divider",
+      "file": "..\\src\\components\\common\\Divider\\Divider.tsx",
+      "stateUsages": [],
+      "children": []
+    },
+    {
+      "name": "DropdownMenu",
+      "file": "..\\src\\components\\common\\Dropdown\\DropdownMenu.tsx",
+      "stateUsages": [
+        {
+          "type": "useState",
+          "name": "useState",
+          "file": "..\\src\\components\\common\\Dropdown\\DropdownMenu.tsx",
+          "line": 9,
+          "component": "DropdownMenu"
+        }
+      ],
+      "children": []
+    },
+    {
+      "name": "DropdownMenuList",
+      "file": "..\\src\\components\\common\\Dropdown\\DropdownMenuList.tsx",
+      "stateUsages": [],
+      "children": []
+    },
+    {
+      "name": "ErrorMessage",
+      "file": "..\\src\\components\\common\\Error\\ErrorMessage.tsx",
+      "stateUsages": [],
+      "children": []
+    },
+    {
+      "name": "Icon",
+      "file": "..\\src\\components\\common\\Icon\\Icon.tsx",
+      "stateUsages": [],
+      "children": []
+    },
+    {
+      "name": "LoadingSpinner",
+      "file": "..\\src\\components\\common\\Loading\\LoadingSpinner.tsx",
+      "stateUsages": [],
+      "children": []
+    },
+    {
+      "name": "Modal",
+      "file": "..\\src\\components\\common\\Modal\\Modal.tsx",
+      "stateUsages": [],
+      "children": []
+    },
+    {
+      "name": "PageHeader",
+      "file": "..\\src\\components\\common\\PageHeader\\PageHeader.tsx",
+      "stateUsages": [],
+      "children": []
+    },
+    {
+      "name": "PageHeaderLeft",
+      "file": "..\\src\\components\\common\\PageHeader\\PageHeaderLeft.tsx",
+      "stateUsages": [],
+      "children": []
+    },
+    {
+      "name": "PageHeaderLegacy",
+      "file": "..\\src\\components\\common\\PageHeader\\PageHeaderLegacy.tsx",
+      "stateUsages": [],
+      "children": []
+    },
+    {
+      "name": "Pagination",
+      "file": "..\\src\\components\\common\\Pagination\\Pagination.tsx",
+      "stateUsages": [],
+      "children": []
+    },
+    {
+      "name": "PaginationButton",
+      "file": "..\\src\\components\\common\\Pagination\\PaginationButton.tsx",
+      "stateUsages": [],
+      "children": []
+    },
+    {
+      "name": "Spacer",
+      "file": "..\\src\\components\\common\\Spacer\\Spacer.tsx",
+      "stateUsages": [],
+      "children": []
+    },
+    {
+      "name": "TextBox",
+      "file": "..\\src\\components\\common\\TextBox\\TextBox.tsx",
+      "stateUsages": [],
+      "children": []
+    },
+    {
+      "name": "Toast",
+      "file": "..\\src\\components\\common\\Toast\\Toast.tsx",
+      "stateUsages": [],
+      "children": []
+    },
+    {
+      "name": "MDEditor",
+      "file": "..\\src\\test-utils\\__mocks__\\@uiw\\react-md-editor.tsx",
+      "stateUsages": [],
+      "children": []
+    },
+    {
+      "name": "DetailTypeHeader",
+      "file": "..\\src\\components\\common\\PageHeader\\RightRenders\\DetailTypeHeader.tsx",
+      "stateUsages": [
+        {
+          "type": "zustand",
+          "name": "useAuthStore",
+          "file": "..\\src\\components\\common\\PageHeader\\RightRenders\\DetailTypeHeader.tsx",
+          "line": 2,
+          "component": "DetailTypeHeader"
+        }
+      ],
+      "children": []
+    },
+    {
+      "name": "EditProfileTypeHeader",
+      "file": "..\\src\\components\\common\\PageHeader\\RightRenders\\EditProfileTypeHeader.tsx",
+      "stateUsages": [
+        {
+          "type": "zustand",
+          "name": "useEditModeStore",
+          "file": "..\\src\\components\\common\\PageHeader\\RightRenders\\EditProfileTypeHeader.tsx",
+          "line": 2,
+          "component": "EditProfileTypeHeader"
+        }
+      ],
+      "children": []
+    },
+    {
+      "name": "MainTypeHeader",
+      "file": "..\\src\\components\\common\\PageHeader\\RightRenders\\MainTypeHeader.tsx",
+      "stateUsages": [
+        {
+          "type": "zustand",
+          "name": "useAuthStore",
+          "file": "..\\src\\components\\common\\PageHeader\\RightRenders\\MainTypeHeader.tsx",
+          "line": 2,
+          "component": "MainTypeHeader"
+        },
+        {
+          "type": "useState",
+          "name": "useState",
+          "file": "..\\src\\components\\common\\PageHeader\\RightRenders\\MainTypeHeader.tsx",
+          "line": 3,
+          "component": "MainTypeHeader"
+        },
+        {
+          "type": "useState",
+          "name": "useState",
+          "file": "..\\src\\components\\common\\PageHeader\\RightRenders\\MainTypeHeader.tsx",
+          "line": 4,
+          "component": "MainTypeHeader"
+        }
+      ],
+      "children": []
+    },
+    {
+      "name": "WriteTypeHeader",
+      "file": "..\\src\\components\\common\\PageHeader\\RightRenders\\WriteTypeHeader.tsx",
+      "stateUsages": [],
+      "children": []
+    }
+  ],
+  "suggestions": [
+    {
+      "type": "improvement",
+      "message": "4개의 useState가 있습니다. useReducer나 커스텀 훅으로 묶는 것을 고려하세요.",
+      "file": "..\\src\\contexts\\ToastContext.tsx",
+      "component": "ToastProvider"
+    },
+    {
+      "type": "improvement",
+      "message": "4개의 useState가 있습니다. useReducer나 커스텀 훅으로 묶는 것을 고려하세요.",
+      "file": "..\\src\\playground\\Playground.tsx",
+      "component": "Playground"
+    }
+  ]
+}

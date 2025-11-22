@@ -10,6 +10,7 @@ const MainPage = lazy(() => import('@/pages/main/MainPage'));
 const BlogDetailPage = lazy(() => import('@/pages/blog/BlogDetailPage'));
 const BlogWritePage = lazy(() => import('@/pages/blog/BlogWritePage'));
 const MyPage = lazy(() => import('@/pages/mypage/MyPage'));
+const AnalysisPage = lazy(() => import('@/pages/analysis/AnalysisPage').then(m => ({ default: m.AnalysisPage })));
 
 const router = createBrowserRouter([
   {
@@ -95,6 +96,16 @@ const router = createBrowserRouter([
       {
         path: 'oauth/kakao/success',
         element: <KakaoLogin />,
+      },
+      {
+        path: 'analysis',
+        element: (
+          <ErrorBoundary>
+            <Suspense fallback={<LoadingSpinner />}>
+              <AnalysisPage />
+            </Suspense>
+          </ErrorBoundary>
+        ),
       },
     ],
   },
