@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">85.71% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>6/7</span>
+                <span class='fraction'>7/7</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>0/16</span>
+                <span class='fraction'>16/16</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>0/1</span>
+                <span class='fraction'>1/1</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">85.71% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>6/7</span>
+                <span class='fraction'>7/7</span>
             </div>
         
             
@@ -121,14 +121,12 @@
 <a name='L56'></a><a href='#L56'>56</a>
 <a name='L57'></a><a href='#L57'>57</a>
 <a name='L58'></a><a href='#L58'>58</a>
-<a name='L59'></a><a href='#L59'>59</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">4x</span>
+<a name='L59'></a><a href='#L59'>59</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">5x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">5x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">5x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -148,9 +146,9 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">12x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -176,37 +174,39 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">5x</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { inputVariants, textFieldVariants } from '@/components/common/Text/TextFieldVariants';
 import { TextFieldProps } from '@/types/text';
 import clsx from 'clsx';
 import { forwardRef } from 'react';
 &nbsp;
 const TextField = forwardRef&lt;HTMLInputElement, TextFieldProps&gt;(
-<span class="fstat-no" title="function not covered" >  (</span>
+  (
     {
-      placeholder = <span class="branch-0 cbranch-no" title="branch not covered" >'Text field',</span>
-      className = <span class="branch-0 cbranch-no" title="branch not covered" >'',</span>
+      placeholder = 'Text field',
+      className = '',
       value,
       onChange,
       onBlur,
-      type = <span class="branch-0 cbranch-no" title="branch not covered" >'text',</span>
-      error = <span class="branch-0 cbranch-no" title="branch not covered" >false,</span>
+      type = 'text',
+      error = false,
       errorMessage,
       name,
-      variant = <span class="branch-0 cbranch-no" title="branch not covered" >'default',</span>
-      backgroundColor = <span class="branch-0 cbranch-no" title="branch not covered" >'transparent',</span>
-      textColor = <span class="branch-0 cbranch-no" title="branch not covered" >'gray56',</span>
-      fontSize = <span class="branch-0 cbranch-no" title="branch not covered" >'light',</span>
-      disabled = <span class="branch-0 cbranch-no" title="branch not covered" >false,</span>
-      fullWidth = <span class="branch-0 cbranch-no" title="branch not covered" >false,</span>
-      autoComplete = <span class="branch-0 cbranch-no" title="branch not covered" >'off',</span>
+      variant = 'default',
+      backgroundColor = 'transparent',
+      textColor = 'gray56',
+      fontSize = 'light',
+      disabled = false,
+      fullWidth = false,
+      autoComplete = 'off',
     },
     ref
   ) =&gt; {
-<span class="cstat-no" title="statement not covered" >    return (</span>
+    return (
       &lt;&gt;
         &lt;div
           className={clsx(
@@ -244,7 +244,7 @@ export default TextField;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2025-11-22T06:21:11.603Z
+                at 2025-11-22T07:57:53.282Z
             </div>
         <script src="../../../../prettify.js"></script>
         <script>

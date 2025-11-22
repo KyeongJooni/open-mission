@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">38.88% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>7/18</span>
+                <span class='fraction'>18/18</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">75% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>0/8</span>
+                <span class='fraction'>6/8</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>0/2</span>
+                <span class='fraction'>2/2</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">38.88% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>7/18</span>
+                <span class='fraction'>18/18</span>
             </div>
         
             
@@ -61,7 +61,7 @@
             </div>
         </template>
     </div>
-    <div class='status-line low'></div>
+    <div class='status-line high'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -112,31 +112,31 @@
 <a name='L47'></a><a href='#L47'>47</a>
 <a name='L48'></a><a href='#L48'>48</a>
 <a name='L49'></a><a href='#L49'>49</a>
-<a name='L50'></a><a href='#L50'>50</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">4x</span>
+<a name='L50'></a><a href='#L50'>50</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">16x</span>
+<span class="cline-any cline-yes">16x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">16x</span>
+<span class="cline-any cline-yes">16x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">16x</span>
 <span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">16x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -160,7 +160,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">5x</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { useState } from 'react';
 import profileImage from '@/assets/profile.png';
 import { PostInput, Button } from '@/components';
@@ -168,30 +168,30 @@ import { BLOG_TEXTS } from '@/constants';
 import { CommentInputProps } from '@/components/blog/Comment/CommentTypes';
 import { profileStyles, commentInputStyles } from '@/components/blog/Comment/Comment.styles';
 &nbsp;
-const CommentInput = <span class="fstat-no" title="function not covered" >({</span> nickName, profileUrl, onSubmit }: CommentInputProps) =&gt; {
-  const [comment, setComment] = <span class="cstat-no" title="statement not covered" >useState('');</span>
-  const hasContent = <span class="cstat-no" title="statement not covered" >comment.trim().length &gt; 0;</span>
+const CommentInput = ({ nickName, profileUrl, onSubmit }: CommentInputProps) =&gt; {
+  const [comment, setComment] = useState('');
+  const hasContent = comment.trim().length &gt; 0;
 &nbsp;
-  const styles = <span class="cstat-no" title="statement not covered" >commentInputStyles();</span>
-  const profileStyle = <span class="cstat-no" title="statement not covered" >profileStyles();</span>
+  const styles = commentInputStyles();
+  const profileStyle = profileStyles();
 &nbsp;
-  const handleSubmit = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >() =</span>&gt; {</span>
-<span class="cstat-no" title="statement not covered" >    if (!hasContent) {</span>
-<span class="cstat-no" title="statement not covered" >      return;</span>
+  const handleSubmit = () =&gt; {
+    if (!hasContent) {
+      return;
     }
-<span class="cstat-no" title="statement not covered" >    if (onSubmit) {</span>
-<span class="cstat-no" title="statement not covered" >      onSubmit(comment);</span>
-<span class="cstat-no" title="statement not covered" >      setComment(''); </span>// 입력창 초기화
+    <span class="missing-if-branch" title="else path not taken" >E</span>if (onSubmit) {
+      onSubmit(comment);
+      setComment(''); // 입력창 초기화
     }
   };
 &nbsp;
-<span class="cstat-no" title="statement not covered" >  return (</span>
+  return (
     &lt;div className={styles.container()}&gt;
       &lt;div className={styles.inputWrapper()}&gt;
         &lt;div className={styles.contentLayout()}&gt;
           &lt;div className={profileStyle.profileSection()}&gt;
             &lt;div className={profileStyle.profileImageWrapper()}&gt;
-              &lt;img src={profileUrl || profileImage} alt="profile" className={profileStyle.profileImage()} /&gt;
+              &lt;img src={profileUrl || <span class="branch-1 cbranch-no" title="branch not covered" >profileImage}</span> alt="profile" className={profileStyle.profileImage()} /&gt;
             &lt;/div&gt;
             &lt;div className={profileStyle.userInfo()}&gt;
               &lt;span className={profileStyle.nickName()}&gt;{nickName}&lt;/span&gt;
@@ -217,7 +217,7 @@ export default CommentInput;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2025-11-22T06:21:11.603Z
+                at 2025-11-22T07:57:53.282Z
             </div>
         <script src="../../../../prettify.js"></script>
         <script>

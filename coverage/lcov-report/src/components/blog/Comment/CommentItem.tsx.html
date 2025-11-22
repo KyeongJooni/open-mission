@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">52.63% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>10/19</span>
+                <span class='fraction'>19/19</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">80% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>0/5</span>
+                <span class='fraction'>4/5</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>0/4</span>
+                <span class='fraction'>4/4</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">55.55% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>10/18</span>
+                <span class='fraction'>18/18</span>
             </div>
         
             
@@ -61,7 +61,7 @@
             </div>
         </template>
     </div>
-    <div class='status-line medium'></div>
+    <div class='status-line high'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -134,29 +134,27 @@
 <a name='L69'></a><a href='#L69'>69</a>
 <a name='L70'></a><a href='#L70'>70</a>
 <a name='L71'></a><a href='#L71'>71</a>
-<a name='L72'></a><a href='#L72'>72</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">4x</span>
+<a name='L72'></a><a href='#L72'>72</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">5x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">5x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">5x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-yes">8x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-yes">8x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -165,9 +163,9 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">8x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -202,9 +200,11 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">5x</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { memo, useMemo, useCallback } from 'react';
 import profileImage from '@/assets/profile.png';
 import { PostBody, Spacer, Icon, DropdownMenu } from '@/components';
@@ -215,17 +215,17 @@ import { profileStyles, commentItemStyles } from '@/components/blog/Comment/Comm
 import { useAuthStore } from '@/stores/useAuthStore';
 &nbsp;
 const CommentItem = memo(
-<span class="fstat-no" title="function not covered" >  ({</span> commentId, content, nickName, profileUrl, createdAt, isOwner, onDelete }: CommentItemProps) =&gt; {
-    const styles = <span class="cstat-no" title="statement not covered" >commentItemStyles();</span>
-    const profileStyle = <span class="cstat-no" title="statement not covered" >profileStyles();</span>
-    const isLoggedIn = <span class="cstat-no" title="statement not covered" >useAuthStore(<span class="fstat-no" title="function not covered" >state </span>=&gt; <span class="cstat-no" title="statement not covered" >state.isLoggedIn)</span>;</span>
+  ({ commentId, content, nickName, profileUrl, createdAt, isOwner, onDelete }: CommentItemProps) =&gt; {
+    const styles = commentItemStyles();
+    const profileStyle = profileStyles();
+    const isLoggedIn = useAuthStore(state =&gt; state.isLoggedIn);
 &nbsp;
-    const handleDelete = <span class="cstat-no" title="statement not covered" >useCallback(<span class="fstat-no" title="function not covered" >() =</span>&gt; {</span>
-<span class="cstat-no" title="statement not covered" >      onDelete?.(commentId);</span>
+    const handleDelete = useCallback(() =&gt; {
+      onDelete?.(commentId);
     }, [onDelete, commentId]);
 &nbsp;
-    const dropdownItems = <span class="cstat-no" title="statement not covered" >useMemo(</span>
-<span class="fstat-no" title="function not covered" >      () =</span>&gt; <span class="cstat-no" title="statement not covered" >[</span>
+    const dropdownItems = useMemo(
+      () =&gt; [
         {
           id: 'delete',
           label: '삭제하기',
@@ -236,14 +236,14 @@ const CommentItem = memo(
       [handleDelete]
     );
 &nbsp;
-<span class="cstat-no" title="statement not covered" >    return (</span>
+    return (
       &lt;div className={styles.container()}&gt;
         &lt;div className={styles.header()}&gt;
           &lt;div className={styles.headerContent()}&gt;
             &lt;div className={styles.headerLayout()}&gt;
               &lt;div className={profileStyle.profileSection()}&gt;
                 &lt;div className={profileStyle.profileImageWrapper()}&gt;
-                  &lt;img src={profileUrl || profileImage} alt="profile" className={profileStyle.profileImage()} /&gt;
+                  &lt;img src={profileUrl || <span class="branch-1 cbranch-no" title="branch not covered" >profileImage}</span> alt="profile" className={profileStyle.profileImage()} /&gt;
                 &lt;/div&gt;
                 &lt;div className={profileStyle.userInfo()}&gt;
                   &lt;span className={profileStyle.nickName()}&gt;{nickName}&lt;/span&gt;
@@ -283,7 +283,7 @@ export default CommentItem;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2025-11-22T06:21:11.603Z
+                at 2025-11-22T07:57:53.282Z
             </div>
         <script src="../../../../prettify.js"></script>
         <script>
