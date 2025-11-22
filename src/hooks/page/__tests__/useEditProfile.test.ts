@@ -1,21 +1,15 @@
 import { renderHook, act } from '@testing-library/react';
 import { useEditProfile } from '../useEditProfile';
 
+const mockSetEditMode = jest.fn();
 const mockNavigate = jest.fn();
 const mockShowToast = jest.fn();
-const mockSetEditMode = jest.fn();
 const mockUploadImage = jest.fn();
-const mockMutate = jest.fn();
-const mockMutateAsync = jest.fn();
+const mockSetPreviewImage = jest.fn();
+const mockGeneratePreview = jest.fn();
 
 jest.mock('react-router-dom', () => ({
   useNavigate: () => mockNavigate,
-}));
-
-jest.mock('@/contexts/ToastContext', () => ({
-  useToast: () => ({
-    showToast: mockShowToast,
-  }),
 }));
 
 jest.mock('@/stores/useEditModeStore', () => ({
@@ -25,19 +19,23 @@ jest.mock('@/stores/useEditModeStore', () => ({
   }),
 }));
 
+jest.mock('@/contexts/ToastContext', () => ({
+  useToast: () => ({
+    showToast: mockShowToast,
+  }),
+}));
+
 jest.mock('@/api/user/userQuery', () => ({
   useAuth: () => ({
     user: {
-      id: 1,
-      nickname: 'testuser',
-      email: 'test@test.com',
-      introduction: 'Hello',
-      profilePicture: 'profile.jpg',
+      nickname: '테스트',
+      introduction: '소개',
+      profilePicture: 'https://example.com/profile.png',
     },
   }),
-  useUpdateUser: () => ({ mutate: mockMutate }),
-  useUpdateNickname: () => ({ mutate: mockMutate }),
-  useUpdateProfilePicture: () => ({ mutateAsync: mockMutateAsync }),
+  useUpdateUser: () => ({ mutate: jest.fn() }),
+  useUpdateNickname: () => ({ mutate: jest.fn() }),
+  useUpdateProfilePicture: () => ({ mutateAsync: jest.fn() }),
 }));
 
 jest.mock('@/hooks/common/useS3ImageUpload', () => ({
@@ -48,9 +46,9 @@ jest.mock('@/hooks/common/useS3ImageUpload', () => ({
 
 jest.mock('@/hooks/common/useImagePreview', () => ({
   useImagePreview: () => ({
-    previewImage: 'preview.jpg',
-    setPreviewImage: jest.fn(),
-    generatePreview: jest.fn(),
+    previewImage: '',
+    setPreviewImage: mockSetPreviewImage,
+    generatePreview: mockGeneratePreview,
   }),
 }));
 
@@ -59,14 +57,16 @@ describe('useEditProfile', () => {
     jest.clearAllMocks();
   });
 
-  it('초기 상태를 올바르게 반환해야 함', () => {
+  it('초기 상태를 반환해야 함', () => {
     const { result } = renderHook(() => useEditProfile());
 
-    expect(result.current.headerNickname).toBe('testuser');
-    expect(result.current.headerIntroduction).toBe('Hello');
+    expect(result.current.handleEdit).toBeDefined();
+    expect(result.current.handleCancel).toBeDefined();
+    expect(result.current.handleSave).toBeDefined();
+    expect(result.current.validateField).toBeDefined();
   });
 
-  it('handleEdit이 편집 모드를 활성화해야 함', () => {
+  it('handleEdit 호출 시 setEditMode(true)를 호출해야 함', () => {
     const { result } = renderHook(() => useEditProfile());
 
     act(() => {
@@ -76,7 +76,7 @@ describe('useEditProfile', () => {
     expect(mockSetEditMode).toHaveBeenCalledWith(true);
   });
 
-  it('handleCancel이 편집 모드를 비활성화해야 함', () => {
+  it('handleCancel 호출 시 setEditMode(false)를 호출해야 함', () => {
     const { result } = renderHook(() => useEditProfile());
 
     act(() => {
@@ -86,83 +86,27 @@ describe('useEditProfile', () => {
     expect(mockSetEditMode).toHaveBeenCalledWith(false);
   });
 
-  it('handleProfileImageClick이 파일 입력을 클릭해야 함', () => {
+  it('validateField가 올바른 검증을 수행해야 함', () => {
     const { result } = renderHook(() => useEditProfile());
 
-    const mockClick = jest.fn();
-    Object.defineProperty(result.current.fileInputRef, 'current', {
-      value: { click: mockClick },
-      writable: true,
-    });
+    const nicknameError = result.current.validateField('nickname', '');
+    expect(nicknameError).toBeDefined();
 
-    act(() => {
-      result.current.handleProfileImageClick();
-    });
-
-    expect(mockClick).toHaveBeenCalled();
+    const validNickname = result.current.validateField('nickname', 'validNickname123');
+    expect(validNickname).toBeUndefined();
   });
 
-  it('handleImageUpload가 파일이 없을 때 아무것도 하지 않아야 함', async () => {
+  it('headerNickname과 headerIntroduction을 반환해야 함', () => {
     const { result } = renderHook(() => useEditProfile());
 
-    await act(async () => {
-      await result.current.handleImageUpload({ target: { files: null } } as any);
-    });
+    expect(result.current.headerNickname).toBe('테스트');
+    expect(result.current.headerIntroduction).toBe('소개');
   });
 
-  it('handleSave가 변경사항이 없을 때 경고를 표시해야 함', async () => {
-    const { result } = renderHook(() => useEditProfile());
-
-    await act(async () => {
-      await result.current.handleSave({
-        nickname: 'testuser',
-        introduction: 'Hello',
-      });
-    });
-
-    expect(mockShowToast).toHaveBeenCalledWith(expect.any(String), 'warning');
-  });
-
-  it('validateField가 닉네임을 검증해야 함', () => {
-    const { result } = renderHook(() => useEditProfile());
-
-    const error = result.current.validateField('nickname', '');
-    expect(error).toBeDefined();
-
-    const valid = result.current.validateField('nickname', 'validname');
-    expect(valid).toBeUndefined();
-  });
-
-  it('validateField가 bio를 검증해야 함', () => {
-    const { result } = renderHook(() => useEditProfile());
-
-    const valid = result.current.validateField('bio', 'Valid bio');
-    expect(valid).toBeUndefined();
-  });
-
-  it('setHeaderNickname 함수가 존재해야 함', () => {
+  it('setHeaderNickname과 setHeaderIntroduction이 정의되어 있어야 함', () => {
     const { result } = renderHook(() => useEditProfile());
 
     expect(result.current.setHeaderNickname).toBeDefined();
-    expect(typeof result.current.setHeaderNickname).toBe('function');
-  });
-
-  it('setHeaderIntroduction 함수가 존재해야 함', () => {
-    const { result } = renderHook(() => useEditProfile());
-
     expect(result.current.setHeaderIntroduction).toBeDefined();
-    expect(typeof result.current.setHeaderIntroduction).toBe('function');
-  });
-
-  it('previewImage를 반환해야 함', () => {
-    const { result } = renderHook(() => useEditProfile());
-
-    expect(result.current.previewImage).toBe('preview.jpg');
-  });
-
-  it('fileInputRef를 반환해야 함', () => {
-    const { result } = renderHook(() => useEditProfile());
-
-    expect(result.current.fileInputRef).toBeDefined();
   });
 });

@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">41.17% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>7/17</span>
+                <span class='fraction'>17/17</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>0/2</span>
+                <span class='fraction'>2/2</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>0/3</span>
+                <span class='fraction'>3/3</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">28.57% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>4/14</span>
+                <span class='fraction'>14/14</span>
             </div>
         
             
@@ -61,7 +61,7 @@
             </div>
         </template>
     </div>
-    <div class='status-line low'></div>
+    <div class='status-line high'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -98,21 +98,21 @@
 <a name='L33'></a><a href='#L33'>33</a>
 <a name='L34'></a><a href='#L34'>34</a>
 <a name='L35'></a><a href='#L35'>35</a>
-<a name='L36'></a><a href='#L36'>36</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">2x</span>
+<a name='L36'></a><a href='#L36'>36</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -120,34 +120,34 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { axiosInstance } from '../apiInstance';
 import type { ApiResponse } from '../apiTypes';
 import type * as ImageTypes from './imageTypes';
 &nbsp;
 // Presigned URL
-export const getPresignedUrl = <span class="fstat-no" title="function not covered" >async </span>(fileName: string): Promise&lt;ApiResponse&lt;ImageTypes.PresignedUrlData&gt;&gt; =&gt; {
-  const response = <span class="cstat-no" title="statement not covered" >await axiosInstance.get&lt;ApiResponse&lt;ImageTypes.PresignedUrlData&gt;&gt;('/images/presigned-url', {</span>
+export const getPresignedUrl = async (fileName: string): Promise&lt;ApiResponse&lt;ImageTypes.PresignedUrlData&gt;&gt; =&gt; {
+  const response = await axiosInstance.get&lt;ApiResponse&lt;ImageTypes.PresignedUrlData&gt;&gt;('/images/presigned-url', {
     params: { fileName },
   });
-<span class="cstat-no" title="statement not covered" >  return response.data;</span>
+  return response.data;
 };
 &nbsp;
 // S3에 이미지 업로드
-export const uploadImageToS3 = <span class="fstat-no" title="function not covered" >async </span>(presignedUrl: string, file: File): Promise&lt;void&gt; =&gt; {
-  const response = <span class="cstat-no" title="statement not covered" >await fetch(presignedUrl, {</span>
+export const uploadImageToS3 = async (presignedUrl: string, file: File): Promise&lt;void&gt; =&gt; {
+  const response = await fetch(presignedUrl, {
     method: 'PUT',
     body: file,
     headers: {
@@ -155,18 +155,18 @@ export const uploadImageToS3 = <span class="fstat-no" title="function not covere
     },
   });
 &nbsp;
-<span class="cstat-no" title="statement not covered" >  if (!response.ok) {</span>
-<span class="cstat-no" title="statement not covered" >    throw new Error(`S3 upload failed: ${response.status}`);</span>
+  if (!response.ok) {
+    throw new Error(`S3 upload failed: ${response.status}`);
   }
 };
 &nbsp;
 // 이미지 업로드 커스텀 훅
-export const uploadImage = <span class="fstat-no" title="function not covered" >async </span>(file: File): Promise&lt;ImageTypes.UploadImageResult&gt; =&gt; {
-  const response = <span class="cstat-no" title="statement not covered" >await getPresignedUrl(file.name);</span>
-  const presignedUrl = <span class="cstat-no" title="statement not covered" >response.data;</span>
-<span class="cstat-no" title="statement not covered" >  await uploadImageToS3(presignedUrl, file);</span>
-  const imageUrl = <span class="cstat-no" title="statement not covered" >presignedUrl.split('?')[0];</span>
-<span class="cstat-no" title="statement not covered" >  return { imageUrl };</span>
+export const uploadImage = async (file: File): Promise&lt;ImageTypes.UploadImageResult&gt; =&gt; {
+  const response = await getPresignedUrl(file.name);
+  const presignedUrl = response.data;
+  await uploadImageToS3(presignedUrl, file);
+  const imageUrl = presignedUrl.split('?')[0];
+  return { imageUrl };
 };
 &nbsp;</pre></td></tr></table></pre>
 
@@ -175,7 +175,7 @@ export const uploadImage = <span class="fstat-no" title="function not covered" >
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2025-11-22T11:52:26.457Z
+                at 2025-11-22T12:17:05.548Z
             </div>
         <script src="../../../prettify.js"></script>
         <script>
