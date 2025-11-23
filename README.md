@@ -73,12 +73,12 @@
 
 ### 기술 스택
 
-| 도구 | 용도 | 버전 |
-|------|------|------|
-| Jest | 테스트 러너 | 30.x |
-| React Testing Library | 컴포넌트 테스트 | 16.x |
-| MSW | API 모킹 | 2.x |
-| Cypress | E2E 테스트 | 13.x |
+| 도구 | 용도 |
+|------|------|
+| Jest | 테스트 러너 |
+| React Testing Library | 컴포넌트 테스트 |
+| MSW | API 모킹 |
+| Cypress | E2E 테스트 |
 
 ### 프리코스 피드백 적용
 
