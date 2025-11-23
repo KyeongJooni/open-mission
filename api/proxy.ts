@@ -1,8 +1,10 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node';
 
 export default async function handler(req: VercelRequest, res: VercelResponse) {
-  const { path } = req.query;
-  const apiPath = Array.isArray(path) ? path.join('/') : path;
+  // URL에서 /api/proxy/ 이후의 경로 추출
+  const url = req.url || '';
+  const apiPath = url.replace(/^\/api\/proxy\/?/, '').split('?')[0];
+  const queryString = url.includes('?') ? url.split('?')[1] : '';
 
   // 백엔드 서버 URL (환경변수로 관리)
   const BACKEND_URL = process.env.BACKEND_URL || process.env.VITE_API_BASE_URL;
@@ -11,7 +13,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     return res.status(500).json({ error: 'BACKEND_URL is not configured' });
   }
 
-  const targetUrl = `${BACKEND_URL}/${apiPath}`;
+  const targetUrl = `${BACKEND_URL}/${apiPath}${queryString ? `?${queryString}` : ''}`;
 
   try {
     const headers: Record<string, string> = {
