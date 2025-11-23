@@ -28,10 +28,7 @@ describe('useInfiniteScroll', () => {
   it('초기 로딩 상태를 반환해야 함', () => {
     mockFetchBlogs.mockImplementation(() => new Promise(() => {}));
 
-    const { result } = renderHook(
-      () => useInfiniteScroll({ isLoggedIn: false }),
-      { wrapper: createWrapper() }
-    );
+    const { result } = renderHook(() => useInfiniteScroll({ isLoggedIn: false }), { wrapper: createWrapper() });
 
     expect(result.current.isLoading).toBe(true);
     expect(result.current.blogs).toEqual([]);
@@ -50,10 +47,7 @@ describe('useInfiniteScroll', () => {
       },
     } as any);
 
-    const { result } = renderHook(
-      () => useInfiniteScroll({ isLoggedIn: false }),
-      { wrapper: createWrapper() }
-    );
+    const { result } = renderHook(() => useInfiniteScroll({ isLoggedIn: false }), { wrapper: createWrapper() });
 
     await waitFor(() => {
       expect(result.current.isLoading).toBe(false);
@@ -71,10 +65,7 @@ describe('useInfiniteScroll', () => {
       },
     } as any);
 
-    const { result } = renderHook(
-      () => useInfiniteScroll({ isLoggedIn: false }),
-      { wrapper: createWrapper() }
-    );
+    const { result } = renderHook(() => useInfiniteScroll({ isLoggedIn: false }), { wrapper: createWrapper() });
 
     await waitFor(() => {
       expect(result.current.isLoading).toBe(false);
@@ -86,10 +77,7 @@ describe('useInfiniteScroll', () => {
   it('에러 발생 시 isError가 true여야 함', async () => {
     mockFetchBlogs.mockRejectedValue(new Error('Network Error'));
 
-    const { result } = renderHook(
-      () => useInfiniteScroll({ isLoggedIn: false }),
-      { wrapper: createWrapper() }
-    );
+    const { result } = renderHook(() => useInfiniteScroll({ isLoggedIn: false }), { wrapper: createWrapper() });
 
     await waitFor(() => {
       expect(result.current.isError).toBe(true);
@@ -99,10 +87,9 @@ describe('useInfiniteScroll', () => {
   });
 
   it('enabled가 false일 때 쿼리를 실행하지 않아야 함', () => {
-    const { result } = renderHook(
-      () => useInfiniteScroll({ isLoggedIn: false, enabled: false }),
-      { wrapper: createWrapper() }
-    );
+    const { result } = renderHook(() => useInfiniteScroll({ isLoggedIn: false, enabled: false }), {
+      wrapper: createWrapper(),
+    });
 
     expect(result.current.isLoading).toBe(false);
     expect(mockFetchBlogs).not.toHaveBeenCalled();
@@ -113,10 +100,7 @@ describe('useInfiniteScroll', () => {
       data: { posts: [], pageMax: 1 },
     } as any);
 
-    renderHook(
-      () => useInfiniteScroll({ isLoggedIn: true }),
-      { wrapper: createWrapper() }
-    );
+    renderHook(() => useInfiniteScroll({ isLoggedIn: true }), { wrapper: createWrapper() });
 
     await waitFor(() => {
       expect(mockFetchBlogs).toHaveBeenCalledWith(1, 10, true);
@@ -128,10 +112,7 @@ describe('useInfiniteScroll', () => {
       data: { posts: [], pageMax: 1 },
     } as any);
 
-    renderHook(
-      () => useInfiniteScroll({ isLoggedIn: false, size: 20 }),
-      { wrapper: createWrapper() }
-    );
+    renderHook(() => useInfiniteScroll({ isLoggedIn: false, size: 20 }), { wrapper: createWrapper() });
 
     await waitFor(() => {
       expect(mockFetchBlogs).toHaveBeenCalledWith(1, 20, false);
@@ -143,10 +124,7 @@ describe('useInfiniteScroll', () => {
       data: { posts: [], pageMax: 1 },
     } as any);
 
-    const { result } = renderHook(
-      () => useInfiniteScroll({ isLoggedIn: false }),
-      { wrapper: createWrapper() }
-    );
+    const { result } = renderHook(() => useInfiniteScroll({ isLoggedIn: false }), { wrapper: createWrapper() });
 
     expect(result.current.observerRef).toBeDefined();
   });
@@ -156,10 +134,7 @@ describe('useInfiniteScroll', () => {
       data: null,
     } as any);
 
-    const { result } = renderHook(
-      () => useInfiniteScroll({ isLoggedIn: false }),
-      { wrapper: createWrapper() }
-    );
+    const { result } = renderHook(() => useInfiniteScroll({ isLoggedIn: false }), { wrapper: createWrapper() });
 
     await waitFor(() => {
       expect(result.current.isLoading).toBe(false);

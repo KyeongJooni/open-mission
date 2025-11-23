@@ -37,8 +37,8 @@ describe('ModeToggleButtons', () => {
     mode: 'basic' as const,
     setMode: jest.fn(),
     getButtonProps: (targetMode: 'basic' | 'markdown') => ({
-      intent: targetMode === 'basic' ? 'primary' as const : 'secondary' as const,
-      variant: targetMode === 'basic' ? 'solid' as const : 'outline' as const,
+      intent: targetMode === 'basic' ? ('primary' as const) : ('secondary' as const),
+      variant: targetMode === 'basic' ? ('solid' as const) : ('outline' as const),
       size: 'sm' as const,
     }),
   };

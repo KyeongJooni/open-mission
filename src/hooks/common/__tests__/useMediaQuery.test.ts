@@ -81,10 +81,9 @@ describe('useMediaQuery', () => {
 
   describe('쿼리 변경', () => {
     it('쿼리가 변경되면 새 미디어 쿼리로 업데이트해야 함', () => {
-      const { rerender } = renderHook(
-        ({ query }) => useMediaQuery(query),
-        { initialProps: { query: '(min-width: 768px)' } }
-      );
+      const { rerender } = renderHook(({ query }) => useMediaQuery(query), {
+        initialProps: { query: '(min-width: 768px)' },
+      });
 
       expect(window.matchMedia).toHaveBeenCalledWith('(min-width: 768px)');
 

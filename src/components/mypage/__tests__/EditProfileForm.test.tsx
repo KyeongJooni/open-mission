@@ -37,7 +37,7 @@ jest.mock('@/stores/useEditModeStore', () => ({
 }));
 
 jest.mock('@/stores/useAuthStore', () => ({
-  useAuthStore: jest.fn((selector) => selector({ isKakaoUser: false })),
+  useAuthStore: jest.fn(selector => selector({ isKakaoUser: false })),
 }));
 
 jest.mock('react-router-dom', () => ({

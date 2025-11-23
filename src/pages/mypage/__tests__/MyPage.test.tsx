@@ -7,7 +7,9 @@ const mockUseAuth = jest.fn();
 
 jest.mock('react-router-dom', () => ({
   Outlet: ({ context }: any) => (
-    <div data-testid="outlet" data-context={JSON.stringify(context)}>Outlet</div>
+    <div data-testid="outlet" data-context={JSON.stringify(context)}>
+      Outlet
+    </div>
   ),
 }));
 

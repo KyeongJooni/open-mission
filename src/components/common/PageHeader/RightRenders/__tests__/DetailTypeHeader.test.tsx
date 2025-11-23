@@ -28,14 +28,12 @@ jest.mock('@/hooks', () => ({
 
 jest.mock('@/components', () => ({
   Icon: ({ children, onClick }: any) => (
-    <button data-testid="icon" onClick={onClick}>{children}</button>
+    <button data-testid="icon" onClick={onClick}>
+      {children}
+    </button>
   ),
-  DropdownMenu: ({ trigger }: any) => (
-    <div data-testid="dropdown-menu">{trigger}</div>
-  ),
-  Modal: ({ isOpen, children }: any) => (
-    isOpen ? <div data-testid="modal">{children}</div> : null
-  ),
+  DropdownMenu: ({ trigger }: any) => <div data-testid="dropdown-menu">{trigger}</div>,
+  Modal: ({ isOpen, children }: any) => (isOpen ? <div data-testid="modal">{children}</div> : null),
 }));
 
 jest.mock('@/assets/icons', () => ({

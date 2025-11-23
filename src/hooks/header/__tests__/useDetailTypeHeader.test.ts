@@ -56,7 +56,6 @@ describe('useDetailTypeHeader', () => {
     act(() => {
       result.current.handleChatClick();
     });
-
   });
 
   it('handleEdit이 수정 페이지로 이동해야 함', () => {

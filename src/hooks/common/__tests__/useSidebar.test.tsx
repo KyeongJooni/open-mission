@@ -128,12 +128,7 @@ describe('useSidebar', () => {
       result.current.handleLogout();
     });
 
-    expect(mockOpenModal).toHaveBeenCalledWith(
-      'logout',
-      expect.any(String),
-      expect.any(Function),
-      expect.any(String)
-    );
+    expect(mockOpenModal).toHaveBeenCalledWith('logout', expect.any(String), expect.any(Function), expect.any(String));
   });
 
   it('로그아웃 확인 시 로그아웃을 수행해야 함', () => {

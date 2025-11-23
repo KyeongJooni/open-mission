@@ -49,10 +49,9 @@ describe('useBodyScrollLock', () => {
 
   describe('상태 변경', () => {
     it('isLocked가 변경되면 스크롤 잠금 상태가 변경되어야 함', () => {
-      const { rerender } = renderHook(
-        ({ isLocked }) => useBodyScrollLock(isLocked),
-        { initialProps: { isLocked: false } }
-      );
+      const { rerender } = renderHook(({ isLocked }) => useBodyScrollLock(isLocked), {
+        initialProps: { isLocked: false },
+      });
 
       expect(document.body.style.overflow).toBe('');
 

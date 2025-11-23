@@ -3,7 +3,9 @@ import PageHeader from '../PageHeader';
 
 jest.mock('@/components', () => ({
   PageHeaderLeft: ({ onHamburgerClick }: any) => (
-    <div data-testid="page-header-left" onClick={onHamburgerClick}>Left</div>
+    <div data-testid="page-header-left" onClick={onHamburgerClick}>
+      Left
+    </div>
   ),
   PageHeaderRight: ({ type, onEdit, onCancel }: any) => (
     <div data-testid="page-header-right" data-type={type}>

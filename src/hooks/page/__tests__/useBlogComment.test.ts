@@ -96,12 +96,7 @@ describe('useBlogComment', () => {
       result.current.handleCommentDeleteClick(1);
     });
 
-    expect(mockOpenModal).toHaveBeenCalledWith(
-      'delete',
-      undefined,
-      expect.any(Function),
-      '삭제하기'
-    );
+    expect(mockOpenModal).toHaveBeenCalledWith('delete', undefined, expect.any(Function), '삭제하기');
   });
 
   it('삭제 확인 시 댓글을 삭제해야 함', async () => {

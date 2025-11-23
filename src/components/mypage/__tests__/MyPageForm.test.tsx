@@ -10,7 +10,9 @@ jest.mock('react-router-dom', () => ({
 jest.mock('@/components/auth/LoginLogo', () => ({
   __esModule: true,
   default: ({ isDark }: { isDark?: boolean }) => (
-    <div data-testid="login-logo" data-dark={isDark}>Logo</div>
+    <div data-testid="login-logo" data-dark={isDark}>
+      Logo
+    </div>
   ),
 }));
 

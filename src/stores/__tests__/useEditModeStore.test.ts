@@ -15,10 +15,7 @@ describe('useEditModeStore', () => {
   });
 
   describe('setEditMode', () => {
-    it.each([
-      [true],
-      [false],
-    ])('isEditMode를 %s로 설정해야 함', (value) => {
+    it.each([[true], [false]])('isEditMode를 %s로 설정해야 함', value => {
       act(() => {
         useEditModeStore.getState().setEditMode(value);
       });

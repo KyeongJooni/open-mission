@@ -52,9 +52,7 @@ describe('Modal', () => {
     });
 
     it('커스텀 확인 버튼 텍스트를 표시해야 함', () => {
-      render(
-        <Modal {...defaultProps} onDelete={jest.fn()} confirmButtonText="확인" />
-      );
+      render(<Modal {...defaultProps} onDelete={jest.fn()} confirmButtonText="확인" />);
       expect(screen.getByText('확인')).toBeInTheDocument();
     });
   });

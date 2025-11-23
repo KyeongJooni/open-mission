@@ -27,12 +27,7 @@ describe('PostCard', () => {
   });
 
   it('renderTitle이 제공되면 커스텀 제목을 렌더링해야 함', () => {
-    render(
-      <PostCard
-        title="기본 제목"
-        renderTitle={<h1 data-testid="custom-title">커스텀 제목</h1>}
-      />
-    );
+    render(<PostCard title="기본 제목" renderTitle={<h1 data-testid="custom-title">커스텀 제목</h1>} />);
 
     expect(screen.getByTestId('custom-title')).toBeInTheDocument();
     expect(screen.queryByText('기본 제목')).not.toBeInTheDocument();

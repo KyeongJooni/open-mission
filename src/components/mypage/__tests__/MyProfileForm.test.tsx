@@ -3,9 +3,7 @@ import MyProfileForm from '../MyProfileForm';
 
 jest.mock('@/components', () => ({
   Spacer: ({ height }: { height: string }) => <div data-testid="spacer" data-height={height} />,
-  MainPreviewCard: ({ title, id }: { title: string; id: string }) => (
-    <div data-testid={`post-${id}`}>{title}</div>
-  ),
+  MainPreviewCard: ({ title, id }: { title: string; id: string }) => <div data-testid={`post-${id}`}>{title}</div>,
   LoadingSpinner: () => <div data-testid="loading-spinner">Loading...</div>,
 }));
 

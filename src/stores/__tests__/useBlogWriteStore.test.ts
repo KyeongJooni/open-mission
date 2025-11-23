@@ -20,11 +20,7 @@ describe('useBlogWriteStore', () => {
   });
 
   describe('setTitle', () => {
-    it.each([
-      ['테스트 제목'],
-      [''],
-      ['매우 긴 제목'.repeat(100)],
-    ])('제목을 "%s"로 설정해야 함', (title) => {
+    it.each([['테스트 제목'], [''], ['매우 긴 제목'.repeat(100)]])('제목을 "%s"로 설정해야 함', title => {
       act(() => {
         useBlogWriteStore.getState().setTitle(title);
       });
@@ -33,10 +29,7 @@ describe('useBlogWriteStore', () => {
   });
 
   describe('setMode', () => {
-    it.each([
-      ['basic'],
-      ['markdown'],
-    ] as const)('모드를 %s로 설정해야 함', (mode) => {
+    it.each([['basic'], ['markdown']] as const)('모드를 %s로 설정해야 함', mode => {
       act(() => {
         useBlogWriteStore.getState().setMode(mode);
       });
@@ -73,11 +66,7 @@ describe('useBlogWriteStore', () => {
   });
 
   describe('setEditPostId', () => {
-    it.each([
-      ['123'],
-      ['abc-456'],
-      [null],
-    ])('editPostId를 %s로 설정해야 함', (id) => {
+    it.each([['123'], ['abc-456'], [null]])('editPostId를 %s로 설정해야 함', id => {
       act(() => {
         useBlogWriteStore.getState().setEditPostId(id);
       });

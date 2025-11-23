@@ -18,15 +18,11 @@ jest.mock('@/api/blog/blogQuery', () => ({
 }));
 
 jest.mock('@/components', () => ({
-  BlogPostSection: ({ title }: { title: string }) => (
-    <div data-testid="blog-post-section">{title}</div>
-  ),
+  BlogPostSection: ({ title }: { title: string }) => <div data-testid="blog-post-section">{title}</div>,
   BlogCommentSection: ({ comments }: { comments: any[] }) => (
     <div data-testid="blog-comment-section">{comments.length} comments</div>
   ),
-  BlogAuthorSection: ({ nickName }: { nickName: string }) => (
-    <div data-testid="blog-author-section">{nickName}</div>
-  ),
+  BlogAuthorSection: ({ nickName }: { nickName: string }) => <div data-testid="blog-author-section">{nickName}</div>,
   Spacer: () => <div data-testid="spacer" />,
   LoadingSpinner: () => <div data-testid="loading-spinner">Loading...</div>,
   ErrorMessage: () => <div data-testid="error-message">Error</div>,

@@ -69,12 +69,9 @@ describe('cn', () => {
     });
 
     it('복잡한 Tailwind 클래스 조합을 처리해야 함', () => {
-      expect(cn(
-        'flex items-center',
-        'justify-between',
-        { 'bg-red-500': true },
-        'p-4'
-      )).toBe('flex items-center justify-between bg-red-500 p-4');
+      expect(cn('flex items-center', 'justify-between', { 'bg-red-500': true }, 'p-4')).toBe(
+        'flex items-center justify-between bg-red-500 p-4'
+      );
     });
   });
 
@@ -95,10 +92,7 @@ describe('cn', () => {
     it('조건부 스타일 오버라이드', () => {
       const variant = 'danger';
 
-      const result = cn(
-        'bg-gray-500',
-        variant === 'danger' && 'bg-red-500'
-      );
+      const result = cn('bg-gray-500', variant === 'danger' && 'bg-red-500');
 
       expect(result).toBe('bg-red-500');
     });

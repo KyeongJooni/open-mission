@@ -19,19 +19,23 @@ jest.mock('@/hooks', () => ({
 }));
 
 jest.mock('@/stores/useAuthStore', () => ({
-  useAuthStore: jest.fn((selector) => selector({ isLoggedIn: false })),
+  useAuthStore: jest.fn(selector => selector({ isLoggedIn: false })),
 }));
 
 jest.mock('@/components', () => ({
   PageHeader: ({ type, onHamburgerClick }: any) => (
     <header data-testid="page-header" data-type={type}>
-      <button onClick={onHamburgerClick} data-testid="hamburger">메뉴</button>
+      <button onClick={onHamburgerClick} data-testid="hamburger">
+        메뉴
+      </button>
     </header>
   ),
 }));
 
 jest.mock('@/layout/Sidebar', () => ({ isLoggedIn }: any) => (
-  <aside data-testid="sidebar" data-logged-in={isLoggedIn}>사이드바</aside>
+  <aside data-testid="sidebar" data-logged-in={isLoggedIn}>
+    사이드바
+  </aside>
 ));
 
 jest.mock('react-router-dom', () => ({

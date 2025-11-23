@@ -28,10 +28,7 @@ describe('useAuthStore', () => {
   });
 
   describe('setIsLoggedIn', () => {
-    it.each([
-      [true],
-      [false],
-    ])('isLoggedIn을 %s로 설정해야 함', (value) => {
+    it.each([[true], [false]])('isLoggedIn을 %s로 설정해야 함', value => {
       act(() => {
         useAuthStore.getState().setIsLoggedIn(value);
       });
@@ -40,10 +37,7 @@ describe('useAuthStore', () => {
   });
 
   describe('setIsKakaoUser', () => {
-    it.each([
-      [true],
-      [false],
-    ])('isKakaoUser를 %s로 설정해야 함', (value) => {
+    it.each([[true], [false]])('isKakaoUser를 %s로 설정해야 함', value => {
       act(() => {
         useAuthStore.getState().setIsKakaoUser(value);
       });

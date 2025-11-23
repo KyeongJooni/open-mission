@@ -36,9 +36,7 @@ describe('blogApi', () => {
     it('블로그 생성 실패 시 에러를 throw해야 함', async () => {
       (mockedAxios.post as jest.Mock).mockRejectedValue(new Error('Unauthorized'));
 
-      await expect(
-        createBlog({ title: '테스트', contents: [] })
-      ).rejects.toThrow();
+      await expect(createBlog({ title: '테스트', contents: [] })).rejects.toThrow();
     });
   });
 
@@ -52,11 +50,7 @@ describe('blogApi', () => {
         contents: [{ contentType: 'TEXT', content: '수정', contentOrder: 1 }],
       });
 
-      expect(mockedAxios.patch).toHaveBeenCalledWith(
-        '/posts',
-        expect.any(Object),
-        { params: { postId: '123' } }
-      );
+      expect(mockedAxios.patch).toHaveBeenCalledWith('/posts', expect.any(Object), { params: { postId: '123' } });
       expect(result.data).toBeDefined();
     });
   });

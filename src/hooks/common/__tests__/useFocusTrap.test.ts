@@ -1,5 +1,4 @@
 import { renderHook } from '@testing-library/react';
-import { useRef } from 'react';
 import { useFocusTrap } from '../useFocusTrap';
 
 describe('useFocusTrap', () => {

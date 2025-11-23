@@ -18,20 +18,19 @@ jest.mock('@/components/common/Icon/Icon', () => ({
 
 jest.mock('@/components/common/Modal/Modal', () => ({
   __esModule: true,
-  default: ({ isOpen, children, onDelete }: any) => (
+  default: ({ isOpen, children, onDelete }: any) =>
     isOpen ? (
       <div data-testid="modal">
         {children}
-        <button onClick={onDelete} data-testid="confirm-button">확인</button>
+        <button onClick={onDelete} data-testid="confirm-button">
+          확인
+        </button>
       </div>
-    ) : null
-  ),
+    ) : null,
 }));
 
 jest.mock('@/components/auth', () => ({
-  LoginModal: ({ isOpen }: any) => (
-    isOpen ? <div data-testid="login-modal">Login</div> : null
-  ),
+  LoginModal: ({ isOpen }: any) => (isOpen ? <div data-testid="login-modal">Login</div> : null),
 }));
 
 jest.mock('@/assets/icons', () => ({

@@ -9,7 +9,9 @@ jest.mock('@/components', () => ({
     </div>
   ),
   TextBox: ({ children, onClick }: { children: React.ReactNode; onClick?: () => void }) => (
-    <button data-testid="text-box" onClick={onClick}>{children}</button>
+    <button data-testid="text-box" onClick={onClick}>
+      {children}
+    </button>
   ),
   TextField: ({ value, onChange, placeholder, disabled, error }: any) => (
     <input
@@ -94,12 +96,7 @@ describe('MyPageHeader', () => {
   it('닉네임 변경 시 onNicknameChange가 호출되어야 함', () => {
     const onNicknameChange = jest.fn();
     render(
-      <MyPageHeader
-        {...defaultProps}
-        isEditProfilePage={true}
-        isEditMode={true}
-        onNicknameChange={onNicknameChange}
-      />
+      <MyPageHeader {...defaultProps} isEditProfilePage={true} isEditMode={true} onNicknameChange={onNicknameChange} />
     );
 
     const nicknameField = screen.getAllByTestId(/text-field/)[0];
@@ -109,14 +106,7 @@ describe('MyPageHeader', () => {
 
   it('소개 변경 시 onBioChange가 호출되어야 함', () => {
     const onBioChange = jest.fn();
-    render(
-      <MyPageHeader
-        {...defaultProps}
-        isEditProfilePage={true}
-        isEditMode={true}
-        onBioChange={onBioChange}
-      />
-    );
+    render(<MyPageHeader {...defaultProps} isEditProfilePage={true} isEditMode={true} onBioChange={onBioChange} />);
 
     const bioField = screen.getAllByTestId(/text-field/)[1];
     fireEvent.change(bioField, { target: { value: '새소개' } });

@@ -4,9 +4,7 @@ import PostBody from '../PostBody';
 jest.mock('@uiw/react-md-editor', () => ({
   __esModule: true,
   default: {
-    Markdown: ({ source }: { source: string }) => (
-      <div data-testid="markdown-preview">{source}</div>
-    ),
+    Markdown: ({ source }: { source: string }) => <div data-testid="markdown-preview">{source}</div>,
   },
 }));
 

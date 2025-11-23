@@ -67,10 +67,7 @@ describe('useLoginForm', () => {
       result.current.handleLogin();
     });
 
-    expect(mockMutate).toHaveBeenCalledWith(
-      { email: 'test@test.com', password: 'password123' },
-      expect.any(Object)
-    );
+    expect(mockMutate).toHaveBeenCalledWith({ email: 'test@test.com', password: 'password123' }, expect.any(Object));
   });
 
   it('로그인 성공 시 토큰을 설정하고 홈으로 이동해야 함', () => {

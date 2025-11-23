@@ -6,9 +6,7 @@ jest.mock('@/components/common/PageHeader/RightRenders', () => ({
   DetailTypeHeader: () => <div data-testid="detail-header" />,
   WriteTypeHeader: () => <div data-testid="write-header" />,
   MypageTypeHeader: () => <div data-testid="mypage-header" />,
-  EditProfileTypeHeader: (props: any) => (
-    <div data-testid="editprofile-header">{JSON.stringify(props)}</div>
-  ),
+  EditProfileTypeHeader: (props: any) => <div data-testid="editprofile-header">{JSON.stringify(props)}</div>,
 }));
 
 describe('PageHeaderRenderers', () => {

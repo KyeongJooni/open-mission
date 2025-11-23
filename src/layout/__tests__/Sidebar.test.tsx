@@ -40,9 +40,7 @@ jest.mock('@/hooks', () => ({
 }));
 
 jest.mock('@/components', () => ({
-  Button: ({ children, onClick }: any) => (
-    <button onClick={onClick}>{children}</button>
-  ),
+  Button: ({ children, onClick }: any) => <button onClick={onClick}>{children}</button>,
   Spacer: () => <div data-testid="spacer" />,
   Modal: ({ children }: any) => <div data-testid="modal">{children}</div>,
 }));

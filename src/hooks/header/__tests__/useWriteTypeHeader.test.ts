@@ -70,12 +70,7 @@ describe('useWriteTypeHeader', () => {
       result.current.handleDeleteClick();
     });
 
-    expect(mockOpenModal).toHaveBeenCalledWith(
-      'delete',
-      undefined,
-      expect.any(Function),
-      expect.any(String)
-    );
+    expect(mockOpenModal).toHaveBeenCalledWith('delete', undefined, expect.any(Function), expect.any(String));
   });
 
   it('삭제 확인 시 리셋하고 뒤로 이동해야 함', () => {

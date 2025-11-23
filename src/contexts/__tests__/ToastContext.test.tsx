@@ -4,7 +4,9 @@ import { ToastProvider, useToast } from '../ToastContext';
 // Portal 모킹
 jest.mock('@/components', () => ({
   Toast: ({ children, type }: { children: React.ReactNode; type: string }) => (
-    <div data-testid="toast" data-type={type}>{children}</div>
+    <div data-testid="toast" data-type={type}>
+      {children}
+    </div>
   ),
   Portal: ({ children }: { children: React.ReactNode }) => <div data-testid="portal">{children}</div>,
 }));
@@ -36,9 +38,7 @@ describe('ToastContext', () => {
       return null;
     };
 
-    expect(() => render(<BrokenComponent />)).toThrow(
-      'useToast must be used within ToastProvider'
-    );
+    expect(() => render(<BrokenComponent />)).toThrow('useToast must be used within ToastProvider');
 
     consoleSpy.mockRestore();
   });

@@ -14,9 +14,7 @@ describe('parseApiContentToEditor', () => {
 
   describe('기본 모드 (HTML)', () => {
     it('단일 TEXT 항목을 기본 모드로 반환해야 함', () => {
-      const contents: ContentItem[] = [
-        { contentType: 'TEXT', content: '안녕하세요', contentOrder: 1 },
-      ];
+      const contents: ContentItem[] = [{ contentType: 'TEXT', content: '안녕하세요', contentOrder: 1 }];
 
       const result = parseApiContentToEditor(contents);
 
@@ -80,9 +78,7 @@ describe('parseApiContentToEditor', () => {
 
   describe('마크다운 모드', () => {
     it('마크다운 문법이 있는 콘텐츠를 마크다운 모드로 반환해야 함', () => {
-      const contents: ContentItem[] = [
-        { contentType: 'TEXT', content: '# 제목', contentOrder: 1 },
-      ];
+      const contents: ContentItem[] = [{ contentType: 'TEXT', content: '# 제목', contentOrder: 1 }];
 
       const result = parseApiContentToEditor(contents);
 
@@ -114,22 +110,16 @@ describe('parseApiContentToEditor', () => {
       expect(result.content).toContain('![](image.png)');
     });
 
-    it.each([
-      ['**볼드**'],
-      ['*이탤릭*'],
-      ['- 리스트'],
-      ['> 인용'],
-      ['`코드`'],
-      ['[링크](url)'],
-    ])('마크다운 문법 %s를 마크다운 모드로 인식해야 함', (markdown) => {
-      const contents: ContentItem[] = [
-        { contentType: 'TEXT', content: markdown, contentOrder: 1 },
-      ];
+    it.each([['**볼드**'], ['*이탤릭*'], ['- 리스트'], ['> 인용'], ['`코드`'], ['[링크](url)']])(
+      '마크다운 문법 %s를 마크다운 모드로 인식해야 함',
+      markdown => {
+        const contents: ContentItem[] = [{ contentType: 'TEXT', content: markdown, contentOrder: 1 }];
 
-      const result = parseApiContentToEditor(contents);
+        const result = parseApiContentToEditor(contents);
 
-      expect(result.editorMode).toBe('markdown');
-    });
+        expect(result.editorMode).toBe('markdown');
+      }
+    );
   });
 
   describe('복합 시나리오', () => {
@@ -164,9 +154,7 @@ describe('parseApiContentToEditor', () => {
 
   describe('경계값 테스트', () => {
     it('빈 문자열 콘텐츠를 처리해야 함', () => {
-      const contents: ContentItem[] = [
-        { contentType: 'TEXT', content: '', contentOrder: 1 },
-      ];
+      const contents: ContentItem[] = [{ contentType: 'TEXT', content: '', contentOrder: 1 }];
 
       const result = parseApiContentToEditor(contents);
 
@@ -175,9 +163,7 @@ describe('parseApiContentToEditor', () => {
 
     it('매우 긴 콘텐츠를 처리해야 함', () => {
       const longText = 'a'.repeat(10000);
-      const contents: ContentItem[] = [
-        { contentType: 'TEXT', content: longText, contentOrder: 1 },
-      ];
+      const contents: ContentItem[] = [{ contentType: 'TEXT', content: longText, contentOrder: 1 }];
 
       const result = parseApiContentToEditor(contents);
 

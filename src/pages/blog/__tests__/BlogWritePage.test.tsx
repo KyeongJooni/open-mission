@@ -40,11 +40,11 @@ jest.mock('@/components', () => ({
 }));
 
 jest.mock('@/components/blog/Write', () => ({
-  TitleInput: ({ title }: { title: string }) => (
-    <input data-testid="title-input" value={title} readOnly />
-  ),
+  TitleInput: ({ title }: { title: string }) => <input data-testid="title-input" value={title} readOnly />,
   ModeToggleButtons: ({ mode }: { mode: string }) => (
-    <div data-testid="mode-toggle" data-mode={mode}>Toggle</div>
+    <div data-testid="mode-toggle" data-mode={mode}>
+      Toggle
+    </div>
   ),
 }));
 

@@ -8,18 +8,14 @@ describe('getFirstTextContent', () => {
     });
 
     it('TEXT 타입이 없으면 빈 문자열을 반환해야 함', () => {
-      const contents: BlogContent[] = [
-        { contentType: 'IMAGE', content: 'image.png', contentOrder: 1 },
-      ];
+      const contents: BlogContent[] = [{ contentType: 'IMAGE', content: 'image.png', contentOrder: 1 }];
       expect(getFirstTextContent(contents)).toBe('');
     });
   });
 
   describe('TEXT 콘텐츠 추출', () => {
     it('단일 TEXT 콘텐츠를 추출해야 함', () => {
-      const contents: BlogContent[] = [
-        { contentType: 'TEXT', content: '안녕하세요', contentOrder: 1 },
-      ];
+      const contents: BlogContent[] = [{ contentType: 'TEXT', content: '안녕하세요', contentOrder: 1 }];
       expect(getFirstTextContent(contents)).toBe('안녕하세요');
     });
 
@@ -40,9 +36,7 @@ describe('getFirstTextContent', () => {
     });
 
     it('MARKDOWN 타입도 추출해야 함', () => {
-      const contents: BlogContent[] = [
-        { contentType: 'MARKDOWN', content: '# 제목', contentOrder: 1 },
-      ];
+      const contents: BlogContent[] = [{ contentType: 'MARKDOWN', content: '# 제목', contentOrder: 1 }];
       expect(getFirstTextContent(contents)).toBe('제목');
     });
   });
@@ -54,9 +48,7 @@ describe('getFirstTextContent', () => {
       ['<a href="url">링크</a>', '링크'],
       ['<strong>볼드</strong>', '볼드'],
     ])('HTML %s에서 %s를 추출해야 함', (html, expected) => {
-      const contents: BlogContent[] = [
-        { contentType: 'TEXT', content: html, contentOrder: 1 },
-      ];
+      const contents: BlogContent[] = [{ contentType: 'TEXT', content: html, contentOrder: 1 }];
       expect(getFirstTextContent(contents)).toBe(expected);
     });
   });
@@ -74,16 +66,12 @@ describe('getFirstTextContent', () => {
       ['- 리스트', '리스트'],
       ['1. 숫자 리스트', '숫자 리스트'],
     ])('마크다운 %s에서 %s를 추출해야 함', (markdown, expected) => {
-      const contents: BlogContent[] = [
-        { contentType: 'TEXT', content: markdown, contentOrder: 1 },
-      ];
+      const contents: BlogContent[] = [{ contentType: 'TEXT', content: markdown, contentOrder: 1 }];
       expect(getFirstTextContent(contents)).toBe(expected);
     });
 
     it('이미지 문법을 제거해야 함', () => {
-      const contents: BlogContent[] = [
-        { contentType: 'TEXT', content: '![대체텍스트](image.png)', contentOrder: 1 },
-      ];
+      const contents: BlogContent[] = [{ contentType: 'TEXT', content: '![대체텍스트](image.png)', contentOrder: 1 }];
       expect(getFirstTextContent(contents)).toBe('');
     });
 
@@ -97,9 +85,7 @@ describe('getFirstTextContent', () => {
 
   describe('복합 시나리오', () => {
     it('HTML과 마크다운이 섞인 콘텐츠를 처리해야 함', () => {
-      const contents: BlogContent[] = [
-        { contentType: 'TEXT', content: '<p>**볼드**</p>', contentOrder: 1 },
-      ];
+      const contents: BlogContent[] = [{ contentType: 'TEXT', content: '<p>**볼드**</p>', contentOrder: 1 }];
       const result = getFirstTextContent(contents);
       expect(result).toBe('볼드');
     });
@@ -132,9 +118,7 @@ describe('getFirstImageUrl', () => {
     });
 
     it('이미지가 없으면 undefined를 반환해야 함', () => {
-      const contents: BlogContent[] = [
-        { contentType: 'TEXT', content: '텍스트', contentOrder: 1 },
-      ];
+      const contents: BlogContent[] = [{ contentType: 'TEXT', content: '텍스트', contentOrder: 1 }];
       expect(getFirstImageUrl(contents)).toBeUndefined();
     });
 

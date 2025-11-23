@@ -6,7 +6,7 @@ jest.mock('@/components', () => ({
     <textarea
       data-testid="post-input"
       value={value}
-      onChange={(e) => onChange(e.target.value)}
+      onChange={e => onChange(e.target.value)}
       placeholder={placeholder}
     />
   ),

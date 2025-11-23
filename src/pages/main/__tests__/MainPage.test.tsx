@@ -13,9 +13,7 @@ jest.mock('@/hooks/common/useInfiniteScroll', () => ({
 }));
 
 jest.mock('@/components', () => ({
-  MainPreviewCard: ({ title, id }: { title: string; id: string }) => (
-    <div data-testid={`blog-${id}`}>{title}</div>
-  ),
+  MainPreviewCard: ({ title, id }: { title: string; id: string }) => <div data-testid={`blog-${id}`}>{title}</div>,
   Spacer: () => <div data-testid="spacer" />,
   LoadingSpinner: () => <div data-testid="loading-spinner">Loading...</div>,
   ErrorMessage: () => <div data-testid="error-message">Error</div>,

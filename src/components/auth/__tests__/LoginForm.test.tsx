@@ -26,20 +26,26 @@ jest.mock('@/components', () => ({
 jest.mock('@/components/auth/LoginFormComponents', () => ({
   InputSection: ({ onEmailChange, onPasswordChange }: any) => (
     <div data-testid="input-section">
-      <input data-testid="email-input" onChange={(e) => onEmailChange(e.target.value)} />
-      <input data-testid="password-input" onChange={(e) => onPasswordChange(e.target.value)} />
+      <input data-testid="email-input" onChange={e => onEmailChange(e.target.value)} />
+      <input data-testid="password-input" onChange={e => onPasswordChange(e.target.value)} />
     </div>
   ),
-  ErrorMessage: ({ message }: any) => message ? <div data-testid="error-message">{message}</div> : null,
+  ErrorMessage: ({ message }: any) => (message ? <div data-testid="error-message">{message}</div> : null),
   SnsDivider: ({ text }: any) => <div data-testid="sns-divider">{text}</div>,
   EmailLoginButton: ({ onClick, text }: any) => (
-    <button data-testid="email-login-button" onClick={onClick}>{text}</button>
+    <button data-testid="email-login-button" onClick={onClick}>
+      {text}
+    </button>
   ),
   KakaoLoginButton: ({ onClick, text }: any) => (
-    <button data-testid="kakao-login-button" onClick={onClick}>{text}</button>
+    <button data-testid="kakao-login-button" onClick={onClick}>
+      {text}
+    </button>
   ),
   SignupButton: ({ onClick }: any) => (
-    <button data-testid="signup-button" onClick={onClick}>회원가입</button>
+    <button data-testid="signup-button" onClick={onClick}>
+      회원가입
+    </button>
   ),
 }));
 

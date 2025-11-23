@@ -1,5 +1,5 @@
 import { act } from '@testing-library/react';
-import { useModalStore, ModalType } from '../useModalStore';
+import { useModalStore } from '../useModalStore';
 
 describe('useModalStore', () => {
   beforeEach(() => {
@@ -19,12 +19,7 @@ describe('useModalStore', () => {
   });
 
   describe('openModal', () => {
-    it.each([
-      ['login'],
-      ['message'],
-      ['logout'],
-      ['delete'],
-    ] as const)('%s 타입 모달을 열어야 함', (type) => {
+    it.each([['login'], ['message'], ['logout'], ['delete']] as const)('%s 타입 모달을 열어야 함', type => {
       act(() => {
         useModalStore.getState().openModal(type);
       });

@@ -14,13 +14,16 @@ export const handlers = [
   }),
 
   http.post(`${BASE_URL}/auth/signup`, () => {
-    return HttpResponse.json({
-      data: {
-        id: 1,
-        email: 'test@test.com',
-        nickname: 'testuser',
+    return HttpResponse.json(
+      {
+        data: {
+          id: 1,
+          email: 'test@test.com',
+          nickname: 'testuser',
+        },
       },
-    }, { status: 201 });
+      { status: 201 }
+    );
   }),
 
   http.post(`${BASE_URL}/auth/refresh`, () => {
@@ -70,12 +73,15 @@ export const handlers = [
   }),
 
   http.post(`${BASE_URL}/blogs`, () => {
-    return HttpResponse.json({
-      data: {
-        id: 1,
-        title: 'New Blog Post',
+    return HttpResponse.json(
+      {
+        data: {
+          id: 1,
+          title: 'New Blog Post',
+        },
       },
-    }, { status: 201 });
+      { status: 201 }
+    );
   }),
 
   http.put(`${BASE_URL}/blogs/:id`, () => {
@@ -93,12 +99,15 @@ export const handlers = [
 
   // 댓글 관련
   http.post(`${BASE_URL}/blogs/:blogId/comments`, () => {
-    return HttpResponse.json({
-      data: {
-        id: 1,
-        content: 'Test comment',
+    return HttpResponse.json(
+      {
+        data: {
+          id: 1,
+          content: 'Test comment',
+        },
       },
-    }, { status: 201 });
+      { status: 201 }
+    );
   }),
 
   http.put(`${BASE_URL}/comments/:id`, () => {

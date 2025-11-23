@@ -87,10 +87,9 @@ describe('authQuery', () => {
       const onSuccess = jest.fn();
       const onError = jest.fn();
 
-      const { result } = renderHook(
-        () => useKakaoCallbackMutation({ onSuccess, onError }),
-        { wrapper: createWrapper() }
-      );
+      const { result } = renderHook(() => useKakaoCallbackMutation({ onSuccess, onError }), {
+        wrapper: createWrapper(),
+      });
 
       expect(result.current.mutate).toBeDefined();
     });

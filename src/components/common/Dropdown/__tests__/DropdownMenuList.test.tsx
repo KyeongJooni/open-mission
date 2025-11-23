@@ -29,9 +29,7 @@ describe('DropdownMenuList', () => {
   });
 
   it('disabled 아이템은 비활성화되어야 함', () => {
-    const disabledItems = [
-      { id: 'disabled', label: '비활성', onClick: jest.fn(), disabled: true },
-    ];
+    const disabledItems = [{ id: 'disabled', label: '비활성', onClick: jest.fn(), disabled: true }];
 
     render(<DropdownMenuList items={disabledItems} onItemClick={mockOnItemClick} />);
 
@@ -40,28 +38,20 @@ describe('DropdownMenuList', () => {
   });
 
   it('position이 left일 때 left-0 클래스를 적용해야 함', () => {
-    const { container } = render(
-      <DropdownMenuList items={mockItems} onItemClick={mockOnItemClick} position="left" />
-    );
+    const { container } = render(<DropdownMenuList items={mockItems} onItemClick={mockOnItemClick} position="left" />);
 
     expect(container.firstChild).toHaveClass('left-0');
   });
 
   it('position이 right일 때 right-0 클래스를 적용해야 함', () => {
-    const { container } = render(
-      <DropdownMenuList items={mockItems} onItemClick={mockOnItemClick} position="right" />
-    );
+    const { container } = render(<DropdownMenuList items={mockItems} onItemClick={mockOnItemClick} position="right" />);
 
     expect(container.firstChild).toHaveClass('right-0');
   });
 
   it('menuClassName을 적용해야 함', () => {
     const { container } = render(
-      <DropdownMenuList
-        items={mockItems}
-        onItemClick={mockOnItemClick}
-        menuClassName="custom-class"
-      />
+      <DropdownMenuList items={mockItems} onItemClick={mockOnItemClick} menuClassName="custom-class" />
     );
 
     expect(container.firstChild).toHaveClass('custom-class');

@@ -2,7 +2,7 @@ import { render, screen } from '@testing-library/react';
 import SignupForm from '../SignupForm';
 
 const mockRegister = jest.fn();
-const mockHandleSubmit = jest.fn((fn) => (e: any) => {
+const mockHandleSubmit = jest.fn(fn => (e: any) => {
   e?.preventDefault();
   fn({});
 });
@@ -32,18 +32,17 @@ jest.mock('@/hooks', () => ({
 jest.mock('@/components', () => ({
   Spacer: ({ height }: { height: string }) => <div data-testid="spacer" data-height={height} />,
   Button: ({ children, type }: { children: React.ReactNode; type: string }) => (
-    <button type={type as any} data-testid="submit-button">{children}</button>
+    <button type={type as any} data-testid="submit-button">
+      {children}
+    </button>
   ),
-  Modal: ({ isOpen, children }: { isOpen: boolean; children: React.ReactNode }) => (
-    isOpen ? <div data-testid="modal">{children}</div> : null
-  ),
+  Modal: ({ isOpen, children }: { isOpen: boolean; children: React.ReactNode }) =>
+    isOpen ? <div data-testid="modal">{children}</div> : null,
 }));
 
 jest.mock('@/components/auth/LoginModal', () => ({
   __esModule: true,
-  default: ({ isOpen }: { isOpen: boolean }) => (
-    isOpen ? <div data-testid="login-modal">Login Modal</div> : null
-  ),
+  default: ({ isOpen }: { isOpen: boolean }) => (isOpen ? <div data-testid="login-modal">Login Modal</div> : null),
 }));
 
 jest.mock('../SignupProfileSection', () => ({

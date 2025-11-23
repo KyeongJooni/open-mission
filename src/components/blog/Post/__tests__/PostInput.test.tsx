@@ -42,9 +42,7 @@ describe('PostInput', () => {
 
   it('className을 적용해야 함', () => {
     const onChange = jest.fn();
-    const { container } = render(
-      <PostInput value="" onChange={onChange} className="custom-class" />
-    );
+    const { container } = render(<PostInput value="" onChange={onChange} className="custom-class" />);
 
     expect(container.firstChild).toHaveClass('custom-class');
   });

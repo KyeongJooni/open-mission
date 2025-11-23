@@ -25,23 +25,13 @@ describe('DropdownMenu', () => {
   });
 
   it('트리거를 렌더링해야 함', () => {
-    render(
-      <DropdownMenu
-        trigger={<span>메뉴</span>}
-        items={mockItems}
-      />
-    );
+    render(<DropdownMenu trigger={<span>메뉴</span>} items={mockItems} />);
 
     expect(screen.getByText('메뉴')).toBeInTheDocument();
   });
 
   it('클릭 시 메뉴를 열어야 함', () => {
-    render(
-      <DropdownMenu
-        trigger={<span>메뉴</span>}
-        items={mockItems}
-      />
-    );
+    render(<DropdownMenu trigger={<span>메뉴</span>} items={mockItems} />);
 
     fireEvent.click(screen.getByRole('button'));
 
@@ -49,12 +39,7 @@ describe('DropdownMenu', () => {
   });
 
   it('아이템 클릭 시 onClick을 호출해야 함', () => {
-    render(
-      <DropdownMenu
-        trigger={<span>메뉴</span>}
-        items={mockItems}
-      />
-    );
+    render(<DropdownMenu trigger={<span>메뉴</span>} items={mockItems} />);
 
     fireEvent.click(screen.getByRole('button'));
     fireEvent.click(screen.getByTestId('item-edit'));
@@ -63,12 +48,7 @@ describe('DropdownMenu', () => {
   });
 
   it('아이템 클릭 후 메뉴를 닫아야 함', () => {
-    render(
-      <DropdownMenu
-        trigger={<span>메뉴</span>}
-        items={mockItems}
-      />
-    );
+    render(<DropdownMenu trigger={<span>메뉴</span>} items={mockItems} />);
 
     fireEvent.click(screen.getByRole('button'));
     fireEvent.click(screen.getByTestId('item-edit'));
@@ -79,10 +59,7 @@ describe('DropdownMenu', () => {
   it('외부 클릭 시 메뉴를 닫아야 함', () => {
     render(
       <div>
-        <DropdownMenu
-          trigger={<span>메뉴</span>}
-          items={mockItems}
-        />
+        <DropdownMenu trigger={<span>메뉴</span>} items={mockItems} />
         <div data-testid="outside">Outside</div>
       </div>
     );
@@ -96,12 +73,7 @@ describe('DropdownMenu', () => {
 
   it('disabled 아이템은 onClick을 호출하지 않아야 함', () => {
     const disabledItem = { id: 'disabled', label: '비활성', onClick: jest.fn(), disabled: true };
-    render(
-      <DropdownMenu
-        trigger={<span>메뉴</span>}
-        items={[disabledItem]}
-      />
-    );
+    render(<DropdownMenu trigger={<span>메뉴</span>} items={[disabledItem]} />);
 
     fireEvent.click(screen.getByRole('button'));
     fireEvent.click(screen.getByTestId('item-disabled'));

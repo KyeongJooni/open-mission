@@ -4,9 +4,7 @@ import Pagination from '../Pagination';
 jest.mock('../PaginationButton', () => ({
   __esModule: true,
   default: ({ children, variant, direction }: any) => (
-    <button data-testid={`pagination-${variant}-${direction || 'page'}`}>
-      {children}
-    </button>
+    <button data-testid={`pagination-${variant}-${direction || 'page'}`}>{children}</button>
   ),
 }));
 

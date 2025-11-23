@@ -18,9 +18,7 @@ jest.mock('@/hooks', () => ({
 }));
 
 jest.mock('@/components', () => ({
-  Modal: ({ isOpen, children }: any) => (
-    isOpen ? <div data-testid="modal">{children}</div> : null
-  ),
+  Modal: ({ isOpen, children }: any) => (isOpen ? <div data-testid="modal">{children}</div> : null),
 }));
 
 describe('WriteTypeHeader', () => {

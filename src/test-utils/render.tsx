@@ -22,10 +22,7 @@ interface CustomRenderOptions extends Omit<RenderOptions, 'wrapper'> {
   queryClient?: QueryClient;
 }
 
-function customRender(
-  ui: ReactElement,
-  options?: CustomRenderOptions
-) {
+function customRender(ui: ReactElement, options?: CustomRenderOptions) {
   const { queryClient = createTestQueryClient(), ...renderOptions } = options || {};
 
   function Wrapper({ children }: { children: React.ReactNode }) {

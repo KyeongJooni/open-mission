@@ -1,4 +1,4 @@
-import { renderHook, act, waitFor } from '@testing-library/react';
+import { renderHook, act } from '@testing-library/react';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { ReactNode } from 'react';
 import { useS3ImageUpload } from '../useS3ImageUpload';
@@ -114,10 +114,7 @@ describe('useS3ImageUpload', () => {
     mockMutateAsync.mockResolvedValue({ imageUrl });
 
     const onSuccess = jest.fn();
-    const { result } = renderHook(
-      () => useS3ImageUpload({ onSuccess }),
-      { wrapper: createWrapper() }
-    );
+    const { result } = renderHook(() => useS3ImageUpload({ onSuccess }), { wrapper: createWrapper() });
 
     const file = new File(['test'], 'test.jpg', { type: 'image/jpeg' });
 
@@ -133,10 +130,7 @@ describe('useS3ImageUpload', () => {
     mockMutateAsync.mockRejectedValue(error);
 
     const onError = jest.fn();
-    const { result } = renderHook(
-      () => useS3ImageUpload({ onError }),
-      { wrapper: createWrapper() }
-    );
+    const { result } = renderHook(() => useS3ImageUpload({ onError }), { wrapper: createWrapper() });
 
     const file = new File(['test'], 'test.jpg', { type: 'image/jpeg' });
 
