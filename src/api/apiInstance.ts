@@ -1,9 +1,16 @@
 import axios, { AxiosInstance, AxiosError } from 'axios';
 import createAuthRefreshInterceptor from 'axios-auth-refresh';
 
+const getBaseURL = () => {
+  if (import.meta.env.DEV) {
+    return import.meta.env.VITE_API_BASE_URL;
+  }
+  return '/api/proxy';
+};
+
 // API용 Axios 인스턴스
 export const axiosInstance: AxiosInstance = axios.create({
-  baseURL: import.meta.env.VITE_API_BASE_URL,
+  baseURL: getBaseURL(),
   headers: { 'Content-Type': 'application/json' },
   timeout: 10000,
   responseType: 'json',
@@ -124,7 +131,7 @@ const refreshAuthLogic = async (failedRequest: AxiosError) => {
         refreshToken: string;
       };
     }>(
-      `${import.meta.env.VITE_API_BASE_URL}/auth/reissue`,
+      `${getBaseURL()}/auth/reissue`,
       { refreshToken },
       {
         headers: { 'Content-Type': 'application/json' },
