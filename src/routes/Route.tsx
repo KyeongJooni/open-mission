@@ -97,17 +97,17 @@ const router = createBrowserRouter([
         path: 'oauth/kakao/success',
         element: <KakaoLogin />,
       },
-      {
-        path: 'analysis',
-        element: (
-          <ErrorBoundary>
-            <Suspense fallback={<LoadingSpinner />}>
-              <AnalysisPage />
-            </Suspense>
-          </ErrorBoundary>
-        ),
-      },
     ],
+  },
+  {
+    path: '/analysis',
+    element: (
+      <ErrorBoundary>
+        <Suspense fallback={<LoadingSpinner />}>
+          <AnalysisPage />
+        </Suspense>
+      </ErrorBoundary>
+    ),
   },
 ]);
 
