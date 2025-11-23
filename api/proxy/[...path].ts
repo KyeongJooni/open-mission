@@ -5,7 +5,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
   const apiPath = Array.isArray(path) ? path.join('/') : path;
 
   // 백엔드 서버 URL (환경변수로 관리)
-  const BACKEND_URL = process.env.BACKEND_URL;
+  const BACKEND_URL = process.env.BACKEND_URL || process.env.VITE_API_BASE_URL;
 
   if (!BACKEND_URL) {
     return res.status(500).json({ error: 'BACKEND_URL is not configured' });
