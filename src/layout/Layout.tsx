@@ -1,8 +1,7 @@
 import Sidebar from '@/layout/Sidebar';
-import { PageHeader } from '@/components';
+import { PageHeader, PageTransition } from '@/components';
 import { useSidebar, usePageHeaderType, useEditProfile } from '@/hooks';
 import { useAuthStore } from '@/stores/useAuthStore';
-import { Outlet } from 'react-router-dom';
 
 export default function Layout() {
   const { isSidebarOpen, sidebarRef, toggleSidebar } = useSidebar();
@@ -17,8 +16,8 @@ export default function Layout() {
       <div ref={sidebarRef} className={`sidebar-container ${isSidebarOpen ? 'sidebar-open' : 'sidebar-closed'}`}>
         <Sidebar isLoggedIn={isLoggedIn} />
       </div>
-      <div className="flex w-full flex-col items-center pt-16">
-        <Outlet />
+      <div className="w-full pt-16">
+        <PageTransition />
       </div>
     </div>
   );

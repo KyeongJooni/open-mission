@@ -54,6 +54,7 @@ const MainPage = () => {
           createdAt={blog.createdAt}
           commentCount={blog.commentCount}
           priority={index === 0}
+          index={index}
         />
       ))}
 

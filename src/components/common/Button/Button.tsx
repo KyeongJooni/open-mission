@@ -1,6 +1,7 @@
 import { ButtonProps } from '@/components/common/Button/ButtonTypes';
 import { buttonIconVariants, buttonTextVariants, buttonVariants } from '@/components/common/Button/ButtonVariants';
 import { Icon } from '@/components';
+import { useRipple } from '@/hooks';
 import { cn } from '@/utils/cn';
 
 const Button = ({
@@ -15,11 +16,20 @@ const Button = ({
   variant = 'solid',
   fullWidth = false,
 }: ButtonProps) => {
+  const createRipple = useRipple();
+
   return (
     <button
       type={type}
-      onClick={onClick}
-      className={cn(buttonVariants({ intent, size, variant, fullWidth }), className)}
+      onClick={e => {
+        createRipple(e);
+        onClick?.();
+      }}
+      className={cn(
+        buttonVariants({ intent, size, variant, fullWidth }),
+        'transition-transform active:scale-95',
+        className
+      )}
     >
       {showIcon && icon && (
         <Icon size="md" className={buttonIconVariants()}>

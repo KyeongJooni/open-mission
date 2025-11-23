@@ -20,6 +20,8 @@ export { default as TextField } from '@/components/common/Text/TextField';
 export { default as Textarea } from '@/components/common/Text/Textarea';
 export { default as TextBox } from '@/components/common/TextBox/TextBox';
 export { default as Toast } from '@/components/common/Toast/Toast';
+export { ScrollProgress } from '@/components/common/ScrollProgress';
+export { PageTransition } from '@/components/common/PageTransition';
 
 // Blog Components
 export { default as BlogAuthorSection } from '@/components/blog/Detail/BlogAuthorSection';
