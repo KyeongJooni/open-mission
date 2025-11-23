@@ -4,6 +4,7 @@ interface TopComponentData {
   component: string;
   useState: number;
   zustand: number;
+  [key: string]: string | number;
 }
 
 interface AnalysisTopComponentsProps {

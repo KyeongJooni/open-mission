@@ -3,6 +3,7 @@ import { ResponsiveBar } from '@nivo/bar';
 interface BarData {
   type: string;
   count: number;
+  [key: string]: string | number;
 }
 
 interface AnalysisBarChartProps {

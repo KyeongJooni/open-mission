@@ -36,6 +36,7 @@ describe('MyPageHeader', () => {
     nickname: '테스트유저',
     bio: '테스트 소개',
     profilePicture: 'test.jpg',
+    onEditClick: jest.fn(),
   };
 
   beforeEach(() => {

@@ -42,7 +42,7 @@ describe('PageHeaderRight', () => {
   });
 
   it('editProfile 타입일 때 onEdit과 onCancel을 전달해야 함', () => {
-    render(<PageHeaderRight type="editProfile" onEdit={() => {}} onCancel={() => {}} />);
+    render(<PageHeaderRight type="editprofile" onEdit={() => {}} onCancel={() => {}} />);
 
     expect(screen.getByTestId('edit-profile-renderer')).toBeInTheDocument();
     expect(screen.getByText('Edit')).toBeInTheDocument();

@@ -40,7 +40,7 @@ describe('PageHeaderRenderers', () => {
 
   it('editprofile 렌더러가 EditProfileTypeHeader를 반환해야 함', () => {
     const Component = PageHeaderRenderers.editprofile;
-    render(<>{Component({ handleSave: jest.fn(), handleCancel: jest.fn() })}</>);
+    render(<>{Component({ onEdit: jest.fn(), onCancel: jest.fn() })}</>);
 
     expect(screen.getByTestId('editprofile-header')).toBeInTheDocument();
   });

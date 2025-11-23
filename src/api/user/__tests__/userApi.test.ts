@@ -45,9 +45,17 @@ describe('userApi', () => {
       };
       (axiosInstance.patch as jest.Mock).mockResolvedValue(mockResponse);
 
-      const result = await updateUser({ nickname: 'newNickname' });
+      const updateData = {
+        email: 'test@example.com',
+        name: 'Test User',
+        nickname: 'newNickname',
+        birthDate: '1990-01-01',
+        introduction: 'Hello',
+        profilePicture: 'https://example.com/image.png',
+      };
+      const result = await updateUser(updateData);
 
-      expect(axiosInstance.patch).toHaveBeenCalledWith('/users', { nickname: 'newNickname' });
+      expect(axiosInstance.patch).toHaveBeenCalledWith('/users', updateData);
       expect(result).toEqual(mockResponse.data);
     });
   });

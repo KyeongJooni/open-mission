@@ -1,5 +1,3 @@
-import React from 'react';
-
 const MDEditor = ({ value, ...props }: { value?: string; [key: string]: unknown }) => (
   <div data-testid="md-editor" {...props}>
     {value}

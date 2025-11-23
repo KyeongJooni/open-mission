@@ -180,8 +180,10 @@ describe('useLoginForm', () => {
 
   it('handleKakaoLogin이 카카오 로그인 URL을 설정해야 함', () => {
     const originalLocation = window.location;
-    delete (window as any).location;
-    window.location = { href: '' } as any;
+    Object.defineProperty(window, 'location', {
+      value: { href: '' },
+      writable: true,
+    });
 
     const { result } = renderHook(() => useLoginForm());
 
@@ -192,7 +194,10 @@ describe('useLoginForm', () => {
     // import.meta.env.VITE_API_BASE_URL이 설정되었으므로 href가 변경됨
     expect(window.location.href).toBeDefined();
 
-    window.location = originalLocation;
+    Object.defineProperty(window, 'location', {
+      value: originalLocation,
+      writable: true,
+    });
   });
 
   it('handleSignup이 마이페이지로 이동해야 함', () => {

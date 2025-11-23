@@ -22,7 +22,7 @@ const createWrapper = () => {
 describe('commentQuery', () => {
   describe('useCreateCommentMutation', () => {
     it('mutation을 반환해야 함', () => {
-      const { result } = renderHook(() => useCreateCommentMutation(), {
+      const { result } = renderHook(() => useCreateCommentMutation('1'), {
         wrapper: createWrapper(),
       });
 
@@ -33,7 +33,7 @@ describe('commentQuery', () => {
 
   describe('useDeleteCommentMutation', () => {
     it('mutation을 반환해야 함', () => {
-      const { result } = renderHook(() => useDeleteCommentMutation(), {
+      const { result } = renderHook(() => useDeleteCommentMutation('1'), {
         wrapper: createWrapper(),
       });
 

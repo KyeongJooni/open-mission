@@ -40,12 +40,17 @@ describe('useKakaoCallback', () => {
   beforeEach(() => {
     jest.clearAllMocks();
     sessionStorage.clear();
-    delete (window as any).location;
-    window.location = { search: '', href: '' } as any;
+    Object.defineProperty(window, 'location', {
+      value: { search: '', href: '' },
+      writable: true,
+    });
   });
 
   afterEach(() => {
-    window.location = originalLocation;
+    Object.defineProperty(window, 'location', {
+      value: originalLocation,
+      writable: true,
+    });
   });
 
   it('code가 없을 때 홈으로 이동해야 함', () => {
