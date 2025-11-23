@@ -6,9 +6,9 @@ interface TiltOptions {
   speed?: number;
 }
 
-export const useTilt = <T extends HTMLElement>(options: TiltOptions = {}): RefObject<T | null> => {
+export const useTilt = <T extends HTMLElement>(options: TiltOptions = {}): RefObject<T> => {
   const { max = 10, scale = 1.02, speed = 400 } = options;
-  const ref = useRef<T>(null);
+  const ref = useRef<T>(null) as RefObject<T>;
 
   useEffect(() => {
     const element = ref.current;
@@ -34,6 +34,8 @@ export const useTilt = <T extends HTMLElement>(options: TiltOptions = {}): RefOb
     };
 
     element.style.transition = `transform ${speed}ms ease-out`;
+    element.style.willChange = 'transform';
+    element.style.backfaceVisibility = 'hidden';
     element.addEventListener('mousemove', handleMouseMove);
     element.addEventListener('mouseleave', handleMouseLeave);
 

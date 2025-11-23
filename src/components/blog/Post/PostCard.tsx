@@ -14,7 +14,7 @@ const PostCard = memo(({ title, content, className, hasImage = false, renderTitl
   return (
     <div className={cn(postCardVariants({ hasImage }), className)}>
       {renderTitle ? renderTitle : <h3 className={postTitleVariants()}>{title}</h3>}
-      {content && <p className={postContentVariants()}>{content}</p>}
+      <p className={postContentVariants()}>{content || '\u00A0'}</p>
     </div>
   );
 });

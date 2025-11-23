@@ -5,8 +5,8 @@ export const postCardVariants = tv({
   base: 'flex px-4  py-3 flex-col justify-center items-start gap-2 self-stretch',
   variants: {
     hasImage: {
-      true: 'max-w-post-card-mobile md:max-w-post-card',
-      false: 'max-w-post-card-mobile-full md:max-w-content',
+      true: 'w-full max-w-post-card-mobile md:max-w-post-card',
+      false: 'w-full max-w-post-card-mobile-full md:max-w-content',
     },
   },
   defaultVariants: {
@@ -15,7 +15,7 @@ export const postCardVariants = tv({
 });
 
 export const postTitleVariants = tv({
-  base: 'self-stretch font-medium leading-[160%] tracking-[-0.08px] text-black overflow-hidden text-ellipsis whitespace-nowrap',
+  base: 'w-full self-stretch font-medium leading-[160%] tracking-[-0.08px] text-black overflow-hidden text-ellipsis whitespace-nowrap',
   variants: {
     size: {
       md: 'text-base sm:text-lg',
@@ -28,5 +28,5 @@ export const postTitleVariants = tv({
 });
 
 export const postContentVariants = tv({
-  base: 'h-12 sm:h-auto self-stretch overflow-hidden text-ellipsis text-sm font-light leading-[160%] tracking-[-0.07px] text-gray-dark line-clamp-2 sm:line-clamp-3',
+  base: 'h-12 sm:h-auto w-full self-stretch overflow-hidden text-ellipsis text-sm font-light leading-[160%] tracking-[-0.07px] text-gray-dark line-clamp-2 sm:line-clamp-3',
 });

@@ -50,17 +50,24 @@ const BlogPreviewCard = memo(
     return (
       <div
         ref={fadeRef}
-        className={`blog-preview-row ${className} cursor-pointer transition-all duration-500 ${
+        className={`blog-preview-row ${className} cursor-pointer overflow-hidden transition-all duration-500 ${
           isVisible ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'
         }`}
         onClick={handleClick}
         style={{ transformStyle: 'preserve-3d' }}
       >
-        <div ref={tiltRef} className="flex flex-col">
-          <PostCard title={title} content={content} hasImage={Boolean(imageSrc)} />
-          <PostDetails nickName={nickName} profileUrl={profileUrl} createdAt={createdAt} commentCount={commentCount} />
+        <div ref={tiltRef} className="flex flex-1 items-start gap-4">
+          <div className="flex flex-1 flex-col">
+            <PostCard title={title} content={content} hasImage={Boolean(imageSrc)} />
+            <PostDetails
+              nickName={nickName}
+              profileUrl={profileUrl}
+              createdAt={createdAt}
+              commentCount={commentCount}
+            />
+          </div>
+          {imageSrc && <MainPreviewImage src={imageSrc} priority={priority} />}
         </div>
-        {imageSrc && <MainPreviewImage src={imageSrc} priority={priority} />}
       </div>
     );
   }

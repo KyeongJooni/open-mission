@@ -5,9 +5,9 @@ interface FadeInOptions {
   delay?: number;
 }
 
-export const useFadeIn = <T extends HTMLElement>(options: FadeInOptions = {}): [RefObject<T | null>, boolean] => {
+export const useFadeIn = <T extends HTMLElement>(options: FadeInOptions = {}): [RefObject<T>, boolean] => {
   const { threshold = 0.1, delay = 0 } = options;
-  const ref = useRef<T>(null);
+  const ref = useRef<T>(null) as RefObject<T>;
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
