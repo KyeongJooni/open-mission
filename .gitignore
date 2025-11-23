@@ -39,3 +39,6 @@ src/_docs/
 # Yarn
 .yarn/cache
 .yarn/install-state.gz
+
+# Test coverage
+coverage
