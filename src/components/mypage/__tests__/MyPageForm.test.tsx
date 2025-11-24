@@ -49,10 +49,8 @@ describe('MyPageForm', () => {
 
   it('카카오 가입 버튼 클릭 시 카카오 인증 URL로 이동해야 함', () => {
     const originalLocation = window.location;
-    Object.defineProperty(window, 'location', {
-      value: { href: '' },
-      writable: true,
-    });
+    delete (window as any).location;
+    (window as any).location = { href: '' };
 
     render(<MyPageForm />);
 
@@ -61,10 +59,7 @@ describe('MyPageForm', () => {
 
     expect(window.location.href).toBeDefined();
 
-    Object.defineProperty(window, 'location', {
-      value: originalLocation,
-      writable: true,
-    });
+    (window as any).location = originalLocation;
   });
 
   it('children을 렌더링해야 함', () => {
