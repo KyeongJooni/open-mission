@@ -1,6 +1,6 @@
 import { http, HttpResponse } from 'msw';
 
-const BASE_URL = 'https://blog.leets.land';
+const BASE_URL = process.env.VITE_API_BASE_URL;
 
 export const handlers = [
   // 인증 관련
