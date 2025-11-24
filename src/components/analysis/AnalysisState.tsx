@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { ScrollProgress } from '@/components';
 import { AnalysisParticleBackground } from './AnalysisParticleBackground';
 import { AnalysisSuggestionItem } from './AnalysisSuggestionItem';
@@ -40,6 +41,7 @@ interface AnalysisResult {
 }
 
 export const AnalysisState = () => {
+  const navigate = useNavigate();
   const [data, setData] = useState<AnalysisResult | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -119,6 +121,15 @@ export const AnalysisState = () => {
 
       {data && (
         <div className="w-full px-12 py-8" style={{ minWidth: '880px' }}>
+          <button
+            onClick={() => navigate(-1)}
+            className="text-gray-600 hover:text-gray-900 mb-6 flex items-center gap-2 text-sm transition-colors"
+          >
+            <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+            </svg>
+            뒤로가기
+          </button>
           <h1 className="text-gray-900 mb-2 text-2xl font-bold">상태 분석 결과</h1>
           <p className="text-gray-500 mb-8 text-sm">React 상태 관리 패턴 분석</p>
 
