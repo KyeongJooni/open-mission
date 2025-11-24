@@ -89,6 +89,20 @@
 - 테스트 코드도 코드다 (리팩토링, test.each 활용)
 - E2E 테스트로 요구사항 검증
 
+### 결과 화면
+
+<img width="1533" height="809" alt="image" src="https://github.com/user-attachments/assets/ac4e4df8-50c4-42a3-bf89-af571acd3887" />
+
+단위 테스트(yarn test)
+
+<img width="1919" height="1020" alt="image" src="https://github.com/user-attachments/assets/4e157429-ce2e-443f-9c7a-48d36c9d4efe" />
+
+테스트 커버리지
+
+<img width="1919" height="1022" alt="image" src="https://github.com/user-attachments/assets/48cf73b6-fb67-4fcc-bfb3-0620e3ba56ab" />
+
+E2E 테스트
+
 <br>
 
 ---
@@ -161,6 +175,17 @@ src/components/analysis/
 ├── AnalysisSuggestionItem.tsx
 └── AnalysisComponentItem.tsx
 ```
+
+### 결과 화면
+
+<img width="1483" height="566" alt="image" src="https://github.com/user-attachments/assets/575e6989-a51b-4e8f-9bac-7b1db43a04f8" />
+
+상태분석도구(CLI) state-analyzer 실행/결과 화면
+
+<img width="1919" height="1018" alt="image" src="https://github.com/user-attachments/assets/38cb03da-802f-4e0d-9db1-6e9b464a41d1" />
+<img width="1919" height="1026" alt="image" src="https://github.com/user-attachments/assets/9be4c53b-b233-48fd-aaeb-37fc1f981dc8" />
+
+상태분석 시각화 화면
 
 <br>
 
@@ -246,3 +271,20 @@ src/hooks/animation/
 - 재사용 가능한 컴포넌트 설계
 - 성능을 고려한 passive 이벤트 리스너
 - 컴포넌트 분리 및 단일 책임 원칙
+
+### 결과 화면
+<img width="1919" height="1028" alt="image" src="https://github.com/user-attachments/assets/8c179e50-74fd-43b5-bc91-02477a5d6906" />
+
+스크롤진행바, 파티클 배경 화면
+
+<img width="1919" height="1021" alt="image" src="https://github.com/user-attachments/assets/89fbb36d-1862-4cc2-b2bd-4bc9ce95cc93" />
+
+컴포넌트 호버/클릭 효과 화면
+
+데모영상
+
+https://github.com/user-attachments/assets/2aaae086-a8fe-459a-b1ca-d01c282b506e
+
+배포 주소
+
+https://kyeongjooniopenmission.vercel.app/
