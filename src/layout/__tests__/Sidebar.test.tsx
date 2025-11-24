@@ -49,6 +49,10 @@ jest.mock('@/components/auth', () => ({
   LoginModal: () => <div data-testid="login-modal" />,
 }));
 
+jest.mock('react-router-dom', () => ({
+  useNavigate: () => jest.fn(),
+}));
+
 describe('Sidebar', () => {
   beforeEach(() => {
     jest.clearAllMocks();

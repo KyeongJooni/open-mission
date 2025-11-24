@@ -7,7 +7,7 @@ jest.mock('@/components/common/PageHeader/PageHeaderRightRenderers', () => ({
     detail: () => <div data-testid="detail-renderer">Detail</div>,
     write: () => <div data-testid="write-renderer">Write</div>,
     mypage: () => <div data-testid="mypage-renderer">MyPage</div>,
-    editProfile: ({ onEdit, onCancel }: any) => (
+    editprofile: ({ onEdit, onCancel }: any) => (
       <div data-testid="edit-profile-renderer">
         <button onClick={onEdit}>Edit</button>
         <button onClick={onCancel}>Cancel</button>

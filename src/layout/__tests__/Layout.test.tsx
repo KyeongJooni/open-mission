@@ -30,6 +30,7 @@ jest.mock('@/components', () => ({
       </button>
     </header>
   ),
+  PageTransition: () => <div data-testid="page-transition">Transition</div>,
 }));
 
 jest.mock('@/layout/Sidebar', () => ({ isLoggedIn }: any) => (
@@ -40,6 +41,7 @@ jest.mock('@/layout/Sidebar', () => ({ isLoggedIn }: any) => (
 
 jest.mock('react-router-dom', () => ({
   Outlet: () => <div data-testid="outlet">콘텐츠</div>,
+  useLocation: () => ({ pathname: '/' }),
 }));
 
 describe('Layout', () => {
@@ -59,10 +61,10 @@ describe('Layout', () => {
     expect(screen.getByTestId('sidebar')).toBeInTheDocument();
   });
 
-  it('Outlet을 렌더링해야 함', () => {
+  it('PageTransition을 렌더링해야 함', () => {
     render(<Layout />);
 
-    expect(screen.getByTestId('outlet')).toBeInTheDocument();
+    expect(screen.getByTestId('page-transition')).toBeInTheDocument();
   });
 
   it('pageHeaderType을 PageHeader에 전달해야 함', () => {
