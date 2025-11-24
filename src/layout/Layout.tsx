@@ -1,5 +1,5 @@
 import Sidebar from '@/layout/Sidebar';
-import { PageHeader, PageTransition } from '@/components';
+import { PageHeader, PageTransition, ScrollProgress } from '@/components';
 import { useSidebar, usePageHeaderType, useEditProfile } from '@/hooks';
 import { useAuthStore } from '@/stores/useAuthStore';
 
@@ -12,6 +12,7 @@ export default function Layout() {
 
   return (
     <div className="w-full">
+      <ScrollProgress />
       <PageHeader type={pageHeaderType} onHamburgerClick={toggleSidebar} onEdit={handleEdit} onCancel={handleCancel} />
       <div ref={sidebarRef} className={`sidebar-container ${isSidebarOpen ? 'sidebar-open' : 'sidebar-closed'}`}>
         <Sidebar isLoggedIn={isLoggedIn} />
