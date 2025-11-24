@@ -31,6 +31,7 @@ jest.mock('@/components', () => ({
     </header>
   ),
   PageTransition: () => <div data-testid="page-transition">Transition</div>,
+  ScrollProgress: () => <div data-testid="scroll-progress">Progress</div>,
 }));
 
 jest.mock('@/layout/Sidebar', () => ({ isLoggedIn }: any) => (

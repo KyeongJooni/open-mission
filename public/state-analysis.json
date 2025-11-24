@@ -1,9 +1,9 @@
 {
   "summary": {
-    "totalComponents": 60,
-    "totalStateUsages": 23,
+    "totalComponents": 71,
+    "totalStateUsages": 31,
     "byType": {
-      "useState": 15,
+      "useState": 23,
       "zustand": 8
     }
   },
@@ -71,7 +71,7 @@
           "type": "zustand",
           "name": "useModalStore",
           "file": "..\\src\\layout\\Sidebar.tsx",
-          "line": 3,
+          "line": 4,
           "component": "Sidebar"
         }
       ],
@@ -135,6 +135,83 @@
     {
       "name": "PublicRoute",
       "file": "..\\src\\routes\\PublicRoute.tsx",
+      "stateUsages": [],
+      "children": []
+    },
+    {
+      "name": "AnalysisBarChart",
+      "file": "..\\src\\components\\analysis\\AnalysisBarChart.tsx",
+      "stateUsages": [],
+      "children": []
+    },
+    {
+      "name": "AnalysisComponentItem",
+      "file": "..\\src\\components\\analysis\\AnalysisComponentItem.tsx",
+      "stateUsages": [],
+      "children": []
+    },
+    {
+      "name": "AnalysisHeatMap",
+      "file": "..\\src\\components\\analysis\\AnalysisHeatMap.tsx",
+      "stateUsages": [],
+      "children": []
+    },
+    {
+      "name": "AnalysisParticleBackground",
+      "file": "..\\src\\components\\analysis\\AnalysisParticleBackground.tsx",
+      "stateUsages": [],
+      "children": []
+    },
+    {
+      "name": "AnalysisPieChart",
+      "file": "..\\src\\components\\analysis\\AnalysisPieChart.tsx",
+      "stateUsages": [],
+      "children": []
+    },
+    {
+      "name": "AnalysisState",
+      "file": "..\\src\\components\\analysis\\AnalysisState.tsx",
+      "stateUsages": [
+        {
+          "type": "useState",
+          "name": "useState",
+          "file": "..\\src\\components\\analysis\\AnalysisState.tsx",
+          "line": 2,
+          "component": "AnalysisState"
+        },
+        {
+          "type": "useState",
+          "name": "useState",
+          "file": "..\\src\\components\\analysis\\AnalysisState.tsx",
+          "line": 3,
+          "component": "AnalysisState"
+        },
+        {
+          "type": "useState",
+          "name": "useState",
+          "file": "..\\src\\components\\analysis\\AnalysisState.tsx",
+          "line": 4,
+          "component": "AnalysisState"
+        },
+        {
+          "type": "useState",
+          "name": "useState",
+          "file": "..\\src\\components\\analysis\\AnalysisState.tsx",
+          "line": 96,
+          "component": "AnalysisState"
+        }
+      ],
+      "children": []
+    },
+    {
+      "name": "AnalysisSuggestionItem",
+      "file": "..\\src\\components\\analysis\\AnalysisSuggestionItem.tsx",
+      "stateUsages": [],
+      "children": []
+    },
+    {
+      "name": "AnalysisTopComponents",
+      "file": "..\\src\\components\\analysis\\AnalysisTopComponents.tsx",
       "stateUsages": [],
       "children": []
     },
@@ -231,6 +308,12 @@
     {
       "name": "ProfileSection",
       "file": "..\\src\\components\\mypage\\SignupProfileSection.tsx",
+      "stateUsages": [],
+      "children": []
+    },
+    {
+      "name": "AnalysisPage",
+      "file": "..\\src\\pages\\analysis\\AnalysisPage.tsx",
       "stateUsages": [],
       "children": []
     },
@@ -423,7 +506,22 @@
     {
       "name": "Modal",
       "file": "..\\src\\components\\common\\Modal\\Modal.tsx",
-      "stateUsages": [],
+      "stateUsages": [
+        {
+          "type": "useState",
+          "name": "useState",
+          "file": "..\\src\\components\\common\\Modal\\Modal.tsx",
+          "line": 13,
+          "component": "Modal"
+        },
+        {
+          "type": "useState",
+          "name": "useState",
+          "file": "..\\src\\components\\common\\Modal\\Modal.tsx",
+          "line": 14,
+          "component": "Modal"
+        }
+      ],
       "children": []
     },
     {
@@ -445,6 +543,20 @@
       "children": []
     },
     {
+      "name": "PageTransition",
+      "file": "..\\src\\components\\common\\PageTransition\\PageTransition.tsx",
+      "stateUsages": [
+        {
+          "type": "useState",
+          "name": "useState",
+          "file": "..\\src\\components\\common\\PageTransition\\PageTransition.tsx",
+          "line": 3,
+          "component": "PageTransition"
+        }
+      ],
+      "children": []
+    },
+    {
       "name": "Pagination",
       "file": "..\\src\\components\\common\\Pagination\\Pagination.tsx",
       "stateUsages": [],
@@ -454,6 +566,20 @@
       "name": "PaginationButton",
       "file": "..\\src\\components\\common\\Pagination\\PaginationButton.tsx",
       "stateUsages": [],
+      "children": []
+    },
+    {
+      "name": "ScrollProgress",
+      "file": "..\\src\\components\\common\\ScrollProgress\\ScrollProgress.tsx",
+      "stateUsages": [
+        {
+          "type": "useState",
+          "name": "useState",
+          "file": "..\\src\\components\\common\\ScrollProgress\\ScrollProgress.tsx",
+          "line": 2,
+          "component": "ScrollProgress"
+        }
+      ],
       "children": []
     },
     {
@@ -546,15 +672,21 @@
   "suggestions": [
     {
       "type": "improvement",
-      "message": "4개의 useState가 있습니다. useReducer나 커스텀 훅으로 묶는 것을 고려하세요.",
+      "message": "4개의 useState가 있습니다. useReducer나 커스텀 훅으로 묶는 것을 추천합니다!",
       "file": "..\\src\\contexts\\ToastContext.tsx",
       "component": "ToastProvider"
     },
     {
       "type": "improvement",
-      "message": "4개의 useState가 있습니다. useReducer나 커스텀 훅으로 묶는 것을 고려하세요.",
+      "message": "4개의 useState가 있습니다. useReducer나 커스텀 훅으로 묶는 것을 추천합니다!",
       "file": "..\\src\\playground\\Playground.tsx",
       "component": "Playground"
+    },
+    {
+      "type": "improvement",
+      "message": "4개의 useState가 있습니다. useReducer나 커스텀 훅으로 묶는 것을 추천합니다!",
+      "file": "..\\src\\components\\analysis\\AnalysisState.tsx",
+      "component": "AnalysisState"
     }
   ]
 }
